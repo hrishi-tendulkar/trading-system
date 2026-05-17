@@ -1,0 +1,4 @@
+interface:
+  display_name: "Public Equity Intelligence"
+  short_description: "Build and evaluate public-equity research frameworks"
+  default_prompt: "Use this skill to design or strengthen the finance and market-analysis layer of a public-equity intelligence system."
