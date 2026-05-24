@@ -2,12 +2,8 @@
 
 from __future__ import annotations
 
+import bcrypt
 import getpass
-
-from passlib.context import CryptContext
-
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def main() -> None:
@@ -15,7 +11,7 @@ def main() -> None:
     confirm = getpass.getpass("Confirm password: ")
     if password != confirm:
         raise SystemExit("Passwords did not match.")
-    print(pwd_context.hash(password))
+    print(bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8"))
 
 
 if __name__ == "__main__":

@@ -1,25 +1,22 @@
 from __future__ import annotations
 
+import bcrypt
 from fastapi import Request
 from itsdangerous import BadSignature, URLSafeSerializer
-from passlib.context import CryptContext
 from starlette.responses import Response
 
 from packages.core.config import Settings
 
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-
 def verify_password(plain_password: str, password_hash: str) -> bool:
     try:
-        return pwd_context.verify(plain_password, password_hash)
+        return bcrypt.checkpw(plain_password.encode("utf-8"), password_hash.encode("utf-8"))
     except Exception:
         return False
 
 
 def hash_password(plain_password: str) -> str:
-    return pwd_context.hash(plain_password)
+    return bcrypt.hashpw(plain_password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 
 def _serializer(settings: Settings) -> URLSafeSerializer:
