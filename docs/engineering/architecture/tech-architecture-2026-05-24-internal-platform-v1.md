@@ -599,6 +599,11 @@ Recommended source strategy:
 - multiple Railway services pointing at the same repo
 - different start commands per service
 
+Implementation shortcut:
+
+- if Railway service-level start-command management is awkward in CLI flows, use one shared Docker image and switch runtime behavior with an `APP_ROLE` environment variable
+- this is acceptable for `v1` because it preserves logical separation without forcing dashboard-only setup for every service
+
 Suggested start commands:
 
 - `trading-system-web`
