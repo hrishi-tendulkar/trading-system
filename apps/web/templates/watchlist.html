@@ -2,16 +2,37 @@
 {% block title %}Watchlist | Trading System{% endblock %}
 {% block content %}
   <section class="card panel">
-    <div class="eyebrow">Watchlist</div>
-    <h1>Active universe</h1>
-    <p class="subtle">This page is scaffolded for CRUD wiring. For now it reflects the sample names used by the weekly review shell.</p>
-    <div class="list">
-      {% for stock in review.board %}
-        <div class="item">
-          <strong>{{ stock.ticker }} · {{ stock.company }}</strong>
-          <div class="subtle">{{ stock.note }}</div>
+    <div class="eyebrow">Watchlist workspace</div>
+    <h1>{{ watchlist.title }}</h1>
+    <p class="subtle">{{ watchlist.summary }}</p>
+    <div class="facts compact-facts">
+      {% for fact in watchlist.facts %}
+        <div class="fact">
+          <div class="label">{{ fact.label }}</div>
+          <div class="value">{{ fact.value }}</div>
         </div>
       {% endfor %}
     </div>
+  </section>
+
+  <section class="bucket-grid">
+    {% for section in watchlist.sections %}
+      <section class="card panel">
+        <div class="bucket-heading">{{ section.title }}</div>
+        <div class="list">
+          {% for item in section["items"] %}
+            <article class="item">
+              <div class="item-header">
+                <strong>{{ item.ticker }} · {{ item.company }}</strong>
+                <span class="badge {{ item.badge_class }}">{{ item.action }}</span>
+              </div>
+              <div class="small subtle">{{ item.sector }}</div>
+              <p>{{ item.note }}</p>
+              <p class="small"><a href="/stocks/{{ item.ticker }}">Open deep dive</a></p>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
   </section>
 {% endblock %}

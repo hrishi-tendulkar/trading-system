@@ -1,9 +1,9 @@
 {% extends "_shell.html" %}
-{% block title %}Weekly Review | Trading System{% endblock %}
+{% block title %}This Week's Plan | Trading System{% endblock %}
 {% block content %}
   <section class="hero">
     <div class="card panel">
-      <div class="eyebrow">Weekly Review</div>
+      <div class="eyebrow">Weekly decision session</div>
       <h1>{{ review.title }}</h1>
       <p class="subtle">{{ review.summary }}</p>
       <div class="facts">
@@ -15,7 +15,7 @@
         {% endfor %}
       </div>
     </div>
-    <div class="card panel">
+    <div class="card panel emphasis-panel">
       <div class="eyebrow">Market Posture</div>
       <h2>{{ review.posture.title }}</h2>
       <p class="subtle">{{ review.posture.summary }}</p>
@@ -30,21 +30,102 @@
   <section class="card panel">
     <div class="topbar">
       <div>
-        <div class="eyebrow">Decision Board</div>
-        <h2>Fresh cash deployment and active names</h2>
+        <div class="eyebrow">Start Here</div>
+        <h2>Top actions this week</h2>
       </div>
-      <div class="subtle small">Only published runs should appear here once real data is wired.</div>
+      <div class="subtle small">{{ review.selectivity_note }}</div>
     </div>
     <div class="board" style="margin-top: 16px;">
-      {% for stock in review.board %}
+      {% for stock in review.start_here %}
         <article class="stock-card">
-          <div class="badge {{ stock.badge_class }}">{{ stock.action }}</div>
+          <div class="item-header">
+            <span class="badge {{ stock.badge_class }}">{{ stock.action }}</span>
+            <span class="rank-pill">Rank {{ loop.index }}</span>
+          </div>
           <h3 style="margin-top: 10px;">{{ stock.ticker }} · {{ stock.company }}</h3>
-          <p class="subtle">{{ stock.thesis }}</p>
-          <p>{{ stock.note }}</p>
-          <p class="small"><a href="/stocks/{{ stock.ticker }}">Open stock detail</a></p>
+          <p class="subtle">{{ stock.reason }}</p>
+          <p class="small">Preferred expression: {{ stock.expression }}</p>
+          <p class="small"><a href="/stocks/{{ stock.ticker }}">Open deep dive</a></p>
         </article>
       {% endfor %}
     </div>
+  </section>
+
+  <section class="card panel">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Fresh Cash Board</div>
+        <h2>Action buckets for new capital</h2>
+      </div>
+      <div class="subtle small">Broader coverage stays visible, but the action layer remains selective.</div>
+    </div>
+    <div class="bucket-grid">
+      {% for bucket in review.fresh_cash %}
+        <section class="bucket">
+          <div class="bucket-heading">{{ bucket.title }}</div>
+          <div class="list">
+            {% for item in bucket["items"] %}
+              <article class="item">
+                <div class="item-header">
+                  <strong>{{ item.ticker }} · {{ item.company }}</strong>
+                  <span class="badge {{ item.badge_class }}">{{ item.action }}</span>
+                </div>
+                <p class="subtle">{{ item.why_now }}</p>
+                <div class="micro-list">
+                  <div><span class="label-inline">Entry</span>{{ item.entry }}</div>
+                  <div><span class="label-inline">Invalidate</span>{{ item.invalidation }}</div>
+                  <div><span class="label-inline">Catalyst</span>{{ item.catalyst }}</div>
+                </div>
+                <p class="small">{{ item.why_not_stronger }}</p>
+                <p class="small"><a href="/stocks/{{ item.ticker }}">Open deep dive</a></p>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <section class="card panel">
+      <div class="eyebrow">Existing Positions</div>
+      <h2>Holder decisions</h2>
+      <div class="list">
+        {% for bucket in review.holders %}
+          <div class="item">
+            <div class="bucket-heading">{{ bucket.title }}</div>
+            <div class="mini-table">
+              {% for item in bucket["items"] %}
+                <div class="mini-row">
+                  <div>
+                    <strong>{{ item.ticker }} · {{ item.company }}</strong>
+                    <div class="small subtle">{{ item.change }}</div>
+                  </div>
+                  <div class="mini-meta">
+                    <div><span class="label-inline">Risk</span>{{ item.risk_type }}</div>
+                    <div><span class="label-inline">Reassess</span>{{ item.reassess }}</div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="card panel">
+      <div class="eyebrow">Deep-Dive Queue</div>
+      <h2>Names worth deeper work</h2>
+      <div class="list">
+        {% for item in review.deep_dives %}
+          <article class="item">
+            <strong>{{ item.ticker }} · {{ item.company }}</strong>
+            <div class="small subtle">{{ item.reason }}</div>
+            <p>{{ item.note }}</p>
+            <p class="small"><a href="/stocks/{{ item.ticker }}">Open deep dive</a></p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
   </section>
 {% endblock %}

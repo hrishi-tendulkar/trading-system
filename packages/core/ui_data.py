@@ -1,99 +1,623 @@
 from __future__ import annotations
 
+import csv
+from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
 
-def sample_weekly_review() -> dict[str, object]:
+
+@dataclass(frozen=True)
+class WatchlistMember:
+    ticker: str
+    display_name: str
+    sector: str
+    is_benchmark: bool
+    is_active: bool
+
+
+@dataclass(frozen=True)
+class RecommendationRecord:
+    as_of_date: str
+    ticker: str
+    company: str
+    sector: str
+    is_benchmark: bool
+    close: float
+    ret_20d: float
+    rs_20d: float
+    distance_from_52w_high: float
+    days_to_earnings: float | None
+    next_earnings_date: str | None
+    event_risk: str
+    strategy_id: str
+    strategy_name: str
+    basis_type: str
+    action_label: str
+    horizon: str
+    entry_label: str
+    entry_value: str
+    stop_label: str
+    stop_value: str
+    target_label: str
+    target_value: str
+    strategy_rationale: str
+    observed_reason: str
+    action_rank: int
+    refined_score: float
+    trend_score: int
+    momentum_score: int
+    rs_score: int
+    proximity_score: int
+    risk_penalty: int
+    extension_penalty: int
+
+    @property
+    def action_bucket(self) -> str:
+        mapping = {
+            "Buy now": "Buy now",
+            "Buy on pullback": "Buy on pullback",
+            "Wait for confirmation": "Wait for confirmation",
+            "No action": "Do not chase",
+            "Hold": "Do not chase",
+            "Hold / reassess after earnings": "Do not chase",
+            "Benchmark reference": "Reference only",
+        }
+        return mapping.get(self.action_label, "Monitor")
+
+    @property
+    def holder_bucket(self) -> str | None:
+        mapping = {
+            "Buy now": "Hold / add on strength",
+            "Buy on pullback": "Hold but wait for better entry",
+            "Wait for confirmation": "Hold but do not add",
+            "Hold": "Hold",
+            "Hold / reassess after earnings": "Hold but event-sensitive",
+            "No action": "Reassess",
+        }
+        return mapping.get(self.action_label)
+
+    @property
+    def badge_class(self) -> str:
+        mapping = {
+            "Buy now": "buy",
+            "Buy on pullback": "wait",
+            "Wait for confirmation": "focus",
+            "Hold": "hold",
+            "Hold / reassess after earnings": "risk",
+            "No action": "avoid",
+            "Benchmark reference": "neutral",
+        }
+        return mapping.get(self.action_label, "neutral")
+
+    @property
+    def confidence(self) -> str:
+        if self.refined_score >= 7:
+            return "High"
+        if self.refined_score >= 5:
+            return "Medium"
+        return "Low"
+
+    @property
+    def role_label(self) -> str:
+        if self.is_benchmark:
+            return "Benchmark context"
+        if self.sector == "ETF":
+            return "ETF context"
+        if self.action_label == "Buy now":
+            return "Tradeable now"
+        if self.action_label == "Buy on pullback":
+            return "Core watch"
+        if self.action_label == "Wait for confirmation":
+            return "Tactical watch"
+        if self.action_label == "Hold / reassess after earnings":
+            return "Event-sensitive hold"
+        if self.action_label == "Hold":
+            return "Hold / review"
+        return "Monitor"
+
+    @property
+    def why_now(self) -> str:
+        return self.observed_reason
+
+    @property
+    def why_not_stronger(self) -> str:
+        return self.strategy_rationale
+
+
+def _repo_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def _first_existing(candidates: list[str]) -> Path:
+    root = _repo_root()
+    for candidate in candidates:
+        path = root / candidate
+        if path.exists():
+            return path
+    raise FileNotFoundError(f"No supported data source found in: {candidates}")
+
+
+def _to_bool(value: str) -> bool:
+    return value.strip().lower() == "true"
+
+
+def _to_float(value: str) -> float:
+    return float(value) if value else 0.0
+
+
+def _to_optional_float(value: str) -> float | None:
+    return float(value) if value else None
+
+
+def _to_int(value: str) -> int:
+    return int(float(value)) if value else 0
+
+
+def _format_percent(value: float) -> str:
+    return f"{value * 100:.1f}%"
+
+
+def _format_distance(value: float) -> str:
+    return f"{value * 100:.1f}% below 52-week high"
+
+
+def _format_currency(value: float) -> str:
+    return f"${value:,.2f}"
+
+
+def _format_days_to_earnings(days: float | None) -> str:
+    if days is None:
+        return "No date loaded"
+    rounded = int(days)
+    if rounded < 0:
+        return f"{abs(rounded)} days since earnings"
+    if rounded == 0:
+        return "Earnings today"
+    return f"{rounded} days to earnings"
+
+
+@lru_cache(maxsize=1)
+def _load_watchlist_members() -> dict[str, WatchlistMember]:
+    path = _first_existing(
+        [
+            "data/reference/phase2_watchlist.csv",
+            "data/reference/mlp_watchlist.csv",
+        ]
+    )
+    members: dict[str, WatchlistMember] = {}
+    with path.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            member = WatchlistMember(
+                ticker=row["ticker"].upper(),
+                display_name=row["display_name"].strip(),
+                sector=row["sector"].strip(),
+                is_benchmark=_to_bool(row["is_benchmark"]),
+                is_active=_to_bool(row["is_active"]),
+            )
+            members[member.ticker] = member
+    return members
+
+
+@lru_cache(maxsize=1)
+def _load_recommendation_records() -> list[RecommendationRecord]:
+    path = _first_existing(
+        [
+            "data/processed/phase2/mlp_current_recommendations.csv",
+            "data/processed/mlp/mlp_current_recommendations.csv",
+        ]
+    )
+    watchlist = _load_watchlist_members()
+    records: list[RecommendationRecord] = []
+    with path.open(newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            ticker = row["ticker"].upper()
+            member = watchlist.get(ticker)
+            company = member.display_name if member else ticker
+            records.append(
+                RecommendationRecord(
+                    as_of_date=row["date"],
+                    ticker=ticker,
+                    company=company,
+                    sector=row["sector"].strip(),
+                    is_benchmark=_to_bool(row["is_benchmark"]),
+                    close=_to_float(row["close"]),
+                    ret_20d=_to_float(row["ret_20d"]),
+                    rs_20d=_to_float(row["rs_20d"]),
+                    distance_from_52w_high=_to_float(row["distance_from_52w_high"]),
+                    days_to_earnings=_to_optional_float(row["days_to_earnings"]),
+                    next_earnings_date=row["next_earnings_date"].strip() or None,
+                    event_risk=row["event_risk"].strip() or "Unknown",
+                    strategy_id=row["strategy_id"].strip(),
+                    strategy_name=row["strategy_name"].strip(),
+                    basis_type=row["basis_type"].strip(),
+                    action_label=row["action_label"].strip(),
+                    horizon=row["horizon"].strip(),
+                    entry_label=row["entry_label"].strip(),
+                    entry_value=row["entry_value"].strip(),
+                    stop_label=row["stop_label"].strip(),
+                    stop_value=row["stop_value"].strip(),
+                    target_label=row["target_label"].strip(),
+                    target_value=row["target_value"].strip(),
+                    strategy_rationale=row["strategy_rationale"].strip(),
+                    observed_reason=row["observed_reason"].strip(),
+                    action_rank=_to_int(row["action_rank"]),
+                    refined_score=_to_float(row["refined_score"]),
+                    trend_score=_to_int(row["trend_score"]),
+                    momentum_score=_to_int(row["momentum_score"]),
+                    rs_score=_to_int(row["rs_score"]),
+                    proximity_score=_to_int(row["proximity_score"]),
+                    risk_penalty=_to_int(row["risk_penalty"]),
+                    extension_penalty=_to_int(row["extension_penalty"]),
+                )
+            )
+    return sorted(records, key=lambda record: (record.action_rank, record.ticker))
+
+
+def _published_dataset_name() -> str:
+    path = _first_existing(
+        [
+            "data/processed/phase2/mlp_current_recommendations.csv",
+            "data/processed/mlp/mlp_current_recommendations.csv",
+        ]
+    )
+    return path.parent.name
+
+
+def _non_benchmark_records() -> list[RecommendationRecord]:
+    return [record for record in _load_recommendation_records() if not record.is_benchmark]
+
+
+def _count_active_members() -> int:
+    return sum(1 for member in _load_watchlist_members().values() if member.is_active)
+
+
+def _market_posture(records: list[RecommendationRecord]) -> tuple[str, str, list[str]]:
+    benchmark = next(
+        (record for record in _load_recommendation_records() if record.is_benchmark),
+        None,
+    )
+    buy_count = sum(1 for record in records if record.action_label == "Buy now")
+    event_sensitive_count = sum(
+        1
+        for record in records
+        if record.event_risk == "High"
+        or (record.days_to_earnings is not None and record.days_to_earnings <= 7)
+    )
+    if benchmark and benchmark.ret_20d > 0 and buy_count >= 2:
+        title = "Selective risk-on"
+        summary = (
+            "Leadership is still present, but the product should keep capital "
+            "concentrated in the best few setups instead of flattening the board."
+        )
+    elif benchmark and benchmark.ret_20d > 0:
+        title = "Neutral to constructive"
+        summary = (
+            "The tape is stable enough to keep names on deck, but the system "
+            "should stay patient on entries."
+        )
+    else:
+        title = "Defensive"
+        summary = (
+            "The tape is not giving enough support for aggressive fresh "
+            "entries, so preservation matters more."
+        )
+    points = [
+        f"{buy_count} names currently qualify as immediate action candidates.",
+        f"{event_sensitive_count} names need explicit event-risk discipline.",
+        "Use the deep-dive queue to inspect the few names most likely to matter this week.",
+    ]
+    return title, summary, points
+
+
+def _top_actions(records: list[RecommendationRecord]) -> list[dict[str, str]]:
+    actionable_labels = {"Buy now", "Buy on pullback", "Wait for confirmation"}
+    candidates = [record for record in records if record.action_label in actionable_labels]
+    return [
+        {
+            "ticker": record.ticker,
+            "company": record.company,
+            "action": record.action_label,
+            "badge_class": record.badge_class,
+            "reason": record.observed_reason,
+            "expression": record.horizon,
+        }
+        for record in candidates[:3]
+    ]
+
+
+def _fresh_cash_buckets(records: list[RecommendationRecord]) -> list[dict[str, object]]:
+    ordered_buckets = ["Buy now", "Buy on pullback", "Wait for confirmation", "Do not chase"]
+    groups: list[dict[str, object]] = []
+    for bucket in ordered_buckets:
+        bucket_records = [record for record in records if record.action_bucket == bucket][:6]
+        if not bucket_records:
+            continue
+        groups.append(
+            {
+                "title": bucket,
+                "items": [
+                    {
+                        "ticker": record.ticker,
+                        "company": record.company,
+                        "action": record.action_label,
+                        "badge_class": record.badge_class,
+                        "why_now": record.why_now,
+                        "why_not_stronger": record.why_not_stronger,
+                        "entry": f"{record.entry_label} {record.entry_value}".strip(),
+                        "invalidation": f"{record.stop_label} {record.stop_value}".strip(),
+                        "catalyst": record.next_earnings_date or "No near-term event loaded",
+                    }
+                    for record in bucket_records
+                ],
+            }
+        )
+    return groups
+
+
+def _holder_buckets(records: list[RecommendationRecord]) -> list[dict[str, object]]:
+    ordered_buckets = [
+        "Hold / add on strength",
+        "Hold",
+        "Hold but wait for better entry",
+        "Hold but do not add",
+        "Hold but event-sensitive",
+        "Reassess",
+    ]
+    groups: list[dict[str, object]] = []
+    for bucket in ordered_buckets:
+        bucket_records = [record for record in records if record.holder_bucket == bucket][:5]
+        if not bucket_records:
+            continue
+        groups.append(
+            {
+                "title": bucket,
+                "items": [
+                    {
+                        "ticker": record.ticker,
+                        "company": record.company,
+                        "change": record.strategy_name,
+                        "risk_type": record.event_risk,
+                        "reassess": f"{record.stop_label} {record.stop_value}".strip(),
+                    }
+                    for record in bucket_records
+                ],
+            }
+        )
+    return groups
+
+
+def _deep_dive_queue(records: list[RecommendationRecord]) -> list[dict[str, str]]:
+    queue_labels = {
+        "Buy now",
+        "Buy on pullback",
+        "Wait for confirmation",
+        "Hold / reassess after earnings",
+    }
+    queue_records = [record for record in records if record.action_label in queue_labels]
+    return [
+        {
+            "ticker": record.ticker,
+            "company": record.company,
+            "reason": record.strategy_name,
+            "note": record.observed_reason,
+        }
+        for record in queue_records[:3]
+    ]
+
+
+def get_weekly_review() -> dict[str, object]:
+    records = _non_benchmark_records()
+    posture_title, posture_summary, posture_points = _market_posture(records)
     return {
-        "title": "Weekly review shell",
-        "summary": "This scaffold is ready to switch from sample payloads to published run data once the database and jobs are wired.",
+        "title": "This Week's Plan",
+        "summary": (
+            "The latest published recommendation set is projected into a weekly "
+            "decision session so the product can scale into deeper analysis "
+            "without changing its mental model."
+        ),
         "facts": [
-            {"label": "As of", "value": "2026-05-24"},
-            {"label": "Market posture", "value": "Selective risk-on"},
-            {"label": "Active names", "value": "52"},
-            {"label": "Published run", "value": "Placeholder"},
+            {"label": "As of", "value": records[0].as_of_date},
+            {"label": "Market posture", "value": posture_title},
+            {"label": "Universe", "value": str(_count_active_members())},
+            {"label": "Published run", "value": _published_dataset_name()},
         ],
         "posture": {
-            "title": "Selective risk-on",
-            "summary": "Leadership is healthy enough for buying, but the bar stays high and broken setups should still be cut quickly.",
-            "points": [
-                "Fresh capital should stay concentrated in top-ranked names.",
-                "Weak relative-strength laggards should not be force-owned.",
-                "Event risk remains a real filter around earnings-heavy names.",
-            ],
+            "title": posture_title,
+            "summary": posture_summary,
+            "points": posture_points,
         },
-        "board": [
-            {
-                "ticker": "NVDA",
-                "company": "NVIDIA",
-                "action": "Buy candidate",
-                "badge_class": "buy",
-                "thesis": "Leadership-quality name with strong relative strength and broad demand support.",
-                "note": "Good example of a top-ranked name once real score components are connected.",
-            },
-            {
-                "ticker": "CRM",
-                "company": "Salesforce",
-                "action": "Watch for entry",
-                "badge_class": "wait",
-                "thesis": "Constructive structure, but not yet clean enough to warrant an aggressive entry.",
-                "note": "Useful example of a patient, setup-driven action label.",
-            },
-            {
-                "ticker": "TSLA",
-                "company": "Tesla",
-                "action": "Hold",
-                "badge_class": "hold",
-                "thesis": "Name stays interesting, but the system should separate conviction from tactical cleanup.",
-                "note": "Represents a case where existing holders and new buyers may need different framing.",
-            },
-            {
-                "ticker": "SNOW",
-                "company": "Snowflake",
-                "action": "Avoid / no action",
-                "badge_class": "avoid",
-                "thesis": "Incomplete or weak setup quality should be reflected clearly rather than hidden behind optimism.",
-                "note": "Represents the kind of suppressed output the publish rules should handle honestly.",
-            },
-        ],
+        "start_here": _top_actions(records),
+        "fresh_cash": _fresh_cash_buckets(records),
+        "holders": _holder_buckets(records),
+        "deep_dives": _deep_dive_queue(records),
+        "selectivity_note": (
+            f"{sum(1 for record in records if record.action_label == 'Buy now')} "
+            "names are tradeable now, while "
+            f"{sum(1 for record in records if record.action_label == 'Buy on pullback')} "
+            "more stay on deck."
+        ),
     }
 
 
-def sample_daily_digest() -> dict[str, object]:
+def get_daily_digest() -> dict[str, object]:
+    records = _non_benchmark_records()
+    event_risk = [
+        record
+        for record in records
+        if record.days_to_earnings is not None and 0 <= record.days_to_earnings <= 7
+    ][:2]
+    actionable = [record for record in records if record.action_label == "Buy now"][:2]
+    waiting = [record for record in records if record.action_label == "Wait for confirmation"][:2]
+
+    items: list[dict[str, str]] = []
+    for record in event_risk:
+        items.append(
+            {
+                "category": "Holding risk increased",
+                "headline": f"{record.ticker} enters an earnings-sensitive window",
+                "detail": (
+                    f"{record.company} reports on "
+                    f"{record.next_earnings_date or 'an upcoming date'}, so the weekly plan "
+                    f"should stay disciplined around event risk."
+                ),
+            }
+        )
+    for record in actionable:
+        items.append(
+            {
+                "category": "Watchlist candidate became actionable",
+                "headline": f"{record.ticker} remains a live fresh-cash candidate",
+                "detail": f"{record.entry_label} {record.entry_value}. {record.observed_reason}",
+            }
+        )
+    for record in waiting:
+        items.append(
+            {
+                "category": "Wait for confirmation",
+                "headline": f"{record.ticker} still needs proof before capital",
+                "detail": (
+                    f"{record.target_label} {record.target_value}. {record.strategy_rationale}"
+                ),
+            }
+        )
+
+    if not items:
+        verdict = "No material change"
+    elif event_risk:
+        verdict = f"{len(event_risk)} event-risk names need review"
+    else:
+        verdict = f"{len(actionable)} names remain actionable"
+
+    carry_forward = [
+        {
+            "ticker": record.ticker,
+            "company": record.company,
+            "trigger": f"{record.entry_label} {record.entry_value}".strip(),
+            "next_step": record.action_label,
+        }
+        for record in (actionable + waiting)[:4]
+    ]
     return {
-        "title": "Daily digest shell",
-        "summary": "This page will later render from the most recent published digest run.",
-        "items": [
-            {
-                "category": "Post-earnings",
-                "headline": "NVDA held gains after earnings",
-                "detail": "Placeholder event highlighting how the digest will bubble meaningful changes, not every price move.",
-            },
-            {
-                "category": "Broken setup",
-                "headline": "One lower-quality candidate lost support",
-                "detail": "The daily digest should stay small, decisive, and useful before the next weekly review.",
-            },
-        ],
+        "title": "What Changed Since Yesterday",
+        "summary": (
+            "This latest-state digest is derived from the most recent published "
+            "run. It stays small, explicit, and focused on changes that should "
+            "matter before the next weekly session."
+        ),
+        "verdict": verdict,
+        "items": items[:5],
+        "carry_forward": carry_forward,
     }
 
 
-def sample_stock_detail(ticker: str) -> dict[str, object]:
+def get_watchlist_view() -> dict[str, object]:
+    watchlist = _load_watchlist_members()
+    recommendations = {record.ticker: record for record in _load_recommendation_records()}
+    grouped: dict[str, list[dict[str, str]]] = {
+        "Tradeable now": [],
+        "Core watch": [],
+        "Tactical watch": [],
+        "Hold / review": [],
+        "ETF context": [],
+        "Benchmark context": [],
+        "Monitor": [],
+    }
+    for member in sorted((m for m in watchlist.values() if m.is_active), key=lambda m: m.ticker):
+        record = recommendations.get(member.ticker)
+        role = (
+            record.role_label
+            if record
+            else ("Benchmark context" if member.is_benchmark else "Monitor")
+        )
+        grouped.setdefault(role, []).append(
+            {
+                "ticker": member.ticker,
+                "company": member.display_name,
+                "sector": member.sector,
+                "action": record.action_label if record else "No published recommendation",
+                "badge_class": record.badge_class if record else "neutral",
+                "note": record.observed_reason if record else "Awaiting recommendation projection.",
+            }
+        )
+
+    sections = [{"title": title, "items": items} for title, items in grouped.items() if items]
+    return {
+        "title": "Active universe",
+        "summary": (
+            "This view keeps the watchlist scannable first. It shows how the "
+            "current published recommendation set maps onto the active universe "
+            "without pretending write-capable CRUD is done yet."
+        ),
+        "facts": [
+            {"label": "Active names", "value": str(_count_active_members())},
+            {"label": "Published run", "value": _published_dataset_name()},
+        ],
+        "sections": sections,
+    }
+
+
+def get_stock_detail(ticker: str) -> dict[str, object] | None:
     normalized = ticker.upper()
+    record = next(
+        (item for item in _load_recommendation_records() if item.ticker == normalized),
+        None,
+    )
+    if record is None:
+        return None
     return {
-        "ticker": normalized,
-        "company": "Sample Company" if normalized not in {"NVDA", "CRM", "TSLA"} else {
-            "NVDA": "NVIDIA",
-            "CRM": "Salesforce",
-            "TSLA": "Tesla",
-        }[normalized],
-        "primary_thesis": "This page is wired as the stock-detail shell and will later read from published score, evidence, and history rows.",
+        "ticker": record.ticker,
+        "company": record.company,
+        "as_of_date": record.as_of_date,
+        "primary_thesis": record.strategy_rationale,
+        "current_call": record.action_label,
+        "holder_call": record.holder_bucket or "Monitor",
+        "confidence": record.confidence,
+        "badge_class": record.badge_class,
+        "basis_type": record.basis_type,
+        "strategy_name": record.strategy_name,
+        "horizon": record.horizon,
+        "event_risk": record.event_risk,
+        "facts": [
+            {"label": "Close", "value": _format_currency(record.close)},
+            {"label": "20D return", "value": _format_percent(record.ret_20d)},
+            {"label": "RS vs benchmark", "value": _format_percent(record.rs_20d)},
+            {"label": "Earnings", "value": _format_days_to_earnings(record.days_to_earnings)},
+        ],
+        "setup_plan": [
+            {"label": record.entry_label, "value": record.entry_value},
+            {"label": record.stop_label, "value": record.stop_value},
+            {"label": record.target_label, "value": record.target_value},
+        ],
+        "score_breakdown": [
+            {"label": "Refined score", "value": f"{record.refined_score:.0f}"},
+            {"label": "Trend", "value": str(record.trend_score)},
+            {"label": "Momentum", "value": str(record.momentum_score)},
+            {"label": "Relative strength", "value": str(record.rs_score)},
+            {"label": "Proximity", "value": str(record.proximity_score)},
+        ],
         "observed": [
-            "Observed facts should be stored and rendered separately from inferences.",
-            "Recent price, benchmark context, and upcoming events belong here.",
+            f"Close: {_format_currency(record.close)}.",
+            (
+                f"20-day return: {_format_percent(record.ret_20d)} with "
+                f"relative strength of {_format_percent(record.rs_20d)} "
+                "versus the benchmark."
+            ),
+            (
+                f"Event risk: {record.event_risk}. "
+                f"{record.next_earnings_date or 'No upcoming earnings date loaded'} "
+                f"({_format_days_to_earnings(record.days_to_earnings)})."
+            ),
+            f"{_format_distance(record.distance_from_52w_high)}.",
         ],
         "derived": [
-            "Derived views should explain why a setup is attractive or weak.",
-            "The system should keep long-term and short-term logic separate.",
+            record.observed_reason,
+            record.strategy_rationale,
+            f"Current setup family: {record.strategy_name} ({record.basis_type}).",
         ],
-        "why_now": "Use this block for timely setup-specific reasoning.",
-        "why_not_stronger": "Use this block for the best opposing evidence or missing confirmation.",
+        "why_now": record.why_now,
+        "why_not_stronger": record.why_not_stronger,
+        "history_note": (
+            "Recommendation history and prior weekly snapshots land in the next "
+            "phase, but this page now uses a stable decision contract."
+        ),
     }

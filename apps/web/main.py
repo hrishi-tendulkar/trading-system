@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import FastAPI, Form, Request, status
+from fastapi import FastAPI, Form, HTTPException, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -14,8 +14,12 @@ from packages.core.auth import (
     verify_password,
 )
 from packages.core.config import get_settings
-from packages.core.ui_data import sample_daily_digest, sample_stock_detail, sample_weekly_review
-
+from packages.core.ui_data import (
+    get_daily_digest,
+    get_stock_detail,
+    get_watchlist_view,
+    get_weekly_review,
+)
 
 settings = get_settings()
 BASE_DIR = Path(__file__).resolve().parent
@@ -92,7 +96,7 @@ def weekly(request: Request) -> Response:
     guard = _guard(request)
     if guard:
         return guard
-    context = {"review": sample_weekly_review(), "active_page": "weekly"}
+    context = {"review": get_weekly_review(), "active_page": "weekly"}
     return templates.TemplateResponse(request, "weekly.html", context)
 
 
@@ -101,7 +105,7 @@ def daily(request: Request) -> Response:
     guard = _guard(request)
     if guard:
         return guard
-    context = {"digest": sample_daily_digest(), "active_page": "daily"}
+    context = {"digest": get_daily_digest(), "active_page": "daily"}
     return templates.TemplateResponse(request, "daily.html", context)
 
 
@@ -110,7 +114,7 @@ def watchlist(request: Request) -> Response:
     guard = _guard(request)
     if guard:
         return guard
-    context = {"review": sample_weekly_review(), "active_page": "watchlist"}
+    context = {"watchlist": get_watchlist_view(), "active_page": "watchlist"}
     return templates.TemplateResponse(request, "watchlist.html", context)
 
 
@@ -119,8 +123,11 @@ def stock_detail(request: Request, ticker: str) -> Response:
     guard = _guard(request)
     if guard:
         return guard
+    stock = get_stock_detail(ticker)
+    if stock is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Ticker not found")
     context = {
-        "stock": sample_stock_detail(ticker),
+        "stock": stock,
         "active_page": "stocks",
     }
     return templates.TemplateResponse(request, "stock_detail.html", context)
@@ -134,8 +141,16 @@ def admin(request: Request) -> Response:
     context = {
         "active_page": "admin",
         "jobs": [
-            {"name": "daily-run", "status": "Not configured yet", "note": "Placeholder until DB wiring"},
-            {"name": "weekly-run", "status": "Not configured yet", "note": "Placeholder until DB wiring"},
+            {
+                "name": "daily-run",
+                "status": "Not configured yet",
+                "note": "Placeholder until DB wiring",
+            },
+            {
+                "name": "weekly-run",
+                "status": "Not configured yet",
+                "note": "Placeholder until DB wiring",
+            },
         ],
     }
     return templates.TemplateResponse(request, "admin.html", context)

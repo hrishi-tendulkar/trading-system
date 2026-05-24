@@ -1,16 +1,43 @@
 {% extends "_shell.html" %}
-{% block title %}Daily Digest | Trading System{% endblock %}
+{% block title %}What Changed Since Yesterday | Trading System{% endblock %}
 {% block content %}
+  <section class="hero hero-tight">
+    <section class="card panel">
+      <div class="eyebrow">Daily verdict</div>
+      <h1>{{ digest.title }}</h1>
+      <p class="verdict">{{ digest.verdict }}</p>
+      <p class="subtle">{{ digest.summary }}</p>
+    </section>
+    <section class="card panel emphasis-panel">
+      <div class="eyebrow">Usage Rule</div>
+      <h2>Check this only when something should change behavior.</h2>
+      <p class="subtle">The page should be comfortable to skip on quiet days. It exists to protect the weekly plan, not to create a feed habit.</p>
+    </section>
+  </section>
+
   <section class="card panel">
-    <div class="eyebrow">Daily Digest</div>
-    <h1>{{ digest.title }}</h1>
-    <p class="subtle">{{ digest.summary }}</p>
+    <div class="eyebrow">Action-Required Changes</div>
+    <h2>What needs attention before next week</h2>
     <div class="list">
-      {% for item in digest.items %}
+      {% for item in digest["items"] %}
         <div class="item">
           <div class="label">{{ item.category }}</div>
           <strong>{{ item.headline }}</strong>
           <div>{{ item.detail }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="card panel">
+    <div class="eyebrow">Carry-Forward Queue</div>
+    <h2>Keep these names on deck</h2>
+    <div class="list">
+      {% for item in digest.carry_forward %}
+        <div class="item">
+          <strong>{{ item.ticker }} · {{ item.company }}</strong>
+          <div class="small subtle">{{ item.next_step }}</div>
+          <div><span class="label-inline">Trigger</span>{{ item.trigger }}</div>
         </div>
       {% endfor %}
     </div>
