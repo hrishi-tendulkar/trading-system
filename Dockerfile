@@ -10,6 +10,7 @@ COPY apps ./apps
 COPY packages ./packages
 COPY services ./services
 COPY scripts ./scripts
+COPY data ./data
 
 RUN pip install --upgrade pip && pip install .
 
