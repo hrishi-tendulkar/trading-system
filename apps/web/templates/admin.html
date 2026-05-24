@@ -1,0 +1,18 @@
+{% extends "_shell.html" %}
+{% block title %}Admin | Trading System{% endblock %}
+{% block content %}
+  <section class="card panel">
+    <div class="eyebrow">Admin</div>
+    <h1>Runs and controls</h1>
+    <p class="subtle">This page should later show freshness, last failures, and manual rerun controls. The current version is the implementation shell.</p>
+    <div class="list">
+      {% for job in jobs %}
+        <div class="job">
+          <strong>{{ job.name }}</strong>
+          <div class="subtle">{{ job.status }}</div>
+          <div>{{ job.note }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Login | Trading System{% endblock %}
+{% block body %}
+  <div class="login-wrap">
+    <div class="card login-card">
+      <div class="eyebrow">Internal Access</div>
+      <h1>Trading System</h1>
+      <p class="subtle">This is a private weekly decision cockpit. Enter the shared site password to continue.</p>
+      <form method="post" action="/login">
+        <div class="field">
+          <label for="password">Shared Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter password" required />
+        </div>
+        <div class="field">
+          <button type="submit">Enter site</button>
+        </div>
+      </form>
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

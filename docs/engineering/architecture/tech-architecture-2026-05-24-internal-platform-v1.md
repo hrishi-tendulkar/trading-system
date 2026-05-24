@@ -75,6 +75,12 @@ Recommended services:
 3. `trading-system-weekly-job`
 4. `trading-system-manual-job`
 
+Deployment minimization rule:
+
+- keep the logical job boundaries even if we temporarily deploy fewer Railway services
+- if service sprawl becomes annoying in early implementation, `trading-system-manual-job` may be deferred as a dedicated service and replaced by one-off CLI execution against the daily or weekly job image
+- do not merge the daily and weekly command logic into one opaque scheduler just to reduce service count
+
 Service roles:
 
 - `trading-system-web`
@@ -158,7 +164,16 @@ Environment variables:
 
 - `APP_SHARED_PASSWORD_HASH`
 - `APP_SESSION_SECRET`
-- `APP_ALLOWED_EMAILS` is intentionally not needed in `v1`
+
+Auth hardening requirements:
+
+- cookies must be `HttpOnly`, `Secure`, and `SameSite=Strict`
+- sessions should expire on a short rolling TTL such as `7` days
+- provide a `POST /logout` endpoint that clears the session
+- rotate sessions when the shared password changes
+- store a `session_version` or equivalent server-side invalidation primitive so old sessions can be revoked without waiting for TTL expiry
+- rate-limit login attempts by IP and log failed login counts in `ops`
+- never store the plaintext shared password in the database
 
 Why not Supabase Auth now:
 
@@ -250,6 +265,8 @@ Key columns for `raw.provider_payloads`:
 - `fetched_at`
 - `content_hash`
 - `http_status`
+- `idempotency_key`
+- `ingestion_run_id`
 
 ### `market` schema
 
@@ -302,6 +319,13 @@ Core tables:
 - `intelligence.weekly_review_sections`
 - `intelligence.outcome_windows`
 
+Run-state requirements:
+
+- `intelligence.weekly_review_runs` must include an explicit lifecycle such as `building`, `failed`, `published`, and `superseded`
+- `intelligence.daily_digest_runs` should follow the same pattern
+- the web app must render only the most recent `published` run by default
+- a failed or incomplete run must never replace the currently published run
+
 ### `ops` schema
 
 Purpose:
@@ -317,6 +341,16 @@ Core tables:
 - `ops.manual_actions`
 
 This is the minimal observability layer we should keep even if we do not build centralized logging.
+
+Recommended extra columns:
+
+- `ops.job_runs.started_at`
+- `ops.job_runs.finished_at`
+- `ops.job_runs.status`
+- `ops.job_runs.as_of_date`
+- `ops.job_runs.market_session_date`
+- `ops.job_runs.error_summary`
+- `ops.job_runs.input_completeness_pct`
 
 ## Storage Architecture
 
@@ -343,6 +377,37 @@ Relevant docs:
 
 ## Data Flow
 
+## Data Integrity Guardrails
+
+The most dangerous failure mode is not a crash. It is a plausible-looking output generated from incomplete or stale inputs.
+
+Therefore the pipeline must enforce:
+
+- idempotent ingestion writes wherever practical
+- explicit `as_of_date` and provider fetch timestamps on all critical normalized records
+- market-calendar awareness so daily jobs know whether the latest expected session has actually completed
+- completeness checks before publishing digests or weekly reviews
+- fail-loud behavior for missing core inputs instead of silent degradation
+
+Minimum publish gates:
+
+- do not publish a daily digest if core watchlist prices or benchmark prices are materially incomplete
+- do not publish a weekly review if score generation completed on partial or stale core market inputs
+- downgrade or suppress symbol-level outputs when a symbol-specific dependency is missing
+- keep the prior published run visible until a replacement run passes completeness checks
+
+Examples of hard-block conditions:
+
+- missing daily prices for a material share of the active watchlist
+- missing `SPY` or sector benchmark context for the current run date
+- failed persistence of score rows for the current weekly run
+
+Examples of soft-degrade conditions:
+
+- one filing missing text extraction
+- one transcript unavailable
+- one non-core fundamental field missing
+
 ### Daily pipeline
 
 1. Load active watchlist and required benchmark tickers.
@@ -355,7 +420,8 @@ Relevant docs:
 8. Normalize into `market` and `fundamentals`.
 9. Recompute features for changed securities.
 10. Refresh daily digest items.
-11. Update `ops.job_runs` and `ops.data_freshness`.
+11. Run completeness checks and publish only if gates pass.
+12. Update `ops.job_runs` and `ops.data_freshness`.
 
 ### Weekly pipeline
 
@@ -363,9 +429,11 @@ Relevant docs:
 2. Rebuild short-term and long-term score components separately.
 3. Generate recommendation rows and evidence summaries.
 4. Generate weekly review sections.
-5. Render and save weekly HTML artifact.
-6. Save outcome anchor rows for later evaluation.
-7. Update `ops.job_runs`.
+5. Validate row counts, benchmark coverage, and score completeness.
+6. Render and save weekly HTML artifact.
+7. Atomically mark the run `published` only after validation succeeds.
+8. Save outcome anchor rows for later evaluation.
+9. Update `ops.job_runs`.
 
 ### On-demand manual pipeline
 
@@ -439,6 +507,11 @@ Admin-trigger endpoints must require:
 - valid authenticated session
 - a CSRF-safe form pattern
 - server-side validation of allowed actions
+
+Operational rule:
+
+- admin-triggered refresh endpoints should enqueue or launch job work and then return quickly
+- do not run long provider fetches inline in a normal web request if it risks request timeouts or duplicate execution
 
 ## GitHub and Repository Strategy
 
@@ -593,6 +666,10 @@ Rules:
 - do not use the public `anon` key in the browser in `v1`
 - keep all data access server-side
 
+Additional rule:
+
+- `SUPABASE_DB_URL` used by jobs should point to the direct Postgres connection intended for server workloads, not a browser-safe URL
+
 ## Supabase Migration Strategy
 
 Manage schema in-repo through SQL migrations.
@@ -609,6 +686,12 @@ Official CLI guidance supports:
 - project linking
 - SQL migrations
 - `supabase db push` for applying local migrations to the linked project
+
+Schema-source-of-truth rule:
+
+- SQL migrations are the source of truth for schema
+- ORM models must follow the migrations, not the other way around
+- any generated or handwritten SQLAlchemy metadata should be validated against live schema in tests to prevent drift
 
 Relevant docs:
 
@@ -668,6 +751,12 @@ Minimum acceptable operational features:
 - Railway deployment logs for debugging
 - admin page showing stale domains and most recent failures
 
+Minimum alerting stance without a full logging stack:
+
+- show stale-domain warnings prominently in the admin UI
+- persist the last failure summary for each recurring job
+- treat consecutive core job failures as a first-class visible state, not a buried log detail
+
 Do not add external log aggregation in `v1`.
 
 ## Backup and Recovery
@@ -692,6 +781,7 @@ Recovery path:
 - add Supabase migration structure
 - create core schemas and watchlist tables
 - build shared-password auth gate
+- add session invalidation and login rate-limiting primitives
 - deploy web service shell
 
 ### Phase 2: Daily stock engine
@@ -701,6 +791,7 @@ Recovery path:
 - SEC filing metadata ingestion
 - normalized daily prices
 - indicator snapshots
+- publish-gate checks and stale-data handling
 - daily digest page
 
 ### Phase 3: Weekly decision engine
@@ -731,12 +822,11 @@ As of `2026-05-24` in this workspace:
 
 - GitHub CLI is authenticated
 - Supabase CLI is authenticated and the `Trading System` project is linked
-- Railway CLI is installed, but the current local auth session has expired and needs a fresh `railway login`
+- Railway CLI is authenticated and linked to the `Trading System` project
 
 Implication:
 
-- GitHub and Supabase work can proceed from CLI now
-- Railway mutations are currently blocked until the CLI session is refreshed
+- GitHub, Supabase, and Railway mutations can all proceed from CLI now
 
 ## Final Recommendation
 

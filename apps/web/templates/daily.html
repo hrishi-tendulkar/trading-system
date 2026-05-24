@@ -1,0 +1,18 @@
+{% extends "_shell.html" %}
+{% block title %}Daily Digest | Trading System{% endblock %}
+{% block content %}
+  <section class="card panel">
+    <div class="eyebrow">Daily Digest</div>
+    <h1>{{ digest.title }}</h1>
+    <p class="subtle">{{ digest.summary }}</p>
+    <div class="list">
+      {% for item in digest.items %}
+        <div class="item">
+          <div class="label">{{ item.category }}</div>
+          <strong>{{ item.headline }}</strong>
+          <div>{{ item.detail }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

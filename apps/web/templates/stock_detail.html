@@ -1,0 +1,37 @@
+{% extends "_shell.html" %}
+{% block title %}{{ stock.ticker }} | Trading System{% endblock %}
+{% block content %}
+  <section class="card panel">
+    <div class="eyebrow">Stock Detail</div>
+    <h1>{{ stock.ticker }} · {{ stock.company }}</h1>
+    <p class="subtle">{{ stock.primary_thesis }}</p>
+    <div class="grid-2" style="margin-top: 18px;">
+      <div class="item">
+        <div class="label">Observed</div>
+        <ul>
+          {% for point in stock.observed %}
+            <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="item">
+        <div class="label">Derived</div>
+        <ul>
+          {% for point in stock.derived %}
+            <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top: 18px;">
+      <div class="item">
+        <div class="label">Why this week</div>
+        <div>{{ stock.why_now }}</div>
+      </div>
+      <div class="item">
+        <div class="label">Why not stronger</div>
+        <div>{{ stock.why_not_stronger }}</div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

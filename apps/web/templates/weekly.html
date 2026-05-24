@@ -1,0 +1,50 @@
+{% extends "_shell.html" %}
+{% block title %}Weekly Review | Trading System{% endblock %}
+{% block content %}
+  <section class="hero">
+    <div class="card panel">
+      <div class="eyebrow">Weekly Review</div>
+      <h1>{{ review.title }}</h1>
+      <p class="subtle">{{ review.summary }}</p>
+      <div class="facts">
+        {% for fact in review.facts %}
+          <div class="fact">
+            <div class="label">{{ fact.label }}</div>
+            <div class="value">{{ fact.value }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card panel">
+      <div class="eyebrow">Market Posture</div>
+      <h2>{{ review.posture.title }}</h2>
+      <p class="subtle">{{ review.posture.summary }}</p>
+      <div class="list">
+        {% for item in review.posture.points %}
+          <div class="item">{{ item }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="card panel">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Decision Board</div>
+        <h2>Fresh cash deployment and active names</h2>
+      </div>
+      <div class="subtle small">Only published runs should appear here once real data is wired.</div>
+    </div>
+    <div class="board" style="margin-top: 16px;">
+      {% for stock in review.board %}
+        <article class="stock-card">
+          <div class="badge {{ stock.badge_class }}">{{ stock.action }}</div>
+          <h3 style="margin-top: 10px;">{{ stock.ticker }} · {{ stock.company }}</h3>
+          <p class="subtle">{{ stock.thesis }}</p>
+          <p>{{ stock.note }}</p>
+          <p class="small"><a href="/stocks/{{ stock.ticker }}">Open stock detail</a></p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

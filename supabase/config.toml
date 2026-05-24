@@ -1,0 +1,8 @@
+project_id = "pyijnabhkkwjoslycaqf"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "app", "ref", "raw", "market", "fundamentals", "intelligence", "ops"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000

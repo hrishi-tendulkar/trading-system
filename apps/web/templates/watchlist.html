@@ -1,0 +1,17 @@
+{% extends "_shell.html" %}
+{% block title %}Watchlist | Trading System{% endblock %}
+{% block content %}
+  <section class="card panel">
+    <div class="eyebrow">Watchlist</div>
+    <h1>Active universe</h1>
+    <p class="subtle">This page is scaffolded for CRUD wiring. For now it reflects the sample names used by the weekly review shell.</p>
+    <div class="list">
+      {% for stock in review.board %}
+        <div class="item">
+          <strong>{{ stock.ticker }} · {{ stock.company }}</strong>
+          <div class="subtle">{{ stock.note }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
