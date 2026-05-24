@@ -9,7 +9,6 @@ __pycache__
 node_modules
 dist
 build
-data
 docs
 notebooks
 research
