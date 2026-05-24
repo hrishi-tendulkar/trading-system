@@ -1,4 +1,4 @@
-# Owner Handoff: What You Need To Give Me
+# Owner Handoff: Currently No Owner Input Needed
 
 This is the short version for tomorrow.
 
@@ -15,18 +15,10 @@ This is the short version for tomorrow.
 
 ## What I need from you
 
-### 1. OpenAI API key
+Nothing right now for the platform-secret handoff.
 
-I need the real `OPENAI_API_KEY`.
-
-## Fastest way to hand these to me
-
-Send me a message tomorrow with:
-
-1. the OpenAI API key
-
-Then I can replace the dummy values and finish the real wiring.
+The currently known required secrets have now been supplied and wired into the runtime setup.
 
 ## Optional if you want me to be even faster
 
-Because the database password and FMP key were pasted into chat, it is a good idea to rotate them after final setup is complete.
+Because the database password, FMP key, and OpenAI key were pasted into chat, it is a good idea to rotate them after final setup is complete.
