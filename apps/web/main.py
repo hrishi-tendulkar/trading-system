@@ -52,24 +52,20 @@ def root(request: Request) -> Response:
 def login_page(request: Request) -> Response:
     if is_authenticated(request, settings):
         return templates.TemplateResponse(
-            name="redirect.html",
-            context={"request": request, "target_url": "/weekly"},
+            request,
+            "redirect.html",
+            {"target_url": "/weekly"},
         )
-    return templates.TemplateResponse(
-        name="login.html",
-        context={"request": request, "error": None},
-    )
+    return templates.TemplateResponse(request, "login.html", {"error": None})
 
 
 @app.post("/login", response_class=HTMLResponse, response_model=None)
 def login_submit(request: Request, password: str = Form(...)) -> Response:
     if not verify_password(password, settings.app_shared_password_hash):
         return templates.TemplateResponse(
-            name="login.html",
-            context={
-                "request": request,
-                "error": "Password did not match. Double-check and try again.",
-            },
+            request,
+            "login.html",
+            {"error": "Password did not match. Double-check and try again."},
             status_code=status.HTTP_401_UNAUTHORIZED,
         )
     response = RedirectResponse(url="/weekly", status_code=status.HTTP_303_SEE_OTHER)
@@ -97,7 +93,7 @@ def weekly(request: Request) -> Response:
     if guard:
         return guard
     context = {"review": sample_weekly_review(), "active_page": "weekly"}
-    return templates.TemplateResponse(name="weekly.html", context={"request": request, **context})
+    return templates.TemplateResponse(request, "weekly.html", context)
 
 
 @app.get("/daily", response_class=HTMLResponse, response_model=None)
@@ -106,7 +102,7 @@ def daily(request: Request) -> Response:
     if guard:
         return guard
     context = {"digest": sample_daily_digest(), "active_page": "daily"}
-    return templates.TemplateResponse(name="daily.html", context={"request": request, **context})
+    return templates.TemplateResponse(request, "daily.html", context)
 
 
 @app.get("/watchlist", response_class=HTMLResponse, response_model=None)
@@ -115,7 +111,7 @@ def watchlist(request: Request) -> Response:
     if guard:
         return guard
     context = {"review": sample_weekly_review(), "active_page": "watchlist"}
-    return templates.TemplateResponse(name="watchlist.html", context={"request": request, **context})
+    return templates.TemplateResponse(request, "watchlist.html", context)
 
 
 @app.get("/stocks/{ticker}", response_class=HTMLResponse, response_model=None)
@@ -127,7 +123,7 @@ def stock_detail(request: Request, ticker: str) -> Response:
         "stock": sample_stock_detail(ticker),
         "active_page": "stocks",
     }
-    return templates.TemplateResponse(name="stock_detail.html", context={"request": request, **context})
+    return templates.TemplateResponse(request, "stock_detail.html", context)
 
 
 @app.get("/admin", response_class=HTMLResponse, response_model=None)
@@ -142,4 +138,4 @@ def admin(request: Request) -> Response:
             {"name": "weekly-run", "status": "Not configured yet", "note": "Placeholder until DB wiring"},
         ],
     }
-    return templates.TemplateResponse(name="admin.html", context={"request": request, **context})
+    return templates.TemplateResponse(request, "admin.html", context)
