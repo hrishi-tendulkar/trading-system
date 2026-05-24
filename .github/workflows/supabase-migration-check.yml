@@ -1,0 +1,34 @@
+name: Supabase Migration Check
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  migration-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Verify migrations exist
+        run: |
+          test -d supabase/migrations
+          ls -1 supabase/migrations/*.sql
+
+      - name: Ensure migration filenames are timestamped
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          migration_dir = Path("supabase/migrations")
+          pattern = re.compile(r"^\d{14}_.+\.sql$")
+          failures = []
+          for path in sorted(migration_dir.glob("*.sql")):
+              if not pattern.match(path.name):
+                  failures.append(path.name)
+          if failures:
+              raise SystemExit("Invalid migration names: " + ", ".join(failures))
+          print("Migration filenames look good.")
+          PY
