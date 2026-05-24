@@ -1,0 +1,110 @@
+ticker,display_name,sector,is_benchmark,is_active
+AAPL,Apple Inc.,Information Technology,False,True
+ABBV,AbbVie,Health Care,False,True
+ABT,Abbott Laboratories,Health Care,False,True
+ACN,Accenture,Information Technology,False,True
+ADBE,Adobe Inc.,Information Technology,False,True
+AMAT,Applied Materials,Information Technology,False,True
+AMD,Advanced Micro Devices,Information Technology,False,True
+AMGN,Amgen,Health Care,False,True
+AMT,American Tower,Real Estate,False,True
+AMZN,Amazon,Consumer Discretionary,False,True
+AVGO,Broadcom,Information Technology,False,True
+AXP,American Express,Financials,False,True
+BA,Boeing,Industrials,False,True
+BAC,Bank of America,Financials,False,True
+BKNG,Booking Holdings,Consumer Discretionary,False,True
+BLK,BlackRock,Financials,False,True
+BMY,Bristol Myers Squibb,Health Care,False,True
+BNY,BNY Mellon,Financials,False,True
+BRK-B,Berkshire Hathaway (Class B),Financials,False,True
+C,Citigroup,Financials,False,True
+CAT,Caterpillar Inc.,Industrials,False,True
+CL,Colgate-Palmolive,Consumer Staples,False,True
+CMCSA,Comcast,Communication Services,False,True
+COF,Capital One,Financials,False,True
+COP,ConocoPhillips,Energy,False,True
+COST,Costco,Consumer Staples,False,True
+CRM,Salesforce,Information Technology,False,True
+CSCO,Cisco,Information Technology,False,True
+CVS,CVS Health,Health Care,False,True
+CVX,Chevron Corporation,Energy,False,True
+DE,Deere & Company,Industrials,False,True
+DHR,Danaher Corporation,Health Care,False,True
+DIS,Walt Disney Company (The),Communication Services,False,True
+DUK,Duke Energy,Utilities,False,True
+EMR,Emerson Electric,Industrials,False,True
+FDX,FedEx,Industrials,False,True
+GD,General Dynamics,Industrials,False,True
+GE,GE Aerospace,Industrials,False,True
+GEV,GE Vernova,Industrials,False,True
+GILD,Gilead Sciences,Health Care,False,True
+GM,General Motors,Consumer Discretionary,False,True
+GOOG,Alphabet Inc. (Class C),Communication Services,False,True
+GOOGL,Alphabet Inc. (Class A),Communication Services,False,True
+GS,Goldman Sachs,Financials,False,True
+HD,Home Depot,Consumer Discretionary,False,True
+HON,Honeywell,Industrials,False,True
+IBM,IBM,Information Technology,False,True
+INTC,Intel,Information Technology,False,True
+INTU,Intuit,Information Technology,False,True
+ISRG,Intuitive Surgical,Health Care,False,True
+JNJ,Johnson & Johnson,Health Care,False,True
+JPM,JPMorgan Chase,Financials,False,True
+KO,Coca-Cola Company (The),Consumer Staples,False,True
+LIN,Linde plc,Materials,False,True
+LLY,Eli Lilly and Company,Health Care,False,True
+LMT,Lockheed Martin,Industrials,False,True
+LOW,Lowe's,Consumer Discretionary,False,True
+LRCX,Lam Research,Information Technology,False,True
+MA,Mastercard,Financials,False,True
+MCD,McDonald's,Consumer Discretionary,False,True
+MDLZ,Mondelēz International,Consumer Staples,False,True
+MDT,Medtronic,Health Care,False,True
+META,Meta Platforms,Communication Services,False,True
+MMM,3M,Industrials,False,True
+MO,Altria,Consumer Staples,False,True
+MRK,Merck & Co.,Health Care,False,True
+MS,Morgan Stanley,Financials,False,True
+MSFT,Microsoft,Information Technology,False,True
+MU,Micron Technology,Information Technology,False,True
+NEE,NextEra Energy,Utilities,False,True
+NFLX,"Netflix, Inc.",Communication Services,False,True
+NKE,"Nike, Inc.",Consumer Discretionary,False,True
+NOW,ServiceNow,Information Technology,False,True
+NVDA,Nvidia,Information Technology,False,True
+ORCL,Oracle Corporation,Information Technology,False,True
+PEP,PepsiCo,Consumer Staples,False,True
+PFE,Pfizer,Health Care,False,True
+PG,Procter & Gamble,Consumer Staples,False,True
+PLTR,Palantir Technologies,Information Technology,False,True
+PM,Philip Morris International,Consumer Staples,False,True
+QCOM,Qualcomm,Information Technology,False,True
+QQQ,Invesco QQQ Trust,ETF,False,True
+RTX,RTX Corporation,Industrials,False,True
+SBUX,Starbucks,Consumer Discretionary,False,True
+SCHW,Charles Schwab Corporation,Financials,False,True
+SO,Southern Company,Utilities,False,True
+SPG,Simon Property Group,Real Estate,False,True
+T,AT&T,Communication Services,False,True
+TMO,Thermo Fisher Scientific,Health Care,False,True
+TMUS,T-Mobile US,Communication Services,False,True
+TSLA,"Tesla, Inc.",Consumer Discretionary,False,True
+TXN,Texas Instruments,Information Technology,False,True
+UBER,Uber,Industrials,False,True
+UNH,UnitedHealth Group,Health Care,False,True
+UNP,Union Pacific Corporation,Industrials,False,True
+UPS,United Parcel Service,Industrials,False,True
+USB,U.S. Bancorp,Financials,False,True
+V,Visa Inc.,Financials,False,True
+VZ,Verizon,Communication Services,False,True
+WFC,Wells Fargo,Financials,False,True
+WMT,Walmart,Consumer Staples,False,True
+XLE,Energy Select Sector SPDR Fund,ETF,False,True
+XLF,Financial Select Sector SPDR Fund,ETF,False,True
+XLI,Industrial Select Sector SPDR Fund,ETF,False,True
+XLK,Technology Select Sector SPDR Fund,ETF,False,True
+XLV,Health Care Select Sector SPDR Fund,ETF,False,True
+XLY,Consumer Discretionary Select Sector SPDR Fund,ETF,False,True
+XOM,ExxonMobil,Energy,False,True
+SPY,SPDR S&P 500 ETF,Benchmark,True,True

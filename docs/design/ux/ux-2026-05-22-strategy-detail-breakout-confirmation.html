@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breakout confirmation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --bg: #f4efe6;
+    --paper: rgba(255, 250, 242, 0.94);
+    --paper-strong: #fffaf2;
+    --ink: #17261d;
+    --muted: #5f6e65;
+    --line: #d8cfc1;
+    --green: #1d6e4e;
+    --green-soft: #dff1e8;
+    --blue: #285d87;
+    --blue-soft: #e2eef8;
+    --amber: #a7641d;
+    --amber-soft: #fff0dd;
+    --red: #9d3d31;
+    --red-soft: #f8e4df;
+    --purple: #5d4aa8;
+    --purple-soft: #eee8ff;
+    --shadow: 0 18px 44px rgba(23, 38, 29, 0.09);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(40,93,135,0.10), transparent 22%),
+      radial-gradient(circle at top right, rgba(29,110,78,0.10), transparent 22%),
+      linear-gradient(180deg, #f5ecde 0%, var(--bg) 46%, #eee5d9 100%);
+  }
+  .page {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 28px 22px 52px;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid rgba(216, 207, 193, 0.86);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(6px);
+  }
+  .panel {
+    padding: 22px 24px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    line-height: 1.06;
+  }
+  h1 { font-size: 42px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 16px; }
+  .copy, .copy p, .copy li {
+    font-size: 15px;
+    line-height: 1.64;
+    color: #314339;
+  }
+  .copy p { margin: 0 0 10px; }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .chip {
+    padding: 9px 13px;
+    border-radius: 999px;
+    border: 1px solid #e1d7c8;
+    background: #f1e9db;
+    color: #415046;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.95fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .hero-main, .hero-side {
+    padding: 26px 28px;
+  }
+  .hero-side {
+    background: linear-gradient(180deg, rgba(29,110,78,0.98), rgba(22,70,51,0.98));
+    color: #f3fff8;
+  }
+  .posture-card {
+    padding: 20px 22px;
+    min-height: 0;
+  }
+  .hero-side .copy, .hero-side .copy p, .hero-side .copy li {
+    color: rgba(243,255,248,0.90);
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .fact {
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.72);
+  }
+  .fact-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .fact-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .buy { background: var(--green-soft); color: var(--green); }
+  .wait { background: var(--blue-soft); color: var(--blue); }
+  .hold { background: var(--amber-soft); color: var(--amber); }
+  .avoid { background: var(--red-soft); color: var(--red); }
+  .context { background: var(--purple-soft); color: var(--purple); }
+  .item-list { display: grid; gap: 12px; margin-top: 14px; }
+  .item {
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.62);
+    padding: 14px 15px;
+  }
+  .item strong { display: block; margin-bottom: 6px; }
+  .amount {
+    margin-top: 8px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 28px;
+  }
+  .ticker-card {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1.14fr 0.86fr;
+    gap: 18px;
+  }
+  .ticker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .ticker-name { font-size: 30px; margin-bottom: 4px; }
+  .ticker-meta { color: var(--muted); font-size: 14px; }
+  .links, a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  a:hover { text-decoration: underline; }
+  .small-link {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .trade-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .trade-box {
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: rgba(241,233,219,0.75);
+  }
+  .trade-box span {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .trade-box strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 20px;
+  }
+  .chart-shell {
+    border-radius: 20px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,240,232,0.88));
+  }
+  .chart-caption {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-line {
+    width: 22px;
+    height: 0;
+    border-top: 3px solid currentColor;
+    display: inline-block;
+  }
+  .legend-dash {
+    width: 22px;
+    height: 0;
+    border-top: 2px dashed currentColor;
+    display: inline-block;
+  }
+  .axis-text {
+    font-size: 11px;
+    fill: #7c8a82;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .chart-label {
+    font-size: 11px;
+    font-weight: 700;
+    fill: #425147;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .analysis-block {
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.62);
+    padding: 16px;
+  }
+  .analysis-block h3 { margin-bottom: 10px; }
+  .analysis-findings {
+    margin: 0 0 10px;
+    padding-left: 18px;
+  }
+  .analysis-findings li { margin-bottom: 6px; }
+  .insight-band {
+    border-radius: 16px;
+    padding: 12px 14px;
+    background: #eef4f8;
+    border: 1px solid #d4e2ee;
+    color: #28425a;
+    font-size: 14px;
+    line-height: 1.56;
+  }
+  .notes {
+    margin-top: 18px;
+    border-radius: 22px;
+    padding: 18px 20px;
+    background: #1f2d26;
+    color: #eef7f1;
+  }
+  .notes .copy, .notes .copy p, .notes .copy li { color: rgba(238,247,241,0.90); }
+  .glossary-entry {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .glossary-entry:target {
+    background: #fff6dd;
+    border-radius: 14px;
+    padding: 18px 16px;
+    border: 1px solid #f1dfac;
+  }
+  .back {
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .term {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+  }
+  .hero-title-wrap { max-width: 17ch; }
+  .status-line {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .kpi {
+    border-radius: 18px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.72);
+  }
+  .kpi-value {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 30px;
+    margin: 6px 0;
+  }
+  @media (max-width: 1120px) {
+    .hero, .two-col, .ticker-card, .grid-2, .three-col { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    .page { padding: 18px 12px 34px; }
+    h1 { font-size: 34px; }
+    .facts, .trade-strip, .kpis { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    
+    <a class="back" href="ux-2026-05-22-weekly-review-mock.html">&#8592; Back to weekly overview</a>
+    <section class="card panel">
+      <div class="eyebrow">Decision Basis Detail</div>
+      <div class="badge context">Trade setup</div>
+      <h1>Breakout confirmation</h1>
+      <div class="copy" style="margin-top:12px;">
+        <p><strong>Objective:</strong> Wait until a stock proves demand through a trigger level rather than buying a flat or indecisive chart.</p>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="fact-label">Observations</div><div class="kpi-value">15</div></div>
+        <div class="kpi"><div class="fact-label">Avg 1W Return</div><div class="kpi-value">0.55%</div></div>
+        <div class="kpi"><div class="fact-label">Win Rate</div><div class="kpi-value">53%</div></div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card panel">
+        <div class="eyebrow">What We Challenged</div>
+        <h2>Adversarial refinement</h2>
+        <div class="item-list"><div class="item"><strong>Challenge 1</strong><div class="copy"><p><strong>Pushback:</strong> This can buy too late and sacrifice upside.</p><p><strong>Refinement:</strong> Accept a slightly higher entry in exchange for fewer false starts.</p></div></div><div class="item"><strong>Challenge 2</strong><div class="copy"><p><strong>Pushback:</strong> A single breakout day can be noise.</p><p><strong>Refinement:</strong> Tie the trigger to recent resistance and keep the invalidation near the 20-day average.</p></div></div><div class="item"><strong>Challenge 3</strong><div class="copy"><p><strong>Pushback:</strong> Confirmation logic can underperform in weak tapes.</p><p><strong>Refinement:</strong> Treat it more conservatively when market posture is only selective risk-on.</p></div></div></div>
+      </div>
+      <div class="card panel">
+        <div class="eyebrow">Current Rule Spine</div>
+        <h2>What survives after that debate</h2>
+        <div class="copy">
+          <ul>
+            <li>Trend still intact</li><li>Need price through a breakout trigger</li><li>Cancel if the stock loses near-term support before the trigger</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card panel">
+        <div class="eyebrow">Current Live Matches</div>
+        <h2>Where this basis is firing now</h2>
+        <div class="copy"><ul><li><a href="ux-2026-05-22-stock-detail-nvda.html">NVDA</a>: Wait for confirmation with trigger $237</li></ul></div>
+      </div>
+      <div class="card panel">
+        <div class="eyebrow">How to Read the Replay</div>
+        <h2>Backtest interpretation</h2>
+        <div class="copy">
+          <p>The replay is a measurement aid, not a seal of approval. If the basis has poor historical outcomes, that should reduce trust even if the logic sounds appealing. If it has decent outcomes, that still does not eliminate the need for broader data coverage.</p>
+          <p>This page exists so you can challenge both the idea and the evidence before you act on real money.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div class="eyebrow" style="color:rgba(238,247,241,0.72);">Notes (won't show in Prod)</div>
+      <div class="copy">
+        <ul>
+          <li>The weakest part of the earlier version was pretending every label was a strategy. This page now distinguishes setup families, risk guardrails, and context lenses explicitly.</li>
+          <li>Production should keep this adversarial section in spirit, even if the wording becomes tighter.</li>
+        </ul>
+      </div>
+    </section>
+    
+  </div>
+</body>
+</html>

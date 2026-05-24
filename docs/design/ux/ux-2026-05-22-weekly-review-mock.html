@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weekly Equity Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --bg: #f4efe6;
+    --paper: rgba(255, 250, 242, 0.94);
+    --paper-strong: #fffaf2;
+    --ink: #17261d;
+    --muted: #5f6e65;
+    --line: #d8cfc1;
+    --green: #1d6e4e;
+    --green-soft: #dff1e8;
+    --blue: #285d87;
+    --blue-soft: #e2eef8;
+    --amber: #a7641d;
+    --amber-soft: #fff0dd;
+    --red: #9d3d31;
+    --red-soft: #f8e4df;
+    --purple: #5d4aa8;
+    --purple-soft: #eee8ff;
+    --shadow: 0 18px 44px rgba(23, 38, 29, 0.09);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(40,93,135,0.10), transparent 22%),
+      radial-gradient(circle at top right, rgba(29,110,78,0.10), transparent 22%),
+      linear-gradient(180deg, #f5ecde 0%, var(--bg) 46%, #eee5d9 100%);
+  }
+  .page {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 28px 22px 52px;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid rgba(216, 207, 193, 0.86);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(6px);
+  }
+  .panel {
+    padding: 22px 24px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    line-height: 1.06;
+  }
+  h1 { font-size: 42px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 16px; }
+  .copy, .copy p, .copy li {
+    font-size: 15px;
+    line-height: 1.64;
+    color: #314339;
+  }
+  .copy p { margin: 0 0 10px; }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .chip {
+    padding: 9px 13px;
+    border-radius: 999px;
+    border: 1px solid #e1d7c8;
+    background: #f1e9db;
+    color: #415046;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.95fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .hero-main, .hero-side {
+    padding: 26px 28px;
+  }
+  .hero-side {
+    background: linear-gradient(180deg, rgba(29,110,78,0.98), rgba(22,70,51,0.98));
+    color: #f3fff8;
+  }
+  .posture-card {
+    padding: 20px 22px;
+    min-height: 0;
+  }
+  .hero-side .copy, .hero-side .copy p, .hero-side .copy li {
+    color: rgba(243,255,248,0.90);
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .fact {
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.72);
+  }
+  .fact-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .fact-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .buy { background: var(--green-soft); color: var(--green); }
+  .wait { background: var(--blue-soft); color: var(--blue); }
+  .hold { background: var(--amber-soft); color: var(--amber); }
+  .avoid { background: var(--red-soft); color: var(--red); }
+  .context { background: var(--purple-soft); color: var(--purple); }
+  .item-list { display: grid; gap: 12px; margin-top: 14px; }
+  .item {
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.62);
+    padding: 14px 15px;
+  }
+  .item strong { display: block; margin-bottom: 6px; }
+  .amount {
+    margin-top: 8px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 28px;
+  }
+  .ticker-card {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1.14fr 0.86fr;
+    gap: 18px;
+  }
+  .ticker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .ticker-name { font-size: 30px; margin-bottom: 4px; }
+  .ticker-meta { color: var(--muted); font-size: 14px; }
+  .links, a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  a:hover { text-decoration: underline; }
+  .small-link {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .trade-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .trade-box {
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: rgba(241,233,219,0.75);
+  }
+  .trade-box span {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .trade-box strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 20px;
+  }
+  .chart-shell {
+    border-radius: 20px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,240,232,0.88));
+  }
+  .chart-caption {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-line {
+    width: 22px;
+    height: 0;
+    border-top: 3px solid currentColor;
+    display: inline-block;
+  }
+  .legend-dash {
+    width: 22px;
+    height: 0;
+    border-top: 2px dashed currentColor;
+    display: inline-block;
+  }
+  .axis-text {
+    font-size: 11px;
+    fill: #7c8a82;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .chart-label {
+    font-size: 11px;
+    font-weight: 700;
+    fill: #425147;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .analysis-block {
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.62);
+    padding: 16px;
+  }
+  .analysis-block h3 { margin-bottom: 10px; }
+  .analysis-findings {
+    margin: 0 0 10px;
+    padding-left: 18px;
+  }
+  .analysis-findings li { margin-bottom: 6px; }
+  .insight-band {
+    border-radius: 16px;
+    padding: 12px 14px;
+    background: #eef4f8;
+    border: 1px solid #d4e2ee;
+    color: #28425a;
+    font-size: 14px;
+    line-height: 1.56;
+  }
+  .notes {
+    margin-top: 18px;
+    border-radius: 22px;
+    padding: 18px 20px;
+    background: #1f2d26;
+    color: #eef7f1;
+  }
+  .notes .copy, .notes .copy p, .notes .copy li { color: rgba(238,247,241,0.90); }
+  .glossary-entry {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .glossary-entry:target {
+    background: #fff6dd;
+    border-radius: 14px;
+    padding: 18px 16px;
+    border: 1px solid #f1dfac;
+  }
+  .back {
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .term {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+  }
+  .hero-title-wrap { max-width: 17ch; }
+  .status-line {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .kpi {
+    border-radius: 18px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.72);
+  }
+  .kpi-value {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 30px;
+    margin: 6px 0;
+  }
+  @media (max-width: 1120px) {
+    .hero, .two-col, .ticker-card, .grid-2, .three-col { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    .page { padding: 18px 12px 34px; }
+    h1 { font-size: 34px; }
+    .facts, .trade-strip, .kpis { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    
+    <section class="card panel" style="margin-bottom:18px;">
+      <div class="eyebrow">Weekly Equity Intelligence</div>
+      <div style="display:flex;justify-content:space-between;gap:16px;align-items:end;flex-wrap:wrap;">
+        <div>
+          <h1>Weekly Review</h1>
+          <div class="copy"><p>Week of 2026-05-22</p></div>
+        </div>
+        <div class="chips" style="margin-top:0;">
+          <div class="chip">Universe: NVDA, TSLA, CRM, VOO, SPY</div>
+          <div class="chip">Mode: Lean MLP</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2" style="margin-bottom:18px;">
+      <div class="card hero-side posture-card">
+        <div class="eyebrow">Market Posture</div>
+        <div class="status-line">
+          <div class="badge context"><a style="color:inherit;text-decoration:none;" href="ux-2026-05-22-market-posture-selective-risk-on.html">Selective Risk-On</a></div>
+          <a class="small-link" style="color:#f3fff8;" href="ux-2026-05-22-market-posture-selective-risk-on.html">View posture analysis</a>
+        </div>
+        <div class="copy" style="margin-top:12px;"><p>The tape is supportive enough to look for longs, but not supportive enough to reward loose entries. The system should act only where regime, leadership, entry quality, and risk geometry line up together.</p></div>
+      </div>
+      <div class="card panel">
+        <div class="eyebrow">If Fresh Cash Arrived</div>
+        <h2>How the week should be broken down</h2>
+        <div class="copy"><p>Start from market posture, then deploy only into setups that still have a usable entry. The point is not to own every good stock. The point is to act only where the setup is still early enough to define risk cleanly.</p></div>
+        <div class="item-list">
+          <div class="item"><strong>Start with TSLA</strong><div class="copy">TSLA passes the current gates: supportive regime, strong relative strength, and an entry that is not yet obviously stretched. It deserves attention first, but not blind trust.</div><div class="amount">25%</div></div><div class="item"><strong>Start with VOO</strong><div class="copy">VOO remains the cleaner market-expression alternative when you want exposure without relying on one stock keeping its momentum.</div><div class="amount">20%</div></div><div class="item"><strong>Keep a watch order on NVDA</strong><div class="copy">NVDA still looks important, but the setup has not proved itself. Waiting is the disciplined choice, not a missed opportunity.</div><div class="amount">15%</div></div><div class="item"><strong>Keep unforced cash</strong><div class="copy">Cash is a valid output when the tape is only selective risk-on and the setup quality is mixed. The system should make that feel intentional, not timid.</div><div class="amount">40%</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card panel" style="margin-bottom:18px;">
+      <div class="eyebrow">Weekly Stock Decisions</div>
+      <h2>Why each stock is recommended, watched, or paused</h2>
+      <div class="copy"><p>This board should read as setup quality, not stock quality. The user should be able to see why a name is actionable now, why another one is only a watch candidate, and what exact condition would change the call.</p></div>
+    </section>
+
+    <section style="display:grid;gap:16px;">
+      
+            <article class="card ticker-card">
+              <div>
+                <div class="ticker-header">
+                  <div>
+                    <div class="ticker-name"><a href="ux-2026-05-22-stock-detail-tsla.html">TSLA</a></div>
+                    <div class="ticker-meta">Tesla</div>
+                  </div>
+                  <div class="badge buy">Buy now</div>
+                </div>
+                <div class="facts">
+                  <div class="fact"><div class="fact-label">Last Close</div><div class="fact-value">$426.23</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#relative-strength-vs-spy">4W vs SPY</a></div><div class="fact-value">+8.8%</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#event-risk">Event Risk</a></div><div class="fact-value">Low</div></div>
+                  <div class="fact"><div class="fact-label">Time Horizon</div><div class="fact-value">1-3 weeks</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#refined-score">Refined Score</a></div><div class="fact-value">7</div></div>
+                </div>
+                <div class="copy"><strong>Trade setup:</strong> <a href="ux-2026-05-22-strategy-detail-constructive-pullback-continuation.html">Constructive pullback continuation</a></div>
+                <div class="copy"><a class="small-link" href="ux-2026-05-22-glossary-terms.html#decision-basis">What is a decision basis?</a></div>
+                <div class="copy" style="margin-top:10px;">
+                  <p><strong>Why this week:</strong> TSLA clears the near-term gates: the tape is supportive, relative strength is clearly positive, and the stock is close enough to support that the risk is still defineable.</p>
+                  <p><strong>Why not stronger:</strong> The live chart is good, but the historical replay for this setup family is still weak. Treat this as a qualified opportunity, not a proven high-trust edge.</p>
+                </div>
+                <div class="trade-strip">
+                  <div class="trade-box"><span>Buy this week</span><strong>$417-$426</strong></div>
+                  <div class="trade-box"><span>Exit if close &lt;</span><strong>$388</strong></div>
+                  <div class="trade-box"><span>Take profit near</span><strong>$458</strong></div>
+                </div>
+              </div>
+              <div class="chart-shell">
+                
+    <svg viewBox="0 0 360 168" width="100%" height="168" preserveAspectRatio="none" aria-label="Annotated price chart">
+      <line x1="42" y1="12.0" x2="340" y2="12.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="16.0" class="axis-text">$505</text><line x1="42" y1="84.0" x2="340" y2="84.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="88.0" class="axis-text">$417</text><line x1="42" y1="156.0" x2="340" y2="156.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="160.0" class="axis-text">$329</text>
+      <line x1="42" y1="12" x2="42" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <line x1="42" y1="152" x2="340" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <path d="M 42.0 95.5 L 47.1 94.8 L 52.1 103.8 L 57.2 92.7 L 62.2 93.0 L 67.3 100.2 L 72.3 98.6 L 77.4 98.2 L 82.4 91.2 L 87.5 101.6 L 92.5 104.8 L 97.6 101.2 L 102.6 98.2 L 107.7 103.5 L 112.7 113.7 L 117.8 123.8 L 122.8 113.2 L 127.9 111.4 L 132.9 109.1 L 138.0 120.4 L 143.0 128.8 L 148.1 134.2 L 153.1 120.7 L 158.2 112.9 L 163.2 129.8 L 168.3 136.2 L 173.3 141.2 L 178.4 144.0 L 183.4 142.1 L 188.5 139.3 L 193.5 136.5 L 198.6 126.9 L 203.6 104.1 L 208.7 106.6 L 213.7 97.0 L 218.8 103.7 L 223.8 108.7 L 228.9 107.8 L 233.9 119.1 L 239.0 117.0 L 244.0 115.0 L 249.1 117.2 L 254.1 119.8 L 259.2 112.6 L 264.2 105.1 L 269.3 103.7 L 274.3 106.3 L 279.4 98.6 L 284.4 87.9 L 289.5 74.4 L 294.5 60.7 L 299.6 70.2 L 304.6 60.5 L 309.7 62.1 L 314.7 79.4 L 319.8 89.4 L 324.8 94.2 L 329.9 83.4 L 334.9 82.9 L 340.0 76.1 L 340 152 L 42 152 Z" fill="#1d6e4e" opacity="0.08"></path>
+      <path d="M 42.0 103.4 L 47.1 103.4 L 52.1 103.4 L 57.2 103.4 L 62.2 103.4 L 67.3 103.4 L 72.3 103.4 L 77.4 103.4 L 82.4 103.4 L 87.5 103.4 L 92.5 103.4 L 97.6 103.4 L 102.6 103.4 L 107.7 103.4 L 112.7 103.4 L 117.8 103.4 L 122.8 103.4 L 127.9 103.4 L 132.9 103.4 L 138.0 103.4 L 143.0 105.1 L 148.1 107.1 L 153.1 107.9 L 158.2 108.9 L 163.2 110.8 L 168.3 112.6 L 173.3 114.7 L 178.4 117.0 L 183.4 119.5 L 188.5 121.4 L 193.5 123.0 L 198.6 124.3 L 203.6 124.6 L 208.7 124.7 L 213.7 123.9 L 218.8 122.9 L 223.8 122.7 L 228.9 122.5 L 233.9 123.0 L 239.0 122.8 L 244.0 122.1 L 249.1 121.3 L 254.1 121.2 L 259.2 121.2 L 264.2 120.0 L 269.3 118.4 L 274.3 116.6 L 279.4 114.3 L 284.4 111.6 L 289.5 108.4 L 294.5 104.6 L 299.6 101.8 L 304.6 99.6 L 309.7 97.4 L 314.7 96.5 L 319.8 95.8 L 324.8 95.0 L 329.9 93.8 L 334.9 92.0 L 340.0 90.0" fill="none" stroke="#c29141" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M 42.0 95.5 L 47.1 94.8 L 52.1 103.8 L 57.2 92.7 L 62.2 93.0 L 67.3 100.2 L 72.3 98.6 L 77.4 98.2 L 82.4 91.2 L 87.5 101.6 L 92.5 104.8 L 97.6 101.2 L 102.6 98.2 L 107.7 103.5 L 112.7 113.7 L 117.8 123.8 L 122.8 113.2 L 127.9 111.4 L 132.9 109.1 L 138.0 120.4 L 143.0 128.8 L 148.1 134.2 L 153.1 120.7 L 158.2 112.9 L 163.2 129.8 L 168.3 136.2 L 173.3 141.2 L 178.4 144.0 L 183.4 142.1 L 188.5 139.3 L 193.5 136.5 L 198.6 126.9 L 203.6 104.1 L 208.7 106.6 L 213.7 97.0 L 218.8 103.7 L 223.8 108.7 L 228.9 107.8 L 233.9 119.1 L 239.0 117.0 L 244.0 115.0 L 249.1 117.2 L 254.1 119.8 L 259.2 112.6 L 264.2 105.1 L 269.3 103.7 L 274.3 106.3 L 279.4 98.6 L 284.4 87.9 L 289.5 74.4 L 294.5 60.7 L 299.6 70.2 L 304.6 60.5 L 309.7 62.1 L 314.7 79.4 L 319.8 89.4 L 324.8 94.2 L 329.9 83.4 L 334.9 82.9 L 340.0 76.1" fill="none" stroke="#1d6e4e" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <line x1="42" y1="90.0" x2="340" y2="90.0" stroke="#c29141" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="86.0" text-anchor="end" class="chart-label">Support</text><line x1="42" y1="76.1" x2="340" y2="76.1" stroke="#1d6e4e" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="72.1" text-anchor="end" class="chart-label">Current</text><line x1="42" y1="24.0" x2="340" y2="24.0" stroke="#7f6cb6" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="22.0" text-anchor="end" class="chart-label">52W High</text>
+      <text x="340" y="22" text-anchor="end" class="chart-label">Price</text>
+      <text x="340" y="38" text-anchor="end" class="chart-label" fill="#c29141">20D MA</text>
+      <text x="42.0" y="166" text-anchor="middle" class="axis-text">Feb 27</text><text x="191.0" y="166" text-anchor="middle" class="axis-text">Apr 13</text><text x="340.0" y="166" text-anchor="middle" class="axis-text">May 22</text>
+    </svg>
+    
+                <div class="legend">
+                  <div class="legend-item" style="color:#1d6e4e;"><span class="legend-line"></span><span>Price</span></div>
+                  <div class="legend-item" style="color:#c29141;"><span class="legend-line"></span><span>20D average</span></div>
+                  <div class="legend-item" style="color:#7c8a82;"><span class="legend-dash"></span><span>Annotated levels</span></div>
+                </div>
+                <div class="chart-caption">
+                  <div>Support near $409</div>
+                  <div>20D vs SPY +8.8%</div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="card ticker-card">
+              <div>
+                <div class="ticker-header">
+                  <div>
+                    <div class="ticker-name"><a href="ux-2026-05-22-stock-detail-voo.html">VOO</a></div>
+                    <div class="ticker-meta">Vanguard S&amp;P 500 ETF</div>
+                  </div>
+                  <div class="badge buy">Buy now</div>
+                </div>
+                <div class="facts">
+                  <div class="fact"><div class="fact-label">Last Close</div><div class="fact-value">$685.96</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#relative-strength-vs-spy">4W vs SPY</a></div><div class="fact-value">In line</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#event-risk">Event Risk</a></div><div class="fact-value">Low</div></div>
+                  <div class="fact"><div class="fact-label">Time Horizon</div><div class="fact-value">2-4 weeks</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#refined-score">Refined Score</a></div><div class="fact-value">7</div></div>
+                </div>
+                <div class="copy"><strong>Trade setup:</strong> <a href="ux-2026-05-22-strategy-detail-index-trend-follow-through.html">Index trend follow-through</a></div>
+                <div class="copy"><a class="small-link" href="ux-2026-05-22-glossary-terms.html#decision-basis">What is a decision basis?</a></div>
+                <div class="copy" style="margin-top:10px;">
+                  <p><strong>Why this week:</strong> This is the calmer way to express a constructive market tape.</p>
+                  <p><strong>Why not stronger:</strong> It is broad exposure, not a high-conviction single-name edge.</p>
+                </div>
+                <div class="trade-strip">
+                  <div class="trade-box"><span>Buy this week</span><strong>$683-$686</strong></div>
+                  <div class="trade-box"><span>Exit if close &lt;</span><strong>$666</strong></div>
+                  <div class="trade-box"><span>First target</span><strong>$694</strong></div>
+                </div>
+              </div>
+              <div class="chart-shell">
+                
+    <svg viewBox="0 0 360 168" width="100%" height="168" preserveAspectRatio="none" aria-label="Annotated price chart">
+      <line x1="42" y1="12.0" x2="340" y2="12.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="16.0" class="axis-text">$698</text><line x1="42" y1="84.0" x2="340" y2="84.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="88.0" class="axis-text">$634</text><line x1="42" y1="156.0" x2="340" y2="156.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="160.0" class="axis-text">$570</text>
+      <line x1="42" y1="12" x2="42" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <line x1="42" y1="152" x2="340" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <path d="M 42.0 87.7 L 47.1 87.4 L 52.1 93.7 L 57.2 88.7 L 62.2 92.4 L 67.3 101.9 L 72.3 95.8 L 77.4 97.0 L 82.4 97.8 L 87.5 108.5 L 92.5 112.4 L 97.6 105.5 L 102.6 103.6 L 107.7 113.2 L 112.7 115.0 L 117.8 124.9 L 122.8 117.6 L 127.9 119.9 L 132.9 116.2 L 138.0 128.3 L 143.0 141.7 L 148.1 144.0 L 153.1 125.3 L 158.2 120.0 L 163.2 119.2 L 168.3 116.2 L 173.3 115.8 L 178.4 98.6 L 183.4 94.5 L 188.5 94.9 L 193.5 88.1 L 198.6 79.5 L 203.6 73.8 L 208.7 72.2 L 213.7 63.3 L 218.8 64.7 L 223.8 69.5 L 228.9 62.0 L 233.9 65.0 L 239.0 59.2 L 244.0 58.0 L 249.1 61.6 L 254.1 61.6 L 259.2 54.5 L 264.2 52.3 L 269.3 55.0 L 274.3 49.2 L 279.4 38.7 L 284.4 41.1 L 289.5 34.9 L 294.5 33.2 L 299.6 34.2 L 304.6 30.0 L 309.7 24.0 L 314.7 33.3 L 319.8 33.9 L 324.8 38.8 L 329.9 30.9 L 334.9 29.5 L 340.0 26.0 L 340 152 L 42 152 Z" fill="#1d6e4e" opacity="0.08"></path>
+      <path d="M 42.0 105.4 L 47.1 105.4 L 52.1 105.4 L 57.2 105.4 L 62.2 105.4 L 67.3 105.4 L 72.3 105.4 L 77.4 105.4 L 82.4 105.4 L 87.5 105.4 L 92.5 105.4 L 97.6 105.4 L 102.6 105.4 L 107.7 105.4 L 112.7 105.4 L 117.8 105.4 L 122.8 105.4 L 127.9 105.4 L 132.9 105.4 L 138.0 105.4 L 143.0 108.1 L 148.1 110.9 L 153.1 112.5 L 158.2 114.1 L 163.2 115.4 L 168.3 116.1 L 173.3 117.1 L 178.4 117.2 L 183.4 117.0 L 188.5 116.3 L 193.5 115.1 L 198.6 113.8 L 203.6 112.3 L 208.7 110.3 L 213.7 107.7 L 218.8 104.7 L 223.8 102.3 L 228.9 99.4 L 233.9 96.8 L 239.0 93.4 L 244.0 89.2 L 249.1 85.1 L 254.1 81.9 L 259.2 78.6 L 264.2 75.3 L 269.3 72.2 L 274.3 68.9 L 279.4 65.9 L 284.4 63.2 L 289.5 60.2 L 294.5 57.5 L 299.6 55.2 L 304.6 53.0 L 309.7 50.6 L 314.7 49.1 L 319.8 47.6 L 324.8 46.0 L 329.9 44.5 L 334.9 42.7 L 340.0 41.0" fill="none" stroke="#c29141" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M 42.0 87.7 L 47.1 87.4 L 52.1 93.7 L 57.2 88.7 L 62.2 92.4 L 67.3 101.9 L 72.3 95.8 L 77.4 97.0 L 82.4 97.8 L 87.5 108.5 L 92.5 112.4 L 97.6 105.5 L 102.6 103.6 L 107.7 113.2 L 112.7 115.0 L 117.8 124.9 L 122.8 117.6 L 127.9 119.9 L 132.9 116.2 L 138.0 128.3 L 143.0 141.7 L 148.1 144.0 L 153.1 125.3 L 158.2 120.0 L 163.2 119.2 L 168.3 116.2 L 173.3 115.8 L 178.4 98.6 L 183.4 94.5 L 188.5 94.9 L 193.5 88.1 L 198.6 79.5 L 203.6 73.8 L 208.7 72.2 L 213.7 63.3 L 218.8 64.7 L 223.8 69.5 L 228.9 62.0 L 233.9 65.0 L 239.0 59.2 L 244.0 58.0 L 249.1 61.6 L 254.1 61.6 L 259.2 54.5 L 264.2 52.3 L 269.3 55.0 L 274.3 49.2 L 279.4 38.7 L 284.4 41.1 L 289.5 34.9 L 294.5 33.2 L 299.6 34.2 L 304.6 30.0 L 309.7 24.0 L 314.7 33.3 L 319.8 33.9 L 324.8 38.8 L 329.9 30.9 L 334.9 29.5 L 340.0 26.0" fill="none" stroke="#1d6e4e" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <line x1="42" y1="41.0" x2="340" y2="41.0" stroke="#c29141" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="37.0" text-anchor="end" class="chart-label">Support</text><line x1="42" y1="26.0" x2="340" y2="26.0" stroke="#1d6e4e" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="22.0" text-anchor="end" class="chart-label">Current</text><line x1="42" y1="24.0" x2="340" y2="24.0" stroke="#7f6cb6" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="22.0" text-anchor="end" class="chart-label">52W High</text>
+      <text x="340" y="22" text-anchor="end" class="chart-label">Price</text>
+      <text x="340" y="38" text-anchor="end" class="chart-label" fill="#c29141">20D MA</text>
+      <text x="42.0" y="166" text-anchor="middle" class="axis-text">Feb 27</text><text x="191.0" y="166" text-anchor="middle" class="axis-text">Apr 13</text><text x="340.0" y="166" text-anchor="middle" class="axis-text">May 22</text>
+    </svg>
+    
+                <div class="legend">
+                  <div class="legend-item" style="color:#1d6e4e;"><span class="legend-line"></span><span>Price</span></div>
+                  <div class="legend-item" style="color:#c29141;"><span class="legend-line"></span><span>20D average</span></div>
+                  <div class="legend-item" style="color:#7c8a82;"><span class="legend-dash"></span><span>Annotated levels</span></div>
+                </div>
+                <div class="chart-caption">
+                  <div>Support near $673</div>
+                  <div>20D vs SPY In line</div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="card ticker-card">
+              <div>
+                <div class="ticker-header">
+                  <div>
+                    <div class="ticker-name"><a href="ux-2026-05-22-stock-detail-nvda.html">NVDA</a></div>
+                    <div class="ticker-meta">NVIDIA</div>
+                  </div>
+                  <div class="badge wait">Wait for confirmation</div>
+                </div>
+                <div class="facts">
+                  <div class="fact"><div class="fact-label">Last Close</div><div class="fact-value">$215.29</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#relative-strength-vs-spy">4W vs SPY</a></div><div class="fact-value">-1.1%</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#event-risk">Event Risk</a></div><div class="fact-value">Low</div></div>
+                  <div class="fact"><div class="fact-label">Time Horizon</div><div class="fact-value">Wait this week</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#refined-score">Refined Score</a></div><div class="fact-value">5</div></div>
+                </div>
+                <div class="copy"><strong>Trade setup:</strong> <a href="ux-2026-05-22-strategy-detail-breakout-confirmation.html">Breakout confirmation</a></div>
+                <div class="copy"><a class="small-link" href="ux-2026-05-22-glossary-terms.html#decision-basis">What is a decision basis?</a></div>
+                <div class="copy" style="margin-top:10px;">
+                  <p><strong>Why this week:</strong> The stock is still on the list because the broader trend has not broken.</p>
+                  <p><strong>Why not stronger:</strong> It is not a buy yet because price still needs to clear resistance and prove demand.</p>
+                </div>
+                <div class="trade-strip">
+                  <div class="trade-box"><span>Only buy above</span><strong>$237</strong></div>
+                  <div class="trade-box"><span>Cancel if close &lt;</span><strong>$206</strong></div>
+                  <div class="trade-box"><span>If breakout sticks</span><strong>$246</strong></div>
+                </div>
+              </div>
+              <div class="chart-shell">
+                
+    <svg viewBox="0 0 360 168" width="100%" height="168" preserveAspectRatio="none" aria-label="Annotated price chart">
+      <line x1="42" y1="12.0" x2="340" y2="12.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="16.0" class="axis-text">$244</text><line x1="42" y1="84.0" x2="340" y2="84.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="88.0" class="axis-text">$201</text><line x1="42" y1="156.0" x2="340" y2="156.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="160.0" class="axis-text">$158</text>
+      <line x1="42" y1="12" x2="42" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <line x1="42" y1="152" x2="340" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <path d="M 42.0 123.8 L 47.1 114.9 L 52.1 119.0 L 57.2 114.0 L 62.2 113.4 L 67.3 122.7 L 72.3 114.6 L 77.4 111.0 L 82.4 108.9 L 87.5 113.8 L 92.5 118.6 L 97.6 113.7 L 102.6 115.8 L 107.7 118.4 L 112.7 121.5 L 117.8 131.3 L 122.8 126.4 L 127.9 127.1 L 132.9 121.3 L 138.0 133.8 L 143.0 140.0 L 148.1 144.0 L 153.1 128.5 L 158.2 126.2 L 163.2 123.5 L 168.3 123.0 L 173.3 122.3 L 178.4 115.6 L 183.4 112.5 L 188.5 104.6 L 193.5 103.4 L 198.6 91.3 L 203.6 87.3 L 208.7 88.2 L 213.7 82.6 L 218.8 82.0 L 223.8 85.6 L 228.9 81.2 L 233.9 86.0 L 239.0 71.5 L 244.0 57.5 L 249.1 63.3 L 254.1 69.9 L 259.2 86.2 L 264.2 88.0 L 269.3 88.0 L 274.3 91.3 L 279.4 72.3 L 284.4 66.1 L 289.5 59.9 L 294.5 52.8 L 299.6 50.5 L 304.6 42.0 L 309.7 25.3 L 314.7 42.9 L 319.8 47.9 L 324.8 50.8 L 329.9 46.0 L 334.9 52.6 L 340.0 59.7 L 340 152 L 42 152 Z" fill="#285d87" opacity="0.08"></path>
+      <path d="M 42.0 119.2 L 47.1 119.2 L 52.1 119.2 L 57.2 119.2 L 62.2 119.2 L 67.3 119.2 L 72.3 119.2 L 77.4 119.2 L 82.4 119.2 L 87.5 119.2 L 92.5 119.2 L 97.6 119.2 L 102.6 119.2 L 107.7 119.2 L 112.7 119.2 L 117.8 119.2 L 122.8 119.2 L 127.9 119.2 L 132.9 119.2 L 138.0 119.2 L 143.0 120.0 L 148.1 121.5 L 153.1 121.9 L 158.2 122.6 L 163.2 123.1 L 168.3 123.1 L 173.3 123.5 L 178.4 123.7 L 183.4 123.9 L 188.5 123.4 L 193.5 122.6 L 198.6 121.5 L 203.6 120.1 L 208.7 118.6 L 213.7 116.6 L 218.8 114.2 L 223.8 112.1 L 228.9 109.8 L 233.9 108.1 L 239.0 105.0 L 244.0 100.8 L 249.1 96.8 L 254.1 93.9 L 259.2 91.9 L 264.2 90.1 L 269.3 88.4 L 274.3 86.8 L 279.4 84.6 L 284.4 82.3 L 289.5 80.1 L 294.5 77.6 L 299.6 75.5 L 304.6 73.2 L 309.7 70.1 L 314.7 68.1 L 319.8 66.4 L 324.8 64.7 L 329.9 62.9 L 334.9 61.2 L 340.0 60.6" fill="none" stroke="#c29141" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M 42.0 123.8 L 47.1 114.9 L 52.1 119.0 L 57.2 114.0 L 62.2 113.4 L 67.3 122.7 L 72.3 114.6 L 77.4 111.0 L 82.4 108.9 L 87.5 113.8 L 92.5 118.6 L 97.6 113.7 L 102.6 115.8 L 107.7 118.4 L 112.7 121.5 L 117.8 131.3 L 122.8 126.4 L 127.9 127.1 L 132.9 121.3 L 138.0 133.8 L 143.0 140.0 L 148.1 144.0 L 153.1 128.5 L 158.2 126.2 L 163.2 123.5 L 168.3 123.0 L 173.3 122.3 L 178.4 115.6 L 183.4 112.5 L 188.5 104.6 L 193.5 103.4 L 198.6 91.3 L 203.6 87.3 L 208.7 88.2 L 213.7 82.6 L 218.8 82.0 L 223.8 85.6 L 228.9 81.2 L 233.9 86.0 L 239.0 71.5 L 244.0 57.5 L 249.1 63.3 L 254.1 69.9 L 259.2 86.2 L 264.2 88.0 L 269.3 88.0 L 274.3 91.3 L 279.4 72.3 L 284.4 66.1 L 289.5 59.9 L 294.5 52.8 L 299.6 50.5 L 304.6 42.0 L 309.7 25.3 L 314.7 42.9 L 319.8 47.9 L 324.8 50.8 L 329.9 46.0 L 334.9 52.6 L 340.0 59.7" fill="none" stroke="#285d87" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <line x1="42" y1="60.6" x2="340" y2="60.6" stroke="#c29141" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="56.6" text-anchor="end" class="chart-label">Support</text><line x1="42" y1="24.0" x2="340" y2="24.0" stroke="#285d87" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="22.0" text-anchor="end" class="chart-label">Trigger</text><line x1="42" y1="25.3" x2="340" y2="25.3" stroke="#7f6cb6" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="22.0" text-anchor="end" class="chart-label">52W High</text>
+      <text x="340" y="22" text-anchor="end" class="chart-label">Price</text>
+      <text x="340" y="38" text-anchor="end" class="chart-label" fill="#c29141">20D MA</text>
+      <text x="42.0" y="166" text-anchor="middle" class="axis-text">Feb 27</text><text x="191.0" y="166" text-anchor="middle" class="axis-text">Apr 13</text><text x="340.0" y="166" text-anchor="middle" class="axis-text">May 22</text>
+    </svg>
+    
+                <div class="legend">
+                  <div class="legend-item" style="color:#285d87;"><span class="legend-line"></span><span>Price</span></div>
+                  <div class="legend-item" style="color:#c29141;"><span class="legend-line"></span><span>20D average</span></div>
+                  <div class="legend-item" style="color:#7c8a82;"><span class="legend-dash"></span><span>Annotated levels</span></div>
+                </div>
+                <div class="chart-caption">
+                  <div>Support near $215</div>
+                  <div>20D vs SPY -1.1%</div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="card ticker-card">
+              <div>
+                <div class="ticker-header">
+                  <div>
+                    <div class="ticker-name"><a href="ux-2026-05-22-stock-detail-crm.html">CRM</a></div>
+                    <div class="ticker-meta">Salesforce</div>
+                  </div>
+                  <div class="badge hold">Hold / reassess after earnings</div>
+                </div>
+                <div class="facts">
+                  <div class="fact"><div class="fact-label">Last Close</div><div class="fact-value">$181.07</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#relative-strength-vs-spy">4W vs SPY</a></div><div class="fact-value">-2.9%</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#event-risk">Event Risk</a></div><div class="fact-value">High</div></div>
+                  <div class="fact"><div class="fact-label">Time Horizon</div><div class="fact-value">This week only</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#refined-score">Refined Score</a></div><div class="fact-value">3</div></div>
+                </div>
+                <div class="copy"><strong>Risk rule:</strong> <a href="ux-2026-05-22-strategy-detail-event-freeze-before-earnings.html">Event freeze before earnings</a></div>
+                <div class="copy"><a class="small-link" href="ux-2026-05-22-glossary-terms.html#decision-basis">What is a decision basis?</a></div>
+                <div class="copy" style="margin-top:10px;">
+                  <p><strong>Why this week:</strong> The stock remains relevant because it could become actionable after the event.</p>
+                  <p><strong>Why not stronger:</strong> Fresh capital is paused because earnings are close enough to dominate the next move.</p>
+                </div>
+                <div class="trade-strip">
+                  <div class="trade-box"><span>Do not add</span><strong>Until earnings on 2026-05-27</strong></div>
+                  <div class="trade-box"><span>If already held</span><strong>Close &lt; $175</strong></div>
+                  <div class="trade-box"><span>Next action</span><strong>Re-rank after report</strong></div>
+                </div>
+              </div>
+              <div class="chart-shell">
+                
+    <svg viewBox="0 0 360 168" width="100%" height="168" preserveAspectRatio="none" aria-label="Annotated price chart">
+      <line x1="42" y1="12.0" x2="340" y2="12.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="16.0" class="axis-text">$206</text><line x1="42" y1="84.0" x2="340" y2="84.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="88.0" class="axis-text">$184</text><line x1="42" y1="156.0" x2="340" y2="156.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="160.0" class="axis-text">$161</text>
+      <line x1="42" y1="12" x2="42" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <line x1="42" y1="152" x2="340" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <path d="M 42.0 47.6 L 47.1 53.6 L 52.1 43.6 L 57.2 53.2 L 62.2 26.3 L 67.3 24.0 L 72.3 34.7 L 77.4 47.3 L 82.4 49.8 L 87.5 33.1 L 92.5 54.0 L 97.6 36.2 L 102.6 46.0 L 107.7 49.1 L 112.7 47.0 L 117.8 45.7 L 122.8 46.4 L 127.9 85.7 L 132.9 89.1 L 138.0 77.2 L 143.0 97.6 L 148.1 79.2 L 153.1 73.9 L 158.2 75.3 L 163.2 72.2 L 168.3 79.2 L 173.3 85.9 L 178.4 107.1 L 183.4 125.0 L 188.5 144.0 L 193.5 118.6 L 198.6 123.5 L 203.6 103.2 L 208.7 91.5 L 213.7 88.5 L 218.8 75.2 L 223.8 72.5 L 228.9 63.8 L 233.9 117.1 L 239.0 101.4 L 244.0 94.8 L 249.1 91.2 L 254.1 91.5 L 259.2 106.6 L 264.2 83.1 L 269.3 77.7 L 274.3 72.8 L 279.4 91.6 L 284.4 74.9 L 289.5 89.5 L 294.5 103.5 L 299.6 123.5 L 304.6 141.2 L 309.7 135.5 L 314.7 116.4 L 319.8 97.1 L 324.8 97.3 L 329.9 95.1 L 334.9 107.3 L 340.0 92.0 L 340 152 L 42 152 Z" fill="#a7641d" opacity="0.08"></path>
+      <path d="M 42.0 49.5 L 47.1 49.5 L 52.1 49.5 L 57.2 49.5 L 62.2 49.5 L 67.3 49.5 L 72.3 49.5 L 77.4 49.5 L 82.4 49.5 L 87.5 49.5 L 92.5 49.5 L 97.6 49.5 L 102.6 49.5 L 107.7 49.5 L 112.7 49.5 L 117.8 49.5 L 122.8 49.5 L 127.9 49.5 L 132.9 49.5 L 138.0 49.5 L 143.0 52.0 L 148.1 53.3 L 153.1 54.8 L 158.2 55.9 L 163.2 58.2 L 168.3 60.9 L 173.3 63.5 L 178.4 66.5 L 183.4 70.2 L 188.5 75.8 L 193.5 79.0 L 198.6 83.4 L 203.6 86.2 L 208.7 88.4 L 213.7 90.4 L 218.8 91.9 L 223.8 93.2 L 228.9 92.1 L 233.9 93.5 L 239.0 94.7 L 244.0 94.6 L 249.1 95.2 L 254.1 96.1 L 259.2 97.6 L 264.2 98.2 L 269.3 98.1 L 274.3 97.4 L 279.4 96.7 L 284.4 94.2 L 289.5 91.4 L 294.5 90.7 L 299.6 90.7 L 304.6 92.6 L 309.7 94.8 L 314.7 96.2 L 319.8 97.3 L 324.8 98.5 L 329.9 100.1 L 334.9 99.6 L 340.0 99.1" fill="none" stroke="#c29141" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M 42.0 47.6 L 47.1 53.6 L 52.1 43.6 L 57.2 53.2 L 62.2 26.3 L 67.3 24.0 L 72.3 34.7 L 77.4 47.3 L 82.4 49.8 L 87.5 33.1 L 92.5 54.0 L 97.6 36.2 L 102.6 46.0 L 107.7 49.1 L 112.7 47.0 L 117.8 45.7 L 122.8 46.4 L 127.9 85.7 L 132.9 89.1 L 138.0 77.2 L 143.0 97.6 L 148.1 79.2 L 153.1 73.9 L 158.2 75.3 L 163.2 72.2 L 168.3 79.2 L 173.3 85.9 L 178.4 107.1 L 183.4 125.0 L 188.5 144.0 L 193.5 118.6 L 198.6 123.5 L 203.6 103.2 L 208.7 91.5 L 213.7 88.5 L 218.8 75.2 L 223.8 72.5 L 228.9 63.8 L 233.9 117.1 L 239.0 101.4 L 244.0 94.8 L 249.1 91.2 L 254.1 91.5 L 259.2 106.6 L 264.2 83.1 L 269.3 77.7 L 274.3 72.8 L 279.4 91.6 L 284.4 74.9 L 289.5 89.5 L 294.5 103.5 L 299.6 123.5 L 304.6 141.2 L 309.7 135.5 L 314.7 116.4 L 319.8 97.1 L 324.8 97.3 L 329.9 95.1 L 334.9 107.3 L 340.0 92.0" fill="none" stroke="#a7641d" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <line x1="42" y1="99.1" x2="340" y2="99.1" stroke="#c29141" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="95.1" text-anchor="end" class="chart-label">Support</text>
+      <text x="340" y="22" text-anchor="end" class="chart-label">Price</text>
+      <text x="340" y="38" text-anchor="end" class="chart-label" fill="#c29141">20D MA</text>
+      <text x="42.0" y="166" text-anchor="middle" class="axis-text">Feb 27</text><text x="191.0" y="166" text-anchor="middle" class="axis-text">Apr 13</text><text x="340.0" y="166" text-anchor="middle" class="axis-text">May 22</text>
+    </svg>
+    
+                <div class="legend">
+                  <div class="legend-item" style="color:#a7641d;"><span class="legend-line"></span><span>Price</span></div>
+                  <div class="legend-item" style="color:#c29141;"><span class="legend-line"></span><span>20D average</span></div>
+                  <div class="legend-item" style="color:#7c8a82;"><span class="legend-dash"></span><span>Annotated levels</span></div>
+                </div>
+                <div class="chart-caption">
+                  <div>Support near $179</div>
+                  <div>20D vs SPY -2.9%</div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="card ticker-card">
+              <div>
+                <div class="ticker-header">
+                  <div>
+                    <div class="ticker-name"><a href="ux-2026-05-22-stock-detail-spy.html">SPY</a></div>
+                    <div class="ticker-meta">SPDR S&amp;P 500 ETF</div>
+                  </div>
+                  <div class="badge context">Benchmark reference</div>
+                </div>
+                <div class="facts">
+                  <div class="fact"><div class="fact-label">Last Close</div><div class="fact-value">$745.98</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#relative-strength-vs-spy">4W vs SPY</a></div><div class="fact-value">In line</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#event-risk">Event Risk</a></div><div class="fact-value">Low</div></div>
+                  <div class="fact"><div class="fact-label">Time Horizon</div><div class="fact-value">Reference only</div></div>
+                  <div class="fact"><div class="fact-label"><a class="term" href="ux-2026-05-22-glossary-terms.html#refined-score">Refined Score</a></div><div class="fact-value">6</div></div>
+                </div>
+                <div class="copy"><strong>Context lens:</strong> <a href="ux-2026-05-22-strategy-detail-benchmark-trend-reference.html">Benchmark trend reference</a></div>
+                <div class="copy"><a class="small-link" href="ux-2026-05-22-glossary-terms.html#decision-basis">What is a decision basis?</a></div>
+                <div class="copy" style="margin-top:10px;">
+                  <p><strong>Why this week:</strong> This row helps frame the tape for the rest of the watchlist.</p>
+                  <p><strong>Why not stronger:</strong> It should not be treated as a primary stock pick.</p>
+                </div>
+                <div class="trade-strip">
+                  <div class="trade-box"><span>Role</span><strong>Benchmark</strong></div>
+                  <div class="trade-box"><span>Use for</span><strong>Context</strong></div>
+                  <div class="trade-box"><span>Not a</span><strong>Primary trade</strong></div>
+                </div>
+              </div>
+              <div class="chart-shell">
+                
+    <svg viewBox="0 0 360 168" width="100%" height="168" preserveAspectRatio="none" aria-label="Annotated price chart">
+      <line x1="42" y1="12.0" x2="340" y2="12.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="16.0" class="axis-text">$760</text><line x1="42" y1="84.0" x2="340" y2="84.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="88.0" class="axis-text">$690</text><line x1="42" y1="156.0" x2="340" y2="156.0" stroke="#e2dbcf" stroke-width="1"></line><text x="0" y="160.0" class="axis-text">$620</text>
+      <line x1="42" y1="12" x2="42" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <line x1="42" y1="152" x2="340" y2="152" stroke="#d8d0c2" stroke-width="1.2"></line>
+      <path d="M 42.0 88.2 L 47.1 87.8 L 52.1 94.1 L 57.2 89.1 L 62.2 93.0 L 67.3 102.3 L 72.3 96.2 L 77.4 97.3 L 82.4 98.2 L 87.5 108.8 L 92.5 112.7 L 97.6 105.7 L 102.6 103.9 L 107.7 113.6 L 112.7 115.3 L 117.8 126.9 L 122.8 119.8 L 127.9 122.1 L 132.9 118.3 L 138.0 130.5 L 143.0 141.8 L 148.1 144.0 L 153.1 125.0 L 158.2 120.0 L 163.2 119.4 L 168.3 116.2 L 173.3 115.9 L 178.4 98.5 L 183.4 94.5 L 188.5 95.0 L 193.5 88.1 L 198.6 79.5 L 203.6 73.8 L 208.7 72.0 L 213.7 63.3 L 218.8 64.7 L 223.8 69.5 L 228.9 62.2 L 233.9 65.0 L 239.0 59.3 L 244.0 58.1 L 249.1 61.7 L 254.1 61.8 L 259.2 54.5 L 264.2 52.4 L 269.3 55.1 L 274.3 49.2 L 279.4 38.8 L 284.4 41.1 L 289.5 34.9 L 294.5 33.2 L 299.6 34.3 L 304.6 30.1 L 309.7 24.0 L 314.7 33.3 L 319.8 33.8 L 324.8 38.9 L 329.9 31.1 L 334.9 29.6 L 340.0 26.3 L 340 152 L 42 152 Z" fill="#a7641d" opacity="0.08"></path>
+      <path d="M 42.0 106.2 L 47.1 106.2 L 52.1 106.2 L 57.2 106.2 L 62.2 106.2 L 67.3 106.2 L 72.3 106.2 L 77.4 106.2 L 82.4 106.2 L 87.5 106.2 L 92.5 106.2 L 97.6 106.2 L 102.6 106.2 L 107.7 106.2 L 112.7 106.2 L 117.8 106.2 L 122.8 106.2 L 127.9 106.2 L 132.9 106.2 L 138.0 106.2 L 143.0 108.9 L 148.1 111.7 L 153.1 113.2 L 158.2 114.8 L 163.2 116.1 L 168.3 116.8 L 173.3 117.8 L 178.4 117.8 L 183.4 117.6 L 188.5 116.9 L 193.5 115.7 L 198.6 114.4 L 203.6 112.9 L 208.7 110.8 L 213.7 108.2 L 218.8 105.1 L 223.8 102.6 L 228.9 99.6 L 233.9 96.9 L 239.0 93.4 L 244.0 89.2 L 249.1 85.1 L 254.1 81.9 L 259.2 78.6 L 264.2 75.3 L 269.3 72.2 L 274.3 68.9 L 279.4 65.9 L 284.4 63.3 L 289.5 60.3 L 294.5 57.5 L 299.6 55.3 L 304.6 53.1 L 309.7 50.7 L 314.7 49.2 L 319.8 47.6 L 324.8 46.1 L 329.9 44.5 L 334.9 42.8 L 340.0 41.1" fill="none" stroke="#c29141" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M 42.0 88.2 L 47.1 87.8 L 52.1 94.1 L 57.2 89.1 L 62.2 93.0 L 67.3 102.3 L 72.3 96.2 L 77.4 97.3 L 82.4 98.2 L 87.5 108.8 L 92.5 112.7 L 97.6 105.7 L 102.6 103.9 L 107.7 113.6 L 112.7 115.3 L 117.8 126.9 L 122.8 119.8 L 127.9 122.1 L 132.9 118.3 L 138.0 130.5 L 143.0 141.8 L 148.1 144.0 L 153.1 125.0 L 158.2 120.0 L 163.2 119.4 L 168.3 116.2 L 173.3 115.9 L 178.4 98.5 L 183.4 94.5 L 188.5 95.0 L 193.5 88.1 L 198.6 79.5 L 203.6 73.8 L 208.7 72.0 L 213.7 63.3 L 218.8 64.7 L 223.8 69.5 L 228.9 62.2 L 233.9 65.0 L 239.0 59.3 L 244.0 58.1 L 249.1 61.7 L 254.1 61.8 L 259.2 54.5 L 264.2 52.4 L 269.3 55.1 L 274.3 49.2 L 279.4 38.8 L 284.4 41.1 L 289.5 34.9 L 294.5 33.2 L 299.6 34.3 L 304.6 30.1 L 309.7 24.0 L 314.7 33.3 L 319.8 33.8 L 324.8 38.9 L 329.9 31.1 L 334.9 29.6 L 340.0 26.3" fill="none" stroke="#a7641d" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"></path>
+      <line x1="42" y1="41.1" x2="340" y2="41.1" stroke="#c29141" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="37.1" text-anchor="end" class="chart-label">Support</text><line x1="42" y1="24.0" x2="340" y2="24.0" stroke="#7f6cb6" stroke-dasharray="5 5" stroke-width="1.3" opacity="0.85"></line><text x="336" y="22.0" text-anchor="end" class="chart-label">52W High</text>
+      <text x="340" y="22" text-anchor="end" class="chart-label">Price</text>
+      <text x="340" y="38" text-anchor="end" class="chart-label" fill="#c29141">20D MA</text>
+      <text x="42.0" y="166" text-anchor="middle" class="axis-text">Feb 27</text><text x="191.0" y="166" text-anchor="middle" class="axis-text">Apr 13</text><text x="340.0" y="166" text-anchor="middle" class="axis-text">May 22</text>
+    </svg>
+    
+                <div class="legend">
+                  <div class="legend-item" style="color:#a7641d;"><span class="legend-line"></span><span>Price</span></div>
+                  <div class="legend-item" style="color:#c29141;"><span class="legend-line"></span><span>20D average</span></div>
+                  <div class="legend-item" style="color:#7c8a82;"><span class="legend-dash"></span><span>Annotated levels</span></div>
+                </div>
+                <div class="chart-caption">
+                  <div>Support near $732</div>
+                  <div>20D vs SPY In line</div>
+                </div>
+              </div>
+            </article>
+            
+    </section>
+
+    <section class="card panel" style="margin-top:18px;">
+      <div class="eyebrow">Backtest Learnings</div>
+      <h2>What the replay is telling us about the logic</h2>
+      <div class="copy"><p>Backtests belong after the weekly board, not before it. Their role is to calibrate trust in the logic that generated the actions above.</p></div>
+      <div class="item-list">
+        <div class="item"><strong>The replay still demands humility</strong><div class="copy">The top-two portfolio is only -0.22% vs SPY on average, so the product should present current opportunities as disciplined setups, not as a system that has already proven strong outperformance.</div></div><div class="item"><strong>A live setup can still deserve tempered trust</strong><div class="copy">`Constructive pullback continuation` fits the daily-data logic well, but in this tiny replay it only delivered -1.06% with a 27% win rate. That should reduce how confidently the page speaks, even when the chart looks good right now.</div></div><div class="item"><strong>Backtests are still technical-only</strong><div class="copy">The current replay does not yet include historical revision data, transcript changes, or point-in-time filing deltas. Strategy pages should say that clearly instead of implying richer event intelligence than the stack actually has.</div></div>
+      </div>
+    </section>
+
+    <section class="notes">
+      <div class="eyebrow" style="color:rgba(238,247,241,0.72);">Notes (won't show in Prod)</div>
+      <div class="copy">
+        <ul>
+          <li>This prototype uses daily OHLCV data and a lightweight earnings snapshot only. It does not yet include point-in-time analyst revisions, transcript deltas, or full filing-change analysis.</li><li>The pages are designed to look like product surfaces, but the data coverage is still lean MLP coverage. In production we would keep the same structure and swap in richer evidence modules where data exists.</li>
+        </ul>
+      </div>
+    </section>
+    
+  </div>
+</body>
+</html>

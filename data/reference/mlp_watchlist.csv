@@ -1,0 +1,6 @@
+ticker,display_name,sector,is_benchmark,is_active
+NVDA,NVIDIA,Semiconductors,false,true
+TSLA,Tesla,Automotive,false,true
+CRM,Salesforce,Software,false,true
+VOO,Vanguard S&P 500 ETF,ETF,false,true
+SPY,SPDR S&P 500 ETF,Benchmark,true,true

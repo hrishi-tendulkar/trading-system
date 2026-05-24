@@ -128,7 +128,8 @@ Each recommendation should include:
 
 - Ticker
 - Company name
-- Setup family
+- Decision basis type: `trade setup`, `risk rule`, or `context lens`
+- Decision basis name
 - Tradeability score
 - Conviction score
 - Risk penalty
@@ -159,12 +160,29 @@ The product should use a fixed action vocabulary:
 Must show:
 
 - Current scores and recommendation
+- Why this week
+- Why not stronger
 - Recent price and relative-strength context
 - Upcoming events
 - Fundamental trend summary
 - Relevant filings and transcripts
 - Analyst revision summary
+- Analysis modules with findings first, then insight
+- Cross-signal synthesis
+- Recommendation logic tying the action, entry, stop, and target together
 - Historical recommendations and outcomes
+- Single-stock replay where enough history exists
+
+### 3a. Decision-basis detail page
+
+Must show:
+
+- Whether the basis is a `trade setup`, `risk rule`, or `context lens`
+- What the basis is trying to do
+- Explicit rule spine
+- Historical replay or backtest summary where available
+- Current live matches
+- Known failure modes or confidence limits
 
 ### 4. Daily change digest
 
@@ -252,7 +270,7 @@ The product must:
 - Store every scored run with timestamps
 - Store recommendation history by ticker
 - Store realized outcome windows after recommendation
-- Support later backtests of signals, setup families, and ranking logic
+- Support later backtests of signals, trade setups, and ranking logic
 
 ### 7. Delivery and UX
 
@@ -377,7 +395,8 @@ Each recommendation record must support:
 - as-of date
 - ticker
 - recommendation category
-- setup family
+- decision basis type
+- decision basis name
 - tradeability score
 - conviction score
 - overlay suitability score

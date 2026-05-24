@@ -160,47 +160,82 @@ The strategy should operate on a curated universe rather than the full market.
 - Highly event-driven biotech binary setups
 - Complex options structures beyond covered calls and cash-secured puts
 
-## Setup families to support
+## Decision bases to support
 
-The first version should focus on a small set of setup families that are understandable, testable, and consistent with weekly review.
+The first version should focus on a small set of explicit decision bases that are understandable, testable, and consistent with weekly review.
 
-### 1. Strong stock, constructive pullback
+Important terminology:
+
+- `Trade setup`: a repeatable tactical pattern with entry rules, invalidation logic, expected holding period, and a path to historical replay
+- `Risk rule`: a rule that suppresses or modifies action even when a chart looks acceptable
+- `Context lens`: a market or benchmark interpretation aid that informs decisions but is not itself a stock-picking edge
+
+This matters because not every named row on the page should be called a `strategy`. Some are true trade setups, some are risk controls, and some are context.
+
+### 1. Constructive pullback continuation
+
+Type:
+
+- `Trade setup`
 
 Characteristics:
 
 - Strong relative strength versus benchmark and sector
 - Uptrend remains intact
 - Pullback into support or moving-average confluence
-- Pullback volume remains controlled
+- Pullback is not too extended above the `20-day` average
 - No major thesis damage
 
-### 2. Post-earnings continuation
+### 2. Breakout confirmation
+
+Type:
+
+- `Trade setup`
 
 Characteristics:
 
-- Earnings and guidance were well received
-- Gap or breakout held after the event
-- Analyst estimates or targets start moving up
-- Follow-through remains constructive in the next `1` to `3` weeks
+- Trend is still intact
+- Price is close enough to resistance that a defined trigger level exists
+- Relative strength is acceptable but not strong enough yet for an immediate buy
+- The system prefers proof through resistance over a blind early entry
 
-### 3. Revision momentum
+### 3. Index trend follow-through
 
-Characteristics:
+Type:
 
-- Cluster of upward estimate revisions or target increases
-- Price confirms rather than diverges
-- Business narrative is improving, not merely benefiting from short-lived news
-
-### 4. Breakout from compression
+- `Trade setup`
 
 Characteristics:
 
-- Multi-week range tightening
-- Volatility compression
-- Clean breakout through resistance
-- Volume expansion confirms the move
+- Broad market ETF remains above key moving averages
+- Volatility is controlled
+- User wants broad market exposure rather than single-name idiosyncratic risk
 
-### 5. Cash-secured put entry
+### 4. Event freeze before earnings
+
+Type:
+
+- `Risk rule`
+
+Characteristics:
+
+- Earnings are close enough that the next move is likely to be event-dominated
+- Fresh swing entries are suppressed by default
+- Existing positions may still be held or reassessed rather than forced into a new buy/sell call
+
+### 5. Benchmark trend reference
+
+Type:
+
+- `Context lens`
+
+Characteristics:
+
+- `SPY` or equivalent benchmark is used to anchor market posture
+- Relative strength comparisons are defined against the benchmark
+- The benchmark row informs selectivity and aggression but is not itself the central stock-picking edge
+
+### 6. Cash-secured put entry
 
 Characteristics:
 
@@ -210,7 +245,7 @@ Characteristics:
 - Liquidity and spreads are acceptable
 - No disqualifying binary event is immediately ahead by default
 
-### 6. Covered call income overlay
+### 7. Covered call income overlay
 
 Characteristics:
 
@@ -546,14 +581,14 @@ Test each signal or signal family independently:
 - Does it reduce drawdowns?
 - Does it add value only in certain regimes?
 
-### Stage 2. Setup-family validation
+### Stage 2. Trade-setup validation
 
-Test each setup family:
+Test each trade setup:
 
-- Constructive pullback
+- Constructive pullback continuation
 - Post-earnings continuation
 - Revision momentum
-- Breakout from compression
+- Breakout confirmation / breakout from compression
 - Cash-secured put entry
 - Covered call overlay
 

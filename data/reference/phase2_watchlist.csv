@@ -1,0 +1,34 @@
+ticker,display_name,sector,is_benchmark,is_active
+AAPL,Apple,Technology,false,true
+MSFT,Microsoft,Technology,false,true
+NVDA,NVIDIA,Semiconductors,false,true
+AMZN,Amazon,Consumer Discretionary,false,true
+META,Meta Platforms,Communication Services,false,true
+GOOGL,Alphabet,Communication Services,false,true
+AVGO,Broadcom,Semiconductors,false,true
+AMD,Advanced Micro Devices,Semiconductors,false,true
+NFLX,Netflix,Communication Services,false,true
+TSLA,Tesla,Automotive,false,true
+CRM,Salesforce,Software,false,true
+NOW,ServiceNow,Software,false,true
+PANW,Palo Alto Networks,Cybersecurity,false,true
+JPM,JPMorgan Chase,Financials,false,true
+GS,Goldman Sachs,Financials,false,true
+V,Visa,Financials,false,true
+MA,Mastercard,Financials,false,true
+COST,Costco,Consumer Staples,false,true
+WMT,Walmart,Consumer Staples,false,true
+CAT,Caterpillar,Industrials,false,true
+GE,GE Aerospace,Industrials,false,true
+XOM,Exxon Mobil,Energy,false,true
+LLY,Eli Lilly,Healthcare,false,true
+ABBV,AbbVie,Healthcare,false,true
+UBER,Uber,Technology,false,true
+PLTR,Palantir,Software,false,true
+VOO,Vanguard S&P 500 ETF,ETF,false,true
+QQQ,Invesco QQQ Trust,ETF,false,true
+XLK,Technology Select Sector SPDR Fund,ETF,false,true
+XLF,Financial Select Sector SPDR Fund,ETF,false,true
+XLV,Health Care Select Sector SPDR Fund,ETF,false,true
+XLE,Energy Select Sector SPDR Fund,ETF,false,true
+SPY,SPDR S&P 500 ETF,Benchmark,true,true
