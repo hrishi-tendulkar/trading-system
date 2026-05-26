@@ -59,7 +59,11 @@ def prepare_replay_features(prices: pd.DataFrame, watchlist: pd.DataFrame) -> pd
         ["ticker", "display_name", "sector", "is_benchmark", "is_active"]
     ].drop_duplicates("ticker")
     base_prices = prices.drop(
-        columns=[col for col in ["display_name", "sector", "is_benchmark", "is_active"] if col in prices.columns]
+        columns=[
+            col
+            for col in ["display_name", "sector", "is_benchmark", "is_active"]
+            if col in prices.columns
+        ]
     )
     features = add_features(base_prices.merge(metadata, on="ticker", how="left"))
     features = features.sort_values(["ticker", "date"]).copy()
@@ -69,7 +73,9 @@ def prepare_replay_features(prices: pd.DataFrame, watchlist: pd.DataFrame) -> pd
 
     grouped = features.groupby("ticker", sort=False)
     for horizon in FORWARD_HORIZONS:
-        features[f"fwd_{horizon}d_return"] = grouped["close"].shift(-horizon) / features["close"] - 1
+        features[f"fwd_{horizon}d_return"] = (
+            grouped["close"].shift(-horizon) / features["close"] - 1
+        )
 
     benchmark = features.loc[
         features["ticker"] == BENCHMARK_TICKER,
@@ -141,8 +147,10 @@ def bucketize(
 
 
 def sector_confirmation_labels(features: pd.DataFrame) -> pd.Series:
-    has_proxy = features["sector_close"].notna() if "sector_close" in features.columns else pd.Series(
-        False, index=features.index
+    has_proxy = (
+        features["sector_close"].notna()
+        if "sector_close" in features.columns
+        else pd.Series(False, index=features.index)
     )
     confirmed = features["sector_above_ma20"].eq(1) & features["sector_above_ma50"].eq(1)
     labels = np.select(
@@ -195,10 +203,18 @@ def build_strategy_replay_artifacts(features: pd.DataFrame) -> dict[str, pd.Data
         ["strategy_id", "strategy_name", "regime", "etf_subgroup"],
     ).sort_values(["regime", "etf_subgroup"])
 
-    pullback_signals = signals.loc[signals["strategy_id"] == "sector-confirmed-pullback-continuation"]
+    pullback_signals = signals.loc[
+        signals["strategy_id"] == "sector-confirmed-pullback-continuation"
+    ]
     pullback_band_summary = summarize_signals(
         pullback_signals,
-        ["strategy_id", "strategy_name", "sector_confirmation", "pullback_depth_band", "extension_band"],
+        [
+            "strategy_id",
+            "strategy_name",
+            "sector_confirmation",
+            "pullback_depth_band",
+            "extension_band",
+        ],
     ).sort_values(["sector_confirmation", "pullback_depth_band", "extension_band"])
     pullback_sector_summary = summarize_signals(
         pullback_signals,

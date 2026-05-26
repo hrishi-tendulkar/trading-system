@@ -47,6 +47,14 @@ def test_stock_detail_renders_deep_dive() -> None:
     assert "Observed Evidence" in response.text
 
 
+def test_strategy_detail_renders_strategy_surface() -> None:
+    response = _authenticated_client().get("/strategies/breakout-confirmation")
+    assert response.status_code == 200
+    assert "Strategy Deep Dive" in response.text
+    assert "Breakout Confirmation" in response.text
+    assert "Backtest summary" in response.text
+
+
 def test_missing_stock_returns_404() -> None:
     response = _authenticated_client().get("/stocks/notreal")
     assert response.status_code == 404

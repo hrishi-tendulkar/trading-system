@@ -1,0 +1,143 @@
+{% extends "_shell.html" %}
+{% block title %}{{ strategy.strategy_name }} | Trading System{% endblock %}
+{% block content %}
+  <section class="hero hero-tight">
+    <div class="card panel">
+      <div class="eyebrow">Strategy Deep Dive</div>
+      <div class="item-header">
+        <div>
+          <h1>{{ strategy.strategy_name }}</h1>
+          <p class="subtle">{{ strategy.page_summary }}</p>
+        </div>
+        <div class="strategy-badge-stack">
+          <span class="badge neutral">{{ strategy.trust_level }}</span>
+          <span class="badge focus">{{ strategy.promotion_status }}</span>
+        </div>
+      </div>
+      <div class="facts compact-facts">
+        <div class="fact">
+          <div class="label">As of</div>
+          <div class="value">{{ strategy.as_of_date or "N/A" }}</div>
+        </div>
+        <div class="fact">
+          <div class="label">Live matches</div>
+          <div class="value">{{ strategy.stats.live_matches }}</div>
+        </div>
+        <div class="fact">
+          <div class="label">Board-promoted</div>
+          <div class="value">{{ strategy.stats.board_promoted }}</div>
+        </div>
+        <div class="fact">
+          <div class="label">Suppressed</div>
+          <div class="value">{{ strategy.stats.suppressed }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card panel emphasis-panel">
+      <div class="eyebrow">Weekly Pulse</div>
+      <h2>How to read this strategy this week</h2>
+      <p class="subtle">{{ strategy.headline_note }}</p>
+      <div class="list plain-list">
+        <div class="item">Board-promoted rows are live actions the current mainline is willing to surface now.</div>
+        <div class="item">Strategy-only rows stay visible for watchlist context without getting upgraded into the main board.</div>
+        <div class="item">Suppressed rows keep the setup visible while making the risk block impossible to miss.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card panel">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Current Recommendations</div>
+        <h2>Live strategy outputs</h2>
+      </div>
+      <div class="subtle small">Sorted by board-promoted first, then strategy-only, then suppressed.</div>
+    </div>
+    <div class="list">
+      {% for row in strategy.current_rows %}
+        <article class="item strategy-row strategy-row-{{ row.live_state|lower|replace(' ', '-') }}">
+          <div class="item-header">
+            <div>
+              <strong>{{ row.ticker }} · {{ row.company }}</strong>
+              <div class="small subtle">{{ row.live_state }}</div>
+            </div>
+            <div class="strategy-badge-stack">
+              <span class="badge {% if row.live_state == 'Board-promoted' %}buy{% elif row.live_state == 'Suppressed' %}risk{% else %}wait{% endif %}">{{ row.current_action_label }}</span>
+              <span class="rank-pill">{{ row.setup_quality_band }} · {{ row.historical_evidence_tier }}</span>
+            </div>
+          </div>
+          <p class="subtle">{{ row.why_now }}</p>
+          <div class="micro-list">
+            <div><span class="label-inline">Entry</span>{{ row.entry_value }}</div>
+            <div><span class="label-inline">Invalidate</span>{{ row.invalidation_value }}</div>
+            <div><span class="label-inline">Catalyst</span>{{ row.next_catalyst }}</div>
+            <div><span class="label-inline">Confidence</span>{{ row.confidence }}</div>
+          </div>
+          <p class="small">{{ row.why_not_stronger }}</p>
+          {% if row.suppression_reason %}
+            <p class="small suppression-note"><span class="label-inline">Blocked by</span>{{ row.suppression_reason }}</p>
+          {% endif %}
+          <p class="small"><a href="/stocks/{{ row.ticker }}">Open stock detail</a></p>
+        </article>
+      {% else %}
+        <div class="item">No current rows are available for this strategy in the published dataset yet.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <section class="card panel">
+      <div class="eyebrow">Replay Evidence</div>
+      <h2>Backtest summary</h2>
+      {% if strategy.replay_summary %}
+        <div class="facts compact-facts strategy-stats">
+          <div class="fact"><div class="label">Sample size</div><div class="value">{{ strategy.replay_summary.sample_size }}</div></div>
+          <div class="fact"><div class="label">Avg 5D</div><div class="value">{{ "%.2f%%"|format(strategy.replay_summary.avg_5d * 100) }}</div></div>
+          <div class="fact"><div class="label">Avg 10D excess</div><div class="value">{{ "%.2f%%"|format(strategy.replay_summary.avg_excess_10d * 100) }}</div></div>
+          <div class="fact"><div class="label">10D win rate</div><div class="value">{{ "%.1f%%"|format(strategy.replay_summary.win_rate_10d * 100) }}</div></div>
+        </div>
+        <p class="subtle">This is the first trust layer for the strategy. Strategy pages should use replay to calibrate confidence, not to replace this week’s actual outputs.</p>
+      {% else %}
+        <p class="subtle">Replay summary not loaded yet.</p>
+      {% endif %}
+    </section>
+
+    <section class="card panel">
+      <div class="eyebrow">Visible Rule Spine</div>
+      <h2>What must be true</h2>
+      <div class="list plain-list">
+        {% for rule in strategy.rule_spine %}
+          <div class="item">{{ rule }}</div>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+
+  <section class="grid-2">
+    <section class="card panel">
+      <div class="eyebrow">Canonical Strategy Map</div>
+      <h2>How this fits into the system</h2>
+      <div class="list">
+        {% for page in strategy_pages %}
+          <div class="item">
+            <div class="item-header">
+              <strong><a href="/strategies/{{ page.basis_code }}">{{ page.display_name }}</a></strong>
+              <span class="badge neutral">{{ page.trust_level }}</span>
+            </div>
+            <div class="small subtle">{{ page.promotion_status }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="card panel">
+      <div class="eyebrow">Interpretation</div>
+      <h2>What the page is telling you</h2>
+      <div class="list plain-list">
+        <div class="item">Use this page to judge whether the strategy deserves attention this week, not just whether it sounds conceptually appealing.</div>
+        <div class="item">Backtest evidence tells you how much trust the sleeve has earned. Live row state tells you whether that trust currently converts into action.</div>
+        <div class="item">A canonical strategy can still stay off the main board if its current tested rule set is not strong enough.</div>
+      </div>
+    </section>
+  </section>
+{% endblock %}

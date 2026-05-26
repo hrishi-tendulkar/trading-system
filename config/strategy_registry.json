@@ -1,0 +1,80 @@
+{
+  "decision_bases": [
+    {
+      "basis_code": "breakout-confirmation",
+      "basis_type": "trade_setup",
+      "display_name": "Breakout Confirmation",
+      "status": "core",
+      "sleeve": "single_name",
+      "slug": "breakout-confirmation",
+      "trust_level": "Core",
+      "promotion_status": "Feeding main action board",
+      "board_enabled": true,
+      "primary_actions": ["BUY_NOW", "WAIT_CONFIRMATION", "DO_NOT_CHASE", "NO_ACTION"],
+      "page_summary": "Capture continuation in leadership names that earn a live entry through price confirmation.",
+      "rule_spine": [
+        "Triggered breakout entry only",
+        "Supportive regime preferred",
+        "Sector confirmation matters",
+        "Do not promote pre-breakout watch names as live buys"
+      ]
+    },
+    {
+      "basis_code": "sector-confirmed-pullback-continuation",
+      "basis_type": "trade_setup",
+      "display_name": "Sector-Confirmed Pullback Continuation",
+      "status": "core",
+      "sleeve": "single_name",
+      "slug": "sector-confirmed-pullback-continuation",
+      "trust_level": "Core but narrowed / trust-calibrated",
+      "promotion_status": "Board-eligible only through narrowed rules",
+      "board_enabled": true,
+      "primary_actions": ["BUY_PULLBACK", "NO_ACTION"],
+      "page_summary": "Capture continuation in strong stocks after a controlled reset, but only in narrower replay-supported sub-buckets.",
+      "rule_spine": [
+        "Prefer supportive regimes",
+        "Require explicit sector confirmation handling",
+        "Avoid deep 10-15% pullbacks",
+        "Use controlled extension bands rather than broad dip-buying"
+      ]
+    },
+    {
+      "basis_code": "etf-trend-rotation",
+      "basis_type": "trade_setup",
+      "display_name": "ETF Trend / Rotation",
+      "status": "research",
+      "sleeve": "etf",
+      "slug": "etf-trend-rotation",
+      "trust_level": "Refine before promotion",
+      "promotion_status": "Canonical, not currently feeding main action board",
+      "board_enabled": false,
+      "primary_actions": ["WAIT_CONFIRMATION", "NO_ACTION"],
+      "page_summary": "Express cleaner market or sector exposure when single-name timing is weaker, but the current tested entry rule has not earned promotion.",
+      "rule_spine": [
+        "Supportive regime required",
+        "ETF above 20DMA and 50DMA",
+        "Positive relative strength versus SPY",
+        "Ranked weekly rotation variant still needs to be designed and replayed"
+      ]
+    },
+    {
+      "basis_code": "selective-mean-reversion",
+      "basis_type": "trade_setup",
+      "display_name": "Selective Mean Reversion",
+      "status": "research",
+      "sleeve": "single_name",
+      "slug": "selective-mean-reversion",
+      "trust_level": "Research only",
+      "promotion_status": "Research only, excluded from main board",
+      "board_enabled": false,
+      "primary_actions": ["NO_ACTION"],
+      "page_summary": "Test whether narrow oversold rebound conditions add value outside continuation frameworks without pretending they deserve live trust yet.",
+      "rule_spine": [
+        "Use only in explicit sandbox conditions",
+        "Defensive or stress regimes matter most",
+        "Do not treat broad dip-buying as valid mean reversion",
+        "Keep off the main board until evidence becomes stable"
+      ]
+    }
+  ]
+}

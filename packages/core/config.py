@@ -33,7 +33,10 @@ class Settings(BaseSettings):
     weekly_run_enabled: bool = Field(default=True, alias="WEEKLY_RUN_ENABLED")
     ai_summary_max_symbols: int = Field(default=10, alias="AI_SUMMARY_MAX_SYMBOLS")
     login_rate_limit_attempts: int = Field(default=10, alias="LOGIN_RATE_LIMIT_ATTEMPTS")
-    login_rate_limit_window_seconds: int = Field(default=900, alias="LOGIN_RATE_LIMIT_WINDOW_SECONDS")
+    login_rate_limit_window_seconds: int = Field(
+        default=900,
+        alias="LOGIN_RATE_LIMIT_WINDOW_SECONDS",
+    )
     session_ttl_seconds: int = Field(default=604800, alias="SESSION_TTL_SECONDS")
     session_cookie_name: str = "trading_system_session"
 
