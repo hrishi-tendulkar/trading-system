@@ -17,6 +17,11 @@ Raw source captures, cleaned datasets, and derived features or recommendations s
 The persistence model should center on per-strategy candidate evaluation, first-class suppressors, and promoted board rows, rather than treating board rows as the primary recommendation source.
 **Why it matters:** This keeps the storage model aligned with the strategy-lab architecture, preserves lineage, and prevents the database from collapsing back into a monolithic recommendation table.
 
+## [2026-05-26] The real implementation unit is the strategy engine, not a generic ranker
+**Decision** · Source: `docs/engineering/architecture/tech-architecture-2026-05-26-strategy-engine-mainline.md`
+The hosted weekly engine should be built as `feature snapshots -> strategy candidates -> suppressors -> board promotion -> page projections`, with only `Breakout Confirmation` and narrowed `Sector-Confirmed Pullback Continuation` feeding the current mainline board.
+**Why it matters:** This is the implementation-ready architecture that connects finance doctrine, product surfaces, and persistence without silently falling back to a monolithic recommendation path.
+
 ## Patterns
 
 ## [2026-05-22] Modular provider boundaries matter early
