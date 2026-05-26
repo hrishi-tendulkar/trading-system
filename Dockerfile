@@ -7,6 +7,7 @@ WORKDIR /app
 
 COPY pyproject.toml ./
 COPY apps ./apps
+COPY config ./config
 COPY packages ./packages
 COPY services ./services
 COPY scripts ./scripts
