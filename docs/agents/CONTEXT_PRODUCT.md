@@ -17,6 +17,16 @@ The product is centered on a weekly review workflow, with daily monitoring actin
 The weekly overview should lead with market posture, then fresh cash deployment, then the stock decision board, with glossary/help content available on demand rather than occupying primary screen space.
 **Why it matters:** This keeps the product aligned to the user’s actual decision sequence instead of making them parse meta-explanations before the actions.
 
+## [2026-05-25] Strategy pages are active weekly decision surfaces
+**Decision** · Source: `docs/product/requirements/prd-2026-05-25-strategy-detail-page.md`
+Strategy detail pages should lead with this week's live output, promotion state, and trust calibration before replay evidence or canonical rules.
+**Why it matters:** This keeps strategy pages tied to the weekly operating loop instead of drifting into passive documentation.
+
+## [2026-05-25] The overview board should currently be fed by only two promoted sleeves
+**Decision** · Source: `docs/research/market/sp100-canonical-strategy-replay-2026-05-25.md`
+The current action board should be sourced only from `Breakout Confirmation` and the narrowed `Sector-Confirmed Pullback Continuation` sleeve, while `ETF Trend / Rotation` and `Selective Mean Reversion` remain off-board for now.
+**Why it matters:** This preserves sparse-board trust and keeps the product from presenting exploratory sleeves as if they deserve fresh capital today.
+
 ## [2026-05-22] The product stays single-user in v1
 **Decision** · Source: `docs/product/weekly-equity-intelligence-prd.md`
 v1 is for one technically capable investor, not a collaborative or multi-account platform.

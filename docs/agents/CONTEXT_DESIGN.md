@@ -7,6 +7,11 @@
 The most important interface is the weekly review flow, with daily monitoring as a lightweight supporting layer.
 **Why it matters:** Design effort should emphasize scanability, action grouping, and thesis continuity in the weekly view.
 
+## [2026-05-25] Strategy pages must separate trust, promotion, and live state
+**Decision** · Source: `docs/design/ux/ux-2026-05-25-strategy-detail-page-notes.md`
+Strategy detail pages must visually distinguish strategy trust level, workflow promotion status, and row-level live candidate state rather than collapsing them into one confidence signal.
+**Why it matters:** Without this separation, the UI overstates confidence and blurs the difference between canonical, promoted, suppressed, and research-only outputs.
+
 ## Patterns
 
 ## [2026-05-22] The UI must separate evidence layers visually

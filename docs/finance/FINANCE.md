@@ -49,6 +49,7 @@ Do not call every named row a `strategy`. Some rows represent trade setups, othe
 
 ## Canonical References
 
+- `docs/strategy/canonical-trading-strategies.md`
 - `docs/strategy/weekly-equity-intelligence-strategy-blueprint.md`
 - `docs/finance/frameworks/weekly-equity-intelligence-analysis-framework.md`
 - `docs/finance/frameworks/daily-data-short-term-strategy-upgrade.md`

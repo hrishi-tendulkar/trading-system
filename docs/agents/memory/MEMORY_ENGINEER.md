@@ -8,3 +8,4 @@
 - [2026-05-24] Hosted jobs must not publish partially built outputs over the current live weekly review or daily digest; explicit run states and publish gates are implementation requirements, not optional polish.
 - [2026-05-24] SQL migrations should be treated as the schema source of truth; Python ORM metadata must be checked against the migrated database to catch drift before it reaches production.
 - [2026-05-24] Even before database wiring lands, UI work should render from one normalized recommendation contract and page-specific projection functions rather than letting templates parse source files or invent their own labels.
+- [2026-05-25] Strategy replay needs to preserve unavailable context states explicitly; collapsing `missing sector ETF proxy` into `unconfirmed sector` makes subgroup backtests look cleaner than the data actually supports.

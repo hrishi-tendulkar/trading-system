@@ -69,6 +69,14 @@ The current preferred strategy logic in the primary pipeline.
 
 This is the closest thing to the “current default engine,” even if it is not yet production-grade.
 
+### Canonical strategy set
+
+The official list of active and research trading strategies the system is allowed to reason from.
+
+Current reference:
+
+- `docs/strategy/canonical-trading-strategies.md`
+
 ### Experiment variant
 
 A deliberately testable alternative rule set used in the replay engine.
@@ -126,6 +134,10 @@ A continuation candidate where the thesis is attractive, but the preferred actio
 
 A candidate with a potentially valid continuation path, but one that still needs proof through price behavior.
 
+### Do not chase
+
+A setup the system still wants the user aware of, but not at the current price because extension or freshness is no longer good enough for a disciplined entry.
+
 ### Hold
 
 A name that still has enough structure to keep on the board, but does not justify a fresh entry.
@@ -133,6 +145,10 @@ A name that still has enough structure to keep on the board, but does not justif
 ### No action
 
 A valid output meaning the setup does not currently deserve capital.
+
+### Suppressed
+
+A name that might otherwise qualify, but is blocked from fresh-cash promotion by a risk rule such as near-term event exposure.
 
 ## Exposure terminology
 

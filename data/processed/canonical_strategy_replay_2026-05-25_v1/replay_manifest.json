@@ -1,0 +1,49 @@
+{
+  "version_label": "2026-05-25_v1",
+  "generated_at_utc": "2026-05-26T00:40:40.785258+00:00",
+  "universe": "S&P 100 + ETFs",
+  "source_watchlist": "data/reference/sp100_watchlist.csv",
+  "source_prices": "data/raw/sp100_5y/mlp_prices.csv",
+  "signal_rules": {
+    "etf_trend_rotation": {
+      "instrument_scope": "SPY, QQQ, XLK, XLF, XLV, XLE, XLI, XLY",
+      "trigger": "first day a trend-qualified ETF becomes newly eligible",
+      "filters": [
+        "close > 20DMA > 50DMA",
+        "20DMA slope positive",
+        "RS 20D > 1%",
+        "RS 60D > 0"
+      ]
+    },
+    "sector_confirmed_pullback_continuation": {
+      "instrument_scope": "single names only",
+      "trigger": "first day a controlled pullback becomes newly eligible",
+      "filters": [
+        "close > 50DMA",
+        "20DMA > 50DMA",
+        "RS 20D > 2%",
+        "pullback from prior 20D high between 2% and 15%",
+        "extension vs 20DMA between -3% and +6%"
+      ]
+    },
+    "breakout_confirmation": {
+      "instrument_scope": "single names only",
+      "trigger": "first confirmed close above the prior 20-day high",
+      "filters": [
+        "close > 20DMA > 50DMA",
+        "RS 20D > 0",
+        "RS 60D > 0"
+      ]
+    },
+    "selective_mean_reversion": {
+      "instrument_scope": "single names only",
+      "trigger": "first oversold rebound day after a sharp 5D setback",
+      "filters": [
+        "current close > prior close",
+        "5D return <= -6%",
+        "extension vs 20DMA between -10% and -2%",
+        "close >= 97% of 50DMA"
+      ]
+    }
+  }
+}

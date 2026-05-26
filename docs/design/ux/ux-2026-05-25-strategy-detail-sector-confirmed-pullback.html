@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strategy Deep Dive - Sector-Confirmed Pullback Continuation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --bg: #f4efe6;
+    --paper: rgba(255, 250, 242, 0.94);
+    --ink: #17261d;
+    --muted: #5f6e65;
+    --line: #d8cfc1;
+    --green: #1d6e4e;
+    --green-soft: #dff1e8;
+    --blue: #285d87;
+    --blue-soft: #e2eef8;
+    --amber: #a7641d;
+    --amber-soft: #fff0dd;
+    --red: #9d3d31;
+    --red-soft: #f8e4df;
+    --shadow: 0 18px 44px rgba(23, 38, 29, 0.09);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 18px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(167,100,29,0.12), transparent 24%),
+      radial-gradient(circle at top right, rgba(29,110,78,0.09), transparent 24%),
+      linear-gradient(180deg, #f5ecde 0%, var(--bg) 46%, #eee5d9 100%);
+  }
+  a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    line-height: 1.06;
+  }
+  h1 { font-size: 42px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 20px; }
+  .page {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 28px 22px 56px;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid rgba(216, 207, 193, 0.86);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(6px);
+  }
+  .panel { padding: 22px 24px; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .copy, .copy p, .copy li {
+    font-size: 15px;
+    line-height: 1.64;
+    color: #314339;
+  }
+  .copy p { margin: 0 0 10px; }
+  .topbar, .header-top, .section-head, .pill-row, .candidate-tags {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .topbar {
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .stack { display: grid; gap: 18px; }
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 18px;
+  }
+  .hero-main { padding: 28px; }
+  .hero-aside {
+    padding: 28px;
+    background: linear-gradient(180deg, #fff4e7, #f3e6d5);
+  }
+  .chips, .metrics, .candidate-grid, .split-2, .timeline, .candidate-body, .status-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .chips {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 18px;
+  }
+  .chip, .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .chip {
+    border: 1px solid #e1d7c8;
+    background: #f1e9db;
+    color: #415046;
+  }
+  .badge-core-narrow { background: var(--amber-soft); color: var(--amber); }
+  .badge-promo { background: #fffaf2; color: #85511e; border: 1px solid #e3cfae; }
+  .hero-summary {
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 1.58;
+    color: #314339;
+  }
+  .status-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-top: 18px;
+  }
+  .status-card, .candidate, .memo, .regime-card, .rule-card, .timeline-item, .lineage-card, .warning-band {
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.70);
+  }
+  .status-card, .memo, .regime-card, .rule-card, .timeline-item, .lineage-card, .warning-band {
+    padding: 14px 15px;
+  }
+  .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 7px;
+  }
+  .value {
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .value.small { font-size: 16px; }
+  .warning-band {
+    background: rgba(255,240,221,0.78);
+    border-color: #ecd2a8;
+    color: #6f461b;
+    margin-top: 16px;
+    font-weight: 700;
+  }
+  .candidate-grid { margin-top: 14px; }
+  .candidate {
+    padding: 16px;
+    border-left: 8px solid transparent;
+  }
+  .board-promoted { border-left-color: var(--green); }
+  .strategy-only { border-left-color: var(--blue); }
+  .suppressed { border-left-color: var(--red); }
+  .candidate-header {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .ticker {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 28px;
+  }
+  .ticker-meta {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .candidate-body {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 14px;
+  }
+  .candidate-cell {
+    border-radius: 16px;
+    background: rgba(247,242,234,0.82);
+    border: 1px solid #e8dccb;
+    padding: 12px;
+  }
+  .cell-value {
+    color: #223228;
+    font-size: 14px;
+    line-height: 1.54;
+    font-weight: 600;
+  }
+  .pill-green { background: var(--green-soft); color: var(--green); }
+  .pill-blue { background: var(--blue-soft); color: var(--blue); }
+  .pill-red { background: var(--red-soft); color: var(--red); }
+  .pill-neutral { background: #f1e9db; color: #4f5e54; }
+  .split-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rule-grid, .lineage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .rule-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff1db;
+    color: var(--amber);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr 180px;
+    gap: 12px;
+    align-items: start;
+  }
+  .impact {
+    display: inline-flex;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: #fff1db;
+    color: #865621;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  @media (max-width: 1180px) {
+    .hero, .split-2, .candidate-header, .candidate-body, .rule-grid, .lineage-grid, .timeline-item {
+      grid-template-columns: 1fr;
+    }
+    .chips, .status-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 760px) {
+    .page { padding: 18px 14px 40px; }
+    .chips, .status-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 34px; }
+  }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div>
+        <a href="ux-2026-05-22-weekly-review-mock.html">Weekly Overview</a>
+        <span> / </span>
+        <a href="ux-2026-05-25-strategy-detail-breakout-confirmation.html">Breakout Confirmation</a>
+        <span> / </span>
+        <strong>Sector-Confirmed Pullback Continuation</strong>
+      </div>
+      <div>
+        <a href="ux-2026-05-22-stock-detail-tsla.html">Open Stock Detail: META</a>
+      </div>
+    </div>
+
+    <div class="stack">
+      <section class="hero">
+        <div class="card hero-main">
+          <div class="header-top">
+            <div>
+              <div class="eyebrow">Strategy Deep Dive</div>
+              <h1>Sector-Confirmed Pullback Continuation</h1>
+            </div>
+            <div class="pill-row">
+              <span class="badge badge-core-narrow">Trust level: Core but narrowed</span>
+              <span class="badge badge-promo">Promotion: Board-eligible only through narrowed rules</span>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip">Decision basis: Trade setup</span>
+            <span class="chip">Version: SCPC v2.1</span>
+            <span class="chip">Last updated: 2026-05-25</span>
+            <span class="chip">Universe: S&amp;P 100 + ETFs</span>
+          </div>
+          <p class="hero-summary">This sleeve stays in the live mix, but its trust comes from a narrower set of supportive, confirmed continuation resets rather than the broad aggregate pullback label.</p>
+
+          <div class="status-grid">
+            <div class="status-card">
+              <div class="label">Live matches</div>
+              <div class="value">6</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Board promoted</div>
+              <div class="value">1</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Strategy-only</div>
+              <div class="value">3</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Suppressed</div>
+              <div class="value">2</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Dominant action</div>
+              <div class="value small">Buy on pullback</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card hero-aside">
+          <div class="eyebrow">This Week's Read</div>
+          <h3>Useful, but only through the tightened variant</h3>
+          <div class="copy" style="margin-top:14px;">
+            <p>Use this page when you need disciplined continuation candidates without paying up for already-extended breakouts. The page should actively teach patience rather than quietly diluting conviction.</p>
+          </div>
+          <div class="warning-band">Aggregate replay is roughly flat to slightly negative versus `SPY` at `10D` and `15D`. The trusted edge currently lives inside supportive, sector-confirmed, non-deep pullback bands.</div>
+        </div>
+      </section>
+
+      <section class="card panel">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Current Recommendations</div>
+            <h2>Live names with explicit candidate state</h2>
+          </div>
+          <div class="copy">Rows are intentionally separated into board-ready, strategy-only, and suppressed outcomes.</div>
+        </div>
+
+        <div class="candidate-grid">
+          <article class="candidate board-promoted">
+            <div class="candidate-header">
+              <div>
+                <div class="ticker">META</div>
+                <div class="ticker-meta">Primary source on overview • supportive regime, confirmed sector, controlled reset</div>
+              </div>
+              <div class="candidate-tags">
+                <span class="badge pill-neutral">Action: Buy on pullback</span>
+                <span class="badge pill-green">Board-promoted</span>
+              </div>
+              <div class="candidate-tags">
+                <span class="badge pill-neutral">Setup quality: A</span>
+                <span class="badge pill-neutral">Evidence: Moderate+</span>
+              </div>
+            </div>
+            <div class="candidate-body">
+              <div class="candidate-cell">
+                <div class="label">Why now</div>
+                <div class="cell-value">Pullback depth sits in a favored band and sector confirmation remains supportive.</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Why not stronger</div>
+                <div class="cell-value">Entry is still patience-dependent; a breakout-style immediate chase would violate the edge.</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Lineage</div>
+                <div class="cell-value">Primary: Pullback Continuation<br>Supporting: None</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Suppression</div>
+                <div class="cell-value">None. This is a clean narrowed-rule case.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="candidate strategy-only">
+            <div class="candidate-header">
+              <div>
+                <div class="ticker">AMZN</div>
+                <div class="ticker-meta">Valid continuation candidate, but below current board cut</div>
+              </div>
+              <div class="candidate-tags">
+                <span class="badge pill-neutral">Action: Wait for confirmation</span>
+                <span class="badge pill-blue">Strategy-only</span>
+              </div>
+              <div class="candidate-tags">
+                <span class="badge pill-neutral">Setup quality: B+</span>
+                <span class="badge pill-neutral">Evidence: Moderate</span>
+              </div>
+            </div>
+            <div class="candidate-body">
+              <div class="candidate-cell">
+                <div class="label">Why now</div>
+                <div class="cell-value">Trend structure is intact and reset looks controlled enough to remain in active review.</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Why not stronger</div>
+                <div class="cell-value">Sector backdrop is supportive but less forceful than the top promoted case.</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Lineage</div>
+                <div class="cell-value">Primary: Pullback Continuation<br>Board status: Not promoted</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Suppression</div>
+                <div class="cell-value">None. Selectivity, not disqualification.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="candidate suppressed">
+            <div class="candidate-header">
+              <div>
+                <div class="ticker">PANW</div>
+                <div class="ticker-meta">Interesting continuation reset blocked from live action</div>
+              </div>
+              <div class="candidate-tags">
+                <span class="badge pill-neutral">Action: No action</span>
+                <span class="badge pill-red">Suppressed</span>
+              </div>
+              <div class="candidate-tags">
+                <span class="badge pill-neutral">Setup quality: B+</span>
+                <span class="badge pill-neutral">Evidence: Moderate</span>
+              </div>
+            </div>
+            <div class="candidate-body">
+              <div class="candidate-cell">
+                <div class="label">Why now</div>
+                <div class="cell-value">The chart would stay on the strategy page because the setup family still fits.</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Why not stronger</div>
+                <div class="cell-value">Upcoming event risk keeps the fresh-cash board from pretending this is clean.</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Lineage</div>
+                <div class="cell-value">Primary: Pullback Continuation<br>Board status: Ineligible</div>
+              </div>
+              <div class="candidate-cell">
+                <div class="label">Suppression reason</div>
+                <div class="cell-value">Event freeze overrides an otherwise plausible continuation reset.</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="split-2">
+        <div class="card panel">
+          <div class="eyebrow">Historical Evidence</div>
+          <h2>Narrow the trust, do not overstate the aggregate</h2>
+          <div class="metrics" style="grid-template-columns:repeat(4, minmax(0, 1fr)); margin-top:14px;">
+            <div class="status-card">
+              <div class="label">Sample size</div>
+              <div class="value">3,664</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Avg 10D excess vs SPY</div>
+              <div class="value">-0.04%</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Avg 15D excess vs SPY</div>
+              <div class="value">-0.01%</div>
+            </div>
+            <div class="status-card">
+              <div class="label">Verdict</div>
+              <div class="value small">Promote cautiously via narrowed rules</div>
+            </div>
+          </div>
+          <div class="warning-band">What earns trust is not the broad average. The usable edge appears inside supportive, confirmed, non-deep pullback buckets with acceptable extension geometry.</div>
+        </div>
+
+        <div class="card panel">
+          <div class="eyebrow">When It Works</div>
+          <h2>Best and worst contexts</h2>
+          <div class="regime-card" style="background:rgba(223,241,232,0.70); margin-top:14px;">
+            <div class="copy">
+              <p><strong>Best live template:</strong> `Risk-on + Confirmed`, especially `3-6%` pullback depth with `2-4%` extension or `0-3%` pullback depth with `4-6%` extension.</p>
+            </div>
+          </div>
+          <div class="regime-card" style="background:rgba(248,228,223,0.70); margin-top:12px;">
+            <div class="copy">
+              <p><strong>Degrades in:</strong> defensive regimes, unconfirmed sectors, and deep `10-15%` pullbacks that blur into early breakdown risk.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel">
+        <div class="eyebrow">Canonical Rules</div>
+        <h2>Show the narrowed spine directly on-page</h2>
+        <div class="rule-grid">
+          <div class="rule-card">
+            <div class="rule-step">1</div>
+            <h4>Entry conditions</h4>
+            <div class="copy"><p>Stock remains above the `20DMA` and `50DMA`, with controlled pullback depth rather than deep damage.</p></div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-step">2</div>
+            <h4>Context requirements</h4>
+            <div class="copy"><p>Relative strength versus `SPY` and sector ETF stays positive, and sector state should be explicitly `Confirmed` where possible.</p></div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-step">3</div>
+            <h4>Board eligibility</h4>
+            <div class="copy"><p>Only narrowed supportive cases can feed the main board. Broad pullback interest belongs on the strategy page, not automatically on overview.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="split-2">
+        <div class="card panel">
+          <div class="eyebrow">Recent Changes</div>
+          <h2>Changelog</h2>
+          <div class="timeline" style="margin-top:14px;">
+            <div class="timeline-item">
+              <div><strong>2026-05-25</strong><br><span class="copy">v2.0 -&gt; v2.1</span></div>
+              <div class="copy">Narrowed live trust to supportive confirmed sub-buckets and made board eligibility conditional on that tighter interpretation.</div>
+              <div><span class="impact">Reduced board eligibility</span></div>
+            </div>
+            <div class="timeline-item">
+              <div><strong>2026-05-25</strong><br><span class="copy">v1.x -&gt; v2.0</span></div>
+              <div class="copy">Moved away from treating the broad pullback label as a default primary single-name engine.</div>
+              <div><span class="impact">More selective</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card panel">
+          <div class="eyebrow">Lineage and Connections</div>
+          <h2>Navigation hooks</h2>
+          <div class="lineage-grid">
+            <div class="lineage-card">
+              <div class="label">Overview linkage</div>
+              <div class="copy"><p>META can appear as a primary source board row when the narrowed conditions are actually live.</p></div>
+            </div>
+            <div class="lineage-card">
+              <div class="label">Stock detail linkage</div>
+              <div class="copy"><p>Every candidate row should jump into stock detail with the strategy family and current action already understood.</p></div>
+            </div>
+            <div class="lineage-card">
+              <div class="label">Peer strategy linkage</div>
+              <div class="copy"><p>Link to <a href="ux-2026-05-25-strategy-detail-breakout-confirmation.html">Breakout Confirmation</a> when the same name might become a breakout watch later.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

@@ -12,6 +12,11 @@ The core system should rely on daily refreshes, weekly synthesis, and simple sch
 Raw source captures, cleaned datasets, and derived features or recommendations should be stored separately.
 **Why it matters:** This is necessary for traceability, reproducibility, and later debugging of score changes.
 
+## [2026-05-25] Strategy persistence should be candidate-first, board-second
+**Decision** · Source: `docs/engineering/requirements/tdd-2026-05-25-strategy-decision-basis-schema.md`
+The persistence model should center on per-strategy candidate evaluation, first-class suppressors, and promoted board rows, rather than treating board rows as the primary recommendation source.
+**Why it matters:** This keeps the storage model aligned with the strategy-lab architecture, preserves lineage, and prevents the database from collapsing back into a monolithic recommendation table.
+
 ## Patterns
 
 ## [2026-05-22] Modular provider boundaries matter early

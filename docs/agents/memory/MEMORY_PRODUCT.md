@@ -2,6 +2,8 @@
 
 ## Durable Notes
 
+- [2026-05-25] Strategy detail pages should behave as weekly operating surfaces, not timeless docs: current outputs and board implications must appear above historical evidence and canonical rules.
+
 - [2026-05-22] The weekly review loop is the product center of gravity; avoid product ideas that quietly assume intraday supervision.
 - [2026-05-22] The data foundation for v1 should prioritize the stock engine first: security master, daily prices, benchmark/sector context, earnings data, analyst revision history, fundamentals, filings, and internal recommendation history are `P0`; transcripts and options chains improve the product but should not block the first credible weekly workflow.
 - [2026-05-22] The master product strategy should anchor the system around a weekly decision cockpit, with options overlays sequenced after the stock-first engine and historical traceability treated as a core product requirement.

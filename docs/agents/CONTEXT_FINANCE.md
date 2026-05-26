@@ -22,6 +22,16 @@ The system should not call every named row a strategy. It must distinguish trade
 Given the current data reality of daily OHLCV plus limited event history, the short-term engine should prioritize regime filters, relative-strength quality, entry discipline, and setup-level expectancy before richer event or revision logic.
 **Why it matters:** This keeps the system aligned with signals we can actually store, explain, and validate today.
 
+## [2026-05-25] Promote only the sleeves the replay actually earned
+**Decision** · Source: `docs/research/market/sp100-canonical-strategy-replay-2026-05-25.md`
+The current live mainline should be narrower than the four-strategy canonical architecture: `Breakout Confirmation` is promoted now, `Sector-Confirmed Pullback Continuation` is promoted only as a narrowed trust-calibrated sleeve, `ETF Trend / Rotation` remains canonical but not mainline-promoted, and `Selective Mean Reversion` remains research only.
+**Why it matters:** This keeps the finance doctrine honest about what has actually been validated and prevents product surfaces from implying equal trust across unequal sleeves.
+
+## [2026-05-25] The weekly board should only consume promoted sleeves
+**Decision** · Source: `docs/strategy/weekly-board-assembly-spec.md`
+The weekly board is a promotion layer after per-strategy evaluation; canonical status alone does not make a sleeve board-eligible.
+**Why it matters:** This preserves strategy separation, sparse-board discipline, and source-strategy lineage while avoiding quiet fallback to a blended ranking model.
+
 ## Patterns
 
 ## [2026-05-22] Event reaction matters more than static facts alone
