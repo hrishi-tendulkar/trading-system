@@ -16,7 +16,16 @@ def _authenticated_client() -> TestClient:
 def test_weekly_requires_login() -> None:
     response = TestClient(app).get("/weekly", follow_redirects=False)
     assert response.status_code == 303
-    assert response.headers["location"] == "/login"
+    assert response.headers["location"] == "/login?next=/weekly"
+
+
+def test_strategy_detail_redirects_to_login_with_next_target() -> None:
+    response = TestClient(app).get(
+        "/strategies/breakout-confirmation",
+        follow_redirects=False,
+    )
+    assert response.status_code == 303
+    assert response.headers["location"] == "/login?next=/strategies/breakout-confirmation"
 
 
 def test_weekly_renders_plan() -> None:
@@ -53,6 +62,13 @@ def test_strategy_detail_renders_strategy_surface() -> None:
     assert "Strategy Deep Dive" in response.text
     assert "Breakout Confirmation" in response.text
     assert "Backtest summary" in response.text
+
+
+def test_login_page_preserves_target_url() -> None:
+    response = TestClient(app).get("/login?next=/strategies/breakout-confirmation")
+    assert response.status_code == 200
+    assert 'name="target_url"' in response.text
+    assert 'value="/strategies/breakout-confirmation"' in response.text
 
 
 def test_missing_stock_returns_404() -> None:

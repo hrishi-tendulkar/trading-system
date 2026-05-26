@@ -7,6 +7,7 @@
       <h1>Trading System</h1>
       <p class="subtle">This is a private weekly decision cockpit. Enter the shared site password to continue.</p>
       <form method="post" action="/login">
+        <input type="hidden" name="target_url" value="{{ target_url or '/weekly' }}" />
         <div class="field">
           <label for="password">Shared Password</label>
           <input id="password" name="password" type="password" placeholder="Enter password" required />

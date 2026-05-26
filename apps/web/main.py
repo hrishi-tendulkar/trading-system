@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import FastAPI, Form, HTTPException, Request, status
+from fastapi import FastAPI, Form, HTTPException, Query, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -30,13 +30,27 @@ app = FastAPI(title="Trading System", version="0.1.0")
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
 
-def _redirect_to_login() -> RedirectResponse:
-    return RedirectResponse(url="/login", status_code=status.HTTP_303_SEE_OTHER)
+def _safe_next_path(next_path: str | None) -> str:
+    if not next_path or not next_path.startswith("/"):
+        return "/weekly"
+    if next_path.startswith("//"):
+        return "/weekly"
+    return next_path
+
+
+def _redirect_to_login(request: Request) -> RedirectResponse:
+    next_path = request.url.path
+    if request.url.query:
+        next_path = f"{next_path}?{request.url.query}"
+    return RedirectResponse(
+        url=f"/login?next={next_path}",
+        status_code=status.HTTP_303_SEE_OTHER,
+    )
 
 
 def _guard(request: Request) -> RedirectResponse | None:
     if not is_authenticated(request, settings):
-        return _redirect_to_login()
+        return _redirect_to_login(request)
     return None
 
 
@@ -54,26 +68,39 @@ def root(request: Request) -> Response:
 
 
 @app.get("/login", response_class=HTMLResponse, response_model=None)
-def login_page(request: Request) -> Response:
+def login_page(request: Request, next: str = Query("/weekly")) -> Response:
+    target_url = _safe_next_path(next)
     if is_authenticated(request, settings):
         return templates.TemplateResponse(
             request,
             "redirect.html",
-            {"target_url": "/weekly"},
+            {"target_url": target_url},
         )
-    return templates.TemplateResponse(request, "login.html", {"error": None})
+    return templates.TemplateResponse(
+        request,
+        "login.html",
+        {"error": None, "target_url": target_url},
+    )
 
 
 @app.post("/login", response_class=HTMLResponse, response_model=None)
-def login_submit(request: Request, password: str = Form(...)) -> Response:
+def login_submit(
+    request: Request,
+    password: str = Form(...),
+    target_url: str = Form("/weekly"),
+) -> Response:
+    safe_target_url = _safe_next_path(target_url)
     if not verify_password(password, settings.app_shared_password_hash):
         return templates.TemplateResponse(
             request,
             "login.html",
-            {"error": "Password did not match. Double-check and try again."},
+            {
+                "error": "Password did not match. Double-check and try again.",
+                "target_url": safe_target_url,
+            },
             status_code=status.HTTP_401_UNAUTHORIZED,
         )
-    response = RedirectResponse(url="/weekly", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse(url=safe_target_url, status_code=status.HTTP_303_SEE_OTHER)
     response.set_cookie(
         key=settings.session_cookie_name,
         value=create_session_cookie_value(settings),
