@@ -2,6 +2,11 @@
 
 This folder records the intended Railway service topology for Trading System.
 
+CLI troubleshooting:
+
+- Prefer `./scripts/railway_safe.sh <command>` over raw `railway <command>` in this repo.
+- See `docs/operations/railway-cli-troubleshooting.md` for the stale-`RAILWAY_TOKEN` and expired-OAuth decision tree.
+
 Recommended services:
 
 - `trading-system-web`

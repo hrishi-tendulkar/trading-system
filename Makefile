@@ -1,4 +1,4 @@
-.PHONY: install run-web daily weekly test lint compile
+.PHONY: install run-web daily weekly test lint compile railway-status
 
 install:
 	python3 -m pip install --upgrade pip
@@ -21,3 +21,6 @@ lint:
 
 compile:
 	python3 -m compileall apps packages services scripts
+
+railway-status:
+	./scripts/railway_safe.sh status

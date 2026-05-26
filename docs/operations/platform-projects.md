@@ -37,5 +37,6 @@ Record the platform resources created for the Trading System workspace so future
 
 - The current shell environment contains a stale `RAILWAY_TOKEN` that causes Railway CLI auth failures.
 - Railway CLI access works when commands are run with `env -u RAILWAY_TOKEN ...`, which uses the valid local Railway session instead.
+- Use [`docs/operations/railway-cli-troubleshooting.md`](./railway-cli-troubleshooting.md) for the full decision tree. The short version is: try `./scripts/railway_safe.sh <command>` first, and only fall back to `railway login` if the safe path still fails with `invalid_grant`.
 - The Supabase project was linked locally, which created `supabase/.temp/` metadata. That path is ignored in git because it is machine-local state.
 - The database password used at project creation time is not stored in this repository.
