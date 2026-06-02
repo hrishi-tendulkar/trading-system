@@ -44,6 +44,12 @@
           </div>
           <h3 style="margin-top: 10px;">{{ stock.ticker }} · {{ stock.company }}</h3>
           <p class="subtle">{{ stock.reason }}</p>
+          {% if stock.strategy_code %}
+            <p class="small">
+              Strategy:
+              <a href="/strategies/{{ stock.strategy_code }}">{{ stock.strategy_name }}</a>
+            </p>
+          {% endif %}
           <p class="small">Preferred expression: {{ stock.expression }}</p>
           <p class="small"><a href="/stocks/{{ stock.ticker }}">Open deep dive</a></p>
         </article>
@@ -71,6 +77,12 @@
                   <span class="badge {{ item.badge_class }}">{{ item.action }}</span>
                 </div>
                 <p class="subtle">{{ item.why_now }}</p>
+                {% if item.strategy_code %}
+                  <p class="small">
+                    Strategy:
+                    <a href="/strategies/{{ item.strategy_code }}">{{ item.strategy_name }}</a>
+                  </p>
+                {% endif %}
                 <div class="micro-list">
                   <div><span class="label-inline">Entry</span>{{ item.entry }}</div>
                   <div><span class="label-inline">Invalidate</span>{{ item.invalidation }}</div>
@@ -120,7 +132,14 @@
         {% for item in review.deep_dives %}
           <article class="item">
             <strong>{{ item.ticker }} · {{ item.company }}</strong>
-            <div class="small subtle">{{ item.reason }}</div>
+            {% if item.strategy_code %}
+              <div class="small subtle">
+                Strategy:
+                <a href="/strategies/{{ item.strategy_code }}">{{ item.strategy_name }}</a>
+              </div>
+            {% else %}
+              <div class="small subtle">{{ item.reason }}</div>
+            {% endif %}
             <p>{{ item.note }}</p>
             <p class="small"><a href="/stocks/{{ item.ticker }}">Open deep dive</a></p>
           </article>

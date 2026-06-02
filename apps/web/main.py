@@ -14,7 +14,11 @@ from packages.core.auth import (
     verify_password,
 )
 from packages.core.config import get_settings
-from packages.core.strategy_views import get_strategy_page_view, list_strategy_pages
+from packages.core.strategy_views import (
+    get_strategy_index_cards,
+    get_strategy_page_view,
+    list_strategy_pages,
+)
 from packages.core.ui_data import (
     get_daily_digest,
     get_stock_detail,
@@ -175,6 +179,18 @@ def strategy_detail(request: Request, basis_code: str) -> Response:
         "active_page": "strategies",
     }
     return templates.TemplateResponse(request, "strategy_detail.html", context)
+
+
+@app.get("/strategies", response_class=HTMLResponse, response_model=None)
+def strategy_index(request: Request) -> Response:
+    guard = _guard(request)
+    if guard:
+        return guard
+    context = {
+        "cards": [card.model_dump() for card in get_strategy_index_cards()],
+        "active_page": "strategies",
+    }
+    return templates.TemplateResponse(request, "strategy_index.html", context)
 
 
 @app.get("/admin", response_class=HTMLResponse, response_model=None)

@@ -33,6 +33,15 @@ def test_weekly_renders_plan() -> None:
     assert response.status_code == 200
     assert "This Week&#39;s Plan" in response.text
     assert "Top actions this week" in response.text
+    assert "Strategy:" in response.text
+
+
+def test_strategy_index_renders_strategy_library() -> None:
+    response = _authenticated_client().get("/strategies")
+    assert response.status_code == 200
+    assert "How the engine makes decisions" in response.text
+    assert "Breakout Confirmation" in response.text
+    assert "Sector-Confirmed Pullback Continuation" in response.text
 
 
 def test_daily_renders_verdict() -> None:
@@ -61,7 +70,8 @@ def test_strategy_detail_renders_strategy_surface() -> None:
     assert response.status_code == 200
     assert "Strategy Deep Dive" in response.text
     assert "Breakout Confirmation" in response.text
-    assert "Backtest summary" in response.text
+    assert "Backtest Verdict" in response.text
+    assert "What the strategy is finding right now" in response.text
 
 
 def test_login_page_preserves_target_url() -> None:

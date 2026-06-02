@@ -296,6 +296,21 @@ h3 { font-size: 18px; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.strategy-verdict {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(29, 110, 78, 0.08);
+  border: 1px solid rgba(29, 110, 78, 0.14);
+}
+
+.strategy-metric-value {
+  margin: 8px 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
 .suppression-note {
   color: var(--red);
 }

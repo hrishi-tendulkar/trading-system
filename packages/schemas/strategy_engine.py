@@ -61,6 +61,23 @@ class StrategyReplaySummary(BaseModel):
     win_rate_15d: float
 
 
+class StrategyMetricCard(BaseModel):
+    label: str
+    value: str
+    meaning: str
+
+
+class StrategyIndexCard(BaseModel):
+    basis_code: str
+    display_name: str
+    trust_level: str
+    promotion_status: str
+    live_matches: int
+    board_promoted: int
+    status_summary: str
+    best_use_now: str
+
+
 class StrategyPageView(BaseModel):
     basis_code: str
     strategy_name: str
@@ -68,9 +85,20 @@ class StrategyPageView(BaseModel):
     promotion_status: str
     board_enabled: bool
     page_summary: str
+    strategy_definition: str
+    trust_summary: str
+    this_week_call: str
+    this_week_use: str
+    best_used_for: str
+    avoid_when: str
     rule_spine: list[str]
+    works_best_when: list[str] = Field(default_factory=list)
+    breaks_down_when: list[str] = Field(default_factory=list)
     as_of_date: Optional[date] = None  # noqa: UP045
     stats: dict[str, int]
     headline_note: str
+    backtest_label: str
+    backtest_takeaway: str
+    metric_cards: list[StrategyMetricCard] = Field(default_factory=list)
     replay_summary: Optional[StrategyReplaySummary] = None  # noqa: UP045
     current_rows: list[StrategyCandidateRow] = Field(default_factory=list)

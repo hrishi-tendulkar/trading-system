@@ -176,6 +176,28 @@ def _format_days_to_earnings(days: float | None) -> str:
     return f"{rounded} days to earnings"
 
 
+def _canonical_strategy(record: RecommendationRecord) -> tuple[str | None, str | None]:
+    by_id = {
+        "wait-for-confirmation": (
+            "breakout-confirmation",
+            "Breakout Confirmation",
+        ),
+        "strong-stock-constructive-pullback": (
+            "sector-confirmed-pullback-continuation",
+            "Sector-Confirmed Pullback Continuation",
+        ),
+        "extended-strength-wait": (
+            "sector-confirmed-pullback-continuation",
+            "Sector-Confirmed Pullback Continuation",
+        ),
+        "broad-market-trend-hold": (
+            "etf-trend-rotation",
+            "ETF Trend / Rotation",
+        ),
+    }
+    return by_id.get(record.strategy_id, (None, None))
+
+
 @lru_cache(maxsize=1)
 def _load_watchlist_members() -> dict[str, WatchlistMember]:
     path = _first_existing(
@@ -320,6 +342,8 @@ def _top_actions(records: list[RecommendationRecord]) -> list[dict[str, str]]:
             "badge_class": record.badge_class,
             "reason": record.observed_reason,
             "expression": record.horizon,
+            "strategy_code": _canonical_strategy(record)[0],
+            "strategy_name": _canonical_strategy(record)[1],
         }
         for record in candidates[:3]
     ]
@@ -346,6 +370,8 @@ def _fresh_cash_buckets(records: list[RecommendationRecord]) -> list[dict[str, o
                         "entry": f"{record.entry_label} {record.entry_value}".strip(),
                         "invalidation": f"{record.stop_label} {record.stop_value}".strip(),
                         "catalyst": record.next_earnings_date or "No near-term event loaded",
+                        "strategy_code": _canonical_strategy(record)[0],
+                        "strategy_name": _canonical_strategy(record)[1],
                     }
                     for record in bucket_records
                 ],
@@ -400,6 +426,8 @@ def _deep_dive_queue(records: list[RecommendationRecord]) -> list[dict[str, str]
             "company": record.company,
             "reason": record.strategy_name,
             "note": record.observed_reason,
+            "strategy_code": _canonical_strategy(record)[0],
+            "strategy_name": _canonical_strategy(record)[1],
         }
         for record in queue_records[:3]
     ]
