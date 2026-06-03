@@ -20,6 +20,8 @@ from packages.core.strategy_views import (
     list_strategy_pages,
 )
 from packages.core.ui_data import (
+    get_archive_index,
+    get_archive_week,
     get_daily_digest,
     get_stock_detail,
     get_watchlist_view,
@@ -130,6 +132,27 @@ def weekly(request: Request) -> Response:
         return guard
     context = {"review": get_weekly_review(), "active_page": "weekly"}
     return templates.TemplateResponse(request, "weekly.html", context)
+
+
+@app.get("/archive", response_class=HTMLResponse, response_model=None)
+def archive(request: Request) -> Response:
+    guard = _guard(request)
+    if guard:
+        return guard
+    context = {"archive": get_archive_index(), "active_page": "archive"}
+    return templates.TemplateResponse(request, "archive.html", context)
+
+
+@app.get("/archive/{week_id}", response_class=HTMLResponse, response_model=None)
+def archive_week(request: Request, week_id: str) -> Response:
+    guard = _guard(request)
+    if guard:
+        return guard
+    week = get_archive_week(week_id)
+    if week is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Archive week not found")
+    context = {"week": week, "active_page": "archive"}
+    return templates.TemplateResponse(request, "archive_week.html", context)
 
 
 @app.get("/daily", response_class=HTMLResponse, response_model=None)

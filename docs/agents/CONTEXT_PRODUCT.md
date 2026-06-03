@@ -27,6 +27,16 @@ Strategy detail pages should lead with this week's live output, promotion state,
 The current action board should be sourced only from `Breakout Confirmation` and the narrowed `Sector-Confirmed Pullback Continuation` sleeve, while `ETF Trend / Rotation` and `Selective Mean Reversion` remain off-board for now.
 **Why it matters:** This preserves sparse-board trust and keeps the product from presenting exploratory sleeves as if they deserve fresh capital today.
 
+## [2026-06-02] Weekly plans are immutable, weekday checks are addenda
+**Decision** · Source: `docs/product/weekly-equity-intelligence-prd.md`
+The weekly report is a published decision artifact. Scheduled weekday checks may append material status updates, but page refreshes must not trigger analysis and weekday updates must not silently replace the original weekly recommendation.
+**Why it matters:** This preserves weekly clarity while still protecting the user from missed midweek invalidations, event changes, or trigger changes.
+
+## [2026-06-02] Archive is a time-travel product surface
+**Decision** · Source: `docs/product/weekly-equity-intelligence-prd.md`
+The Archive tab must let the user reopen the full weekly product picture, including recommendations, deep dives, strategy outputs, daily addenda, source metadata, and later outcomes.
+**Why it matters:** The product needs historical accountability and reviewability, not just a table of old recommendation rows.
+
 ## [2026-05-22] The product stays single-user in v1
 **Decision** · Source: `docs/product/weekly-equity-intelligence-prd.md`
 v1 is for one technically capable investor, not a collaborative or multi-account platform.

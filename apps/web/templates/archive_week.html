@@ -1,0 +1,143 @@
+{% extends "_shell.html" %}
+{% block title %}{{ week.title }} | Archive | Trading System{% endblock %}
+{% block content %}
+  <section class="hero hero-tight">
+    <section class="card panel">
+      <div class="eyebrow">Archived Weekly Report</div>
+      <h1>{{ week.title }}</h1>
+      <p class="subtle">This view reconstructs the product state for the archived week. Later updates are shown as addenda and outcomes, not as edits to the original weekly plan.</p>
+      <div class="facts compact-facts">
+        <div class="fact">
+          <div class="label">Published</div>
+          <div class="value">{{ week.metadata.published_at }}</div>
+        </div>
+        <div class="fact">
+          <div class="label">Data through</div>
+          <div class="value">{{ week.metadata.data_through }}</div>
+        </div>
+        <div class="fact">
+          <div class="label">Last checked</div>
+          <div class="value">{{ week.metadata.last_checked }}</div>
+        </div>
+        <div class="fact">
+          <div class="label">Run ID</div>
+          <div class="value">{{ week.metadata.run_id }}</div>
+        </div>
+      </div>
+    </section>
+    <section class="card panel emphasis-panel">
+      <div class="eyebrow">Market Posture</div>
+      <h2>{{ week.posture.title }}</h2>
+      <p class="subtle">{{ week.posture.summary }}</p>
+      <div class="list">
+        {% for point in week.posture.points %}
+          <div class="item">{{ point }}</div>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+
+  <section class="card panel">
+    <div class="eyebrow">Original Weekly Plan</div>
+    <h2>Top actions as published</h2>
+    <div class="board" style="margin-top: 16px;">
+      {% for stock in week.weekly_plan.start_here %}
+        <article class="stock-card">
+          <div class="item-header">
+            <span class="badge {{ stock.badge_class }}">{{ stock.action }}</span>
+            <span class="rank-pill">Rank {{ loop.index }}</span>
+          </div>
+          <h3 style="margin-top: 10px;">{{ stock.ticker }} · {{ stock.company }}</h3>
+          <p class="subtle">{{ stock.reason }}</p>
+          <p class="small">Preferred expression: {{ stock.expression }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <section class="card panel">
+      <div class="eyebrow">Daily Addenda</div>
+      <h2>Scheduled checks against the plan</h2>
+      <div class="list">
+        {% for addendum in week.daily_addenda %}
+          <article class="item">
+            <div class="item-header">
+              <strong>{{ addendum.status }}</strong>
+              <span class="rank-pill">{{ addendum.date }}</span>
+            </div>
+            <p>{{ addendum.summary }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="card panel">
+      <div class="eyebrow">Deep-Dive Snapshot</div>
+      <h2>Names shown for deeper work</h2>
+      <div class="list">
+        {% for item in week.weekly_plan.deep_dives %}
+          <article class="item">
+            <strong>{{ item.ticker }} · {{ item.company }}</strong>
+            <div class="small subtle">{{ item.strategy_name or item.reason }}</div>
+            <p>{{ item.note }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+
+  <section class="grid-2">
+    <section class="card panel">
+      <div class="eyebrow">Outcome Layer</div>
+      <h2>What happened later</h2>
+      <div class="list">
+        {% for outcome in week.outcomes %}
+          <article class="item">
+            <div class="label">{{ outcome.label }}</div>
+            <strong>{{ outcome.status }}</strong>
+            <p>{{ outcome.detail }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="card panel">
+      <div class="eyebrow">Captured Scope</div>
+      <h2>What this archive must preserve</h2>
+      <div class="list plain-list">
+        {% for item in week.capture_scope %}
+          <div class="item">{{ item }}</div>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+
+  <section class="card panel">
+    <div class="eyebrow">Full Board Buckets</div>
+    <h2>Fresh cash recommendations as archived</h2>
+    <div class="bucket-grid">
+      {% for bucket in week.weekly_plan.fresh_cash %}
+        <section class="bucket">
+          <div class="bucket-heading">{{ bucket.title }}</div>
+          <div class="list">
+            {% for item in bucket["items"] %}
+              <article class="item">
+                <div class="item-header">
+                  <strong>{{ item.ticker }} · {{ item.company }}</strong>
+                  <span class="badge {{ item.badge_class }}">{{ item.action }}</span>
+                </div>
+                <p class="subtle">{{ item.why_now }}</p>
+                <div class="micro-list">
+                  <div><span class="label-inline">Entry</span>{{ item.entry }}</div>
+                  <div><span class="label-inline">Invalidate</span>{{ item.invalidation }}</div>
+                  <div><span class="label-inline">Catalyst</span>{{ item.catalyst }}</div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

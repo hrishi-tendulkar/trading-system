@@ -77,7 +77,7 @@ The product succeeds if the user can, once a week, quickly understand:
 
 Frequency:
 
-- Once per week, ideally over the weekend
+- Once per week, ideally Sunday evening ET after the prior Friday close and weekend source updates
 
 Steps:
 
@@ -92,13 +92,13 @@ Steps:
 
 Frequency:
 
-- Brief check after market close on weekdays
+- Scheduled system job after market close on weekdays, with the page showing the latest completed job output
 
 Steps:
 
-1. Review meaningful changes since yesterday.
-2. Check earnings reactions, estimate revision clusters, and broken setups.
-3. Update awareness, but avoid requiring constant intervention.
+1. The system checks for material changes against the published weekly plan.
+2. The user reviews only changes that alter behavior before the next weekly session.
+3. Page refreshes display the latest completed scheduled check; they do not trigger the check itself.
 
 ### 3. Position review workflow
 
@@ -192,6 +192,29 @@ Must highlight:
 - Major estimate revision changes
 - Broken technical setups
 - New filing or news events with likely relevance
+
+### 5. Archive
+
+Must let the user reopen the full product picture for any prior recommendation week.
+
+The archive must preserve:
+
+- the weekly overview exactly as published
+- recommendation week, publish timestamp, data-through timestamp, last-checked timestamp, timezone, and run ID
+- market posture and rationale
+- top actions, fresh-cash board, holder decisions, watchlist queue, trim / exit calls, and options overlays where available
+- stock deep dives generated or shown that week
+- strategy page outputs, candidate lists, promotion state, suppression reasons, and strategy lineage
+- daily addenda produced by scheduled weekday jobs
+- source metadata, provider metadata, feature snapshots, score components, model configuration, and AI outputs where applicable
+- later outcome and postmortem layers appended without mutating the original recommendation
+
+The archive must distinguish:
+
+- what the system believed at weekly publish time
+- what changed during the week
+- what happened afterward
+- what was learned later
 
 ## Functional requirements
 
@@ -364,6 +387,8 @@ The stock engine must run independently of the options provider. If options data
 
 ## Intelligence cadence requirements
 
+The system must separate recommendation generation from page refresh. Page refresh should read the latest completed run state only.
+
 ### Daily jobs
 
 - Refresh market data
@@ -371,6 +396,8 @@ The stock engine must run independently of the options provider. If options data
 - Ingest new filings and transcripts
 - Update analyst revision data
 - Recompute features and scores for changed names
+- Produce a scheduled addendum against the published weekly plan when a material state change occurs
+- Preserve the original weekly recommendation rather than silently replacing it
 
 ### Weekly jobs
 
@@ -379,6 +406,7 @@ The stock engine must run independently of the options provider. If options data
 - Generate holdings review
 - Generate options overlay candidates
 - Persist weekly recommendations and rationale
+- Publish an immutable weekly recommendation artifact
 
 ### Event-driven jobs
 
@@ -392,7 +420,12 @@ Event-driven processing in v1 may still remain batch-oriented rather than true r
 
 Each recommendation record must support:
 
+- recommendation week
 - as-of date
+- published timestamp
+- data-through timestamp
+- last-checked timestamp
+- run ID
 - ticker
 - recommendation category
 - decision basis type
@@ -409,6 +442,32 @@ Each recommendation record must support:
 - key catalyst
 - evidence summary
 - recommended expression
+- current status relative to the weekly plan
+- superseding addendum ID when applicable
+
+## Archive requirements
+
+Each archived weekly report must support point-in-time reconstruction of the product state shown to the user. Archived weekly recommendations are immutable. Daily addenda, user decisions, and realized outcomes may be appended later, but they must not overwrite the original recommendation artifact.
+
+Archive detail views must include:
+
+- weekly plan snapshot
+- daily addenda
+- recommendation records
+- generated deep dives
+- strategy-page snapshots or enough stored projections to reconstruct them
+- source and run metadata
+- later outcome windows and review notes
+
+Archive index views must support scanning by:
+
+- recommendation week
+- publish date
+- market posture
+- number of actionable names
+- number of watch names
+- number of deep dives
+- archive status
 
 ## Evaluation requirements
 

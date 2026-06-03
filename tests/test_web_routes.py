@@ -19,6 +19,12 @@ def test_weekly_requires_login() -> None:
     assert response.headers["location"] == "/login?next=/weekly"
 
 
+def test_archive_requires_login() -> None:
+    response = TestClient(app).get("/archive", follow_redirects=False)
+    assert response.status_code == 303
+    assert response.headers["location"] == "/login?next=/archive"
+
+
 def test_strategy_detail_redirects_to_login_with_next_target() -> None:
     response = TestClient(app).get(
         "/strategies/breakout-confirmation",
@@ -49,6 +55,28 @@ def test_daily_renders_verdict() -> None:
     assert response.status_code == 200
     assert "Daily verdict" in response.text
     assert "What needs attention before next week" in response.text
+
+
+def test_archive_renders_weekly_reports() -> None:
+    response = _authenticated_client().get("/archive")
+    assert response.status_code == 200
+    assert "Reopen the full weekly picture" in response.text
+    assert "Open archived week" in response.text
+
+
+def test_archive_week_renders_reconstructed_plan() -> None:
+    response = _authenticated_client().get("/archive")
+    week_path = response.text.split('href="/archive/', 1)[1].split('"', 1)[0]
+    detail_response = _authenticated_client().get(f"/archive/{week_path}")
+    assert detail_response.status_code == 200
+    assert "Archived Weekly Report" in detail_response.text
+    assert "Original Weekly Plan" in detail_response.text
+    assert "Daily Addenda" in detail_response.text
+
+
+def test_missing_archive_week_returns_404() -> None:
+    response = _authenticated_client().get("/archive/not-a-real-week")
+    assert response.status_code == 404
 
 
 def test_watchlist_renders_active_universe() -> None:

@@ -7,6 +7,11 @@
 QA must assess whether the system's outputs are trustworthy enough for capital-allocation decisions, not just whether the code path executed.
 **Why it matters:** This raises the bar on release readiness and keeps reviews aligned with the product's real-world stakes.
 
+## [2026-06-02] Archive QA must protect historical immutability
+**Decision** · Source: `docs/engineering/requirements/tdd-2026-06-02-weekly-archive-and-addenda.md`
+QA for archive and weekday addenda must verify that original weekly recommendations remain distinct from later addenda and outcomes.
+**Why it matters:** A UI or persistence bug that rewrites history would make evaluation misleading even if the page renders successfully.
+
 ## Patterns
 
 ## [2026-05-22] Hidden data staleness is a first-class test target

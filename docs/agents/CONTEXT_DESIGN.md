@@ -12,6 +12,11 @@ The most important interface is the weekly review flow, with daily monitoring as
 Strategy detail pages must visually distinguish strategy trust level, workflow promotion status, and row-level live candidate state rather than collapsing them into one confidence signal.
 **Why it matters:** Without this separation, the UI overstates confidence and blurs the difference between canonical, promoted, suppressed, and research-only outputs.
 
+## [2026-06-02] Archive screens must separate original plan, addenda, and outcomes
+**Decision** · Source: `docs/design/ux/ux-2026-06-02-weekly-archive-and-addenda.md`
+The archive UX must keep the original weekly plan, scheduled weekday addenda, and later outcome evaluation in distinct visual sections.
+**Why it matters:** Mixing these layers would make hindsight look like original recommendation logic and damage trust in historical review.
+
 ## Patterns
 
 ## [2026-05-22] The UI must separate evidence layers visually

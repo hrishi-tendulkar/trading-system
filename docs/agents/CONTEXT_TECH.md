@@ -22,6 +22,11 @@ The persistence model should center on per-strategy candidate evaluation, first-
 The hosted weekly engine should be built as `feature snapshots -> strategy candidates -> suppressors -> board promotion -> page projections`, with only `Breakout Confirmation` and narrowed `Sector-Confirmed Pullback Continuation` feeding the current mainline board.
 **Why it matters:** This is the implementation-ready architecture that connects finance doctrine, product surfaces, and persistence without silently falling back to a monolithic recommendation path.
 
+## [2026-06-02] Archive persistence separates weekly snapshots, addenda, and outcomes
+**Decision** · Source: `docs/engineering/requirements/tdd-2026-06-02-weekly-archive-and-addenda.md`
+The target persistence model should store immutable weekly report runs and snapshots separately from weekday addenda and later outcome records.
+**Why it matters:** This preserves point-in-time reconstruction, avoids silent recommendation mutation, and supports later backtesting without corrupting the original product state.
+
 ## Patterns
 
 ## [2026-05-22] Modular provider boundaries matter early

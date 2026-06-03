@@ -433,9 +433,52 @@ def _deep_dive_queue(records: list[RecommendationRecord]) -> list[dict[str, str]
     ]
 
 
+def _run_metadata(records: list[RecommendationRecord]) -> dict[str, str]:
+    as_of_date = records[0].as_of_date if records else "Unknown"
+    return {
+        "recommendation_week": f"Week of {as_of_date}",
+        "published_at": f"{as_of_date} after market close",
+        "data_through": as_of_date,
+        "last_checked": as_of_date,
+        "run_id": f"{_published_dataset_name()}-{as_of_date}",
+        "status": "Published weekly plan",
+    }
+
+
+def _scheduled_addenda(records: list[RecommendationRecord]) -> list[dict[str, str]]:
+    event_sensitive = [
+        record
+        for record in records
+        if record.days_to_earnings is not None and 0 <= record.days_to_earnings <= 7
+    ][:3]
+    addenda = [
+        {
+            "date": records[0].as_of_date if records else "Unknown",
+            "status": "Scheduled check complete",
+            "summary": (
+                "No full weekly rerun was performed. The weekday check protects "
+                "the published plan by flagging material changes only."
+            ),
+        }
+    ]
+    for record in event_sensitive:
+        addenda.append(
+            {
+                "date": records[0].as_of_date,
+                "status": "Event risk watch",
+                "summary": (
+                    f"{record.ticker} remains tied to {record.next_earnings_date or 'an upcoming event'}; "
+                    "do not silently rewrite the Sunday plan."
+                ),
+            }
+        )
+    return addenda
+
+
 def get_weekly_review() -> dict[str, object]:
     records = _non_benchmark_records()
     posture_title, posture_summary, posture_points = _market_posture(records)
+    metadata = _run_metadata(records)
     return {
         "title": "This Week's Plan",
         "summary": (
@@ -444,11 +487,15 @@ def get_weekly_review() -> dict[str, object]:
             "without changing its mental model."
         ),
         "facts": [
-            {"label": "As of", "value": records[0].as_of_date},
+            {"label": "Recommendation week", "value": metadata["recommendation_week"]},
+            {"label": "Published", "value": metadata["published_at"]},
+            {"label": "Data through", "value": metadata["data_through"]},
+            {"label": "Last checked", "value": metadata["last_checked"]},
             {"label": "Market posture", "value": posture_title},
             {"label": "Universe", "value": str(_count_active_members())},
-            {"label": "Published run", "value": _published_dataset_name()},
+            {"label": "Published run", "value": metadata["run_id"]},
         ],
+        "metadata": metadata,
         "posture": {
             "title": posture_title,
             "summary": posture_summary,
@@ -464,6 +511,97 @@ def get_weekly_review() -> dict[str, object]:
             f"{sum(1 for record in records if record.action_label == 'Buy on pullback')} "
             "more stay on deck."
         ),
+    }
+
+
+def get_archive_index() -> dict[str, object]:
+    records = _non_benchmark_records()
+    metadata = _run_metadata(records)
+    buy_now_count = sum(1 for record in records if record.action_label == "Buy now")
+    watch_count = sum(
+        1
+        for record in records
+        if record.action_label in {"Buy on pullback", "Wait for confirmation"}
+    )
+    return {
+        "title": "Archive",
+        "summary": (
+            "Reopen prior weekly plans as they were published, with daily addenda "
+            "and later outcomes layered on without rewriting the original call."
+        ),
+        "weeks": [
+            {
+                "week_id": metadata["run_id"],
+                "label": metadata["recommendation_week"],
+                "published": metadata["published_at"],
+                "data_through": metadata["data_through"],
+                "status": metadata["status"],
+                "buy_now_count": str(buy_now_count),
+                "watch_count": str(watch_count),
+                "deep_dive_count": str(len(_deep_dive_queue(records))),
+            }
+        ],
+        "research_reports": [
+            {
+                "label": "Canonical strategy replay",
+                "date": "2026-05-25",
+                "path": "docs/research/market/sp100-canonical-strategy-replay-2026-05-25.md",
+            },
+            {
+                "label": "Tradeable board report",
+                "date": "2026-05-24",
+                "path": "docs/research/market/tradeable-board-2026-05-24.md",
+            },
+            {
+                "label": "Phase 2 weekly report",
+                "date": "2026-05-23",
+                "path": "docs/research/market/phase2-weekly-report-2026-05-23.md",
+            },
+        ],
+    }
+
+
+def get_archive_week(week_id: str) -> dict[str, object] | None:
+    records = _non_benchmark_records()
+    metadata = _run_metadata(records)
+    if week_id != metadata["run_id"]:
+        return None
+    posture_title, posture_summary, posture_points = _market_posture(records)
+    return {
+        "week_id": week_id,
+        "title": metadata["recommendation_week"],
+        "metadata": metadata,
+        "posture": {
+            "title": posture_title,
+            "summary": posture_summary,
+            "points": posture_points,
+        },
+        "weekly_plan": {
+            "start_here": _top_actions(records),
+            "fresh_cash": _fresh_cash_buckets(records),
+            "holders": _holder_buckets(records),
+            "deep_dives": _deep_dive_queue(records),
+        },
+        "daily_addenda": _scheduled_addenda(records),
+        "outcomes": [
+            {
+                "label": "1D / 5D / 10D outcomes",
+                "status": "Pending historical outcome job",
+                "detail": (
+                    "Outcome layers should be appended after the fact and must not "
+                    "modify what the weekly plan originally recommended."
+                ),
+            }
+        ],
+        "capture_scope": [
+            "Weekly overview and market posture",
+            "Recommendation board buckets and action ranks",
+            "Deep-dive queue and stock-level evidence shown that week",
+            "Strategy page outputs and candidate lineage",
+            "Scheduled weekday addenda",
+            "Run metadata, data-through timestamps, and source lineage",
+            "Later outcome and postmortem layers",
+        ],
     }
 
 

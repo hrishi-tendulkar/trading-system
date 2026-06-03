@@ -1,0 +1,62 @@
+{% extends "_shell.html" %}
+{% block title %}Archive | Trading System{% endblock %}
+{% block content %}
+  <section class="hero hero-tight">
+    <section class="card panel">
+      <div class="eyebrow">Archive</div>
+      <h1>{{ archive.title }}</h1>
+      <p class="subtle">{{ archive.summary }}</p>
+    </section>
+    <section class="card panel emphasis-panel">
+      <div class="eyebrow">Archive Rule</div>
+      <h2>Original plans stay immutable.</h2>
+      <p class="subtle">Weekday checks and later outcomes are layered onto the archive so the product can review what changed without rewriting what it believed at publish time.</p>
+    </section>
+  </section>
+
+  <section class="card panel">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Weekly Reports</div>
+        <h2>Reopen the full weekly picture</h2>
+      </div>
+      <div class="subtle small">Recommendation week, publish time, data-through time, and current archive status stay visible.</div>
+    </div>
+    <div class="list">
+      {% for week in archive.weeks %}
+        <article class="item archive-week-row">
+          <div>
+            <div class="item-header">
+              <strong>{{ week.label }}</strong>
+              <span class="badge neutral">{{ week.status }}</span>
+            </div>
+            <div class="micro-list">
+              <div><span class="label-inline">Published</span>{{ week.published }}</div>
+              <div><span class="label-inline">Data through</span>{{ week.data_through }}</div>
+              <div><span class="label-inline">Buy now</span>{{ week.buy_now_count }}</div>
+              <div><span class="label-inline">Watch</span>{{ week.watch_count }}</div>
+              <div><span class="label-inline">Deep dives</span>{{ week.deep_dive_count }}</div>
+            </div>
+          </div>
+          <p class="small"><a href="/archive/{{ week.week_id }}">Open archived week</a></p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="card panel">
+    <div class="eyebrow">Research Artifacts</div>
+    <h2>Supporting historical reports</h2>
+    <div class="list">
+      {% for report in archive.research_reports %}
+        <article class="item">
+          <div class="item-header">
+            <strong>{{ report.label }}</strong>
+            <span class="rank-pill">{{ report.date }}</span>
+          </div>
+          <div class="small subtle">{{ report.path }}</div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
