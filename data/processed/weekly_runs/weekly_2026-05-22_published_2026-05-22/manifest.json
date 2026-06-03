@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-05-22T21:00:00+00:00",
+  "engine_version": "mlp-watchlist-v1",
+  "input_snapshot_id": "legacy-phase2-2026-05-22",
+  "last_checked_at": "2026-05-22T21:00:00+00:00",
+  "market_data_through": "2026-05-22",
+  "output_snapshot_id": "weekly_2026-05-22_published_2026-05-22",
+  "published_at": "2026-05-22T21:00:00+00:00",
+  "recommendation_week_end": "2026-05-22",
+  "recommendation_week_start": "2026-05-22",
+  "recommendations_path": "recommendations.csv",
+  "run_id": "weekly_2026-05-22_published_2026-05-22",
+  "run_status": "superseded",
+  "source_data_through": "2026-05-22",
+  "strategy_registry_version": "repo-current",
+  "timezone": "America/New_York"
+}

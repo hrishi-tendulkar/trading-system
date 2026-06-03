@@ -146,7 +146,7 @@ h3 { font-size: 18px; }
   gap: 14px;
 }
 
-.facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.facts { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .compact-facts { margin-top: 18px; }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -175,8 +175,24 @@ h3 { font-size: 18px; }
 
 .fact .value,
 .plan-value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.warning-list {
+  margin: 16px 0;
+}
+
+.warning-item {
+  border-color: rgba(157, 61, 49, 0.36);
+  background: var(--red-soft);
+  color: var(--ink);
+}
+
+.warning-item strong {
+  color: var(--red);
 }
 
 .badge {

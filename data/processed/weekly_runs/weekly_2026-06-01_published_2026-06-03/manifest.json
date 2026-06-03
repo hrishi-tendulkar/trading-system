@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-06-03T13:55:24+00:00",
+  "engine_version": "mlp-watchlist-v1",
+  "input_snapshot_id": "phase2-prices-through-2026-05-29",
+  "last_checked_at": "2026-06-03T13:55:24+00:00",
+  "market_data_through": "2026-05-29",
+  "output_snapshot_id": "weekly_2026-06-01_published_2026-06-03",
+  "published_at": "2026-06-03T13:55:24+00:00",
+  "recommendation_week_end": "2026-06-05",
+  "recommendation_week_start": "2026-06-01",
+  "recommendations_path": "recommendations.csv",
+  "run_id": "weekly_2026-06-01_published_2026-06-03",
+  "run_status": "published",
+  "source_data_through": "2026-05-29",
+  "strategy_registry_version": "repo-current",
+  "timezone": "America/New_York"
+}

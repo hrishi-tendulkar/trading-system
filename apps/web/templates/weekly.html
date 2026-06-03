@@ -6,6 +6,16 @@
       <div class="eyebrow">Weekly decision session</div>
       <h1>{{ review.title }}</h1>
       <p class="subtle">{{ review.summary }}</p>
+      {% if review.alerts %}
+        <div class="list warning-list">
+          {% for alert in review.alerts %}
+            <div class="item warning-item">
+              <strong>{{ alert.title }}</strong>
+              <div class="small">{{ alert.message }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
       <div class="facts">
         {% for fact in review.facts %}
           <div class="fact">

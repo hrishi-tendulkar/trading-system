@@ -1,4 +1,4 @@
-.PHONY: install run-web daily weekly test lint compile railway-status
+.PHONY: install run-web daily weekly weekly-no-fetch test lint compile railway-status
 
 install:
 	python3 -m pip install --upgrade pip
@@ -12,6 +12,9 @@ daily:
 
 weekly:
 	python3 -m services.jobs.cli weekly-run
+
+weekly-no-fetch:
+	python3 -m services.jobs.cli weekly-run --skip-fetch
 
 test:
 	pytest

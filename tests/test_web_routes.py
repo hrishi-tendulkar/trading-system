@@ -38,6 +38,9 @@ def test_weekly_renders_plan() -> None:
     response = _authenticated_client().get("/weekly")
     assert response.status_code == 200
     assert "This Week&#39;s Plan" in response.text
+    assert "Week of 2026-06-01" in response.text
+    assert "2026-05-29" in response.text
+    assert "Current-week report missing" not in response.text
     assert "Top actions this week" in response.text
     assert "Strategy:" in response.text
 
@@ -61,6 +64,8 @@ def test_archive_renders_weekly_reports() -> None:
     response = _authenticated_client().get("/archive")
     assert response.status_code == 200
     assert "Reopen the full weekly picture" in response.text
+    assert "weekly_2026-06-01_published_" in response.text
+    assert "weekly_2026-05-22_published_2026-05-22" in response.text
     assert "Open archived week" in response.text
 
 

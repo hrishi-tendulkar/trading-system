@@ -2,8 +2,20 @@ from __future__ import annotations
 
 import csv
 from dataclasses import dataclass
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
+
+from packages.core.weekly_runs import (
+    current_recommendations_path,
+    current_week_start,
+    legacy_recommendations_path,
+    list_manifests,
+    load_current_manifest,
+    load_manifest,
+    prior_friday_for_week,
+    run_dir,
+)
 
 
 @dataclass(frozen=True)
@@ -176,6 +188,15 @@ def _format_days_to_earnings(days: float | None) -> str:
     return f"{rounded} days to earnings"
 
 
+def _format_timestamp_label(value: str) -> str:
+    try:
+        parsed = value.replace("+00:00", "")
+        date_part, time_part = parsed.split("T", 1)
+        return f"{date_part} {time_part[:5]} UTC"
+    except ValueError:
+        return value
+
+
 def _canonical_strategy(record: RecommendationRecord) -> tuple[str | None, str | None]:
     by_id = {
         "wait-for-confirmation": (
@@ -191,6 +212,10 @@ def _canonical_strategy(record: RecommendationRecord) -> tuple[str | None, str |
             "Sector-Confirmed Pullback Continuation",
         ),
         "broad-market-trend-hold": (
+            "etf-trend-rotation",
+            "ETF Trend / Rotation",
+        ),
+        "etf-rotation": (
             "etf-trend-rotation",
             "ETF Trend / Rotation",
         ),
@@ -222,12 +247,12 @@ def _load_watchlist_members() -> dict[str, WatchlistMember]:
 
 @lru_cache(maxsize=1)
 def _load_recommendation_records() -> list[RecommendationRecord]:
-    path = _first_existing(
-        [
-            "data/processed/phase2/mlp_current_recommendations.csv",
-            "data/processed/mlp/mlp_current_recommendations.csv",
-        ]
-    )
+    return _load_recommendation_records_from_path(str(current_recommendations_path()))
+
+
+@lru_cache(maxsize=16)
+def _load_recommendation_records_from_path(path_value: str) -> list[RecommendationRecord]:
+    path = Path(path_value)
     watchlist = _load_watchlist_members()
     records: list[RecommendationRecord] = []
     with path.open(newline="", encoding="utf-8") as handle:
@@ -276,12 +301,10 @@ def _load_recommendation_records() -> list[RecommendationRecord]:
 
 
 def _published_dataset_name() -> str:
-    path = _first_existing(
-        [
-            "data/processed/phase2/mlp_current_recommendations.csv",
-            "data/processed/mlp/mlp_current_recommendations.csv",
-        ]
-    )
+    manifest = load_current_manifest()
+    if manifest:
+        return manifest.run_id
+    path = current_recommendations_path()
     return path.parent.name
 
 
@@ -293,9 +316,13 @@ def _count_active_members() -> int:
     return sum(1 for member in _load_watchlist_members().values() if member.is_active)
 
 
-def _market_posture(records: list[RecommendationRecord]) -> tuple[str, str, list[str]]:
+def _market_posture(
+    records: list[RecommendationRecord],
+    all_records: list[RecommendationRecord] | None = None,
+) -> tuple[str, str, list[str]]:
+    source_records = all_records or _load_recommendation_records()
     benchmark = next(
-        (record for record in _load_recommendation_records() if record.is_benchmark),
+        (record for record in source_records if record.is_benchmark),
         None,
     )
     buy_count = sum(1 for record in records if record.action_label == "Buy now")
@@ -433,8 +460,23 @@ def _deep_dive_queue(records: list[RecommendationRecord]) -> list[dict[str, str]
     ]
 
 
-def _run_metadata(records: list[RecommendationRecord]) -> dict[str, str]:
+def _run_metadata(records: list[RecommendationRecord], run_id: str | None = None) -> dict[str, str]:
+    manifest = load_manifest(run_id) if run_id else load_current_manifest()
     as_of_date = records[0].as_of_date if records else "Unknown"
+    if manifest:
+        current_manifest = load_current_manifest()
+        return {
+            "recommendation_week": f"Week of {manifest.recommendation_week_start}",
+            "published_at": _format_timestamp_label(manifest.published_at),
+            "data_through": manifest.source_data_through,
+            "last_checked": _format_timestamp_label(manifest.last_checked_at),
+            "run_id": manifest.run_id,
+            "status": "Current published plan"
+            if current_manifest and current_manifest.run_id == manifest.run_id
+            else "Archived immutable plan",
+            "market_data_through": manifest.market_data_through,
+            "timezone": manifest.timezone,
+        }
     return {
         "recommendation_week": f"Week of {as_of_date}",
         "published_at": f"{as_of_date} after market close",
@@ -443,6 +485,50 @@ def _run_metadata(records: list[RecommendationRecord]) -> dict[str, str]:
         "run_id": f"{_published_dataset_name()}-{as_of_date}",
         "status": "Published weekly plan",
     }
+
+
+def _freshness_alerts(metadata: dict[str, str]) -> list[dict[str, str]]:
+    alerts: list[dict[str, str]] = []
+    try:
+        expected_week = current_week_start(date.today())
+        recommendation_week = date.fromisoformat(
+            metadata["recommendation_week"].replace("Week of ", "")
+        )
+        expected_source_through = prior_friday_for_week(expected_week)
+        source_through = date.fromisoformat(metadata["data_through"])
+    except ValueError:
+        return [
+            {
+                "title": "Weekly freshness unknown",
+                "message": (
+                    "The current run metadata could not be parsed. "
+                    "Verify the weekly publish job."
+                ),
+            }
+        ]
+
+    if recommendation_week < expected_week:
+        alerts.append(
+            {
+                "title": "Current-week report missing",
+                "message": (
+                    f"No weekly report has been published for Week of "
+                    f"{expected_week.isoformat()}. Latest available report is "
+                    f"{metadata['recommendation_week']}."
+                ),
+            }
+        )
+    if source_through < expected_source_through:
+        alerts.append(
+            {
+                "title": "Source data is stale",
+                "message": (
+                    f"This report uses data through {source_through.isoformat()}, "
+                    f"but the expected prior-week close is {expected_source_through.isoformat()}."
+                ),
+            }
+        )
+    return alerts
 
 
 def _scheduled_addenda(records: list[RecommendationRecord]) -> list[dict[str, str]]:
@@ -467,7 +553,8 @@ def _scheduled_addenda(records: list[RecommendationRecord]) -> list[dict[str, st
                 "date": records[0].as_of_date,
                 "status": "Event risk watch",
                 "summary": (
-                    f"{record.ticker} remains tied to {record.next_earnings_date or 'an upcoming event'}; "
+                    f"{record.ticker} remains tied to "
+                    f"{record.next_earnings_date or 'an upcoming event'}; "
                     "do not silently rewrite the Sunday plan."
                 ),
             }
@@ -495,6 +582,7 @@ def get_weekly_review() -> dict[str, object]:
             {"label": "Universe", "value": str(_count_active_members())},
             {"label": "Published run", "value": metadata["run_id"]},
         ],
+        "alerts": _freshness_alerts(metadata),
         "metadata": metadata,
         "posture": {
             "title": posture_title,
@@ -515,21 +603,17 @@ def get_weekly_review() -> dict[str, object]:
 
 
 def get_archive_index() -> dict[str, object]:
-    records = _non_benchmark_records()
-    metadata = _run_metadata(records)
-    buy_now_count = sum(1 for record in records if record.action_label == "Buy now")
-    watch_count = sum(
-        1
-        for record in records
-        if record.action_label in {"Buy on pullback", "Wait for confirmation"}
-    )
-    return {
-        "title": "Archive",
-        "summary": (
-            "Reopen prior weekly plans as they were published, with daily addenda "
-            "and later outcomes layered on without rewriting the original call."
-        ),
-        "weeks": [
+    manifests = list_manifests()
+    if not manifests:
+        records = _non_benchmark_records()
+        metadata = _run_metadata(records)
+        buy_now_count = sum(1 for record in records if record.action_label == "Buy now")
+        watch_count = sum(
+            1
+            for record in records
+            if record.action_label in {"Buy on pullback", "Wait for confirmation"}
+        )
+        weeks = [
             {
                 "week_id": metadata["run_id"],
                 "label": metadata["recommendation_week"],
@@ -540,7 +624,44 @@ def get_archive_index() -> dict[str, object]:
                 "watch_count": str(watch_count),
                 "deep_dive_count": str(len(_deep_dive_queue(records))),
             }
-        ],
+        ]
+    else:
+        weeks = []
+        current = load_current_manifest()
+        for manifest in manifests:
+            path = run_dir(manifest.run_id) / manifest.recommendations_path
+            records = [
+                record
+                for record in _load_recommendation_records_from_path(str(path))
+                if not record.is_benchmark
+            ]
+            buy_now_count = sum(1 for record in records if record.action_label == "Buy now")
+            watch_count = sum(
+                1
+                for record in records
+                if record.action_label in {"Buy on pullback", "Wait for confirmation"}
+            )
+            weeks.append(
+                {
+                    "week_id": manifest.run_id,
+                    "label": f"Week of {manifest.recommendation_week_start}",
+                    "published": _format_timestamp_label(manifest.published_at),
+                    "data_through": manifest.source_data_through,
+                    "status": "Current published plan"
+                    if current and current.run_id == manifest.run_id
+                    else "Archived immutable plan",
+                    "buy_now_count": str(buy_now_count),
+                    "watch_count": str(watch_count),
+                    "deep_dive_count": str(len(_deep_dive_queue(records))),
+                }
+            )
+    return {
+        "title": "Archive",
+        "summary": (
+            "Reopen prior weekly plans as they were published, with daily addenda "
+            "and later outcomes layered on without rewriting the original call."
+        ),
+        "weeks": weeks,
         "research_reports": [
             {
                 "label": "Canonical strategy replay",
@@ -562,11 +683,19 @@ def get_archive_index() -> dict[str, object]:
 
 
 def get_archive_week(week_id: str) -> dict[str, object] | None:
-    records = _non_benchmark_records()
-    metadata = _run_metadata(records)
-    if week_id != metadata["run_id"]:
-        return None
-    posture_title, posture_summary, posture_points = _market_posture(records)
+    manifest = load_manifest(week_id)
+    if manifest:
+        path = run_dir(manifest.run_id) / manifest.recommendations_path
+        all_records = _load_recommendation_records_from_path(str(path))
+        records = [record for record in all_records if not record.is_benchmark]
+        metadata = _run_metadata(records, manifest.run_id)
+    else:
+        all_records = _load_recommendation_records_from_path(str(legacy_recommendations_path()))
+        records = [record for record in all_records if not record.is_benchmark]
+        metadata = _run_metadata(records)
+        if week_id != metadata["run_id"]:
+            return None
+    posture_title, posture_summary, posture_points = _market_posture(records, all_records)
     return {
         "week_id": week_id,
         "title": metadata["recommendation_week"],

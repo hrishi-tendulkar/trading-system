@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import subprocess
+import sys
 from datetime import date, datetime, timezone
 
 import typer
@@ -46,18 +48,18 @@ def daily_run(as_of_date: str = typer.Option("", help="Optional YYYY-MM-DD overr
 
 
 @app.command("weekly-run")
-def weekly_run(run_date: str = typer.Option("", help="Optional YYYY-MM-DD override.")) -> None:
+def weekly_run(
+    run_date: str = typer.Option("", help="Optional Monday YYYY-MM-DD recommendation week."),
+    skip_fetch: bool = typer.Option(False, help="Use existing raw price data."),
+) -> None:
     if not settings.weekly_run_enabled:
         raise typer.Exit(code=0)
-    result = _build_result(
-        "weekly-run",
-        (
-            "Weekly job scaffold is in place. Next step is score generation, "
-            "published-run state, and HTML artifact persistence."
-        ),
-        date.fromisoformat(run_date) if run_date else None,
-    )
-    _print_result(result)
+    command = [sys.executable, "scripts/mlp/publish_weekly_run.py"]
+    if run_date:
+        command.extend(["--target-week", run_date])
+    if skip_fetch:
+        command.append("--skip-fetch")
+    subprocess.run(command, check=True)
 
 
 @app.command("backfill-symbol")
