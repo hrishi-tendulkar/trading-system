@@ -29,3 +29,14 @@ def get_strategy_index() -> dict[str, DecisionBasisRecord]:
 
 def get_strategy_record(basis_code: str) -> DecisionBasisRecord | None:
     return get_strategy_index().get(basis_code)
+
+
+def get_strategy_registry_version() -> str:
+    return load_strategy_registry().registry_version
+
+
+def get_active_strategy_versions() -> dict[str, str]:
+    return {
+        record.basis_code: record.version_label or f"{record.basis_code}.v{record.version_num}"
+        for record in load_strategy_registry().decision_bases
+    }

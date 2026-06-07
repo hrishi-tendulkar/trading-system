@@ -17,12 +17,22 @@ Strategy detail pages must visually distinguish strategy trust level, workflow p
 The archive UX must keep the original weekly plan, scheduled weekday addenda, and later outcome evaluation in distinct visual sections.
 **Why it matters:** Mixing these layers would make hindsight look like original recommendation logic and damage trust in historical review.
 
+## [2026-06-07] Information hierarchy is canonical before visual redesign
+**Decision** · Source: `docs/design/information-hierarchy.md`
+Weekly summary, full candidate board, stock recommendation cards, stock detail, strategy detail, and archive now have explicit information hierarchy templates. Design work should improve presentation and navigation without inventing new finance logic or new data fields.
+**Why it matters:** This separates `what we show` from `how we show it`, preventing repeated churn between UX layout, product content, and finance logic.
+
 ## Patterns
 
 ## [2026-05-22] The UI must separate evidence layers visually
 **Pattern** · Source: `docs/product/high-level-design.md`
 Users need to distinguish market regime, tactical setup, business support, and options overlay logic at a glance.
 **Why it matters:** Clear visual separation prevents the system from feeling like one opaque recommendation engine.
+
+## [2026-06-07] The stock recommendation card is the reusable decision object
+**Pattern** · Source: `docs/design/information-hierarchy.md`
+The same stock recommendation card / stock decision template should appear on the weekly summary, full candidate board click-throughs, stock detail top section, and archived runs before deeper analysis.
+**Why it matters:** Reusing one decision object prevents the user from relearning different card shapes for the same stock recommendation.
 
 ## Don'ts
 

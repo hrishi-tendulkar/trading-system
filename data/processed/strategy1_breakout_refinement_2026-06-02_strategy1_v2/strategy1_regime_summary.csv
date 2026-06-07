@@ -1,0 +1,12 @@
+variant_id,variant_name,regime,sample_size,avg_fwd_15d_return,avg_excess_15d_return,win_rate_15d
+baseline_current,Current Breakout Confirmation,Risk-on,2143,0.01465816612514476,0.00849215675438834,0.5823611759216052
+baseline_current,Current Breakout Confirmation,Defensive,457,-0.002243486684396263,-0.0035907762478919482,0.48358862144420134
+baseline_current,Current Breakout Confirmation,Selective risk-on,431,0.007629845895934229,0.0024693189317936573,0.5545243619489559
+baseline_current,Current Breakout Confirmation,Neutral,138,0.002953803792498573,-0.006376976571028311,0.5797101449275363
+leadership_quality,Leadership-Quality Breakout,Risk-on,797,0.010106912966575145,0.0040100847228276455,0.5520702634880803
+leadership_quality,Leadership-Quality Breakout,Selective risk-on,184,0.005850184778614989,-0.0014908420837296459,0.5543478260869565
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Risk-on,1704,0.016394525916962832,0.009634163515571737,0.5774647887323944
+strict_entry_quality,Strict Entry-Quality Breakout,Risk-on,312,0.006993111547798365,-0.0001678319101667177,0.5544871794871795
+strict_entry_quality,Strict Entry-Quality Breakout,Selective risk-on,93,0.0018940783911148087,-0.004431452805551084,0.5161290322580645
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Risk-on,1654,0.016360475455080566,0.009487870785969018,0.5773881499395405
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Selective risk-on,331,0.01554642737052429,0.007509061128792977,0.6012084592145015

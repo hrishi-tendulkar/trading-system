@@ -88,6 +88,7 @@ def test_watchlist_renders_active_universe() -> None:
     response = _authenticated_client().get("/watchlist")
     assert response.status_code == 200
     assert "Active universe" in response.text
+    assert "Recommendation coverage" in response.text
     assert "Watchlist workspace" in response.text
 
 

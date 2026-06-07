@@ -1,0 +1,7 @@
+strategy_id,strategy_name,observations,avg_fwd_1w_return,win_rate
+extended-strength-wait,"Extended strength, wait for pullback",664,0.008041196387237609,0.5707831325301205
+breakout-confirmation-triggered,Breakout Confirmation,648,0.005834226316872539,0.5447530864197531
+trend-hold,Trend hold / monitor,6266,0.003224716843512543,0.5512288541334185
+wait-for-confirmation,Breakout Confirmation,798,0.00293435767739037,0.5300751879699248
+strong-stock-constructive-pullback,Constructive pullback continuation,567,0.002293191482394649,0.5520282186948854
+no-action,No actionable setup,7605,0.001906913317620098,0.5160619066198465

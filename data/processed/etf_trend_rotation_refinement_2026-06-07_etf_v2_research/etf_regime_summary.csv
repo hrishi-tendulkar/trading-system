@@ -1,0 +1,16 @@
+variant_id,variant_name,regime,trade_count,avg_5d_return_net,avg_5d_excess_net,win_rate_5d
+top1_all_risk_on_strict_rs,Top 1 All ETFs / Risk-on Strict RS,Risk-on,104,0.0011104463929409636,2.5853136450425572e-05,0.49038461538461536
+top1_all_supportive_balanced,Top 1 All ETFs / Supportive Balanced RS,Risk-on,128,0.00021050617865251038,-0.0003406174669196338,0.4921875
+top1_all_supportive_balanced,Top 1 All ETFs / Supportive Balanced RS,Selective risk-on,25,0.006168217180429623,0.00645828885440305,0.68
+top1_all_supportive_strict_rs,Top 1 All ETFs / Supportive Strict RS,Risk-on,104,0.0011104463929409636,2.5853136450425572e-05,0.49038461538461536
+top1_all_supportive_strict_rs,Top 1 All ETFs / Supportive Strict RS,Selective risk-on,20,0.0041694296667132095,0.006646801707841038,0.65
+top1_broad_supportive_trend,Top 1 Broad ETFs / Supportive Trend,Risk-on,120,0.0011255698419174148,0.0006838825286245176,0.525
+top1_broad_supportive_trend,Top 1 Broad ETFs / Supportive Trend,Selective risk-on,13,0.000937067293446756,0.0,0.5384615384615384
+top1_sector_supportive_strict_rs,Top 1 Sector ETFs / Supportive Strict RS,Risk-on,98,0.0018141209588806247,0.00020429017903327953,0.5
+top1_sector_supportive_strict_rs,Top 1 Sector ETFs / Supportive Strict RS,Selective risk-on,20,0.0041694296667132095,0.006646801707841038,0.65
+top2_all_supportive_balanced,Top 2 All ETFs / Supportive Balanced RS,Risk-on,254,0.00036536361562267616,-7.726699605760674e-05,0.484251968503937
+top2_all_supportive_balanced,Top 2 All ETFs / Supportive Balanced RS,Selective risk-on,44,0.004695537480818055,0.0049445975085334656,0.6363636363636364
+top2_all_supportive_strict_rs,Top 2 All ETFs / Supportive Strict RS,Risk-on,177,0.002039386153069073,0.0005770886231670705,0.5028248587570622
+top2_all_supportive_strict_rs,Top 2 All ETFs / Supportive Strict RS,Selective risk-on,32,0.0054546544151100025,0.007406432514109284,0.625
+top2_sector_supportive_strict_rs,Top 2 Sector ETFs / Supportive Strict RS,Risk-on,144,0.0027169606904592805,0.0011243199168284148,0.5208333333333334
+top2_sector_supportive_strict_rs,Top 2 Sector ETFs / Supportive Strict RS,Selective risk-on,32,0.0054546544151100025,0.007406432514109284,0.625

@@ -2,6 +2,8 @@
 
 ## Durable Notes
 
+- [2026-06-03] Medium-term product direction: build Trading System as a single-operator strategy operating system, not merely a weekly report generator. Start with the four current canonical strategies, but preserve the operating loop mature trading teams use at smaller scale: research strategy versions, replay/backtest them, promote only validated versions into the weekly board, track live weekly outcomes, and refine or retire strategies based on evidence.
+
 - [2026-05-25] Strategy detail pages should behave as weekly operating surfaces, not timeless docs: current outputs and board implications must appear above historical evidence and canonical rules.
 
 - [2026-05-22] The weekly review loop is the product center of gravity; avoid product ideas that quietly assume intraday supervision.
@@ -13,3 +15,9 @@
 - [2026-05-24] Review surfaces must be job-shaped rather than label-shaped: the weekly page should answer `what should I do this week?`, the daily page should answer `what changed enough to matter before next week?`, and deep dives should be reserved for top weekly names, risk-sensitive holdings, or explicit manual requests rather than auto-generated for the full universe.
 - [2026-05-24] Product expansion and refinement are complementary rather than conflicting: build the persistent data spine first, then sharpen the weekly/daily/deep-dive operating loop, then expand into canonical watchlist management and a `15-20` name weekly focus queue while preserving a selective `3-5` name action board.
 - [2026-05-24] The scalable product rule is to keep the front-end mental model stable as strategy quality improves: weekly remains the decision session, daily remains the exception layer, and deep dive remains the expandable stock memo, while richer strategy logic should appear as deeper evidence, sharper buckets, and better drill-downs rather than new top-level product concepts.
+- [2026-06-03] The weekly report must be an explicit published run for the upcoming market week, with visible freshness status. Showing an old technically-labeled report without a missing-current-week warning violates the product job.
+- [2026-06-07] Weekly UX must standardize information hierarchy before debating visual design. `docs/design/information-hierarchy.md` is the source of truth for weekly summary, stock recommendation card, full candidate board, stock detail, strategy detail, archive, report metadata, and navigation rules.
+- [2026-06-06] Holistic watchlist expansion should use tiers: broad coverage universe, active watchlist, weekly focus board, and sparse action board. Breadth belongs in the engine, while the weekly product must stay selective and decision-shaped.
+- [2026-06-06] The S&P 100 promotion is now the app default after a fresh published weekly run achieved `109 / 109` recommendation coverage. Future broadening should follow the same rule: publish against the same universe before making it the default surface.
+- [2026-06-07] Public Equity Investing plugin partnership doctrine: start with concrete decision packets, not broad enrichment. First use cases are `Buy now` veto checks for action-board names and post-earnings continuation research packets for technically strong post-print names. The plugin can downgrade, suppress, focus-board-only, or create proof points through structured fields, but it must not upgrade names to `Buy now` or bypass promoted-sleeve rules.
+- [2026-06-07] Strategy improvement work should run as goal-driven parallel workstreams using paste-ready prompts under `docs/strategy/workstreams/strategy-improvement-goals/`, with each workstream ending in a promoted version, paper-live/sandbox status, or explicit research-only decision.

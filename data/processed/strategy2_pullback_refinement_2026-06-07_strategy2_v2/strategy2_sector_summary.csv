@@ -1,0 +1,52 @@
+variant_id,variant_name,action_role,sector,sample_size,avg_fwd_15d_return,avg_excess_15d_return,win_rate_15d
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Information Technology,827,0.013682327632172362,0.00629667134662574,0.5380894800483675
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Financials,587,0.0017764132771253287,-0.004001946777375573,0.5383304940374787
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Industrials,515,0.010654652584519328,0.007082359437325757,0.541747572815534
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Health Care,507,-0.002613063239105194,-0.006473265690576289,0.4556213017751479
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Communication Services,359,0.013144090085749108,0.004187040678589866,0.5766016713091922
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Consumer Discretionary,323,0.001898106019677704,-0.0027670804012888623,0.5170278637770898
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Consumer Staples,269,-0.0075530947287301715,-0.010931976018041464,0.4312267657992565
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Energy,132,0.015589025539288233,0.00854454241330077,0.6515151515151515
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Utilities,83,-0.006084826001879226,-0.01724504477298048,0.43373493975903615
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Real Estate,81,0.006166931359903039,-0.008249274835365014,0.5555555555555556
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Materials,24,0.00458900556048895,0.014785197708244624,0.4166666666666667
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Information Technology,105,0.010236451508674369,0.003056770148067803,0.5333333333333333
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Industrials,26,0.00813296844136618,-0.00594981990072009,0.5769230769230769
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Health Care,19,0.010136373643543794,0.014249052567772494,0.5263157894736842
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Financials,11,-0.03986718181235493,-0.033773432833704535,0.18181818181818182
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Consumer Discretionary,10,-0.009783609394756632,-0.019008949101695795,0.3
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Information Technology,226,0.022546562742006983,0.017094344161154247,0.5619469026548672
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Financials,116,-0.001361766479548602,-0.0033510954961050864,0.5431034482758621
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Industrials,105,0.019500005851830173,0.018251963602841433,0.5619047619047619
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Health Care,78,-0.002724312494558362,0.004479784834534744,0.47435897435897434
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Consumer Discretionary,50,-0.009222413200925636,-0.015394997860586502,0.38
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Energy,8,0.029649560458064883,0.03359027338712353,0.625
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Information Technology,275,0.015615111659358269,0.011932897506806948,0.5309090909090909
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Financials,103,-0.0014891331064355805,-0.0049133174403453005,0.5048543689320388
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Industrials,94,0.02122814453310951,0.0179606562241336,0.5957446808510638
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Health Care,63,0.003706427616917325,0.011211054423208173,0.5396825396825397
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Consumer Discretionary,52,-0.007684740657140449,-0.014090643753692348,0.36538461538461536
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Energy,6,0.009427939452494613,0.016421614888481595,0.5
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Information Technology,688,0.014719465622625535,0.0072187254037918225,0.559593023255814
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Financials,613,0.002802049274392934,-0.005148770476009422,0.533442088091354
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Industrials,419,0.011849375427189553,0.010140779350742991,0.5393794749403341
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Health Care,372,0.005791437101983589,0.006776344324868221,0.532258064516129
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Consumer Discretionary,225,0.001948160193015777,-0.006581614760088169,0.5066666666666667
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Energy,45,0.0052315275293087354,0.007383270204519489,0.5111111111111111
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Information Technology,83,0.04299072522038487,0.030330017701873522,0.6385542168674698
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Industrials,37,0.03657033457302012,0.030291134020698704,0.6486486486486487
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Financials,29,0.010959796584777866,0.004023407456900219,0.6206896551724138
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Health Care,27,-0.002404018076498589,0.0047067380121671686,0.4074074074074074
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Consumer Discretionary,10,-0.03657609092646728,-0.03278323279532468,0.2
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Information Technology,286,0.0172642618761097,0.012746818436811958,0.5454545454545454
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Financials,132,-0.0022486290290195505,-0.004972266627990346,0.5151515151515151
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Industrials,121,0.016335725169848377,0.014432672657651571,0.5371900826446281
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Health Care,94,-0.00390830005706391,0.002397542502875208,0.43617021276595747
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Consumer Discretionary,60,-0.004408840529003085,-0.011465587975183275,0.38333333333333336
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Energy,8,0.029649560458064883,0.03359027338712353,0.625
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Information Technology,443,0.017702642123261354,0.010567263356389418,0.5575620767494357
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Industrials,190,0.02883153680002314,0.02096131396927769,0.631578947368421
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Financials,187,0.010322266765572763,0.0011746467109695167,0.5989304812834224
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Consumer Discretionary,110,0.009014720041408148,-0.0024776924482938535,0.6272727272727273
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Health Care,99,0.004318714639592376,0.0027484458209981483,0.5555555555555556
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Energy,16,0.04655012020987489,0.04721965795586555,0.75

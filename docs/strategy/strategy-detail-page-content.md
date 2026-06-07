@@ -36,9 +36,9 @@ Use this posture unless a later promotion decision explicitly changes it:
 
 | Strategy | Current page posture | Why |
 |---|---|---|
-| `Breakout Confirmation` | `Currently core and live-ready` | strongest overall replay and strongest supportive-regime subgroup evidence |
+| `Breakout Confirmation` | `Core but narrowed / sector-confirmed` | broad baseline is not enough; supportive sector-confirmed breakout cleared the promotion bar |
 | `Sector-Confirmed Pullback Continuation` | `Core but narrower / still trust-calibrated` | attractive sub-buckets exist, but broad aggregate replay is weak |
-| `ETF Trend / Rotation` | `Refine-before-promotion` | concept fits product needs, but current daily eligibility replay is too flat vs `SPY` |
+| `ETF Trend / Rotation` | `Research only` | ranked weekly refinement beat exposure-aware `SPY` but still lagged `SPY` buy-and-hold too much for promotion |
 | `Selective Mean Reversion` | `Research only` | evidence is too regime-specific and too inconsistent for main-board trust |
 
 ## Shared Page Structure
@@ -62,8 +62,8 @@ Each strategy page should be able to render these blocks:
 
 ### Status
 
-- page badge: `Refine before promotion`
-- board role today: exposure sleeve and candidate source, not yet a fully trusted promoted entry engine
+- page badge: `Research only`
+- board role today: exposure appendix and candidate context only, not a promoted entry engine
 
 ### Purpose
 
@@ -134,6 +134,8 @@ For this page, emphasize:
 
 Do not over-celebrate win rate alone here. The current issue is not whether ETFs go up sometimes; it is whether this rule set adds enough edge over simply owning the benchmark.
 
+The `2026-06-07` ranked weekly refinement did not solve this. The best tested rule, `Top 2 Sector ETFs / Supportive Strict RS`, returned `5.99%` net annualized after `20 bps` friction and beat exposure-aware `SPY` by `4.13%`, but lagged `SPY` buy-and-hold by `8.28%` annualized.
+
 ### What `works best when` means
 
 On this page, `works best when` should mean:
@@ -143,7 +145,7 @@ On this page, `works best when` should mean:
 - the user wants immediate exposure with cleaner invalidation than a stock
 - the engine prefers the ETF because single-name timing is weaker, noisier, or event-suppressed
 
-This section should not imply that all supportive-trend ETF states are equally good. Current replay only suggests that some `Risk-on` broad ETF cases are directionally better, not that the sleeve is fully validated.
+This section should not imply that all supportive-trend ETF states are equally good. Current replay suggests that ranked sector ETF exposure can beat exposure-aware `SPY`, but not that the sleeve is validated as a standalone promoted board engine.
 
 ### Canonical rule details that should be visible without reading code
 
@@ -158,7 +160,7 @@ Show the rule spine in plain language:
 
 ### Trust-calibration note
 
-This page needs a stronger caveat than the other core pages. Current replay says the strategy idea still makes sense, but the current daily-entry definition is not strong enough to present as fully promoted or equally trusted with breakout setups.
+This page needs a stronger caveat than the other core pages. Current replay says the strategy idea still makes sense as an exposure tool, but neither the current daily-entry definition nor the ranked weekly rotation refinement is strong enough to present as fully promoted or equally trusted with breakout setups.
 
 ### Conditional page-content note
 
@@ -166,7 +168,7 @@ This page should be conditional on the mainline promotion decision session.
 
 If the session keeps ETF Trend / Rotation as canonical but not promoted:
 
-- keep the badge `Refine before promotion`
+- keep the badge `Research only`
 - keep the copy focused on exposure expression rather than alpha confidence
 
 If the session later promotes a ranked rotation variant:
@@ -293,19 +295,27 @@ Show the rule spine in plain language:
 
 This is a core strategy page, but it needs narrower claims than Breakout Confirmation. The replay supports keeping the setup family, yet does not support presenting the broad version as a universally reliable mainline engine.
 
+### 2026-06-07 refinement note
+
+The latest pullback replay tested narrowed v2 candidates by pullback depth, extension band, sector confirmation, regime, RS consistency, ATR burden, support proximity, and watch-only extended-strength separation.
+
+Decision: keep `sector-confirmed-pullback-continuation.v1` active; do not promote a v2 yet.
+
+Evidence to show:
+
+- current v1 had `18.82%` net annualized return and `+4.54%` annualized excess versus `SPY` buy-and-hold, but weak weekly information-like quality of `0.041`
+- strict support-proximity improved information-like quality to `0.232` and beat exposure-aware `SPY` by `+11.08%` annualized, but lagged `SPY` buy-and-hold by `-0.13%`
+- deeper controlled pullbacks were weak, reinforcing skepticism toward damaged resets
+- extended leadership names should remain `Wait for pullback` or `Do not chase`, not live `Buy on pullback`
+
 ### Conditional page-content note
 
-This page should be conditional on the mainline promotion decision session.
-
-If the session promotes a narrowed pullback rule set:
-
-- upgrade the badge to something like `Core and trust-calibrated`
-- show the favored pullback and extension bands directly on-page
-
-If the session keeps only the setup family but not a finalized narrowed rule set:
+The 2026-06-07 promotion decision keeps the page in the second state:
 
 - keep the badge `Core, but narrower`
 - keep stronger caveats around aggregate replay weakness
+- show the current active version as `sector-confirmed-pullback-continuation.v1`
+- separate live `Buy on pullback` rows from watch-only pullback candidates
 
 ---
 
@@ -313,8 +323,8 @@ If the session keeps only the setup family but not a finalized narrowed rule set
 
 ### Status
 
-- page badge: `Currently core and live-ready`
-- board role today: strongest promoted single-name continuation sleeve
+- page badge: `Core but narrowed / sector-confirmed`
+- board role today: strongest promoted single-name continuation sleeve, but only through supportive sector-confirmed rules
 
 ### Purpose
 
@@ -327,7 +337,8 @@ Use this strategy when:
 - trend structure is intact
 - the stock is close to a definable resistance or recent high
 - relative strength is acceptable to strong
-- the sector context is supportive
+- the market regime is `Risk-on` or `Selective risk-on`
+- the sector context is confirmed
 - the system wants proof through price before allocating capital
 
 ### When not to use
@@ -338,6 +349,7 @@ Do not use this strategy when:
 - sector confirmation is weak or absent
 - the page is treating a pre-breakout watch name as if it were already an executed breakout
 - the stock is too extended after the trigger and no longer offers clean risk geometry
+- the broad breakout baseline is being used without the promoted regime and sector gates
 
 ### What edge it is trying to capture
 
@@ -393,6 +405,14 @@ The strongest visible proof point should be the `Risk-on + sector confirmed` sub
 - `10D` win rate `57.8%`
 - `15D` win rate `57.9%`
 
+The newer promotion proof point is the `Supportive + Sector-Confirmed Breakout` weekly portfolio replay:
+
+- signal sample `1985`
+- net annualized return `19.94%`
+- annualized excess versus `SPY` buy-and-hold `+5.93%`
+- annualized excess versus exposure-aware `SPY` `+18.50%`
+- max drawdown `-18.10%`, better than `SPY` buy-and-hold at `-25.36%`
+
 ### What `works best when` means
 
 On this page, `works best when` should mean:
@@ -411,19 +431,20 @@ Show the rule spine in plain language:
 - a definable resistance or breakout trigger must exist
 - the strategy should be tested and interpreted on triggered entries only
 - relative strength should be acceptable or strong
-- sector context should be supportive
+- market regime must be `Risk-on` or `Selective risk-on` for board-eligible buys
+- sector context must be confirmed for board-eligible buys
 - defensive-regime breakouts deserve skepticism
 - if the trigger has not fired, the recommendation should remain in a watch state rather than pretending to be live
 
 ### Trust-calibration note
 
-This is the strongest current strategy page and needs the least defensive copy. It still should not pretend that all breakouts are good, but it is the clearest live-ready canonical sleeve today.
+This is still the strongest current strategy page, but the live claim is narrower than the broad label. The promoted version is triggered breakout plus supportive regime plus sector confirmation; the broad current breakout rule remains research context only.
 
 ### Conditional page-content note
 
 This page is the least dependent on the mainline promotion decision session.
 
-Unless later replay materially changes the evidence, this page can safely ship as the benchmark example of a promoted decision-basis page.
+Unless later replay materially changes the evidence, this page can ship as the benchmark example of a promoted decision-basis page only if its copy and board logic preserve the supportive sector-confirmed gates.
 
 ---
 
@@ -528,11 +549,25 @@ Show the rule spine in plain language:
 
 This page should carry the strongest caution label. It is useful as a research sleeve because it may uncover regime-specific edge, but current evidence does not justify presenting it as a trusted fresh-cash strategy.
 
+### 2026-06-07 refinement note
+
+The latest Selective Mean Reversion replay tested defensive and stress-regime-only variants with daily `OHLCV`, `20 bps` friction, `5D` / `10D` / `15D` holding windows, `SPY` buy-and-hold, and exposure-aware `SPY`.
+
+Best result:
+
+- `stress_v1`, `15D` hold
+- `7.05%` net annualized return
+- `+6.10%` annualized excess versus exposure-aware `SPY`
+- `-7.22%` annualized excess versus `SPY` buy-and-hold
+- `43.04%` largest-year signal share
+
+Decision: keep `selective-mean-reversion.v1` `Research only`; do not promote to sandbox, paper-live, or main-board fresh-cash eligibility.
+
 ### Conditional page-content note
 
 This page is only lightly dependent on the mainline promotion decision session.
 
-Unless new replay evidence appears, it should remain `Research only` and stay off the main board.
+Unless materially stronger replay evidence appears, it should remain `Research only` and stay off the main board.
 
 ---
 

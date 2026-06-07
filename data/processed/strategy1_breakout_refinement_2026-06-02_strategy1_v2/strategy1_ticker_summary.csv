@@ -1,0 +1,402 @@
+variant_id,variant_name,ticker,sample_size,avg_fwd_15d_return,avg_excess_15d_return,win_rate_15d
+baseline_current,Current Breakout Confirmation,NVDA,59,0.060584149012833086,0.04723434411155958,0.6949152542372882
+baseline_current,Current Breakout Confirmation,GE,56,0.023574345656861288,0.01681509591018771,0.7142857142857143
+baseline_current,Current Breakout Confirmation,MSFT,55,0.017638652119922552,-0.001447886990427519,0.6545454545454545
+baseline_current,Current Breakout Confirmation,WMT,53,0.005386430281169621,0.005097768245477153,0.5471698113207547
+baseline_current,Current Breakout Confirmation,AAPL,51,0.009027466090363671,0.004782935511095815,0.6274509803921569
+baseline_current,Current Breakout Confirmation,BNY,51,0.009722069580622864,0.0026836793801131467,0.6274509803921569
+baseline_current,Current Breakout Confirmation,CAT,51,0.01510094493956393,0.012268987626954754,0.5490196078431373
+baseline_current,Current Breakout Confirmation,META,49,0.021065327834841906,0.010738618623573528,0.5510204081632653
+baseline_current,Current Breakout Confirmation,XOM,49,0.0131266514861065,0.022382443811495754,0.5714285714285714
+baseline_current,Current Breakout Confirmation,GOOGL,48,0.010022363944316116,0.007220034774930123,0.5833333333333334
+baseline_current,Current Breakout Confirmation,LRCX,47,0.029594234232594722,0.019958596750392146,0.574468085106383
+baseline_current,Current Breakout Confirmation,GOOG,46,0.006608666084472991,0.00532951251124515,0.5434782608695652
+baseline_current,Current Breakout Confirmation,MU,46,0.07055856008091568,0.06394225757526421,0.6086956521739131
+baseline_current,Current Breakout Confirmation,AVGO,44,0.02563733535747007,0.009189668022978548,0.5909090909090909
+baseline_current,Current Breakout Confirmation,JPM,44,-0.0032395810389121327,-0.014240880020563663,0.5
+baseline_current,Current Breakout Confirmation,AXP,43,0.0124961332050902,-9.333998413935506e-05,0.627906976744186
+baseline_current,Current Breakout Confirmation,PLTR,43,0.014264420053258198,0.009076398430368724,0.5581395348837209
+baseline_current,Current Breakout Confirmation,ISRG,42,0.013204728586799799,0.0016065432338091862,0.6666666666666666
+baseline_current,Current Breakout Confirmation,LLY,42,0.012654192746627298,0.00903413158660099,0.5476190476190477
+baseline_current,Current Breakout Confirmation,NFLX,42,0.01508123116395292,0.0022971848428753722,0.6666666666666666
+baseline_current,Current Breakout Confirmation,WFC,42,0.014236345155024522,0.0019678629288074462,0.5952380952380952
+baseline_current,Current Breakout Confirmation,GILD,41,0.018812463128226247,0.017163538384484107,0.5609756097560976
+baseline_current,Current Breakout Confirmation,ORCL,40,0.03209976333956788,0.012712970522064573,0.575
+baseline_current,Current Breakout Confirmation,AMZN,39,-0.017167396144485127,-0.024306904278846207,0.38461538461538464
+baseline_current,Current Breakout Confirmation,ABBV,38,0.016867271377444787,0.020553446645223492,0.6578947368421053
+baseline_current,Current Breakout Confirmation,BKNG,38,-0.005116749770975984,-0.008821679018244603,0.5789473684210527
+baseline_current,Current Breakout Confirmation,COP,38,-0.0038696321846649617,-0.009930782214486037,0.5
+baseline_current,Current Breakout Confirmation,CVX,38,-0.0048447583457758596,0.0028131187493312584,0.5526315789473685
+baseline_current,Current Breakout Confirmation,RTX,38,0.009824109068880866,0.005018300005583956,0.5526315789473685
+baseline_current,Current Breakout Confirmation,BAC,37,-0.002053325347676705,-0.013055622521528623,0.5135135135135135
+baseline_current,Current Breakout Confirmation,C,37,0.006315150221101076,-0.0011740178548219776,0.5675675675675675
+baseline_current,Current Breakout Confirmation,CSCO,37,0.016230396906556095,0.009097637501860573,0.6756756756756757
+baseline_current,Current Breakout Confirmation,AMAT,36,-0.004357343568302823,-0.007468389929012155,0.5
+baseline_current,Current Breakout Confirmation,EMR,35,0.006438784499438748,0.0017469837954193228,0.6
+baseline_current,Current Breakout Confirmation,IBM,35,0.015603007264517037,0.015202306425906299,0.5714285714285714
+baseline_current,Current Breakout Confirmation,SCHW,35,-0.006623575416747845,-0.015596538216144484,0.5142857142857142
+baseline_current,Current Breakout Confirmation,SPG,35,0.02298708480456239,0.011832329843966967,0.6571428571428571
+baseline_current,Current Breakout Confirmation,GS,34,0.012763062251104377,0.0028779058250565535,0.6176470588235294
+baseline_current,Current Breakout Confirmation,LIN,34,-0.0025324274736048093,-0.0005944249646843572,0.47058823529411764
+baseline_current,Current Breakout Confirmation,PM,34,0.008788267964621873,0.014623122250015663,0.6176470588235294
+baseline_current,Current Breakout Confirmation,CL,33,0.00427170330855122,0.0038265931145533326,0.5757575757575758
+baseline_current,Current Breakout Confirmation,GEV,33,0.07205953491855273,0.054802332286497564,0.696969696969697
+baseline_current,Current Breakout Confirmation,CRM,32,0.018447177517211876,0.003023302513082044,0.6875
+baseline_current,Current Breakout Confirmation,GM,32,-0.005990419720714825,-0.01231361146307166,0.46875
+baseline_current,Current Breakout Confirmation,INTU,32,0.024660364693071046,0.015146536645877895,0.65625
+baseline_current,Current Breakout Confirmation,KO,32,-0.001392820217298963,0.014904766442320253,0.46875
+baseline_current,Current Breakout Confirmation,MRK,32,0.005512444504366925,-0.0013489636413017599,0.59375
+baseline_current,Current Breakout Confirmation,UBER,32,0.029405703663477063,0.019946015468432013,0.625
+baseline_current,Current Breakout Confirmation,BRK-B,31,0.004490003219765122,0.02075794700720298,0.5161290322580645
+baseline_current,Current Breakout Confirmation,JNJ,31,0.017126416703732286,0.025503473389718333,0.6451612903225806
+baseline_current,Current Breakout Confirmation,V,31,-0.0029179060981617644,-0.005110124610576529,0.4838709677419355
+baseline_current,Current Breakout Confirmation,MO,30,0.004147559803718985,0.00974255235210096,0.5
+baseline_current,Current Breakout Confirmation,MS,30,0.005422830035795309,-7.869317343092522e-05,0.5333333333333333
+baseline_current,Current Breakout Confirmation,NOW,30,0.009402862637329638,-0.0029966422417255075,0.5666666666666667
+baseline_current,Current Breakout Confirmation,ACN,29,0.005096741393479571,-0.00490539750692217,0.5862068965517241
+baseline_current,Current Breakout Confirmation,AMGN,29,0.0006958608346822891,0.0004713307361679041,0.6206896551724138
+baseline_current,Current Breakout Confirmation,LOW,29,0.00311952562236988,-0.006853828036319865,0.5862068965517241
+baseline_current,Current Breakout Confirmation,MCD,29,0.000666034189928641,-0.010712625918380155,0.5862068965517241
+baseline_current,Current Breakout Confirmation,TMO,29,-0.007124580351778669,-0.01397300060697185,0.5517241379310345
+baseline_current,Current Breakout Confirmation,BLK,28,0.006903129842086789,-0.0016247116301941636,0.6428571428571429
+baseline_current,Current Breakout Confirmation,COF,28,0.006262705613732219,-0.0002492808817035698,0.42857142857142855
+baseline_current,Current Breakout Confirmation,NEE,28,0.002871641603013667,-0.010265817435198995,0.5357142857142857
+baseline_current,Current Breakout Confirmation,TMUS,28,0.012977626979121656,0.0072812194663958675,0.7857142857142857
+baseline_current,Current Breakout Confirmation,AMD,27,0.08789288567861274,0.0682350235227642,0.5925925925925926
+baseline_current,Current Breakout Confirmation,AMT,27,-0.009203351122263928,-0.008564071793102783,0.48148148148148145
+baseline_current,Current Breakout Confirmation,FDX,27,0.006202197170832718,0.003090367060569701,0.5925925925925926
+baseline_current,Current Breakout Confirmation,SO,27,-0.006511279930633364,-0.004788531799909185,0.37037037037037035
+baseline_current,Current Breakout Confirmation,DUK,26,-0.0003050360643129374,0.007405827961538978,0.5
+baseline_current,Current Breakout Confirmation,HD,26,0.004408290699946778,-0.006446423833409824,0.7307692307692307
+baseline_current,Current Breakout Confirmation,HON,26,0.007453513134048658,0.004522965344686299,0.6153846153846154
+baseline_current,Current Breakout Confirmation,LMT,26,0.02380773262900424,0.006172253013782902,0.6153846153846154
+baseline_current,Current Breakout Confirmation,ADBE,24,0.0011488693043003272,-0.007528223034212235,0.5416666666666666
+baseline_current,Current Breakout Confirmation,BMY,24,0.0159798986339216,0.015100779444228038,0.7083333333333334
+baseline_current,Current Breakout Confirmation,GD,24,-0.0018734342494227906,-0.00910539792018536,0.4583333333333333
+baseline_current,Current Breakout Confirmation,T,24,-0.014598492900405135,-0.02237975440365593,0.4583333333333333
+baseline_current,Current Breakout Confirmation,DE,23,0.007262464900171809,0.0191383541312995,0.5217391304347826
+baseline_current,Current Breakout Confirmation,MA,23,-0.008938399668454522,-0.017255238955730053,0.4782608695652174
+baseline_current,Current Breakout Confirmation,QCOM,23,0.019093291700903337,0.0027147991874168086,0.6521739130434783
+baseline_current,Current Breakout Confirmation,TSLA,23,0.01451757461338157,0.01602547650094221,0.4782608695652174
+baseline_current,Current Breakout Confirmation,TXN,23,-0.009967077348552907,-0.013386816352155271,0.30434782608695654
+baseline_current,Current Breakout Confirmation,DHR,22,0.007243494430424935,0.0030749270831234173,0.5454545454545454
+baseline_current,Current Breakout Confirmation,UNH,22,-0.022999293440441125,-0.03860528978772891,0.5
+baseline_current,Current Breakout Confirmation,ABT,21,-0.002057186643788384,-0.007125474884007589,0.5714285714285714
+baseline_current,Current Breakout Confirmation,INTC,21,0.0645474017339361,0.06136214230768589,0.5238095238095238
+baseline_current,Current Breakout Confirmation,CVS,20,0.0027873077271018064,0.008368699528685592,0.55
+baseline_current,Current Breakout Confirmation,MDLZ,20,0.009412403873570691,0.014821779933434092,0.6
+baseline_current,Current Breakout Confirmation,PEP,20,-0.016237239255833136,-0.015417726273611005,0.45
+baseline_current,Current Breakout Confirmation,PG,20,-0.0034253312638634903,0.00846864547204112,0.45
+baseline_current,Current Breakout Confirmation,USB,20,-0.004269752101179169,-0.01367949390524032,0.45
+baseline_current,Current Breakout Confirmation,SBUX,19,-0.03919983297835294,-0.0398069999400391,0.21052631578947367
+baseline_current,Current Breakout Confirmation,BA,18,0.01692955958091997,-0.004271773155243828,0.3888888888888889
+baseline_current,Current Breakout Confirmation,UNP,18,-0.022303585235119112,-0.01055530411576655,0.2222222222222222
+baseline_current,Current Breakout Confirmation,VZ,17,-0.0013302370695795892,-0.012160607331211395,0.5294117647058824
+baseline_current,Current Breakout Confirmation,MMM,15,-0.004414151432216477,-0.013307882857078386,0.4
+baseline_current,Current Breakout Confirmation,PFE,15,0.02551181062765974,0.01823585586585398,0.5333333333333333
+baseline_current,Current Breakout Confirmation,CMCSA,13,0.008347505957598863,0.0037480734469010047,0.6923076923076923
+baseline_current,Current Breakout Confirmation,UPS,13,-0.014489020608148776,0.01173331689365864,0.3076923076923077
+baseline_current,Current Breakout Confirmation,NKE,12,-0.02482888972059318,-0.03653506084412203,0.3333333333333333
+baseline_current,Current Breakout Confirmation,DIS,10,0.024244656791106,0.014188155665276958,0.7
+baseline_current,Current Breakout Confirmation,MDT,10,-0.022739033732336267,-0.03842227020321535,0.2
+leadership_quality,Leadership-Quality Breakout,MSFT,34,0.016514439971738834,-0.0034647088409380765,0.6176470588235294
+leadership_quality,Leadership-Quality Breakout,JPM,28,-0.0028698166509316747,-0.009463933457804398,0.5357142857142857
+leadership_quality,Leadership-Quality Breakout,BNY,27,0.015585306493276217,0.007149145593703836,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,AXP,25,0.003627891195133981,-0.011479785777936971,0.56
+leadership_quality,Leadership-Quality Breakout,C,25,0.0012401423055370619,-0.0025529954800033792,0.52
+leadership_quality,Leadership-Quality Breakout,GE,25,0.02376499292857013,0.017468680767884544,0.76
+leadership_quality,Leadership-Quality Breakout,ISRG,24,0.015632309508295392,0.007664198730962256,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,CAT,23,0.03194079481865898,0.028910697215684362,0.5652173913043478
+leadership_quality,Leadership-Quality Breakout,CRM,23,0.01747648650264117,-0.0011140377264360732,0.6956521739130435
+leadership_quality,Leadership-Quality Breakout,AAPL,21,-0.007331419077184439,-0.002613238252871556,0.47619047619047616
+leadership_quality,Leadership-Quality Breakout,CSCO,21,0.0019298656248026372,-0.000697164219653601,0.5238095238095238
+leadership_quality,Leadership-Quality Breakout,INTU,21,0.01886505599133984,0.011915959516429828,0.6190476190476191
+leadership_quality,Leadership-Quality Breakout,BAC,20,-0.004930216577879437,-0.02213713043423173,0.5
+leadership_quality,Leadership-Quality Breakout,IBM,20,0.01988938716899107,0.007808970676013766,0.6
+leadership_quality,Leadership-Quality Breakout,MS,20,-0.00044241810310340356,-0.007165044382387437,0.4
+leadership_quality,Leadership-Quality Breakout,EMR,19,0.003039279747960115,-0.0028712414973513776,0.5263157894736842
+leadership_quality,Leadership-Quality Breakout,SCHW,19,-0.003128568804140983,-0.009459621841602433,0.5263157894736842
+leadership_quality,Leadership-Quality Breakout,WFC,19,0.011348762896401363,-0.006237203740095714,0.5789473684210527
+leadership_quality,Leadership-Quality Breakout,GS,18,-0.0056172172980302505,-0.010057506026444415,0.4444444444444444
+leadership_quality,Leadership-Quality Breakout,NOW,18,-0.0035939844625399267,-0.006523641385525087,0.5
+leadership_quality,Leadership-Quality Breakout,ORCL,18,0.025063991611725882,0.005218772714938739,0.4444444444444444
+leadership_quality,Leadership-Quality Breakout,RTX,18,0.022277648249335837,0.0227769314093439,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,ABBV,17,0.019783016609093606,0.03438132828080673,0.6470588235294118
+leadership_quality,Leadership-Quality Breakout,GM,17,0.008352362152304537,0.00016825683106939693,0.5294117647058824
+leadership_quality,Leadership-Quality Breakout,TMO,17,-0.010282594353609871,-0.015028349696166217,0.6470588235294118
+leadership_quality,Leadership-Quality Breakout,AVGO,16,0.060701610852247755,0.04833370798749983,0.75
+leadership_quality,Leadership-Quality Breakout,COF,16,-0.010996646657184382,-0.013419993299600134,0.375
+leadership_quality,Leadership-Quality Breakout,LRCX,16,0.002069749799159609,-0.004489833215793763,0.375
+leadership_quality,Leadership-Quality Breakout,ACN,15,-0.005164496492304897,-0.007922990720404402,0.4666666666666667
+leadership_quality,Leadership-Quality Breakout,LOW,15,0.014711083239425101,-0.002718721984465544,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,BLK,14,0.019976731405512,0.009338285536313265,0.7857142857142857
+leadership_quality,Leadership-Quality Breakout,BKNG,13,0.004304842629489021,-0.00938389864240979,0.6923076923076923
+leadership_quality,Leadership-Quality Breakout,FDX,13,0.024746197602741667,0.018402522829861895,0.7692307692307693
+leadership_quality,Leadership-Quality Breakout,AMZN,12,-0.03435698672581991,-0.04645582687470534,0.25
+leadership_quality,Leadership-Quality Breakout,DHR,12,0.02280728954431348,0.02728519171923227,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,MA,12,-0.005220843199004954,-0.01127528456815611,0.4166666666666667
+leadership_quality,Leadership-Quality Breakout,LLY,11,0.004036502284553666,0.0030295418806545486,0.5454545454545454
+leadership_quality,Leadership-Quality Breakout,NVDA,11,0.11298080774231006,0.09646365414275491,0.9090909090909091
+leadership_quality,Leadership-Quality Breakout,V,11,-0.016368219784417434,-0.010485011274445415,0.36363636363636365
+leadership_quality,Leadership-Quality Breakout,MRK,10,0.011641650825167216,0.02141285058891066,0.7
+leadership_quality,Leadership-Quality Breakout,TXN,10,-0.005219888584092935,-0.016919586357051375,0.5
+leadership_quality,Leadership-Quality Breakout,USB,10,-0.008848362463142512,-0.022095432381650702,0.3
+leadership_quality,Leadership-Quality Breakout,XOM,10,0.04112352230333292,0.0623206335504783,0.7
+leadership_quality,Leadership-Quality Breakout,ADBE,9,-0.015320924259023785,-0.012234517709740735,0.3333333333333333
+leadership_quality,Leadership-Quality Breakout,AMAT,9,-0.025190763216536682,-0.02835152464635287,0.4444444444444444
+leadership_quality,Leadership-Quality Breakout,AMGN,9,-0.007327187737301701,-0.01288025685740626,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,HD,9,0.004152683467293682,-0.009810076501633076,0.6666666666666666
+leadership_quality,Leadership-Quality Breakout,QCOM,9,0.016710685400310968,-0.008682907262645177,0.5555555555555556
+leadership_quality,Leadership-Quality Breakout,UBER,9,0.0762192678410289,0.06228904701869314,0.8888888888888888
+leadership_quality,Leadership-Quality Breakout,BRK-B,8,-0.011130339550310758,-0.009895170853223598,0.25
+leadership_quality,Leadership-Quality Breakout,CVS,8,0.010468145172282756,0.0008042654866153298,0.625
+leadership_quality,Leadership-Quality Breakout,DE,8,0.0035134206396334883,0.010584503040576357,0.5
+leadership_quality,Leadership-Quality Breakout,GD,8,-0.019431310188424658,-0.0057745512548025985,0.125
+leadership_quality,Leadership-Quality Breakout,JNJ,8,0.005923632535581244,0.013606566165958345,0.625
+leadership_quality,Leadership-Quality Breakout,UNH,8,-0.002903396772338626,0.011700331079226023,0.625
+leadership_quality,Leadership-Quality Breakout,ABT,7,-0.033945758327116056,-0.019272441739550752,0.2857142857142857
+leadership_quality,Leadership-Quality Breakout,GILD,7,0.02532254788748031,0.046025592952177195,0.7142857142857143
+leadership_quality,Leadership-Quality Breakout,HON,7,0.02520240028381488,0.02530957708137969,0.5714285714285714
+leadership_quality,Leadership-Quality Breakout,MCD,7,0.003782924024737725,-0.0038444368019558656,0.7142857142857143
+leadership_quality,Leadership-Quality Breakout,NKE,7,-0.04217177738789938,-0.05272863505024212,0.14285714285714285
+leadership_quality,Leadership-Quality Breakout,BMY,6,0.01597511976643508,0.01555542800050221,0.8333333333333334
+leadership_quality,Leadership-Quality Breakout,GEV,6,0.1797586135656791,0.16901918601822544,1.0
+leadership_quality,Leadership-Quality Breakout,PFE,6,0.037771917497647245,0.04001548481926037,0.5
+leadership_quality,Leadership-Quality Breakout,SBUX,6,-0.05335595839428564,-0.05684968528471005,0.0
+leadership_quality,Leadership-Quality Breakout,UNP,6,-0.0285957555381889,-0.026092836460782958,0.3333333333333333
+leadership_quality,Leadership-Quality Breakout,COP,5,-0.023191690196750426,-0.023294874864640835,0.2
+leadership_quality,Leadership-Quality Breakout,MDT,5,-0.004097977251692808,-0.021777490239416088,0.4
+leadership_quality,Leadership-Quality Breakout,MMM,5,-0.007494770159064812,-0.015620068498705675,0.4
+leadership_quality,Leadership-Quality Breakout,MU,5,0.0052878422838483095,-0.022036676549339607,0.4
+leadership_quality,Leadership-Quality Breakout,PLTR,5,0.03076097120732115,0.011982821402728239,0.4
+leadership_quality,Leadership-Quality Breakout,AMD,4,0.05022958010676687,0.03303804646488884,0.5
+leadership_quality,Leadership-Quality Breakout,BA,4,-0.030667889001272958,-0.04949162725971604,0.0
+leadership_quality,Leadership-Quality Breakout,CVX,4,0.003365566305702228,-0.007397413959182447,0.5
+leadership_quality,Leadership-Quality Breakout,INTC,4,-0.05344606578943467,-0.049112030655748595,0.25
+leadership_quality,Leadership-Quality Breakout,UPS,4,-0.036114798226969,-0.0009963224645131163,0.25
+leadership_quality,Leadership-Quality Breakout,LMT,3,-0.0033524289825285214,-0.02995813025863059,0.3333333333333333
+leadership_quality,Leadership-Quality Breakout,TSLA,2,0.2411829758561458,0.23541933311404145,1.0
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,NVDA,55,0.06117001634673361,0.047711092326852576,0.7090909090909091
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MSFT,53,0.014611768196750686,-0.002506051891494093,0.6415094339622641
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AAPL,47,0.007057855466420498,0.004640302596903068,0.6170212765957447
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,LRCX,42,0.02992028460835926,0.018435719880414914,0.5952380952380952
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,GE,40,0.0368258510226539,0.031115894856745062,0.775
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MU,38,0.07250339169456443,0.06465570474497628,0.5789473684210527
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BNY,37,0.013796012993213116,0.004912975616102297,0.6486486486486487
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AVGO,36,0.030633350813246404,0.013316944263041712,0.6388888888888888
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,ORCL,36,0.02915049757652967,0.014124484726261611,0.5555555555555556
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,CAT,34,0.028162360038535523,0.02565554964808749,0.5588235294117647
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,JPM,34,-0.002790690222259251,-0.010704497512401379,0.5
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,PLTR,34,0.009171284318154959,0.008038032991996716,0.5
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AMZN,33,-0.014953445599190408,-0.02363023947446989,0.42424242424242425
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BKNG,30,0.0011029380399862343,-0.0026490944097706803,0.5666666666666667
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,CRM,30,0.013778696106309392,-0.0010486917905031534,0.6666666666666666
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,ISRG,30,0.020362681426396134,0.00887520187370708,0.6333333333333333
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,WFC,30,0.025581912032160956,0.010852039913470508,0.6666666666666666
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AXP,29,0.008377839530318742,-0.006425905932804845,0.5517241379310345
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,CSCO,28,0.014509906019570017,0.010941359212137233,0.5714285714285714
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,INTU,28,0.022731831491894672,0.012576987563035233,0.6428571428571429
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,UBER,28,0.03163994258643097,0.022505870375112324,0.6428571428571429
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BAC,27,-0.0074157757606282855,-0.012515919343391316,0.4444444444444444
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,EMR,27,0.007928005508688678,0.001362919002063172,0.6296296296296297
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,GS,27,0.004798947466370514,-0.0009333640570934949,0.5555555555555556
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AMD,26,0.08092628590235468,0.060285485941989674,0.6153846153846154
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,IBM,26,0.02086167122622136,0.009858257812126587,0.6153846153846154
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,NOW,26,0.005837137391307026,-0.004837200869985228,0.5
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,ACN,25,0.01825607724594248,0.005846071995822441,0.64
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,C,25,0.009954413536262861,0.005201296546910297,0.56
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AMAT,24,0.004295654543276535,-0.0025311210211199967,0.5416666666666666
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,COF,24,0.01453230828975339,0.008385762715809661,0.4583333333333333
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,GEV,24,0.07493908002693182,0.06092732981360003,0.7083333333333334
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,GM,23,-0.021086581521169923,-0.022794652170692365,0.391304347826087
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,LOW,23,0.012319923235577951,0.0025725834189746473,0.6956521739130435
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BLK,22,0.01222628892331286,0.0030669128193664508,0.6818181818181818
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,LLY,22,0.03161959460670787,0.027409410944647394,0.6363636363636364
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,QCOM,22,0.014494511772091202,-0.000744679100461029,0.6363636363636364
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,TMO,22,-3.715131775005144e-05,-0.004170388954538518,0.6363636363636364
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,ADBE,21,0.00018715073967764026,-0.010178547062997959,0.5238095238095238
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MS,21,0.012717962351783659,0.007158744768576195,0.5238095238095238
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,TSLA,21,-0.012895802419827341,-0.00788941396736946,0.42857142857142855
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,HD,20,0.004609667549698426,-0.005341443512710808,0.75
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,RTX,20,0.013707335719162588,0.004102610188102318,0.55
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,ABBV,19,0.014085359670960163,0.022827297876799425,0.5789473684210527
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,TXN,19,-0.02627106731866886,-0.03089414727340192,0.2631578947368421
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,FDX,18,0.012645291269784439,0.010409940167550202,0.5555555555555556
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,HON,18,0.008767910704073591,0.0011029517230037127,0.6111111111111112
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,SCHW,18,0.012519203828804757,0.007183925693314398,0.7222222222222222
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,V,17,-0.004438765072532354,-0.007434719586511233,0.5294117647058824
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,DHR,16,0.018900506109003998,0.014600483418285161,0.5625
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,INTC,16,0.10717774673899061,0.09622665604554216,0.6875
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MRK,16,0.010750843943989688,0.024127274495734423,0.75
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,XOM,15,0.031442270387779976,0.03721560228660193,0.6666666666666666
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,ABT,14,0.008216753740410651,0.006440535487431414,0.5714285714285714
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,JNJ,14,0.025638093255345457,0.04258297127013135,0.8571428571428571
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MA,14,-0.007218543899794475,-0.014203381744381285,0.42857142857142855
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MCD,14,0.005604842398514205,-0.006168442677334613,0.7142857142857143
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,SBUX,14,-0.029711503082151536,-0.036136157675966715,0.21428571428571427
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BA,13,-0.002640401662132419,-0.014076383119958034,0.23076923076923078
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BRK-B,13,0.005600639448895986,0.0054770517982828055,0.46153846153846156
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,GD,13,-0.0023419249732296887,-0.005255847090189191,0.38461538461538464
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,NKE,13,-0.024684197764523762,-0.03527562900012223,0.3076923076923077
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,UNP,13,-0.022443297055658087,-0.01097915916316682,0.23076923076923078
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,USB,13,0.0022350341514507568,-0.007951758430930518,0.46153846153846156
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,DE,12,0.0021665496036978316,0.01623169645573813,0.5
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,GILD,12,0.023373559025012137,0.04076427495378065,0.6666666666666666
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,CVX,11,0.021403792579600515,0.027739568811427796,0.7272727272727273
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,UNH,11,-0.0011111772864530365,0.0066421152545268584,0.5454545454545454
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,AMGN,10,0.002054439738087821,-0.0019899803200422285,0.7
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,CVS,9,-0.01611759679948843,-0.011633694003455423,0.3333333333333333
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,LMT,8,0.03564108650189032,0.031806091732919414,0.625
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MMM,8,-0.005532365547754922,-0.014153137492934065,0.375
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,PFE,8,0.04654373145280101,0.043077749350890704,0.625
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,UPS,8,-0.005172181680346652,0.0283571943896318,0.375
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,COP,7,-0.025401973736375316,-0.0187254950500298,0.14285714285714285
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,BMY,5,0.023185343415240745,0.03764338559594114,0.6
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,MDT,5,-0.008744512684095063,-0.02189701633504313,0.4
+strict_entry_quality,Strict Entry-Quality Breakout,MSFT,21,0.026046078833772728,0.004025185688487045,0.7619047619047619
+strict_entry_quality,Strict Entry-Quality Breakout,ISRG,19,0.011595377595314793,0.0025118148598444307,0.631578947368421
+strict_entry_quality,Strict Entry-Quality Breakout,JPM,16,-0.007743900475383855,-0.01631972409741718,0.5625
+strict_entry_quality,Strict Entry-Quality Breakout,BNY,14,0.00579827682040004,0.005118724399314727,0.6428571428571429
+strict_entry_quality,Strict Entry-Quality Breakout,AXP,12,0.0020021936884047262,-0.011426350359624768,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,LOW,12,0.02330118524656179,0.007609398295550601,0.8333333333333334
+strict_entry_quality,Strict Entry-Quality Breakout,MS,11,0.0024625166466023733,-0.012501197298697557,0.45454545454545453
+strict_entry_quality,Strict Entry-Quality Breakout,AAPL,10,-0.014792672896338488,-0.012042094737881348,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,CAT,10,0.03525815799290712,0.029432449258228365,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,RTX,10,0.02645388179700491,0.027214746638122046,0.8
+strict_entry_quality,Strict Entry-Quality Breakout,GS,9,-0.018854760916337827,-0.02284195204158041,0.3333333333333333
+strict_entry_quality,Strict Entry-Quality Breakout,IBM,9,0.015499937773107727,0.010376809506855711,0.5555555555555556
+strict_entry_quality,Strict Entry-Quality Breakout,NOW,9,0.0016386766049839698,-0.007084140981931688,0.5555555555555556
+strict_entry_quality,Strict Entry-Quality Breakout,C,8,-0.02981838742746752,-0.029563996130755124,0.375
+strict_entry_quality,Strict Entry-Quality Breakout,CRM,8,0.042794233922938324,0.022034455022546265,0.875
+strict_entry_quality,Strict Entry-Quality Breakout,DHR,8,0.038823074262735985,0.03538422920285694,0.625
+strict_entry_quality,Strict Entry-Quality Breakout,INTU,8,0.024518005644765237,0.012167311340998882,0.75
+strict_entry_quality,Strict Entry-Quality Breakout,WFC,8,0.02752008672538203,0.008564663497379693,0.625
+strict_entry_quality,Strict Entry-Quality Breakout,AVGO,7,0.057846034772455104,0.051207410212000516,0.8571428571428571
+strict_entry_quality,Strict Entry-Quality Breakout,BLK,7,0.014163435793382575,0.007189604607413025,0.7142857142857143
+strict_entry_quality,Strict Entry-Quality Breakout,EMR,7,0.0345044399104877,0.019820008634422206,0.7142857142857143
+strict_entry_quality,Strict Entry-Quality Breakout,GE,7,0.03773874336859024,0.024916766746921306,0.7142857142857143
+strict_entry_quality,Strict Entry-Quality Breakout,ABBV,6,0.024901575336686688,0.024432190772458968,0.6666666666666666
+strict_entry_quality,Strict Entry-Quality Breakout,ACN,6,-0.01050993202299344,-0.014302938828217149,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,AMZN,6,-0.03531067252824203,-0.05084096550976112,0.3333333333333333
+strict_entry_quality,Strict Entry-Quality Breakout,COF,6,-0.03805647621530014,-0.03363643524417662,0.3333333333333333
+strict_entry_quality,Strict Entry-Quality Breakout,TMO,6,-0.04150858043057528,-0.023847258751441374,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,BAC,5,-0.03846295528497414,-0.05454721536637699,0.2
+strict_entry_quality,Strict Entry-Quality Breakout,CSCO,5,-0.007172449445534745,-0.009033857401764966,0.4
+strict_entry_quality,Strict Entry-Quality Breakout,DE,5,0.0017416060080414296,0.0058778990536769715,0.4
+strict_entry_quality,Strict Entry-Quality Breakout,FDX,5,0.058904500204298424,0.049969389469589065,0.8
+strict_entry_quality,Strict Entry-Quality Breakout,GM,5,-0.009280844864743986,-0.027700467919498938,0.2
+strict_entry_quality,Strict Entry-Quality Breakout,LLY,5,0.005147129314898158,0.0026726567787188626,0.6
+strict_entry_quality,Strict Entry-Quality Breakout,MA,5,-0.00687058068721782,-0.016629876878943663,0.4
+strict_entry_quality,Strict Entry-Quality Breakout,SCHW,5,-0.02904611617854731,-0.03487774148940639,0.2
+strict_entry_quality,Strict Entry-Quality Breakout,V,5,-0.006817826780088287,0.006834461661473723,0.4
+strict_entry_quality,Strict Entry-Quality Breakout,ADBE,4,0.0011763931673834382,0.004134870707051347,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,BRK-B,4,-0.004994239449019694,-0.026413837931522605,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,CVX,4,0.004959380494984816,-0.0043973883254655455,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,HD,4,-0.012664759387662067,-0.039229115161601796,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,HON,4,0.0201846104108091,0.016864180550118457,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,JNJ,4,-0.011396340308139602,-0.025250566055744023,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,LRCX,4,-0.0690339908521688,-0.05740707971713954,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,MRK,4,0.02146873497865137,0.013043218589914723,0.75
+strict_entry_quality,Strict Entry-Quality Breakout,NKE,4,-0.005876736141083222,-0.015238261016668447,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,ORCL,4,0.003000607916707393,-0.005452311886115835,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,PFE,4,0.038770238056318435,0.03361062094077999,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,UNH,4,-0.017824526444946392,-0.009209122278428739,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,USB,4,-0.007463891074745349,-0.016731072041440503,0.25
+strict_entry_quality,Strict Entry-Quality Breakout,XOM,4,0.07460243830134217,0.0761258987168589,1.0
+strict_entry_quality,Strict Entry-Quality Breakout,ABT,3,-0.04398372022732133,-0.043855968246232314,0.3333333333333333
+strict_entry_quality,Strict Entry-Quality Breakout,AMAT,3,-0.09165732808757605,-0.07766940436027488,0.3333333333333333
+strict_entry_quality,Strict Entry-Quality Breakout,AMGN,3,-0.019987377037320602,0.021293689621015632,0.6666666666666666
+strict_entry_quality,Strict Entry-Quality Breakout,BA,3,-0.03525059940657582,-0.057020510783966936,0.0
+strict_entry_quality,Strict Entry-Quality Breakout,CVS,3,0.013484696623886664,0.018670492424352553,0.6666666666666666
+strict_entry_quality,Strict Entry-Quality Breakout,GILD,3,0.018599209111900643,0.07233892990968516,0.6666666666666666
+strict_entry_quality,Strict Entry-Quality Breakout,MU,3,-0.022425929011369455,-0.050114423955430976,0.0
+strict_entry_quality,Strict Entry-Quality Breakout,NVDA,3,0.05077961291994252,0.034384701901037894,0.6666666666666666
+strict_entry_quality,Strict Entry-Quality Breakout,QCOM,3,0.017803818933116927,-0.007411108275416652,0.6666666666666666
+strict_entry_quality,Strict Entry-Quality Breakout,UNP,3,-0.014178949608964745,-0.01785352858250037,0.3333333333333333
+strict_entry_quality,Strict Entry-Quality Breakout,BKNG,2,0.04822883462517097,0.03550152086270203,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,COP,2,-0.007573057941825501,0.012777276265056925,0.5
+strict_entry_quality,Strict Entry-Quality Breakout,GD,2,-0.029933118746404308,-0.018954564030710552,0.0
+strict_entry_quality,Strict Entry-Quality Breakout,TXN,2,-0.07708984637051197,-0.1010231135146511,0.0
+strict_entry_quality,Strict Entry-Quality Breakout,BMY,1,0.024688090002150886,0.06658989040398067,1.0
+strict_entry_quality,Strict Entry-Quality Breakout,GEV,1,0.09852397410749192,0.06978218867586028,1.0
+strict_entry_quality,Strict Entry-Quality Breakout,MCD,1,0.02438205583277031,0.004862882664129042,1.0
+strict_entry_quality,Strict Entry-Quality Breakout,MDT,1,0.00462055593495414,-0.029703102588912067,1.0
+strict_entry_quality,Strict Entry-Quality Breakout,SBUX,1,-0.02060996591141384,-0.049041550785355215,0.0
+strict_entry_quality,Strict Entry-Quality Breakout,UBER,1,0.012645422552305385,-0.003544395489207597,1.0
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,NVDA,57,0.06376403649959787,0.05064836060231943,0.7192982456140351
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MSFT,53,0.014607156806372637,-0.002536453863621153,0.6415094339622641
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AAPL,49,0.00676117293307054,0.0038488051853762003,0.6122448979591837
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,GE,47,0.03088312439422771,0.024247652361426196,0.7659574468085106
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,LRCX,46,0.03144738151008447,0.021444700570540164,0.6086956521739131
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BNY,44,0.013065736364335027,0.005184434770236193,0.6590909090909091
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,CAT,43,0.02404321267859994,0.01869894745952217,0.5581395348837209
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,JPM,42,-0.004453657047783362,-0.014690744236207628,0.5
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MU,41,0.0756724021688037,0.06815714462139631,0.6097560975609756
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AVGO,39,0.03448938464695875,0.016329194251157135,0.6410256410256411
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,WFC,38,0.019120978255516913,0.004832807542950039,0.631578947368421
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,ORCL,37,0.02860058137478773,0.012527918903246235,0.5675675675675675
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,PLTR,37,0.01470393147320945,0.012122257114041015,0.5405405405405406
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,ISRG,35,0.013684268240932733,0.005558502336791807,0.6
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AMZN,34,-0.01527455743209163,-0.023546773581085756,0.4117647058823529
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AXP,34,0.009437655474396482,-0.005102517656274387,0.5882352941176471
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,C,33,0.007367939017290761,0.0002540747258583227,0.5454545454545454
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BAC,32,-0.007789422109139035,-0.016349034887081063,0.46875
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,GS,32,0.007824116652642283,-8.951093212816036e-06,0.59375
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BKNG,31,0.0034307791771196043,-0.0011173678669658413,0.5806451612903226
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,CRM,31,0.015058500655107377,-0.0009300036721931416,0.6774193548387096
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,EMR,31,0.0063864867092129135,-0.0006843831249632744,0.6451612903225806
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,RTX,31,0.015260431388075384,0.007930281700409426,0.6129032258064516
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AMAT,30,0.00549039486552482,0.0006495530122951565,0.5
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,CSCO,30,0.017840692231800646,0.012145804150478955,0.6
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,INTU,30,0.023182561816713562,0.013922197206873725,0.6333333333333333
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,UBER,30,0.03294331741684982,0.022359849540058353,0.6666666666666666
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,COF,28,0.006262705613732219,-0.0002492808817035698,0.42857142857142855
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,GM,28,-0.009444834462852884,-0.012324388998705,0.42857142857142855
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MS,28,0.01146625357015261,0.003913357845263136,0.5357142857142857
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,NOW,28,0.0069848164986516205,-0.004575882209360278,0.5357142857142857
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AMD,27,0.09538648610033729,0.07326491310952012,0.6296296296296297
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,GEV,27,0.07858742710963773,0.06490291669251101,0.7037037037037037
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,IBM,27,0.021546846758972338,0.011789943635748097,0.6296296296296297
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,SCHW,27,0.00017687697248581892,-0.008004345776584739,0.5555555555555556
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,ACN,26,0.011344771636939179,0.0010858933497009393,0.6153846153846154
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,LLY,26,0.024597736647922246,0.019894339723083687,0.5769230769230769
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,TMO,25,-0.008692042288996444,-0.010956336711320019,0.6
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,LOW,24,0.01413328026871756,0.0018995921113244367,0.7083333333333334
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,ABBV,23,0.020047371189714162,0.02821446976451625,0.6521739130434783
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,ADBE,23,-0.0014617323773898519,-0.008194010495634743,0.5217391304347826
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BLK,23,0.013661664234362528,0.004626442588852688,0.6956521739130435
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,HON,23,0.013518470737645593,0.005371023174694714,0.6521739130434783
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,XOM,23,0.027449072845275722,0.03325947302345184,0.6086956521739131
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,FDX,22,0.005309534341774255,0.004040233664994316,0.5909090909090909
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,QCOM,22,0.014494511772091202,-0.000744679100461029,0.6363636363636364
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,TSLA,22,0.00872441944289098,0.010698914278333567,0.45454545454545453
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,HD,21,0.003735017632770901,-0.007526216345624168,0.7142857142857143
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,TXN,21,-0.011455933147831585,-0.016920827882901814,0.3333333333333333
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,V,21,0.0018642673440200995,-0.0010689668648700822,0.5714285714285714
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,GILD,20,0.026287727157226475,0.03855870404363333,0.65
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,DHR,19,0.012245030046956797,0.00954427611238269,0.5263157894736842
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MRK,19,0.007331147532594176,0.016443026553387516,0.6842105263157895
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,DE,18,0.0029841063255507515,0.013487998277932758,0.5555555555555556
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,GD,18,-0.005369302409486317,-0.008880228009130717,0.3333333333333333
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,INTC,18,0.09030595968172826,0.08204272780557144,0.6111111111111112
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,ABT,17,0.0037198925965394414,0.0013615855254985483,0.6470588235294118
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MA,17,-0.005099926203982337,-0.013679288786999514,0.4117647058823529
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MCD,17,0.006682360502034288,-0.0007706447822779059,0.7058823529411765
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,UNP,17,-0.02125366250354691,-0.01085632426646902,0.23529411764705882
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,CVX,16,0.020379211234570184,0.023175677022436746,0.6875
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,JNJ,16,0.02395863758198804,0.037957818655775466,0.8125
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,USB,16,0.0035690782525851367,-0.006595955824803643,0.5
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BA,15,0.003644168712042354,-0.01292363760278139,0.26666666666666666
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BRK-B,15,0.01364857214016164,0.014513031066942713,0.6
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,SBUX,15,-0.02910473393743569,-0.03699651721659261,0.2
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,AMGN,14,0.006793751011794398,-0.0002782439852074111,0.7857142857142857
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,NKE,14,-0.02465062811921707,-0.036516356043268604,0.2857142857142857
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,UNH,14,-0.0036959342269539514,-0.002972876513984241,0.5
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,COP,13,0.0001999429622627011,0.005675353324449521,0.38461538461538464
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,CVS,12,0.0037114234119144016,0.0017570295106691762,0.5833333333333334
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,LMT,12,0.03333825257683584,0.017576000260806707,0.5833333333333334
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MMM,12,-0.009896706319498164,-0.018589158924241584,0.4166666666666667
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,BMY,11,0.021940161252257787,0.018592580936946632,0.7272727272727273
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,PFE,11,0.029982372804171507,0.026627033664528597,0.5454545454545454
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,UPS,11,-0.00670902683475508,0.018471192730391602,0.36363636363636365
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,MDT,6,-0.010289765937614955,-0.027025048882164688,0.3333333333333333

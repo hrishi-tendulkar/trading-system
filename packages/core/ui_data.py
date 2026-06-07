@@ -6,6 +6,11 @@ from datetime import date
 from functools import lru_cache
 from pathlib import Path
 
+from packages.core.universes import (
+    UniverseMember,
+    active_universe_source,
+    load_active_universe_members,
+)
 from packages.core.weekly_runs import (
     current_recommendations_path,
     current_week_start,
@@ -16,15 +21,6 @@ from packages.core.weekly_runs import (
     prior_friday_for_week,
     run_dir,
 )
-
-
-@dataclass(frozen=True)
-class WatchlistMember:
-    ticker: str
-    display_name: str
-    sector: str
-    is_benchmark: bool
-    is_active: bool
 
 
 @dataclass(frozen=True)
@@ -199,6 +195,10 @@ def _format_timestamp_label(value: str) -> str:
 
 def _canonical_strategy(record: RecommendationRecord) -> tuple[str | None, str | None]:
     by_id = {
+        "breakout-confirmation-triggered": (
+            "breakout-confirmation",
+            "Breakout Confirmation",
+        ),
         "wait-for-confirmation": (
             "breakout-confirmation",
             "Breakout Confirmation",
@@ -224,25 +224,8 @@ def _canonical_strategy(record: RecommendationRecord) -> tuple[str | None, str |
 
 
 @lru_cache(maxsize=1)
-def _load_watchlist_members() -> dict[str, WatchlistMember]:
-    path = _first_existing(
-        [
-            "data/reference/phase2_watchlist.csv",
-            "data/reference/mlp_watchlist.csv",
-        ]
-    )
-    members: dict[str, WatchlistMember] = {}
-    with path.open(newline="", encoding="utf-8") as handle:
-        for row in csv.DictReader(handle):
-            member = WatchlistMember(
-                ticker=row["ticker"].upper(),
-                display_name=row["display_name"].strip(),
-                sector=row["sector"].strip(),
-                is_benchmark=_to_bool(row["is_benchmark"]),
-                is_active=_to_bool(row["is_active"]),
-            )
-            members[member.ticker] = member
-    return members
+def _load_watchlist_members() -> dict[str, UniverseMember]:
+    return load_active_universe_members()
 
 
 @lru_cache(maxsize=1)
@@ -314,6 +297,19 @@ def _non_benchmark_records() -> list[RecommendationRecord]:
 
 def _count_active_members() -> int:
     return sum(1 for member in _load_watchlist_members().values() if member.is_active)
+
+
+def _active_universe_label() -> str:
+    source = active_universe_source()
+    return source.slug
+
+
+def _active_universe_path_label() -> str:
+    source = active_universe_source()
+    try:
+        return str(source.path.relative_to(_repo_root()))
+    except ValueError:
+        return str(source.path)
 
 
 def _market_posture(
@@ -465,6 +461,10 @@ def _run_metadata(records: list[RecommendationRecord], run_id: str | None = None
     as_of_date = records[0].as_of_date if records else "Unknown"
     if manifest:
         current_manifest = load_current_manifest()
+        active_strategy_versions = ", ".join(
+            f"{basis_code}: {version_label}"
+            for basis_code, version_label in sorted(manifest.active_strategy_versions.items())
+        )
         return {
             "recommendation_week": f"Week of {manifest.recommendation_week_start}",
             "published_at": _format_timestamp_label(manifest.published_at),
@@ -476,6 +476,8 @@ def _run_metadata(records: list[RecommendationRecord], run_id: str | None = None
             else "Archived immutable plan",
             "market_data_through": manifest.market_data_through,
             "timezone": manifest.timezone,
+            "strategy_registry_version": manifest.strategy_registry_version,
+            "active_strategy_versions": active_strategy_versions or "Unpinned legacy manifest",
         }
     return {
         "recommendation_week": f"Week of {as_of_date}",
@@ -484,6 +486,8 @@ def _run_metadata(records: list[RecommendationRecord], run_id: str | None = None
         "last_checked": as_of_date,
         "run_id": f"{_published_dataset_name()}-{as_of_date}",
         "status": "Published weekly plan",
+        "strategy_registry_version": "Unpinned legacy dataset",
+        "active_strategy_versions": "Unpinned legacy dataset",
     }
 
 
@@ -581,6 +585,10 @@ def get_weekly_review() -> dict[str, object]:
             {"label": "Market posture", "value": posture_title},
             {"label": "Universe", "value": str(_count_active_members())},
             {"label": "Published run", "value": metadata["run_id"]},
+            {
+                "label": "Strategy registry",
+                "value": metadata["strategy_registry_version"],
+            },
         ],
         "alerts": _freshness_alerts(metadata),
         "metadata": metadata,
@@ -808,6 +816,8 @@ def get_daily_digest() -> dict[str, object]:
 def get_watchlist_view() -> dict[str, object]:
     watchlist = _load_watchlist_members()
     recommendations = {record.ticker: record for record in _load_recommendation_records()}
+    active_tickers = {member.ticker for member in watchlist.values() if member.is_active}
+    covered_active_tickers = active_tickers & set(recommendations)
     grouped: dict[str, list[dict[str, str]]] = {
         "Tradeable now": [],
         "Core watch": [],
@@ -845,6 +855,12 @@ def get_watchlist_view() -> dict[str, object]:
         ),
         "facts": [
             {"label": "Active names", "value": str(_count_active_members())},
+            {
+                "label": "Recommendation coverage",
+                "value": f"{len(covered_active_tickers)} / {len(active_tickers)}",
+            },
+            {"label": "Active universe", "value": _active_universe_label()},
+            {"label": "Source file", "value": _active_universe_path_label()},
             {"label": "Published run", "value": _published_dataset_name()},
         ],
         "sections": sections,

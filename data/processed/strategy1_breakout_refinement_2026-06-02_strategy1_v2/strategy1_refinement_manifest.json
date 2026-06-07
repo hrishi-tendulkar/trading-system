@@ -1,0 +1,68 @@
+{
+  "version_label": "2026-06-02_strategy1_v2",
+  "generated_at_utc": "2026-06-02T05:59:39.394696+00:00",
+  "universe": "S&P 100 + ETFs",
+  "source_watchlist": "data/reference/sp100_watchlist.csv",
+  "source_prices": "data/raw/sp100_5y/mlp_prices.csv",
+  "strategy": "Strategy 1 / Breakout Confirmation",
+  "holding_days": 15,
+  "weekly_top_n": 5,
+  "round_trip_friction_bps": 20,
+  "minimum_sample_size": 150,
+  "variants": [
+    {
+      "variant_id": "baseline_current",
+      "display_name": "Current Breakout Confirmation",
+      "rule_summary": [
+        "first confirmed close above prior 20-day high",
+        "close > 20DMA > 50DMA",
+        "RS 20D > 0 and RS 60D > 0",
+        "ATR percent <= 6%",
+        "within 15% of 52-week high"
+      ]
+    },
+    {
+      "variant_id": "supportive_sector_confirmed",
+      "display_name": "Supportive + Sector-Confirmed Breakout",
+      "rule_summary": [
+        "current breakout rule",
+        "regime must be Risk-on or Selective risk-on",
+        "sector ETF must be above 20DMA and 50DMA"
+      ]
+    },
+    {
+      "variant_id": "risk_on_sector_confirmed",
+      "display_name": "Risk-on + Sector-Confirmed Breakout",
+      "rule_summary": [
+        "current breakout rule",
+        "regime must be Risk-on",
+        "sector ETF must be above 20DMA and 50DMA"
+      ]
+    },
+    {
+      "variant_id": "leadership_quality",
+      "display_name": "Leadership-Quality Breakout",
+      "rule_summary": [
+        "supportive sector-confirmed breakout",
+        "RS 20D >= 3%",
+        "RS 60D >= 2%",
+        "stock outperformed sector over 20D",
+        "extension vs 20DMA <= 8%",
+        "ATR percent <= 5.5%"
+      ]
+    },
+    {
+      "variant_id": "strict_entry_quality",
+      "display_name": "Strict Entry-Quality Breakout",
+      "rule_summary": [
+        "supportive sector-confirmed breakout",
+        "RS 10D >= 1%",
+        "RS 20D >= 4%",
+        "RS 60D >= 3%",
+        "extension vs 20DMA <= 6%",
+        "ATR percent <= 5%",
+        "within 10% of 52-week high"
+      ]
+    }
+  ]
+}

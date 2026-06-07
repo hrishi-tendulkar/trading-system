@@ -150,7 +150,7 @@ Promotion limits before cross-strategy blending:
 
 - `ETF Trend / Rotation`: up to top `2`
 - `Sector-Confirmed Pullback Continuation`: up to top `2`
-- `Breakout Confirmation`: up to top `2`
+- `Breakout Confirmation`: up to top `2`, only through supportive sector-confirmed rules
 - `Selective Mean Reversion`: `0` main-board slots by default while it remains `Research`
 
 Research-only strategies may still feed:

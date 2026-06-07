@@ -37,6 +37,26 @@ The weekly report is a published decision artifact. Scheduled weekday checks may
 The Archive tab must let the user reopen the full weekly product picture, including recommendations, deep dives, strategy outputs, daily addenda, source metadata, and later outcomes.
 **Why it matters:** The product needs historical accountability and reviewability, not just a table of old recommendation rows.
 
+## [2026-06-03] Weekly freshness is part of the product contract
+**Decision** · Source: `docs/product/requirements/prd-2026-06-03-weekly-run-publishing-and-staleness.md`
+The weekly page must render the latest successfully published weekly run and must clearly warn when the expected current-week report is missing or stale. Weekly recommendations are a publish lifecycle, not whichever recommendation CSV happens to exist.
+**Why it matters:** The user plans trades for the coming week; an old report that looks current is a product failure, even when the data label is technically accurate.
+
+## [2026-06-03] Medium-term product vision is a scaled-down strategy operating system
+**Decision** · Source: `docs/strategy/medium-term-strategy-operating-system-vision.md`
+Trading System should grow from a weekly report generator into a single-operator strategy operating system modeled on mature short-term trading workflows: maintain a small strategy library, improve strategy versions through research and replay, promote only validated versions into the weekly board, and review both backtest and live weekly outcomes.
+**Why it matters:** The product may start with the four current canonical strategies, but the system should be built so those four can be refined, versioned, promoted, demoted, and evaluated with the same discipline that would support a larger strategy library later.
+
+## [2026-06-07] Strategy revisions need archive-grade naming and workstream prompts
+**Decision** · Source: `docs/strategy/strategy-versioning-and-revision-archive.md`
+Strategy families use stable `basis_code` values, active rules use `{basis_code}.vN`, registry snapshots use date-based `registry_version`, and parallel improvement workstreams start from paste-ready `/goal` prompts.
+**Why it matters:** The user needs to know which strategy versions analyzed each week and needs repeatable prompts to improve each strategy without mixing research variants into production reports.
+
+## [2026-06-07] Weekly UX content hierarchy is now a product contract
+**Decision** · Source: `docs/design/information-hierarchy.md`
+Weekly summary, stock recommendation card, full candidate board, stock detail, strategy detail, and archive each have defined information hierarchy templates. Future UX and implementation work should change these templates deliberately rather than inventing page content ad hoc.
+**Why it matters:** The product must standardize `what we show` before debating visual design; otherwise every redesign reopens the same content and workflow questions.
+
 ## [2026-05-22] The product stays single-user in v1
 **Decision** · Source: `docs/product/weekly-equity-intelligence-prd.md`
 v1 is for one technically capable investor, not a collaborative or multi-account platform.
@@ -48,6 +68,11 @@ v1 is for one technically capable investor, not a collaborative or multi-account
 **Pattern** · Source: `docs/product/weekly-equity-intelligence-prd.md`
 The user benefits most from a concise action list with evidence, not from a large undifferentiated stream of market information.
 **Why it matters:** Product surfaces should compress information into decisions instead of rewarding output volume.
+
+## [2026-06-07] Full board click-through should preserve the stock decision template
+**Pattern** · Source: `docs/design/information-hierarchy.md`
+Clicking a stock from the full candidate board should first open the standardized stock recommendation card / stock decision view for that stock; deeper stock analysis can sit below or behind that decision object.
+**Why it matters:** The user should encounter one consistent stock decision template across weekly summary, full board, stock detail, and archive.
 
 ## Don'ts
 

@@ -19,6 +19,7 @@ Design in Trading System exists to help the user make better decisions faster. I
 - Daily change digest second
 - Holding review with thesis continuity
 - Explicit risk and invalidation visibility
+- Standardized page and card information hierarchy before visual redesign
 
 ## Non-Goals
 
@@ -28,5 +29,6 @@ Design in Trading System exists to help the user make better decisions faster. I
 
 ## Canonical References
 
+- `docs/design/information-hierarchy.md`
 - `docs/product/high-level-design.md`
 - `docs/product/weekly-equity-intelligence-prd.md`

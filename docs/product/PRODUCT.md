@@ -40,7 +40,10 @@ Trading System is a single-user decision-support product for weekly equity intel
 
 ## Canonical References
 
+- `docs/design/information-hierarchy.md`
 - `docs/product/trading-system-product-strategy.md`
 - `docs/product/weekly-equity-intelligence-prd.md`
 - `docs/product/high-level-design.md`
+- `docs/product/public-equity-investing-plugin-partnership.md`
+- `docs/strategy/medium-term-strategy-operating-system-vision.md`
 - `docs/strategy/weekly-equity-intelligence-strategy-blueprint.md`

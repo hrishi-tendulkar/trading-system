@@ -10,7 +10,6 @@ from pathlib import Path
 import pandas as pd
 from jinja2 import Template
 
-
 BASE_CSS = """
   :root {
     --bg: #f4efe6;

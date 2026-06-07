@@ -10,8 +10,10 @@
   "recommendation_week_start": "2026-06-01",
   "recommendations_path": "recommendations.csv",
   "run_id": "weekly_2026-06-01_published_2026-06-03",
-  "run_status": "published",
+  "run_status": "superseded",
   "source_data_through": "2026-05-29",
+  "source_watchlist_path": "data/reference/phase2_watchlist.csv",
   "strategy_registry_version": "repo-current",
-  "timezone": "America/New_York"
+  "timezone": "America/New_York",
+  "universe": "phase2"
 }

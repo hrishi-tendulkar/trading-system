@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prototype - Strategy Detail</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav">
+      <div class="brand">
+        <div class="brand-title">Trading System</div>
+        <div class="crumb">Prototype / Strategy Detail / Breakout Confirmation</div>
+      </div>
+      <div class="nav-links">
+        <a href="weekly-trade-plan.html">Weekly</a>
+        <a href="full-candidate-board.html">Full Board</a>
+        <a href="stock-analysis-card.html">Stock Analysis</a>
+        <a class="active" href="strategy-detail-card.html">Strategy Detail</a>
+      </div>
+    </nav>
+    <div class="run-nav">
+      <strong>This week's pages</strong>
+      <div class="run-nav-links">
+        <a href="weekly-trade-plan.html">Summary</a>
+        <a href="full-candidate-board.html">Why picks passed/failed</a>
+        <a href="stock-analysis-card.html">Stock Detail</a>
+        <a class="active" href="strategy-detail-card.html">Strategy Detail</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Strategy detail</div>
+        <h1>Strategy: Breakout Confirmation</h1>
+        <p>This strategy waits for proof before buying. It should produce a clear buy, wait, or reject decision with entry and sell rules.</p>
+        <div class="page-actions">
+          <a class="secondary-button" href="weekly-trade-plan.html">Back to summary</a>
+          <a class="secondary-button" href="full-candidate-board.html">See why all picks passed or failed</a>
+        </div>
+        <div class="decision-strip">
+          <div class="decision-tile">
+            <div class="decision-label">Kind <span class="info" tabindex="0" data-tip="A strategy kind tells you what job this strategy does. This one is used to find possible entries, not to judge long-term business quality.">i</span></div>
+            <div class="decision-value">Entry finder</div>
+          </div>
+          <div class="decision-tile">
+            <div class="decision-label">Use in weekly picks <span class="info" tabindex="0" data-tip="Approved means this strategy is allowed to influence the weekly recommendation list. It still must pass final risk and entry checks.">i</span></div>
+            <div class="decision-value">Approved</div>
+          </div>
+          <div class="decision-tile">
+            <div class="decision-label">This week</div>
+            <div class="decision-value">4 analyzed</div>
+          </div>
+          <div class="decision-tile">
+            <div class="decision-label">Default validity</div>
+            <div class="decision-value">This week</div>
+          </div>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="eyebrow">Plain-English purpose</div>
+        <h2>Stops you from buying too early.</h2>
+        <p style="margin-top: 10px;">The point is simple: do not buy a stock just because it looks strong. Wait until price clears a level that proves buyers are still in control.</p>
+        <div class="badges">
+          <span class="badge buy">Board eligible</span>
+          <span class="badge context">Rule-based</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="layout">
+      <aside class="side-rail">
+        <div class="panel switcher">
+          <div class="switcher-title">Switch strategy</div>
+          <div class="switcher-options">
+            <a class="active" href="strategy-detail-card.html"><strong>Breakout Confirmation</strong><span>Waits for price proof</span></a>
+            <a href="strategy-detail-card.html"><strong>Index Trend Follow-Through</strong><span>Broad market exposure</span></a>
+            <a href="strategy-detail-card.html"><strong>Pullback Continuation</strong><span>Buys strength on dips</span></a>
+            <a href="strategy-detail-card.html"><strong>Event Freeze</strong><span>Blocks risky entries</span></a>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="eyebrow">Simple action rules</div>
+          <ul class="text-list">
+            <li><strong>Buy:</strong> buy only after the stock clears the required price level.</li>
+            <li><strong>Wait:</strong> keep it on alert because the entry is not clean yet.</li>
+            <li><strong>Reject:</strong> do not buy because the setup is too weak, too late, or too risky.</li>
+            <li><strong>Valid until:</strong> the signal expires at this week’s close unless it triggers first.</li>
+            <li><strong>Expected hold:</strong> usually 5-15 trading days after a valid entry.</li>
+          </ul>
+        </div>
+        <div class="metadata">
+          <strong>Internal audit info</strong>
+          <span>Version: breakout_confirmation_v2</span>
+          <span>Approved version: sector-confirmed breakouts</span>
+          <span>Last reviewed: Jun 2, 2026</span>
+        </div>
+      </aside>
+
+      <div class="stack">
+        <section class="grid-3">
+          <article class="card">
+            <div class="eyebrow">When this helps</div>
+            <h2>Best use case</h2>
+            <ul class="text-list">
+              <li>The market is healthy enough to buy selected winners.</li>
+              <li>The stock’s sector is also acting well.</li>
+              <li>The stock is close to the buy level, not already far above it.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="eyebrow">When this hurts</div>
+            <h2>Common mistakes</h2>
+            <ul class="text-list">
+              <li>Buying after the move already happened.</li>
+              <li>Buying when the broader market is getting weaker.</li>
+              <li>Trusting one strong day when follow-through disappears.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="eyebrow">Before a buy</div>
+            <h2>Minimum proof</h2>
+            <ul class="text-list">
+              <li>A clear buy price.</li>
+              <li>A clear sell price if the trade fails.</li>
+              <li>Enough upside left to make the risk worth taking.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <div>
+              <div class="eyebrow">This week's results</div>
+              <h2>What this strategy did with each stock</h2>
+              <p>This table shows what the strategy found and whether each stock made the final recommendation list.</p>
+            </div>
+          </div>
+          <div class="table" style="margin-top: 14px;">
+            <div class="table-row table-head strategy-candidates">
+              <div>Ticker</div>
+              <div>Strategy said</div>
+              <div>Final result</div>
+              <div>Simple reason</div>
+              <div>Validity</div>
+            </div>
+            <div class="table-row strategy-candidates">
+              <div><strong>NVDA</strong></div>
+              <div><span class="badge wait">Possible buy</span></div>
+              <div><span class="badge wait">Wait list</span></div>
+              <div>The setup is interesting, but the price is too close to the target. Wait for a better entry.</div>
+              <div>Valid until Jun 12; <a href="stock-analysis-card.html">open stock</a></div>
+            </div>
+            <div class="table-row strategy-candidates">
+              <div><strong>AVGO</strong></div>
+              <div><span class="badge buy">Buy</span></div>
+              <div><span class="badge buy">Included</span></div>
+              <div>The buy level triggered, the entry is still reasonable, and the upside is still worth the risk.</div>
+              <div>Valid until Jun 12; <a href="stock-analysis-card.html">open stock</a></div>
+            </div>
+            <div class="table-row strategy-candidates">
+              <div><strong>AMD</strong></div>
+              <div><span class="badge wait">Watch</span></div>
+              <div><span class="badge sell">Excluded</span></div>
+              <div>The stock is acting well, but the buy point is too late and the sell level is too far away.</div>
+              <div>Entry must reset; <a href="stock-analysis-card.html">open stock</a></div>
+            </div>
+            <div class="table-row strategy-candidates">
+              <div><strong>CRM</strong></div>
+              <div><span class="badge sell">Rejected</span></div>
+              <div><span class="badge sell">Excluded</span></div>
+              <div>It failed this strategy’s buy rule. Another risk rule says it may need to be reduced.</div>
+              <div>Not valid here; <a href="stock-analysis-card.html">open stock</a></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="split">
+          <article class="card">
+            <div class="eyebrow">Trust check</div>
+            <h2>Why we allow this in weekly picks</h2>
+            <div class="facts" style="margin-top: 14px;">
+              <div class="fact">
+                <div class="fact-label">Weekly use</div>
+                <div class="fact-value">Approved</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Best version</div>
+                <div class="fact-value">Sector-confirmed</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Bad periods</div>
+                <div class="fact-value">Better than SPY</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Confidence</div>
+                <div class="fact-value">Medium</div>
+              </div>
+            </div>
+            <p class="small-note" style="margin-top: 12px;">Prototype note: production should show exact test period, return, drawdown, sample size, and latest review date in plain English.</p>
+          </article>
+          <article class="card">
+            <div class="eyebrow">Limits</div>
+            <h2>What this strategy cannot tell you</h2>
+            <ul class="text-list">
+              <li>This is not a business-quality strategy. It is about short-term price confirmation.</li>
+              <li>It should not override event risk, earnings freezes, or broken market posture.</li>
+              <li>It should never produce a buy without an entry, target, and sell level.</li>
+            </ul>
+          </article>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

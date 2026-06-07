@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import shutil
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -10,6 +10,7 @@ from typing import Any
 RUNS_DIR = Path("data/processed/weekly_runs")
 LEGACY_RECOMMENDATIONS_PATH = Path("data/processed/phase2/mlp_current_recommendations.csv")
 LEGACY_WATCHLIST_PATH = Path("data/reference/phase2_watchlist.csv")
+UNPINNED_REGISTRY_VERSION = "repo-current"
 
 
 @dataclass(frozen=True)
@@ -29,6 +30,9 @@ class WeeklyRunManifest:
     output_snapshot_id: str
     recommendations_path: str
     created_at: str
+    universe: str = "phase2"
+    source_watchlist_path: str = "data/reference/phase2_watchlist.csv"
+    active_strategy_versions: dict[str, str] = field(default_factory=dict)
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> WeeklyRunManifest:
@@ -48,9 +52,17 @@ class WeeklyRunManifest:
             output_snapshot_id=str(payload.get("output_snapshot_id", "")),
             recommendations_path=str(payload.get("recommendations_path", "recommendations.csv")),
             created_at=str(payload.get("created_at", payload["published_at"])),
+            universe=str(payload.get("universe", "phase2")),
+            source_watchlist_path=str(
+                payload.get("source_watchlist_path", "data/reference/phase2_watchlist.csv")
+            ),
+            active_strategy_versions={
+                str(key): str(value)
+                for key, value in dict(payload.get("active_strategy_versions", {})).items()
+            },
         )
 
-    def to_dict(self) -> dict[str, str]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "run_id": self.run_id,
             "recommendation_week_start": self.recommendation_week_start,
@@ -67,7 +79,53 @@ class WeeklyRunManifest:
             "output_snapshot_id": self.output_snapshot_id,
             "recommendations_path": self.recommendations_path,
             "created_at": self.created_at,
+            "universe": self.universe,
+            "source_watchlist_path": self.source_watchlist_path,
+            "active_strategy_versions": self.active_strategy_versions,
         }
+
+    def validate_strategy_pinning(self) -> None:
+        from packages.core.strategy_registry import (  # noqa: PLC0415
+            get_active_strategy_versions,
+            get_strategy_registry_version,
+        )
+
+        expected_registry_version = get_strategy_registry_version()
+        expected_versions = get_active_strategy_versions()
+        if not self.strategy_registry_version:
+            raise ValueError("Weekly run manifest is missing strategy_registry_version")
+        if self.strategy_registry_version == UNPINNED_REGISTRY_VERSION:
+            raise ValueError(
+                "Weekly run manifest must pin a concrete strategy_registry_version"
+            )
+        if self.strategy_registry_version != expected_registry_version:
+            raise ValueError(
+                "Weekly run manifest strategy_registry_version does not match "
+                f"the active registry: {self.strategy_registry_version} != "
+                f"{expected_registry_version}"
+            )
+        if not self.active_strategy_versions:
+            raise ValueError("Weekly run manifest is missing active_strategy_versions")
+
+        missing = sorted(set(expected_versions) - set(self.active_strategy_versions))
+        extra = sorted(set(self.active_strategy_versions) - set(expected_versions))
+        mismatched = sorted(
+            key
+            for key, expected in expected_versions.items()
+            if self.active_strategy_versions.get(key) != expected
+        )
+        problems = []
+        if missing:
+            problems.append(f"missing={','.join(missing)}")
+        if extra:
+            problems.append(f"extra={','.join(extra)}")
+        if mismatched:
+            problems.append(f"mismatched={','.join(mismatched)}")
+        if problems:
+            raise ValueError(
+                "Weekly run manifest active_strategy_versions does not match "
+                f"the active registry ({'; '.join(problems)})"
+            )
 
 
 def repo_root() -> Path:
@@ -166,6 +224,8 @@ def write_run_snapshot(
     recommendations_source: Path,
     publish_current: bool,
 ) -> None:
+    if publish_current:
+        manifest.validate_strategy_pinning()
     target_dir = run_dir(manifest.run_id)
     target_dir.mkdir(parents=True, exist_ok=True)
     shutil.copy2(recommendations_source, target_dir / manifest.recommendations_path)

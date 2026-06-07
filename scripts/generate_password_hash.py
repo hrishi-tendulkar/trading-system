@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import bcrypt
 import getpass
+
+import bcrypt
 
 
 def main() -> None:

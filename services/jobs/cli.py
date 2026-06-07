@@ -51,6 +51,18 @@ def daily_run(as_of_date: str = typer.Option("", help="Optional YYYY-MM-DD overr
 def weekly_run(
     run_date: str = typer.Option("", help="Optional Monday YYYY-MM-DD recommendation week."),
     skip_fetch: bool = typer.Option(False, help="Use existing raw price data."),
+    watchlist: str = typer.Option(
+        "data/reference/sp100_watchlist.csv",
+        help="Reference watchlist CSV to use for the weekly run.",
+    ),
+    raw_outdir: str = typer.Option(
+        "data/raw/sp100_5y",
+        help="Directory for raw price and earnings CSVs.",
+    ),
+    processed_outdir: str = typer.Option(
+        "data/processed/sp100_current",
+        help="Directory for processed weekly outputs before publishing.",
+    ),
 ) -> None:
     if not settings.weekly_run_enabled:
         raise typer.Exit(code=0)
@@ -59,6 +71,16 @@ def weekly_run(
         command.extend(["--target-week", run_date])
     if skip_fetch:
         command.append("--skip-fetch")
+    command.extend(
+        [
+            "--watchlist",
+            watchlist,
+            "--raw-outdir",
+            raw_outdir,
+            "--processed-outdir",
+            processed_outdir,
+        ]
+    )
     subprocess.run(command, check=True)
 
 

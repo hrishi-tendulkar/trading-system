@@ -1,0 +1,107 @@
+{
+  "version_label": "2026-06-07_selective_mean_reversion_v1_refinement",
+  "generated_at_utc": "2026-06-07T12:20:40.704636+00:00",
+  "universe": "S&P 100 + ETFs",
+  "source_watchlist": "data/reference/sp100_watchlist.csv",
+  "source_prices": "data/raw/sp100_5y/mlp_prices.csv",
+  "strategy": "Selective Mean Reversion",
+  "holding_windows": [
+    5,
+    10,
+    15
+  ],
+  "weekly_top_n": 5,
+  "round_trip_friction_bps": 20,
+  "minimum_sample_size": 100,
+  "daily_ohlcv_only": true,
+  "variants": [
+    {
+      "variant_id": "v1_baseline_current",
+      "display_name": "Current v1 Oversold Rebound",
+      "rule_summary": [
+        "current v1 rule",
+        "first up-close after 5D return <= -6%",
+        "extension vs 20DMA between -10% and -2%",
+        "close >= 97% of 50DMA",
+        "ATR percent <= 7%"
+      ]
+    },
+    {
+      "variant_id": "defensive_v1",
+      "display_name": "Defensive v1 Oversold Rebound",
+      "rule_summary": [
+        "current v1 rule",
+        "regime must be Defensive"
+      ]
+    },
+    {
+      "variant_id": "stress_v1",
+      "display_name": "Stress-Regime v1 Oversold Rebound",
+      "rule_summary": [
+        "current v1 rule",
+        "regime must be Defensive or Neutral"
+      ]
+    },
+    {
+      "variant_id": "defensive_moderate_band_near_50dma",
+      "display_name": "Defensive Moderate Oversold Near 50DMA",
+      "rule_summary": [
+        "Defensive regime only",
+        "5D return <= -6%",
+        "extension vs 20DMA between -5% and -2%",
+        "close >= 99% of 50DMA",
+        "20DMA not materially below 50DMA",
+        "ATR percent <= 5.5%",
+        "20D drawdown capped at 12%"
+      ]
+    },
+    {
+      "variant_id": "defensive_deep_band_near_50dma",
+      "display_name": "Defensive Deep Oversold Near 50DMA",
+      "rule_summary": [
+        "Defensive regime only",
+        "5D return <= -6%",
+        "extension vs 20DMA between -8% and -5%",
+        "close >= 97% of 50DMA",
+        "20DMA not materially below 50DMA",
+        "ATR percent <= 6%",
+        "20D drawdown capped at 15%"
+      ]
+    },
+    {
+      "variant_id": "stress_moderate_reclaim_50dma",
+      "display_name": "Stress Moderate Band + 50DMA Reclaim",
+      "rule_summary": [
+        "Defensive or Neutral regime",
+        "5D return <= -6%",
+        "extension vs 20DMA between -5% and -2%",
+        "close reclaims 50DMA after prior close below it",
+        "20DMA not materially below 50DMA",
+        "ATR percent <= 5.5%"
+      ]
+    },
+    {
+      "variant_id": "stress_moderate_sector_confirmed",
+      "display_name": "Stress Moderate Band + Sector Confirmed",
+      "rule_summary": [
+        "Defensive or Neutral regime",
+        "5D return <= -6%",
+        "extension vs 20DMA between -5% and -2%",
+        "close >= 99% of 50DMA",
+        "sector ETF must be above 20DMA and 50DMA",
+        "ATR percent <= 5.5%"
+      ]
+    },
+    {
+      "variant_id": "defensive_spy_below_ma50_reclaim_20dma",
+      "display_name": "Defensive SPY Stress + 20DMA Reclaim",
+      "rule_summary": [
+        "Defensive regime with SPY below 50DMA",
+        "5D return <= -6%",
+        "prior close below 20DMA and current close reclaims 20DMA",
+        "close >= 97% of 50DMA",
+        "ATR percent <= 6%"
+      ]
+    }
+  ]
+}

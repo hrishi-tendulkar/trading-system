@@ -27,6 +27,21 @@ The hosted weekly engine should be built as `feature snapshots -> strategy candi
 The target persistence model should store immutable weekly report runs and snapshots separately from weekday addenda and later outcome records.
 **Why it matters:** This preserves point-in-time reconstruction, avoids silent recommendation mutation, and supports later backtesting without corrupting the original product state.
 
+## [2026-06-03] Weekly publish state must be explicit and gated
+**Decision** · Source: `docs/engineering/requirements/tdd-2026-06-03-weekly-run-publishing-and-staleness.md`
+The weekly page should read only from the latest successfully `published` weekly run. Failed, validation-failed, or stale runs must not update the current pointer, and the projection layer must expose missing-current-week and stale-source-data warnings.
+**Why it matters:** A hard-coded or stale recommendation CSV can produce plausible output; explicit publish state and freshness checks prevent old recommendations from masquerading as the current weekly plan.
+
+## [2026-06-03] Strategy operations need first-class version and promotion contracts
+**Decision** · Source: `docs/strategy/medium-term-strategy-operating-system-vision.md`
+The architecture should support a scaled-down version of mature short-term trading operations: strategy definitions are versioned, only promoted versions feed production weekly runs, research and replay runs remain separate from board eligibility, and weekly outcomes attach back to the exact strategy versions used at publish time.
+**Why it matters:** Even if the product stays with four canonical strategies, the same operating loop is needed to safely refine them without mutating historical reports or letting unvalidated research logic leak into fresh-capital recommendations.
+
+## [2026-06-07] Weekly manifests pin active strategy versions
+**Decision** · Source: `docs/strategy/strategy-versioning-and-revision-archive.md`
+The file-backed weekly run manifest must snapshot both `strategy_registry_version` and `active_strategy_versions`.
+**Why it matters:** This is the immediate bridge from repo-managed strategy versions to later database-backed archives, and it lets historical weekly reports answer which exact strategy versions generated their recommendations.
+
 ## Patterns
 
 ## [2026-05-22] Modular provider boundaries matter early

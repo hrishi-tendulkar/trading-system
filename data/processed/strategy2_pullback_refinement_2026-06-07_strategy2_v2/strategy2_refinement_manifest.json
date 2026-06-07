@@ -1,0 +1,104 @@
+{
+  "version_label": "2026-06-07_strategy2_v2",
+  "generated_at_utc": "2026-06-07T12:26:27.076075+00:00",
+  "universe": "S&P 100 + ETFs",
+  "source_watchlist": "data/reference/sp100_watchlist.csv",
+  "source_prices": "data/raw/sp100_5y/mlp_prices.csv",
+  "strategy": "Strategy 2 / Sector-Confirmed Pullback Continuation",
+  "holding_days": 15,
+  "weekly_top_n": 5,
+  "round_trip_friction_bps": 20,
+  "minimum_sample_size": 150,
+  "variants": [
+    {
+      "variant_id": "baseline_current_v1",
+      "display_name": "Current v1 Pullback",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "current canonical pullback rule",
+        "pullback from prior 20D high between 2% and 15%",
+        "extension vs 20DMA between -3% and +6%",
+        "no explicit regime or sector-confirmation gate"
+      ]
+    },
+    {
+      "variant_id": "supportive_confirmed_controlled",
+      "display_name": "Supportive + Confirmed Controlled Pullback",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "current trend and RS spine",
+        "regime must be Risk-on or Selective risk-on",
+        "sector must be confirmed",
+        "pullback depth 3% to 10%",
+        "extension vs 20DMA -2% to +4%",
+        "stock must outperform sector over 20D",
+        "ATR percent <= 5.5%"
+      ]
+    },
+    {
+      "variant_id": "risk_on_confirmed_controlled",
+      "display_name": "Risk-On + Confirmed Controlled Pullback",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "controlled confirmed pullback",
+        "regime must be Risk-on"
+      ]
+    },
+    {
+      "variant_id": "shallow_confirmed_reset",
+      "display_name": "Shallow Confirmed Reset",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "supportive sector-confirmed pullback",
+        "pullback depth 0% to 6%",
+        "extension vs 20DMA 0% to +6%",
+        "keeps very shallow resets separate from true pullbacks"
+      ]
+    },
+    {
+      "variant_id": "mid_depth_low_extension",
+      "display_name": "Mid-Depth Low-Extension Pullback",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "supportive sector-confirmed pullback",
+        "pullback depth 3% to 6%",
+        "extension vs 20DMA 0% to +4%",
+        "ATR percent <= 5.5%"
+      ]
+    },
+    {
+      "variant_id": "deeper_controlled_confirmed",
+      "display_name": "Deeper Controlled Confirmed Pullback",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "supportive sector-confirmed pullback",
+        "pullback depth 6% to 10%",
+        "extension vs 20DMA -2% to +4%",
+        "tests whether non-deep but larger resets are useful"
+      ]
+    },
+    {
+      "variant_id": "strict_rs_support_proximity",
+      "display_name": "Strict RS + Support-Proximity Pullback",
+      "action_role": "live_buy_pullback",
+      "rule_summary": [
+        "supportive sector-confirmed controlled pullback",
+        "RS 10D >= -1%, RS 20D >= 3%, RS 60D >= 2%",
+        "stock outperformed sector over 20D and 60D",
+        "close at least 99% of 20DMA",
+        "ATR percent <= 5%",
+        "within 12% of 52-week high"
+      ]
+    },
+    {
+      "variant_id": "watch_only_extended_strength",
+      "display_name": "Watch-Only Extended Strength",
+      "action_role": "watch_only",
+      "rule_summary": [
+        "supportive sector-confirmed leadership",
+        "extension vs 20DMA above +6% through +12%",
+        "not a live pullback entry; should stay Wait for pullback"
+      ]
+    }
+  ]
+}

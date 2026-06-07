@@ -8,6 +8,11 @@ from packages.core.canonical_strategy_replay import (
     sector_confirmation_labels,
     signal_starts,
 )
+from scripts.mlp.run_pullback_strategy2_refinement import (
+    PullbackVariant,
+    build_variant_signals,
+    weekly_portfolio_trades,
+)
 
 
 def _base_row() -> dict[str, object]:
@@ -25,9 +30,13 @@ def _base_row() -> dict[str, object]:
         "atr_pct": 0.03,
         "ret_5d": -0.01,
         "ret_20d": 0.10,
+        "rs_10d": 0.02,
         "rs_20d": 0.05,
         "rs_60d": 0.10,
+        "stock_vs_sector_20d": 0.02,
+        "stock_vs_sector_60d": 0.03,
         "distance_from_52w_high": 0.05,
+        "days_above_ma20_15": 12.0,
         "pullback_from_high_20": 0.05,
         "pullback_depth_band": "3-6%",
         "extension_vs_ma20": 0.03,
@@ -115,3 +124,72 @@ def test_sector_confirmation_marks_missing_proxy_as_unavailable() -> None:
     labels = sector_confirmation_labels(features)
 
     assert labels.tolist() == ["Unavailable", "Confirmed", "Not applicable"]
+
+
+def test_pullback_refinement_keeps_watch_only_variants_out_of_live_trades() -> None:
+    rows = [
+        _base_row()
+        | {
+            "date": pd.Timestamp("2026-03-06"),
+            "ticker": "WATCH",
+            "pullback_from_high_20": 0.01,
+            "extension_vs_ma20": 0.08,
+        }
+    ]
+    features = pd.DataFrame(rows)
+    variant = PullbackVariant(
+        variant_id="watch_only_extended_strength",
+        display_name="Watch-Only Extended Strength",
+        action_role="watch_only",
+        rule_summary=[],
+        pullback_min=0.0,
+        pullback_max=0.06,
+        extension_min=0.06,
+        extension_max=0.12,
+        rs_20d_min=0.05,
+        stock_vs_sector_20d_min=0.0,
+        require_supportive_regime=True,
+        require_sector_confirmed=True,
+    )
+
+    signals = build_variant_signals(features, variant)
+    trades = weekly_portfolio_trades(signals)
+
+    assert len(signals) == 1
+    assert signals.iloc[0]["action_role"] == "watch_only"
+    assert trades.empty
+
+
+def test_strict_pullback_refinement_requires_support_proximity_and_rs_consistency() -> None:
+    good = _base_row() | {"date": pd.Timestamp("2026-04-03"), "ticker": "GOOD"}
+    too_far_below_support = _base_row() | {
+        "date": pd.Timestamp("2026-04-03"),
+        "ticker": "WEAK",
+        "close": 93.0,
+        "ma_20": 95.0,
+        "extension_vs_ma20": -0.02,
+    }
+    features = pd.DataFrame([good, too_far_below_support])
+    variant = PullbackVariant(
+        variant_id="strict_rs_support_proximity",
+        display_name="Strict RS + Support-Proximity Pullback",
+        rule_summary=[],
+        pullback_min=0.03,
+        pullback_max=0.10,
+        extension_min=-0.01,
+        extension_max=0.03,
+        rs_10d_min=-0.01,
+        rs_20d_min=0.03,
+        rs_60d_min=0.02,
+        stock_vs_sector_20d_min=0.0,
+        stock_vs_sector_60d_min=0.0,
+        atr_pct_max=0.05,
+        distance_from_52w_high_max=0.12,
+        close_vs_ma20_min=0.99,
+        require_supportive_regime=True,
+        require_sector_confirmed=True,
+    )
+
+    signals = build_variant_signals(features, variant)
+
+    assert signals["ticker"].tolist() == ["GOOD"]

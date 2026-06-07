@@ -72,6 +72,7 @@ def add_features(prices: pd.DataFrame, benchmark: str = "SPY") -> pd.DataFrame:
         f["low_10"] = f["low"].rolling(10).min()
         f["high_10"] = f["high"].rolling(10).max()
         f["high_20"] = f["high"].rolling(20).max()
+        f["prior_high_20"] = f["high"].rolling(20).max().shift(1)
         tr = pd.concat(
             [
                 f["high"] - f["low"],
@@ -194,6 +195,44 @@ def market_regime(row: pd.Series) -> str:
     return "Defensive"
 
 
+def sector_confirmed(row: pd.Series) -> bool:
+    return bool(row.get("sector_above_ma20", 0) == 1 and row.get("sector_above_ma50", 0) == 1)
+
+
+def refined_breakout_confirmation_triggered(row: pd.Series) -> bool:
+    prior_high_20 = row.get("prior_high_20", np.nan)
+    return bool(
+        pd.notna(prior_high_20)
+        and market_regime(row) in {"Risk-on", "Selective risk-on"}
+        and sector_confirmed(row)
+        and float(row["close"]) > float(row["ma_20"]) > float(row["ma_50"])
+        and float(row["close"]) > float(prior_high_20)
+        and float(row.get("rs_20d", np.nan)) > 0
+        and float(row.get("rs_60d", np.nan)) > 0
+        and float(row.get("atr_pct", np.nan)) <= 0.06
+        and float(row.get("distance_from_52w_high", np.nan)) <= 0.15
+    )
+
+
+def refined_breakout_confirmation_watch(row: pd.Series) -> bool:
+    prior_high_20 = row.get("prior_high_20", np.nan)
+    close = float(row["close"])
+    trigger = float(prior_high_20) if pd.notna(prior_high_20) else float(row.get("high_20", np.nan))
+    if pd.isna(trigger) or trigger <= 0:
+        return False
+    return bool(
+        market_regime(row) in {"Risk-on", "Selective risk-on"}
+        and sector_confirmed(row)
+        and close > float(row["ma_20"]) > float(row["ma_50"])
+        and close <= trigger
+        and close >= 0.97 * trigger
+        and float(row.get("rs_20d", np.nan)) > 0
+        and float(row.get("rs_60d", np.nan)) > 0
+        and float(row.get("atr_pct", np.nan)) <= 0.06
+        and float(row.get("distance_from_52w_high", np.nan)) <= 0.15
+    )
+
+
 def strategy_payload(
     row: pd.Series,
     *,
@@ -211,21 +250,19 @@ def strategy_payload(
     svs_20d = float(row.get("stock_vs_sector_20d", np.nan))
     svs_60d = float(row.get("stock_vs_sector_60d", np.nan))
     dist_high = float(row["distance_from_52w_high"])
-    ret_20d = float(row["ret_20d"])
-    ret_5d = float(row.get("ret_5d", np.nan))
     support = max(float(row["low_10"]), ma20)
     breakout_level = float(row["high_10"])
     stop = min(ma50, support - 0.5 * atr)
     stop = min(stop, close - 0.75 * atr)
     stop = max(stop, 0.0)
     target = close + 1.75 * atr
-    rr_1 = (target - close) / max(close - stop, 0.01)
     days_to_earnings = row.get("days_to_earnings")
-    event_risk = row.get("event_risk", "Low")
     is_benchmark = bool(row.get("is_benchmark", False))
     sector = str(row.get("sector", ""))
     regime = market_regime(row)
-    sector_ok = bool(row.get("sector_above_ma20", 0) == 1 and row.get("sector_above_ma50", 0) == 1)
+    sector_ok = sector_confirmed(row)
+    prior_high_20 = row.get("prior_high_20", np.nan)
+    breakout_trigger = float(prior_high_20) if pd.notna(prior_high_20) else breakout_level
 
     payload = {
         "strategy_id": "no-action",
@@ -337,6 +374,27 @@ def strategy_payload(
         )
         return payload
 
+    if refined_breakout_confirmation_triggered(row):
+        payload.update(
+            {
+                "strategy_id": "breakout-confirmation-triggered",
+                "strategy_name": "Breakout Confirmation",
+                "basis_type": "Setup family",
+                "sleeve": "Single-name sleeve",
+                "action_label": "Buy now",
+                "horizon": "1-3 weeks",
+                "entry_label": "Buy while above",
+                "entry_value": f"${breakout_trigger:.0f}",
+                "stop_label": "Exit if close <",
+                "stop_value": f"${max(ma20 - atr, 0):.0f}",
+                "target_label": "First target",
+                "target_value": f"${(close + 1.5 * atr):.0f}",
+                "strategy_rationale": "Strategy 1 v2 only promotes triggered breakouts when the market is supportive and the sector confirms. This keeps broad or unsupported breakouts in research/watch mode instead of treating them as live buys.",
+                "observed_reason": "Price closed above the prior 20-day high with supportive market regime, confirmed sector context, intact trend, positive relative strength, and acceptable ATR risk.",
+            }
+        )
+        return payload
+
     if (
         regime in {"Risk-on", "Selective risk-on"}
         and sector_ok
@@ -398,29 +456,24 @@ def strategy_payload(
         return payload
 
     if (
-        regime in {"Risk-on", "Selective risk-on"}
-        and close > ma20 > ma50
-        and sector_ok
-        and rs_20d > 0.02
-        and svs_20d >= 0
-        and dist_high <= 0.12
+        refined_breakout_confirmation_watch(row)
     ):
         payload.update(
             {
                 "strategy_id": "wait-for-confirmation",
-                "strategy_name": "Breakout confirmation",
+                "strategy_name": "Breakout Confirmation",
                 "basis_type": "Setup family",
                 "sleeve": "Single-name sleeve",
                 "action_label": "Wait for confirmation",
                 "horizon": "Wait this week",
                 "entry_label": "Only buy above",
-                "entry_value": f"${breakout_level:.0f}",
+                "entry_value": f"${breakout_trigger:.0f}",
                 "stop_label": "Cancel if close <",
                 "stop_value": f"${(ma20 - atr):.0f}",
                 "target_label": "If breakout sticks",
-                "target_value": f"${(breakout_level + 1.2 * atr):.0f}",
-                "strategy_rationale": "Breakouts should be treated as continuation with proof, not as magical pattern names. We would rather pay a little higher after confirmation than buy before leadership and sector context are clear enough.",
-                "observed_reason": "Trend is intact, but the setup has not yet earned a pullback entry or a clean high-confidence continuation signal.",
+                "target_value": f"${(breakout_trigger + 1.2 * atr):.0f}",
+                "strategy_rationale": "Breakouts should be treated as continuation with proof. Strategy 1 v2 is not live until price closes above the prior 20-day high in a supportive, sector-confirmed context.",
+                "observed_reason": "Trend, market regime, sector context, relative strength, and risk are acceptable, but price has not yet triggered the breakout entry.",
             }
         )
         return payload

@@ -8,6 +8,9 @@ from pydantic import BaseModel, Field
 
 class DecisionBasisRecord(BaseModel):
     basis_code: str
+    version_label: str = ""
+    version_num: int = 1
+    effective_from: str = ""
     basis_type: str
     display_name: str
     status: str
@@ -22,6 +25,7 @@ class DecisionBasisRecord(BaseModel):
 
 
 class DecisionBasisRegistry(BaseModel):
+    registry_version: str = "repo-current"
     decision_bases: list[DecisionBasisRecord]
 
 

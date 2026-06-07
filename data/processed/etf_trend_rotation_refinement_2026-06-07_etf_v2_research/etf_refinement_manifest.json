@@ -1,0 +1,112 @@
+{
+  "version_label": "2026-06-07_etf_v2_research",
+  "generated_at_utc": "2026-06-07T12:22:57.090121+00:00",
+  "universe": "S&P 100 + ETFs",
+  "source_watchlist": "data/reference/sp100_watchlist.csv",
+  "source_prices": "data/raw/sp100_5y/mlp_prices.csv",
+  "strategy": "ETF Trend / Rotation",
+  "holding_days": 5,
+  "base_round_trip_friction_bps": 20,
+  "friction_sensitivity_bps": [
+    10,
+    20,
+    40
+  ],
+  "minimum_active_weeks": 80,
+  "variants": [
+    {
+      "variant_id": "top1_all_supportive_balanced",
+      "display_name": "Top 1 All ETFs / Supportive Balanced RS",
+      "top_n": 1,
+      "universe_scope": "all",
+      "rule_summary": [
+        "weekly Friday selection from SPY, QQQ, and sector ETFs",
+        "regime must be Risk-on or Selective risk-on",
+        "close > 20DMA > 50DMA with positive 20DMA slope",
+        "rank by 10D/20D/60D relative strength plus 20D return, penalize volatility",
+        "hold one week; pick top 1"
+      ]
+    },
+    {
+      "variant_id": "top2_all_supportive_balanced",
+      "display_name": "Top 2 All ETFs / Supportive Balanced RS",
+      "top_n": 2,
+      "universe_scope": "all",
+      "rule_summary": [
+        "weekly Friday selection from SPY, QQQ, and sector ETFs",
+        "same balanced RS rule as top 1",
+        "hold one week; equal-weight top 2"
+      ]
+    },
+    {
+      "variant_id": "top1_all_supportive_strict_rs",
+      "display_name": "Top 1 All ETFs / Supportive Strict RS",
+      "top_n": 1,
+      "universe_scope": "all",
+      "rule_summary": [
+        "weekly Friday selection from SPY, QQQ, and sector ETFs",
+        "supportive regime and trend gate",
+        "RS 20D must exceed SPY by at least 1%; RS 60D must be positive",
+        "hold one week; pick top 1"
+      ]
+    },
+    {
+      "variant_id": "top2_all_supportive_strict_rs",
+      "display_name": "Top 2 All ETFs / Supportive Strict RS",
+      "top_n": 2,
+      "universe_scope": "all",
+      "rule_summary": [
+        "weekly Friday selection from SPY, QQQ, and sector ETFs",
+        "same strict RS rule as top 1",
+        "hold one week; equal-weight top 2"
+      ]
+    },
+    {
+      "variant_id": "top1_sector_supportive_strict_rs",
+      "display_name": "Top 1 Sector ETFs / Supportive Strict RS",
+      "top_n": 1,
+      "universe_scope": "sector",
+      "rule_summary": [
+        "weekly Friday selection from sector ETFs only",
+        "supportive regime and trend gate",
+        "RS 20D must exceed SPY by at least 1%; RS 60D must be positive",
+        "hold one week; pick top 1"
+      ]
+    },
+    {
+      "variant_id": "top2_sector_supportive_strict_rs",
+      "display_name": "Top 2 Sector ETFs / Supportive Strict RS",
+      "top_n": 2,
+      "universe_scope": "sector",
+      "rule_summary": [
+        "weekly Friday selection from sector ETFs only",
+        "same strict RS rule as sector top 1",
+        "hold one week; equal-weight top 2"
+      ]
+    },
+    {
+      "variant_id": "top1_broad_supportive_trend",
+      "display_name": "Top 1 Broad ETFs / Supportive Trend",
+      "top_n": 1,
+      "universe_scope": "broad",
+      "rule_summary": [
+        "weekly Friday selection from SPY and QQQ only",
+        "supportive regime and trend gate",
+        "rank by balanced RS and momentum",
+        "hold one week; pick top 1"
+      ]
+    },
+    {
+      "variant_id": "top1_all_risk_on_strict_rs",
+      "display_name": "Top 1 All ETFs / Risk-on Strict RS",
+      "top_n": 1,
+      "universe_scope": "all",
+      "rule_summary": [
+        "weekly Friday selection from SPY, QQQ, and sector ETFs",
+        "regime must be Risk-on, not merely Selective risk-on",
+        "strict RS and trend gates",
+        "hold one week; pick top 1"
+      ]
+    }
+  ]
+}

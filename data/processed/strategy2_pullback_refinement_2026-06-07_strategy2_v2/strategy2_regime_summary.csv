@@ -1,0 +1,18 @@
+variant_id,variant_name,action_role,regime,sample_size,avg_fwd_15d_return,avg_excess_15d_return,win_rate_15d
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Risk-on,1534,0.008349605554816439,0.0045860609753634735,0.5247718383311604
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Defensive,1529,0.0036923028803479696,-0.0031681272892277903,0.5271419228253761
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Selective risk-on,378,0.010101662956995988,0.001488305976655942,0.5291005291005291
+baseline_current_v1,Current v1 Pullback,live_buy_pullback,Neutral,266,-0.001088306649847181,-0.009315726574577734,0.4774436090225564
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Risk-on,147,0.005773430843039384,0.00033048135195074934,0.4965986394557823
+deeper_controlled_confirmed,Deeper Controlled Confirmed Pullback,live_buy_pullback,Selective risk-on,24,0.003908594137641723,-0.0072158526670164,0.5416666666666666
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Risk-on,470,0.012986761548558509,0.010877322937442492,0.5404255319148936
+mid_depth_low_extension,Mid-Depth Low-Extension Pullback,live_buy_pullback,Selective risk-on,113,0.003936817732108801,0.001124819572870995,0.49557522123893805
+risk_on_confirmed_controlled,Risk-On + Confirmed Controlled Pullback,live_buy_pullback,Risk-on,593,0.010163046618688717,0.007649054714816031,0.5227655986509275
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Risk-on,1869,0.010650877526552114,0.0051976893567224755,0.5543071161048689
+shallow_confirmed_reset,Shallow Confirmed Reset,live_buy_pullback,Selective risk-on,493,-0.0005452005180099487,-0.0046308806424005654,0.48073022312373226
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Risk-on,143,0.030395370193480487,0.02193522890894071,0.5944055944055944
+strict_rs_support_proximity,Strict RS + Support-Proximity Pullback,live_buy_pullback,Selective risk-on,43,0.010743240429172149,0.009705909503911777,0.5348837209302325
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Risk-on,568,0.009095788698294832,0.00681039325873247,0.5176056338028169
+supportive_confirmed_controlled,Supportive + Confirmed Controlled Pullback,live_buy_pullback,Selective risk-on,133,0.00794180809185947,0.005063584981244762,0.48120300751879697
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Risk-on,877,0.01736222329926847,0.009785105211226193,0.5860889395667047
+watch_only_extended_strength,Watch-Only Extended Strength,watch_only,Selective risk-on,168,0.013022799890151046,0.006292461190532995,0.6011904761904762

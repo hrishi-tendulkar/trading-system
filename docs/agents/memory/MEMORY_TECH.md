@@ -2,6 +2,7 @@
 
 ## Durable Notes
 
+- [2026-06-03] Medium-term architecture should treat strategies as versioned operating assets, not static labels. Weekly runs must pin the active strategy registry version and exact strategy versions used; research/backtest variants should stay separate from promoted production versions; live weekly outcomes should attach back to those pinned versions so strategy refinement does not mutate historical evidence.
 - [2026-05-22] The architecture should preserve raw, normalized, and derived layers separately so later score changes can be explained instead of guessed.
 - [2026-05-22] For this product, one low-cost all-in-one provider may be enough to prove the stock engine, but options overlays are likely the forcing function for a second provider; do not assume one vendor will cleanly satisfy both the core equity workflow and credible historical options support.
 - [2026-05-22] SEC EDGAR should be treated as infrastructure, not just a backup source. Even if another vendor offers filings, direct SEC ingestion materially improves auditability, source traceability, and recovery from vendor gaps.
@@ -13,3 +14,8 @@
 - [2026-05-24] On Railway, scheduled work should be modeled as separate short-lived cron services that exit cleanly, not as one long-running worker with an in-process scheduler; overlapping active cron executions will cause later scheduled runs to be skipped.
 - [2026-05-24] The safest bridge from shell UI to durable product is a repository boundary plus typed projection layer: the app can read stored CSV or file-backed published outputs now, while keeping the same contract shape that a later Supabase-backed run store will satisfy.
 - [2026-05-26] The build-ready weekly engine is candidate-first, not board-first: evaluate promoted strategies independently, persist suppressors explicitly, assemble the weekly board as a separate promotion step, and render strategy pages from the same stored contracts rather than from special-case UI logic.
+- [2026-06-03] Weekly publishing needs explicit run lifecycle state and freshness gates. The current page should point at the latest successful published run, while failed or validation-failed runs leave the previous run current and surface a missing-current-week or stale-source-data warning.
+- [2026-06-06] The safe bridge from pilot watchlist to broad coverage is a canonical universe layer with explicit source paths, environment-selectable slugs, and weekly manifest metadata before moving to Supabase-backed universe snapshots.
+- [2026-06-06] Weekly-run job defaults now point to the S&P 100 file-backed bridge: `data/reference/sp100_watchlist.csv`, `data/raw/sp100_5y`, and `data/processed/sp100_current`. Publisher report paths must use the universe slug to avoid overwriting Phase 2 reports.
+- [2026-06-07] File-backed weekly run manifests now snapshot `strategy_registry_version` and `active_strategy_versions`, starting with `2026-06-07.1` and `breakout-confirmation.v2`. This is the bridge contract for later database-backed strategy-version archives.
+- [2026-06-07] Published weekly-run snapshots should fail before updating `current.json` when strategy pinning is missing, placeholder, or inconsistent with the active registry. Backward-compatible manifest reads can stay lenient, but publish gates must be strict.

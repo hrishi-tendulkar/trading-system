@@ -14,7 +14,10 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from packages.core.canonical_strategy_replay import build_strategy_replay_artifacts, prepare_replay_features
+from packages.core.canonical_strategy_replay import (
+    build_strategy_replay_artifacts,
+    prepare_replay_features,
+)
 
 
 def parse_args() -> argparse.Namespace:

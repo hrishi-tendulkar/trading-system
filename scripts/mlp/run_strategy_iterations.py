@@ -7,7 +7,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-
 from run_watchlist_analysis import add_features, strategy_payload
 
 SECTOR_ETF_MAP = {

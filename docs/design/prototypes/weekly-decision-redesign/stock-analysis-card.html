@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prototype - Stock Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav">
+      <div class="brand">
+        <div class="brand-title">Trading System</div>
+        <div class="crumb">Prototype / Stock Analysis / QQQ</div>
+      </div>
+      <div class="nav-links">
+        <a href="weekly-trade-plan.html">Weekly</a>
+        <a href="full-candidate-board.html">Full Board</a>
+        <a class="active" href="stock-analysis-card.html">Stock Analysis</a>
+        <a href="strategy-detail-card.html">Strategy Detail</a>
+      </div>
+    </nav>
+    <div class="run-nav">
+      <strong>This week's pages</strong>
+      <div class="run-nav-links">
+        <a href="weekly-trade-plan.html">Summary</a>
+        <a href="full-candidate-board.html">Why picks passed/failed</a>
+        <a class="active" href="stock-analysis-card.html">Stock Detail</a>
+        <a href="strategy-detail-card.html">Strategy Detail</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Detailed stock analysis</div>
+        <h1>QQQ via Index Trend Follow-Through: buy only inside the entry zone.</h1>
+        <p>This page explains whether the weekly recommendation is trustworthy enough to act on, what could go wrong, and where the trade should be exited.</p>
+        <div class="page-actions">
+          <a class="secondary-button" href="weekly-trade-plan.html">Back to summary</a>
+          <a class="secondary-button" href="full-candidate-board.html">See why all picks passed or failed</a>
+        </div>
+        <div class="decision-strip">
+          <div class="decision-tile">
+            <div class="decision-label">Action</div>
+            <div class="decision-value">Buy if holds</div>
+          </div>
+          <div class="decision-tile">
+            <div class="decision-label">Entry</div>
+            <div class="decision-value">$462-$468</div>
+          </div>
+          <div class="decision-tile">
+            <div class="decision-label">Exit high</div>
+            <div class="decision-value">$485</div>
+          </div>
+          <div class="decision-tile">
+            <div class="decision-label">Exit low</div>
+            <div class="decision-value">$454</div>
+          </div>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="eyebrow">What this means for you</div>
+        <h2>Buy strength, but do not chase a gap.</h2>
+        <p style="margin-top: 10px;">If QQQ opens calmly and stays above $462, this is a valid weekly trade. If it opens too high, the reward is no longer worth the risk.</p>
+        <div class="badges">
+          <span class="badge context">Strategy: <a href="strategy-detail-card.html">Index Trend Follow-Through</a></span>
+          <span class="badge buy">Board eligible</span>
+          <span class="badge wait">Medium confidence</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="layout">
+      <aside class="side-rail">
+        <div class="panel switcher">
+          <div class="switcher-title">Switch stock</div>
+          <div class="switcher-options">
+            <a class="active" href="stock-analysis-card.html"><strong>QQQ</strong><span>Buy if entry holds</span></a>
+            <a href="stock-analysis-card.html"><strong>NVDA</strong><span>Wait for entry</span></a>
+            <a href="stock-analysis-card.html"><strong>MSFT</strong><span>Hold / add small</span></a>
+            <a href="stock-analysis-card.html"><strong>CRM</strong><span>Sell check</span></a>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="eyebrow">Action summary</div>
+          <div class="levels">
+            <div class="level buy-level">
+              <div class="level-label">Do this</div>
+              <div class="level-value">Buy only in zone</div>
+            </div>
+            <div class="level target-level">
+              <div class="level-label">Take profit</div>
+              <div class="level-value">Trim near $485</div>
+            </div>
+            <div class="level sell-level">
+              <div class="level-label">Sell</div>
+              <div class="level-value">Below $454</div>
+            </div>
+          </div>
+          <div class="lineage-box">
+            <div class="lineage-row">
+              <div class="lineage-label">Strategy</div>
+              <div class="lineage-value"><a href="strategy-detail-card.html">Index Trend Follow-Through</a></div>
+            </div>
+            <div class="lineage-row">
+              <div class="lineage-label">Role</div>
+              <div class="lineage-value">Primary recommendation basis, not just context.</div>
+            </div>
+            <div class="lineage-row">
+              <div class="lineage-label">Valid until</div>
+              <div class="lineage-value">Jun 12 close, unless target or sell level triggers first.</div>
+            </div>
+            <div class="lineage-row">
+              <div class="lineage-label">Expected hold</div>
+              <div class="lineage-value">1-3 weeks after entry; review every weekly close.</div>
+            </div>
+          </div>
+        </div>
+        <div class="metadata">
+          <strong>Analysis metadata</strong>
+          <span>Data through: Jun 5 close</span>
+          <span>Source: weekly_2026_06_08</span>
+          <span>Strategy: Index trend follow-through</span>
+        </div>
+      </aside>
+
+      <div class="stack">
+        <section class="grid-2">
+          <article class="card">
+            <div class="eyebrow">Action evidence</div>
+            <h2>Evidence for acting</h2>
+            <ul class="text-list">
+              <li><strong>Market leadership:</strong> QQQ is still acting better than SPY, so broad tech exposure is the cleanest risk this week.</li>
+              <li><strong>Entry is defined:</strong> there is a clear buy zone and a clear sell level, so the trade is not just a vague bullish view.</li>
+              <li><strong>Single-name risk avoided:</strong> ETF exposure gives participation without betting everything on one extended stock.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="eyebrow">Why not stronger</div>
+            <h2>Red-team check</h2>
+            <ul class="text-list">
+              <li><strong>Breadth is mixed:</strong> fewer stocks are helping the market, so this is not a week for broad aggression.</li>
+              <li><strong>Gap risk:</strong> if QQQ opens above the entry zone, the trade becomes less attractive immediately.</li>
+              <li><strong>Macro sensitivity:</strong> one weak inflation or rate headline can break the setup quickly.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="card">
+          <div class="section-header">
+            <div>
+              <div class="eyebrow">Trade geometry</div>
+              <h2>Price plan</h2>
+            </div>
+            <span class="badge buy">Reward/risk acceptable only in zone</span>
+          </div>
+          <div class="facts" style="margin-top: 14px;">
+            <div class="fact">
+              <div class="fact-label">Current price</div>
+              <div class="fact-value">$465.20</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Buy zone</div>
+              <div class="fact-value">$462-$468</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Target 1</div>
+              <div class="fact-value">$485</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Sell level</div>
+              <div class="fact-value">$454</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Trade valid until</div>
+              <div class="fact-value">Jun 12</div>
+            </div>
+            <div class="fact">
+              <div class="fact-label">Expected hold</div>
+              <div class="fact-value">1-3 weeks</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="split">
+          <article class="card">
+            <div class="eyebrow">Signal breakdown</div>
+            <h2>Separate the evidence</h2>
+            <div class="metric-grid" style="margin-top: 14px;">
+              <div class="fact">
+                <div class="fact-label">Short-term tradeability</div>
+                <div class="fact-value">Good</div>
+                <div class="score"><span style="width: 78%;"></span></div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Long-term conviction</div>
+                <div class="fact-value">Context only</div>
+                <div class="score"><span style="width: 46%;"></span></div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Event risk</div>
+                <div class="fact-value">Low</div>
+                <div class="score"><span style="width: 28%;"></span></div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Options fit</div>
+                <div class="fact-value">Not primary</div>
+                <div class="score"><span style="width: 34%;"></span></div>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="eyebrow">What changed</div>
+            <h2>Since last week</h2>
+            <div class="timeline" style="margin-top: 14px;">
+              <div class="timeline-item">
+                <strong>Jun 5 close</strong>
+                <p>QQQ held above short-term support while single-name leaders stayed extended.</p>
+              </div>
+              <div class="timeline-item">
+                <strong>Jun 3 close</strong>
+                <p>Market posture improved from neutral to selective risk-on.</p>
+              </div>
+              <div class="timeline-item">
+                <strong>Last weekly run</strong>
+                <p>QQQ was watch-only because entry was less clear.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

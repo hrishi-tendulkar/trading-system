@@ -1,0 +1,36 @@
+variant_id,variant_name,sector,sample_size,avg_fwd_15d_return,avg_excess_15d_return,win_rate_15d
+baseline_current,Current Breakout Confirmation,Information Technology,734,0.02647438010621404,0.016059396022392043,0.5980926430517711
+baseline_current,Current Breakout Confirmation,Financials,514,0.0041584353593503405,-0.0031630965906468064,0.5486381322957199
+baseline_current,Current Breakout Confirmation,Industrials,435,0.015537830582409713,0.010425629200495485,0.5632183908045977
+baseline_current,Current Breakout Confirmation,Health Care,418,0.007712795020745309,0.004247228904715854,0.5861244019138756
+baseline_current,Current Breakout Confirmation,Communication Services,277,0.010079583837504992,0.003122850349722102,0.5992779783393501
+baseline_current,Current Breakout Confirmation,Consumer Discretionary,247,-0.006235226179626139,-0.01287623720732827,0.5020242914979757
+baseline_current,Current Breakout Confirmation,Consumer Staples,242,0.002479757599656231,0.0075220187010150525,0.5330578512396694
+baseline_current,Current Breakout Confirmation,Energy,125,0.0024964726612997385,0.006610148280699283,0.544
+baseline_current,Current Breakout Confirmation,Utilities,81,-0.0012756732211710435,-0.002767675552877857,0.4691358024691358
+baseline_current,Current Breakout Confirmation,Real Estate,62,0.008968669159008994,0.002950025905243043,0.5806451612903226
+baseline_current,Current Breakout Confirmation,Materials,34,-0.0025324274736048093,-0.0005944249646843572,0.47058823529411764
+leadership_quality,Leadership-Quality Breakout,Information Technology,289,0.014190536340461976,0.0037597273894383093,0.5501730103806228
+leadership_quality,Leadership-Quality Breakout,Financials,272,0.00034290935841745735,-0.007804555709051328,0.5073529411764706
+leadership_quality,Leadership-Quality Breakout,Industrials,158,0.02175044312818378,0.018735485259917573,0.5886075949367089
+leadership_quality,Leadership-Quality Breakout,Health Care,155,0.008095357010018739,0.01027480159378515,0.6258064516129033
+leadership_quality,Leadership-Quality Breakout,Consumer Discretionary,88,-0.0007134329810890761,-0.012181167107350633,0.5113636363636364
+leadership_quality,Leadership-Quality Breakout,Energy,19,0.0162494230143361,0.025112752912886793,0.5263157894736842
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Information Technology,632,0.027371360113475435,0.016352402479079497,0.5981012658227848
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Financials,351,0.007520545483034178,-0.00024243647921542963,0.5555555555555556
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Industrials,284,0.020625383434441924,0.016564230013502667,0.5704225352112676
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Health Care,213,0.01460096374318528,0.015860055305203034,0.6244131455399061
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Consumer Discretionary,191,-0.007848246201436907,-0.013862473621763962,0.5078534031413613
+risk_on_sector_confirmed,Risk-on + Sector-Confirmed Breakout,Energy,33,0.01603824115265691,0.022190631087106852,0.5757575757575758
+strict_entry_quality,Strict Entry-Quality Breakout,Financials,119,-0.006426105059647928,-0.013931327121697088,0.46218487394957986
+strict_entry_quality,Strict Entry-Quality Breakout,Information Technology,109,0.0077768775135858125,-0.002243614343728481,0.5871559633027523
+strict_entry_quality,Strict Entry-Quality Breakout,Health Care,74,0.006955538931109521,0.008630756969016475,0.5945945945945946
+strict_entry_quality,Strict Entry-Quality Breakout,Industrials,58,0.0243070028565167,0.01775912238750935,0.5862068965517241
+strict_entry_quality,Strict Entry-Quality Breakout,Consumer Discretionary,35,0.0013545640149224753,-0.015522299549095923,0.4857142857142857
+strict_entry_quality,Strict Entry-Quality Breakout,Energy,10,0.030310115930165693,0.031246859409568728,0.7
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Information Technology,672,0.028893871833115505,0.018090450752610128,0.6041666666666666
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Financials,430,0.006300599982610237,-0.0024273422542002896,0.5581395348837209
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Industrials,357,0.018353585681205258,0.013163762387878286,0.5770308123249299
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Health Care,268,0.012327884734895102,0.012287551566416165,0.6231343283582089
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Consumer Discretionary,206,-0.003572546179006155,-0.010372201554431814,0.5097087378640777
+supportive_sector_confirmed,Supportive + Sector-Confirmed Breakout,Energy,52,0.018461448340459225,0.023260736636850465,0.5769230769230769

@@ -13,6 +13,11 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from packages.core.strategy_registry import (  # noqa: E402
+    get_active_strategy_versions,
+    get_strategy_registry_version,
+)
+from packages.core.universes import KNOWN_UNIVERSES  # noqa: E402
 from packages.core.weekly_runs import (  # noqa: E402
     WeeklyRunManifest,
     current_utc_timestamp,
@@ -45,6 +50,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--processed-outdir", default="data/processed/phase2")
     parser.add_argument("--start", default="", help="Optional inclusive raw price start date.")
     return parser.parse_args()
+
+
+def universe_slug_for_watchlist(path_value: str) -> str:
+    normalized = Path(path_value).as_posix()
+    for slug, path in KNOWN_UNIVERSES.items():
+        if path.as_posix() == normalized:
+            return slug
+    return "custom"
 
 
 def read_first_date(path: Path) -> date:
@@ -87,11 +100,14 @@ def ensure_existing_archive() -> None:
         last_checked_at=timestamp,
         run_status="superseded",
         engine_version="mlp-watchlist-v1",
-        strategy_registry_version="repo-current",
+        strategy_registry_version=get_strategy_registry_version(),
         input_snapshot_id=f"legacy-phase2-{existing_date.isoformat()}",
         output_snapshot_id=run_id,
         recommendations_path="recommendations.csv",
         created_at=timestamp,
+        universe="phase2",
+        source_watchlist_path="data/reference/phase2_watchlist.csv",
+        active_strategy_versions=get_active_strategy_versions(),
     )
     write_run_snapshot(manifest=manifest, recommendations_source=source, publish_current=False)
 
@@ -109,6 +125,7 @@ def publish_weekly_run(args: argparse.Namespace) -> WeeklyRunManifest:
     if target_week.weekday() != 0:
         raise RuntimeError(f"Target week must be a Monday, got {target_week.isoformat()}")
 
+    universe = universe_slug_for_watchlist(args.watchlist)
     source_through = prior_friday_for_week(target_week)
     fetch_end = source_through + timedelta(days=1)
     raw_prices = repo_root() / args.raw_outdir / "mlp_prices.csv"
@@ -141,7 +158,7 @@ def publish_weekly_run(args: argparse.Namespace) -> WeeklyRunManifest:
             f"got {latest_raw_date.isoformat()}"
         )
 
-    report_path = f"docs/research/market/phase2-weekly-report-{target_week.isoformat()}.md"
+    report_path = f"docs/research/market/{universe}-weekly-report-{target_week.isoformat()}.md"
     run_command(
         [
             sys.executable,
@@ -181,11 +198,14 @@ def publish_weekly_run(args: argparse.Namespace) -> WeeklyRunManifest:
         last_checked_at=published_at,
         run_status="published",
         engine_version="mlp-watchlist-v1",
-        strategy_registry_version="repo-current",
-        input_snapshot_id=f"phase2-prices-through-{source_through.isoformat()}",
+        strategy_registry_version=get_strategy_registry_version(),
+        input_snapshot_id=f"{universe}-prices-through-{source_through.isoformat()}",
         output_snapshot_id=run_id,
         recommendations_path="recommendations.csv",
         created_at=published_at,
+        universe=universe,
+        source_watchlist_path=args.watchlist,
+        active_strategy_versions=get_active_strategy_versions(),
     )
     write_run_snapshot(
         manifest=manifest,

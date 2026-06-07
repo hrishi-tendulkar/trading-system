@@ -1,0 +1,14 @@
+variant_id,variant_name,etf_subgroup,trade_count,avg_5d_return_net,avg_5d_excess_net,win_rate_5d
+top1_all_risk_on_strict_rs,Top 1 All ETFs / Risk-on Strict RS,Sector ETF,96,0.0014723131460538449,4.8438724081732255e-05,0.5
+top1_all_risk_on_strict_rs,Top 1 All ETFs / Risk-on Strict RS,Broad ETF,8,-0.003231954644413615,-0.00024517391512525466,0.375
+top1_all_supportive_balanced,Top 1 All ETFs / Supportive Balanced RS,Sector ETF,140,0.001384632560505507,0.0006237778570468294,0.5357142857142857
+top1_all_supportive_balanced,Top 1 All ETFs / Supportive Balanced RS,Broad ETF,13,-0.0009767952378853138,0.0023484065852159217,0.38461538461538464
+top1_all_supportive_strict_rs,Top 1 All ETFs / Supportive Strict RS,Sector ETF,116,0.0019373332358227013,0.0011860875143850608,0.5258620689655172
+top1_all_supportive_strict_rs,Top 1 All ETFs / Supportive Strict RS,Broad ETF,8,-0.003231954644413615,-0.00024517391512525466,0.375
+top1_broad_supportive_trend,Top 1 Broad ETFs / Supportive Trend,Broad ETF,133,0.0011071447807887037,0.0006170368679318956,0.5263157894736842
+top1_sector_supportive_strict_rs,Top 1 Sector ETFs / Supportive Strict RS,Sector ETF,118,0.0022133258246149613,0.0012962412856108657,0.5254237288135594
+top2_all_supportive_balanced,Top 2 All ETFs / Supportive Balanced RS,Sector ETF,233,0.0008869374892613125,0.0007010318483379466,0.5150214592274678
+top2_all_supportive_balanced,Top 2 All ETFs / Supportive Balanced RS,Broad ETF,65,0.001426916500404128,0.0005322469648322895,0.47692307692307695
+top2_all_supportive_strict_rs,Top 2 All ETFs / Supportive Strict RS,Sector ETF,164,0.002585617390731999,0.0018960615361962138,0.524390243902439
+top2_all_supportive_strict_rs,Top 2 All ETFs / Supportive Strict RS,Broad ETF,45,0.002477311962148846,0.0006265874403531003,0.5111111111111111
+top2_sector_supportive_strict_rs,Top 2 Sector ETFs / Supportive Strict RS,Sector ETF,176,0.003214723185850321,0.0022665222072431185,0.5397727272727273

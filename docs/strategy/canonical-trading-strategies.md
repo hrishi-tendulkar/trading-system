@@ -115,6 +115,9 @@ Current live posture:
 
 - canonical strategy, but not currently feeding the main action board
 - the present replayed daily-entry definition is too flat versus `SPY` to earn mainline promotion
+- ranked weekly ETF rotation was retested on `2026-06-07` and also remains research-only:
+  the best sector top `2` strict-RS version beat exposure-aware `SPY`, but missed
+  `SPY` buy-and-hold by `8.28%` annualized after `20 bps` friction
 
 Main risks:
 
@@ -184,7 +187,7 @@ Primary action labels:
 
 Status:
 
-- `Core`
+- `Core but narrowed / sector-confirmed`
 
 Type:
 
@@ -199,7 +202,8 @@ Use when:
 - trend is intact
 - stock is close to a definable resistance or recent high
 - relative strength is acceptable or strong
-- sector context is supportive
+- market regime is `Risk-on` or `Selective risk-on`
+- sector context is confirmed
 - the system prefers proof through price rather than anticipatory buying
 
 What it is really expressing:
@@ -209,22 +213,24 @@ What it is really expressing:
 Why it belongs:
 
 - some leaders never reset enough to become attractive pullback entries
-- current replay shows this is the strongest overall promoted sleeve in the canonical set
+- current replay shows the supportive, sector-confirmed version is the strongest promoted continuation sleeve in the canonical set
 
 Important doctrine:
 
 - this strategy should be tested on `triggered entries`, not by treating every pre-breakout watchlist name as an immediate trade
-- `Buy now` is earned only after the breakout trigger is live in a supportive regime
+- `Buy now` is earned only after the breakout trigger is live in a supportive regime with confirmed sector context
+- the broad current breakout baseline remains research context, not sufficient board-promotion logic
 
 Main risks:
 
 - false breakouts
 - crowded late entries
 - weak performance if used without regime and relative-strength filters
+- weak performance if sector confirmation is ignored
 
 Primary action labels:
 
-- `Buy now` for supportive-regime triggered entries
+- `Buy now` for supportive, sector-confirmed triggered entries
 - `Wait for confirmation`
 - `No action`
 
@@ -350,12 +356,12 @@ Test on:
 
 ## Current operating thesis
 
-As of `2026-05-25`, the best working thesis is:
+As of `2026-06-07`, the best working thesis is:
 
-1. `Breakout Confirmation` should be promoted now as the strongest current continuation sleeve.
-2. `Sector-Confirmed Pullback Continuation` should remain in the mainline only as a narrowed, trust-calibrated ruleset.
-3. `ETF Trend / Rotation` should remain canonical, but its current daily-entry definition should be refined before action-board promotion.
-4. `Selective Mean Reversion` should remain exploratory until it clearly adds value.
+1. `Breakout Confirmation` should remain promoted only as the supportive, sector-confirmed triggered-breakout sleeve.
+2. `Sector-Confirmed Pullback Continuation` should remain active as `sector-confirmed-pullback-continuation.v1`; the 2026-06-07 narrowed-v2 replay improved exposure-aware quality but failed the `SPY` buy-and-hold promotion hurdle.
+3. `ETF Trend / Rotation` should remain canonical and research-only; both the prior daily-entry definition and the ranked weekly rotation refinement failed the `SPY` buy-and-hold promotion bar.
+4. `Selective Mean Reversion` should remain exploratory; the 2026-06-07 refinement did not justify sandbox, paper-live, or main-board promotion.
 
 ## Strategy history log
 
@@ -375,12 +381,62 @@ Use this section to preserve changes over time.
 - Kept `ETF Trend / Rotation` canonical, but out of mainline action-board promotion until a stronger ranked rotation variant is tested.
 - Kept `Selective Mean Reversion` as research only.
 
+### 2026-06-02
+
+- Refined `Strategy 1 / Breakout Confirmation` with a weekly portfolio replay and exposure-aware `SPY` benchmark.
+- Promoted only `Supportive + Sector-Confirmed Breakout`:
+  - `19.94%` net annualized return,
+  - `+5.93%` annualized excess versus `SPY` buy-and-hold,
+  - `+18.50%` annualized excess versus exposure-aware `SPY`,
+  - `-18.10%` max drawdown versus `SPY` buy-and-hold at `-25.36%`.
+- Demoted the broad current breakout baseline to research context because it missed the `SPY` buy-and-hold hurdle and had worse drawdown.
+- Rejected stricter leadership and entry-quality variants for promotion because they reduced risk-adjusted performance instead of improving the sleeve.
+
+### 2026-06-07
+
+- Refined `Sector-Confirmed Pullback Continuation` for a possible v2 using daily `OHLCV`, `20 bps` friction, weekly top-`5` live pullback portfolios, `SPY` buy-and-hold, and exposure-aware `SPY`.
+- Tested explicit narrowed variants by pullback depth, extension band, sector confirmation, regime, RS consistency, ATR burden, support proximity, and watch-only extended-strength separation.
+- Kept `sector-confirmed-pullback-continuation.v1` active with no registry bump:
+  - current v1 net annualized return was `18.82%`,
+  - annualized excess versus `SPY` buy-and-hold was `+4.54%`,
+  - annualized excess versus exposure-aware `SPY` was `+3.30%`,
+  - max drawdown was `-25.16%` versus `SPY` at `-25.36%`,
+  - weekly information-like quality was weak at `0.041`.
+- Rejected narrowed v2 promotion because cleaner variants improved exposure-aware information quality but failed the `SPY` buy-and-hold hurdle:
+  - `Strict RS + Support-Proximity Pullback` information-like quality was `0.232`,
+  - annualized excess versus exposure-aware `SPY` was `+11.08%`,
+  - annualized excess versus `SPY` buy-and-hold was `-0.13%`.
+- Conclusion: keep pullback continuation as a trust-calibrated sleeve, not broad dip-buying; extended strength remains `Wait for pullback`, not a live pullback buy.
+
+### 2026-06-07
+
+- Refined `ETF Trend / Rotation` as a ranked weekly ETF-only rotation sleeve.
+- Tested top `1` and top `2` selection, broad ETF versus sector ETF treatment, supportive and risk-on regime gates, strict relative-strength filters, volatility caps, and `10/20/40 bps` friction sensitivity.
+- Kept the sleeve research-only:
+  - best `20 bps` variant was `Top 2 Sector ETFs / Supportive Strict RS`,
+  - net annualized return was `5.99%`,
+  - annualized excess versus exposure-aware `SPY` was `+4.13%`,
+  - annualized excess versus `SPY` buy-and-hold was `-8.28%`,
+  - max drawdown was `-16.20%` versus `SPY` at `-25.36%`.
+- Conclusion: ETF rotation may remain useful as an exposure appendix or single-name substitute context, but it should not feed the main board as promoted `Buy now` logic.
+
+### 2026-06-07
+
+- Refined `Selective Mean Reversion` across defensive and stress-regime rebound variants using daily `OHLCV` only, `20 bps` friction, weekly top-`5` portfolios, `5D` / `10D` / `15D` holding windows, `SPY` buy-and-hold, and exposure-aware `SPY`.
+- Rejected all tested variants for sandbox, paper-live, and main-board promotion:
+  - best variant was `stress_v1` with a `15D` hold,
+  - net annualized return was `7.05%`,
+  - annualized excess versus exposure-aware `SPY` was `+6.10%`,
+  - annualized excess versus `SPY` buy-and-hold was `-7.22%`,
+  - largest year share was `43.04%`.
+- Kept `selective-mean-reversion.v1` as `research` and excluded from fresh-capital board slots.
+
 ### Prior working ideas now reframed
 
-- `Constructive pullback continuation` remains canonical, but is now explicitly framed as `Sector-Confirmed Pullback Continuation` and should be trusted only through narrower supportive-regime sub-buckets.
-- `ETF rotation` remains canonical, but the current tested daily-entry rule is not yet strong enough for mainline promotion.
+- `Constructive pullback continuation` remains canonical, but is now explicitly framed as `Sector-Confirmed Pullback Continuation`; the 2026-06-07 v2 refinement did not beat the active v1 plus `SPY` buy-and-hold promotion bar, so it should stay trust-calibrated rather than upgraded.
+- `ETF rotation` remains canonical, but neither the current daily-entry rule nor the ranked weekly rotation refinement is strong enough for mainline promotion.
 - `Breakout confirmation` remains core and has now earned promotion through triggered-entry testing in supportive regimes.
-- `Mean reversion` remains possible, but not promoted to core.
+- `Mean reversion` remains possible as a research appendix, but the 2026-06-07 defensive/stress replay did not justify sandbox, paper-live, or core promotion.
 
 ## Rule for future updates
 

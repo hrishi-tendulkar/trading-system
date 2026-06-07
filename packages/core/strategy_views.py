@@ -27,6 +27,7 @@ STRATEGY_NAME_TO_CODE = {
 }
 
 STRATEGY_ID_TO_CODE = {
+    "breakout-confirmation-triggered": "breakout-confirmation",
     "wait-for-confirmation": "breakout-confirmation",
     "strong-stock-constructive-pullback": "sector-confirmed-pullback-continuation",
     "broad-market-trend-hold": "etf-trend-rotation",
@@ -92,7 +93,7 @@ def _candidate_quality(record) -> str:
 
 def _evidence_tier(basis_code: str) -> str:
     mapping = {
-        "breakout-confirmation": "Strong",
+        "breakout-confirmation": "Strong but narrowed",
         "sector-confirmed-pullback-continuation": "Moderate",
         "etf-trend-rotation": "Exploratory",
         "selective-mean-reversion": "Exploratory",
@@ -158,9 +159,9 @@ def _plain_language_copy(basis_code: str) -> dict[str, object]:
                 "but only buys them once price proves the breakout is real."
             ),
             "trust_summary": (
-                "This is the strongest currently promoted strategy. It deserves attention "
-                "when the market is supportive, but it still prefers confirmation "
-                "over anticipation."
+                "This is the strongest currently promoted strategy only in its narrowed "
+                "form. It deserves attention when the market is supportive, the sector "
+                "confirms, and price has actually triggered."
             ),
             "this_week_call": (
                 "Use this as a live action strategy, not just a watchlist lens."
@@ -178,12 +179,14 @@ def _plain_language_copy(basis_code: str) -> dict[str, object]:
             ),
             "works_best_when": [
                 "The market is supportive rather than defensive.",
+                "The sector confirms rather than fights the move.",
                 "The stock is already a relative-strength leader.",
                 "The breakout trigger is fresh and not overly extended.",
             ],
             "breaks_down_when": [
                 "The stock is late, crowded, or already overextended.",
                 "The breakout never really confirms through price.",
+                "Sector confirmation is weak or unavailable.",
                 "The broader market loses risk appetite.",
             ],
         },
@@ -287,7 +290,7 @@ def _plain_language_copy(basis_code: str) -> dict[str, object]:
 
 def _backtest_label(basis_code: str) -> str:
     return {
-        "breakout-confirmation": "Strong historical support",
+        "breakout-confirmation": "Strong historical support when narrowed",
         "sector-confirmed-pullback-continuation": "Mixed overall, usable only in narrower cases",
         "etf-trend-rotation": "Not strong enough yet",
         "selective-mean-reversion": "Research-only evidence",
@@ -299,9 +302,10 @@ def _backtest_takeaway(basis_code: str, replay: StrategyReplaySummary | None) ->
         return "Backtest evidence is not loaded yet, so use doctrine rather than metrics."
     if basis_code == "breakout-confirmation":
         return (
-            "This is the cleanest replay-backed strategy in the current set. "
-            "The main thing to remember is "
-            "that its edge comes from waiting for proof, not predicting breakouts early."
+            "This is the cleanest replay-backed strategy in the current set only after "
+            "the supportive-regime and sector-confirmation gates are preserved. "
+            "The main thing to remember is that its edge comes from waiting for proof, "
+            "not predicting breakouts early."
         )
     if basis_code == "sector-confirmed-pullback-continuation":
         return (
