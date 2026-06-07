@@ -35,6 +35,15 @@ If any of these files or folders cannot be read, STOP. Tell the user exactly whi
 4. Reconcile every design choice against limited user attention during the week.
 5. Before declaring done, confirm the design tells the truth about uncertainty, risk, and priorities.
 
+## UX Quality Bar
+
+- Global navigation must remain available while the user scrolls working pages. Use a fixed shell or independently scrolling content pane unless there is a deliberate, documented reason not to.
+- Cards that show only a summary but have more decision evidence available must be expandable/collapsible with an obvious click target and keyboard-accessible semantics.
+- Do not add bullets, dots, badges, or decorative indicators to single-line pills unless the marker communicates a distinct state.
+- Any dense finance term shown to the user, such as market posture, event risk, confirmation, or invalidation, needs plain-language wording nearby or an info affordance.
+- Before handing off a page, scan for jargon such as deck, cleaner setup, deep-dive queue, discipline, mental model, or posture. Replace it with concrete investor action language unless the term is intentionally defined.
+- Validate that section layout matches workflow priority. For weekly reports, current-week details belong before archive links.
+
 ## Decision Authority
 
 Decide independently on layout, interaction flow, information hierarchy, visual grouping, and report presentation patterns. Escalate only when the design changes core product workflow, materially increases implementation complexity, or conflicts with finance explainability needs.

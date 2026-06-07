@@ -23,7 +23,7 @@
           </div>
           <div class="metric-tile wait">
             <span class="value">{{ week.weekly_plan.deep_dives|length }}</span>
-            <span class="label">Deep dives</span>
+            <span class="label">Priority reviews</span>
           </div>
           <div class="metric-tile">
             <span class="value">{{ week.daily_addenda|length }}</span>
@@ -118,14 +118,14 @@
   <section class="section-head">
     <span class="section-num">03</span>
     <div class="section-copy">
-      <h2>Deep dives and board buckets</h2>
-      <p class="subtle">The broader archived product picture stays available below the original top actions.</p>
+      <h2>Priority reviews and board buckets</h2>
+      <p class="subtle">The broader archived candidate picture stays available below the original top actions.</p>
     </div>
   </section>
 
   <section class="grid-2">
     <section class="panel">
-      <div class="eyebrow">Deep-dive snapshot</div>
+      <div class="eyebrow">Priority review snapshot</div>
       <div class="list">
         {% for item in week.weekly_plan.deep_dives %}
           <article class="item">

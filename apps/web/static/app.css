@@ -43,10 +43,12 @@
 html,
 body {
   margin: 0;
+  height: 100%;
   min-width: 1380px;
   background: var(--desk);
   color: var(--ink);
   font-family: var(--sans);
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -99,9 +101,32 @@ button {
   font: 600 13px/1 var(--sans);
 }
 
+.info-dot {
+  display: inline-flex;
+  width: 15px;
+  height: 15px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink-3);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.info-dot:hover,
+.info-dot:focus-visible {
+  border-color: var(--ink-2);
+  color: var(--ink);
+}
+
 .stage {
   display: flex;
   justify-content: center;
+  height: 100vh;
   padding: 28px 24px 60px;
 }
 
@@ -109,7 +134,8 @@ button {
   display: grid;
   grid-template-columns: 224px minmax(0, 1fr);
   width: 1320px;
-  min-height: calc(100vh - 88px);
+  height: calc(100vh - 88px);
+  min-height: 0;
   overflow: hidden;
   border-radius: 16px;
   background: var(--desk);
@@ -118,10 +144,7 @@ button {
 
 .app-bar {
   display: flex;
-  position: sticky;
-  top: 0;
-  height: calc(100vh - 88px);
-  min-height: 760px;
+  min-height: 0;
   flex-direction: column;
   gap: 24px;
   align-items: stretch;
@@ -216,7 +239,10 @@ button {
 
 .content {
   display: grid;
+  align-content: start;
   gap: 26px;
+  height: 100%;
+  overflow-y: auto;
   padding: 28px 30px 38px;
   min-width: 0;
 }
@@ -496,8 +522,7 @@ button {
   border: 1px solid transparent;
 }
 
-.badge::before,
-.pill::before {
+.badge::before {
   content: "";
   width: 6px;
   height: 6px;
@@ -1086,6 +1111,9 @@ label {
 }
 
 .agency-tile small {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   color: var(--ink-3);
   font-size: 11px;
   font-weight: 600;
@@ -1151,10 +1179,28 @@ label {
   box-shadow: var(--shadow);
 }
 
+.agency-rec-card[open] {
+  box-shadow: var(--shadow-strong);
+}
+
 .agency-rec-card.is-buy { border-left-color: var(--buy); }
 .agency-rec-card.is-wait { border-left-color: var(--wait); }
 .agency-rec-card.is-sell { border-left-color: var(--sell); }
 .agency-rec-card.is-hold { border-left-color: var(--hold); }
+
+.agency-rec-summary {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+}
+
+.agency-rec-summary::-webkit-details-marker {
+  display: none;
+}
+
+.agency-rec-summary:hover {
+  background: var(--paper-3);
+}
 
 .agency-rec-head {
   display: flex;
@@ -1175,6 +1221,11 @@ label {
   color: var(--ink-4);
   font-size: 18px;
   line-height: 1;
+  transition: transform 140ms ease;
+}
+
+.agency-rec-card[open] .agency-chevron {
+  transform: rotate(180deg);
 }
 
 .agency-rec-instruction {

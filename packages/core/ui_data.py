@@ -223,6 +223,29 @@ def _canonical_strategy(record: RecommendationRecord) -> tuple[str | None, str |
     return by_id.get(record.strategy_id, (None, None))
 
 
+def _fresh_cash_action_label(record: RecommendationRecord) -> str:
+    mapping = {
+        "Hold": "No fresh buy",
+        "Hold / reassess after earnings": "Wait through earnings",
+        "No action": "No fresh buy",
+    }
+    return mapping.get(record.action_label, record.action_label)
+
+
+def _fresh_cash_entry(record: RecommendationRecord) -> str:
+    if record.action_label == "Hold / reassess after earnings":
+        return f"Wait until after earnings on {record.next_earnings_date or 'the next event'}"
+    if record.action_label in {"Hold", "No action"}:
+        return "Stand aside this week"
+    return f"{record.entry_label} {record.entry_value}".strip()
+
+
+def _fresh_cash_invalidation(record: RecommendationRecord) -> str:
+    if record.action_label in {"Hold", "Hold / reassess after earnings", "No action"}:
+        return f"Reassess if {record.stop_value or 'the setup changes'}"
+    return f"{record.stop_label} {record.stop_value}".strip()
+
+
 @lru_cache(maxsize=1)
 def _load_watchlist_members() -> dict[str, UniverseMember]:
     return load_active_universe_members()
@@ -332,24 +355,27 @@ def _market_posture(
         title = "Selective risk-on"
         summary = (
             "Leadership is still present, but the product should keep capital "
-            "concentrated in the best few setups instead of flattening the board."
+            "concentrated in the strongest few candidates instead of buying broadly."
         )
     elif benchmark and benchmark.ret_20d > 0:
         title = "Neutral to constructive"
         summary = (
-            "The tape is stable enough to keep names on deck, but the system "
-            "should stay patient on entries."
+            "Market trend is supportive enough to keep reviewing candidates, "
+            "but not strong enough to force new buys."
         )
     else:
         title = "Defensive"
         summary = (
-            "The tape is not giving enough support for aggressive fresh "
-            "entries, so preservation matters more."
+            "Market trend is not giving enough support for aggressive fresh "
+            "entries, so preserving cash matters more."
         )
     points = [
         f"{buy_count} names currently qualify as immediate action candidates.",
-        f"{event_sensitive_count} names need explicit event-risk discipline.",
-        "Use the deep-dive queue to inspect the few names most likely to matter this week.",
+        (
+            f"{event_sensitive_count} names have high event risk or earnings within "
+            "7 days; check the event date before acting."
+        ),
+        "Open any candidate card below to see entry, risk, catalyst, and rationale.",
     ]
     return title, summary, points
 
@@ -384,7 +410,7 @@ def _fresh_cash_buckets(records: list[RecommendationRecord]) -> list[dict[str, o
     ordered_buckets = ["Buy now", "Buy on pullback", "Wait for confirmation", "Do not chase"]
     groups: list[dict[str, object]] = []
     for bucket in ordered_buckets:
-        bucket_records = [record for record in records if record.action_bucket == bucket][:6]
+        bucket_records = [record for record in records if record.action_bucket == bucket]
         if not bucket_records:
             continue
         groups.append(
@@ -394,12 +420,12 @@ def _fresh_cash_buckets(records: list[RecommendationRecord]) -> list[dict[str, o
                     {
                         "ticker": record.ticker,
                         "company": record.company,
-                        "action": record.action_label,
+                        "action": _fresh_cash_action_label(record),
                         "badge_class": record.badge_class,
                         "why_now": record.why_now,
                         "why_not_stronger": record.why_not_stronger,
-                        "entry": f"{record.entry_label} {record.entry_value}".strip(),
-                        "invalidation": f"{record.stop_label} {record.stop_value}".strip(),
+                        "entry": _fresh_cash_entry(record),
+                        "invalidation": _fresh_cash_invalidation(record),
                         "catalyst": record.next_earnings_date or "No near-term event loaded",
                         "strategy_code": _canonical_strategy(record)[0],
                         "strategy_name": _canonical_strategy(record)[1],
@@ -578,13 +604,26 @@ def get_weekly_review() -> dict[str, object]:
     records = _non_benchmark_records()
     posture_title, posture_summary, posture_points = _market_posture(records)
     metadata = _run_metadata(records)
+    buy_now_count = sum(1 for record in records if record.action_label == "Buy now")
+    pullback_count = sum(1 for record in records if record.action_label == "Buy on pullback")
+    wait_count = sum(1 for record in records if record.action_label == "Wait for confirmation")
     return {
-        "title": "This Week's Plan",
+        "title": f"Weekly summary for {metadata['recommendation_week'].lower()}",
         "summary": (
-            "The latest published recommendation set is projected into a weekly "
-            "decision session so the product can scale into deeper analysis "
-            "without changing its mental model."
+            "This page converts the latest published run into this week's buy, "
+            "wait, and avoid decisions. It does not know your current holdings yet."
         ),
+        "coverage": {
+            "analyzed_count": str(len(records)),
+            "board_note": (
+                f"{len(records)} non-benchmark names were analyzed in this run. "
+                "Every analyzed name appears in the full candidate board below."
+            ),
+            "holdings_note": (
+                "Holding guidance is disabled until you provide a current holdings list. "
+                "For now, the page only gives fresh-cash and watchlist decisions."
+            ),
+        },
         "facts": [
             {"label": "Recommendation week", "value": metadata["recommendation_week"]},
             {"label": "Published", "value": metadata["published_at"]},
@@ -610,10 +649,8 @@ def get_weekly_review() -> dict[str, object]:
         "holders": _holder_buckets(records),
         "deep_dives": _deep_dive_queue(records),
         "selectivity_note": (
-            f"{sum(1 for record in records if record.action_label == 'Buy now')} "
-            "names are tradeable now, while "
-            f"{sum(1 for record in records if record.action_label == 'Buy on pullback')} "
-            "more stay on deck."
+            f"{buy_now_count} names are buy-now candidates, {pullback_count} need a "
+            f"better entry, and {wait_count} need confirmation first."
         ),
     }
 
@@ -859,7 +896,7 @@ def get_watchlist_view() -> dict[str, object]:
         "summary": (
             "This view keeps the watchlist scannable first. It shows how the "
             "current published recommendation set maps onto the active universe "
-            "without pretending write-capable CRUD is done yet."
+            "while separating current product capability from future editing tools."
         ),
         "facts": [
             {"label": "Active names", "value": str(_count_active_members())},
@@ -888,8 +925,8 @@ def get_stock_detail(ticker: str) -> dict[str, object] | None:
         "company": record.company,
         "as_of_date": record.as_of_date,
         "primary_thesis": record.strategy_rationale,
-        "current_call": record.action_label,
-        "holder_call": record.holder_bucket or "Monitor",
+        "current_call": _fresh_cash_action_label(record),
+        "portfolio_call": "Unavailable until current holdings are provided",
         "confidence": record.confidence,
         "badge_class": record.badge_class,
         "basis_type": record.basis_type,
@@ -903,8 +940,8 @@ def get_stock_detail(ticker: str) -> dict[str, object] | None:
             {"label": "Earnings", "value": _format_days_to_earnings(record.days_to_earnings)},
         ],
         "setup_plan": [
-            {"label": record.entry_label, "value": record.entry_value},
-            {"label": record.stop_label, "value": record.stop_value},
+            {"label": "Fresh-cash action", "value": _fresh_cash_entry(record)},
+            {"label": "Reassess if", "value": _fresh_cash_invalidation(record)},
             {"label": record.target_label, "value": record.target_value},
         ],
         "score_breakdown": [
@@ -931,7 +968,7 @@ def get_stock_detail(ticker: str) -> dict[str, object] | None:
         "derived": [
             record.observed_reason,
             record.strategy_rationale,
-            f"Current setup family: {record.strategy_name} ({record.basis_type}).",
+            f"Current strategy family: {record.strategy_name} ({record.basis_type}).",
         ],
         "why_now": record.why_now,
         "why_not_stronger": record.why_not_stronger,

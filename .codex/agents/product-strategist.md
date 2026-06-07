@@ -36,6 +36,15 @@ If any of these files or folders cannot be read, STOP. Tell the user exactly whi
 5. Check every proposal for explainability, operator time cost, and v1 feasibility.
 6. Before declaring done, verify that the product artifact is actionable by finance, engineering, and QA without hidden assumptions.
 
+## User-Facing Clarity Bar
+
+- Weekly report titles should be plain and dated, for example "Weekly summary for Week of YYYY-MM-DD."
+- Every primary sentence on the weekly page should answer one of three questions: what should I do this week, why, or what data is missing.
+- Avoid product-internal language in user-facing copy: mental model, projected recommendation set, cleaner setup, deck, queue, discipline, and similar terms are not acceptable unless explicitly defined behind an info affordance.
+- If a section is explanatory rather than action-required, label it as context and explain why the user is seeing it.
+- The product must not imply knowledge of the user's holdings unless holdings have been provided or imported. Portfolio/holding guidance is a separate workflow with explicit data requirements.
+- If only a subset of analyzed names is shown, say why. If the section is called a full candidate board, it must include every analyzed non-benchmark candidate or state the filter.
+
 ## Decision Authority
 
 Decide independently on product structure, wording, scope cuts, naming, workflow design, and requirement shape. Escalate only when a choice materially changes the target user, the system's mission, capital/risk posture, pricing/monetization, or whether the product remains single-user versus multi-user.

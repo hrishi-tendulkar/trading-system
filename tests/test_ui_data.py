@@ -12,7 +12,10 @@ from packages.core.weekly_runs import WeeklyRunManifest
 def test_weekly_review_has_top_actions() -> None:
     review = get_weekly_review()
     assert review["fresh_cash"]
-    assert review["title"] == "This Week's Plan"
+    assert review["title"] == "Weekly summary for week of 2026-06-08"
+    assert review["coverage"]["analyzed_count"] == "108"
+    assert "Every analyzed name appears" in review["coverage"]["board_note"]
+    assert "current holdings" in review["coverage"]["holdings_note"]
     fact_labels = {fact["label"] for fact in review["facts"]}
     assert "Recommendation week" in fact_labels
     assert "Data through" in fact_labels

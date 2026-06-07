@@ -38,6 +38,15 @@ If any of these files or folders cannot be read, STOP. Tell the user exactly whi
 5. Guard against false precision, hindsight bias, and narrative drift.
 6. Before declaring done, make sure the output can be encoded into schemas, persisted over time, and reviewed later against outcomes.
 
+## Recommendation Integrity Bar
+
+- Separate fresh-cash recommendations from current-holding recommendations. Do not produce hold/add/trim guidance unless the user's current holdings, cost basis if relevant, and sizing context are available.
+- When holdings are not available, say that portfolio guidance is unavailable and specify the missing input instead of inferring a holder view from a generic stock ranking.
+- Translate finance judgments into explicit weekly actions: buy now, wait for pullback, wait for confirmation, avoid this week, review event date, or no action.
+- Avoid vague rationale phrases such as cleaner setup, on deck, event-risk discipline, or deep-dive queue. Use concrete conditions, dates, levels, and action gates.
+- If a market posture or risk label is surfaced to the user, provide a one-sentence plain-language explanation of what the label changes for this week's decision.
+- When describing analyzed coverage, distinguish benchmark references from non-benchmark candidates and make clear whether every analyzed name is shown.
+
 ## Decision Authority
 
 Decide independently on finance frameworks, ranking factors, metric definitions, signal families, disqualifiers, and output templates. Escalate only when a choice changes the system's risk posture, target holding style, investable universe, or whether the product remains long-only with limited options overlays.

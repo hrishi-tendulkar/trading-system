@@ -30,13 +30,13 @@
     <section class="agency-section-head">
       <span class="section-num">01</span>
       <div>
-        <h2>This week's call</h2>
-        <p class="subtle">What to do, how selective to stay, and the market posture behind it.</p>
+        <h2>{{ review.title }}</h2>
+        <p class="subtle">What to do with fresh cash this week, based on the latest published run.</p>
       </div>
     </section>
 
     <section class="agency-summary-card">
-      <div class="eyebrow">Current published plan</div>
+      <div class="eyebrow">Fresh-cash decision</div>
       <h1>
         {% if review.start_here %}
           Act first on
@@ -45,7 +45,7 @@
           {% endfor %}
           while the board stays selective.
         {% else %}
-          Keep fresh capital parked until a cleaner setup appears.
+          No fresh buys this week.
         {% endif %}
       </h1>
       <div class="agency-summary-row">
@@ -61,11 +61,14 @@
           </div>
           <div class="agency-tile sell">
             <span>{{ hold_count.value }}</span>
-            <small>Hold checks</small>
+            <small>No-action names</small>
           </div>
           <div class="agency-tile mode">
             <span>{{ review.posture.title }}</span>
-            <small>Risk mode</small>
+            <small>
+              Market posture
+              <button class="info-dot" type="button" aria-label="Market posture means how supportive the broad market is for new buys this week." title="Market posture means how supportive the broad market is for new buys this week.">i</button>
+            </small>
           </div>
         </div>
       </div>
@@ -94,8 +97,8 @@
     <section class="agency-section-head">
       <span class="section-num">02</span>
       <div>
-        <h2>Final recommendations</h2>
-        <p class="subtle">{{ total_board.value }} current candidates, preserved as buy, wait, and do-not-chase decision rows.</p>
+        <h2>Full candidate board</h2>
+        <p class="subtle">{{ review.coverage.board_note }}</p>
       </div>
     </section>
 
@@ -105,56 +108,56 @@
         {% for item in bucket["items"] %}
           {% set rec_rank.value = rec_rank.value + 1 %}
           {% set state_class = 'is-buy' if item.badge_class == 'buy' else 'is-wait' if item.badge_class in ['wait', 'focus'] else 'is-sell' if item.badge_class in ['risk', 'avoid'] else 'is-hold' %}
-          <article class="agency-rec-card {{ state_class }}{% if rec_rank.value == 1 %} open{% endif %}">
-            <div class="agency-rec-head">
-              <div class="agency-rec-id">
-                <span class="rank-pill">Rank {{ rec_rank.value }}</span>
-                <span class="ticker">{{ item.ticker }}</span>
-                <span class="company">{{ item.company }}</span>
+          <details class="agency-rec-card {{ state_class }}" data-ticker="{{ item.ticker }}"{% if rec_rank.value == 1 %} open{% endif %}>
+            <summary class="agency-rec-summary">
+              <div class="agency-rec-head">
+                <div class="agency-rec-id">
+                  <span class="rank-pill">Rank {{ rec_rank.value }}</span>
+                  <span class="ticker">{{ item.ticker }}</span>
+                  <span class="company">{{ item.company }}</span>
+                </div>
+                <div class="agency-rec-state">
+                  <span class="badge {{ item.badge_class }}">{{ item.action }}</span>
+                  <span class="agency-chevron" aria-hidden="true">⌄</span>
+                </div>
               </div>
-              <div class="agency-rec-state">
-                <span class="badge {{ item.badge_class }}">{{ item.action }}</span>
-                <span class="agency-chevron">{% if rec_rank.value == 1 %}⌃{% else %}⌄{% endif %}</span>
+              <p class="agency-rec-instruction">{{ item.why_now }}</p>
+            </summary>
+
+            <div class="agency-rec-detail">
+              <div class="agency-levels">
+                <div class="agency-level buy">
+                  <div class="label"><span></span>Entry</div>
+                  <strong>{{ item.entry }}</strong>
+                </div>
+                <div class="agency-level target">
+                  <div class="label"><span></span>Strategy</div>
+                  <strong>{{ item.strategy_name or "Unassigned" }}</strong>
+                </div>
+                <div class="agency-level sell">
+                  <div class="label"><span></span>Invalidation</div>
+                  <strong>{{ item.invalidation }}</strong>
+                </div>
+                <div class="agency-level">
+                  <div class="label">Catalyst</div>
+                  <strong>{{ item.catalyst }}</strong>
+                </div>
+              </div>
+              <div class="agency-evidence">
+                <p><strong>Why this week.</strong> {{ item.why_now }}</p>
+                <p><strong>Main risk.</strong> {{ item.why_not_stronger }}</p>
+              </div>
+              <div class="agency-rec-foot">
+                <div class="agency-rec-id">
+                  <div><b>Board</b> {{ bucket.title }}</div>
+                  {% if item.strategy_code %}
+                    <div><b>Strategy</b> <a href="/strategies/{{ item.strategy_code }}">{{ item.strategy_name }}</a></div>
+                  {% endif %}
+                </div>
+                <a href="/stocks/{{ item.ticker }}">Stock detail →</a>
               </div>
             </div>
-            <p class="agency-rec-instruction">{{ item.why_now }}</p>
-
-            {% if rec_rank.value == 1 %}
-              <div class="agency-rec-detail">
-                <div class="agency-levels">
-                  <div class="agency-level buy">
-                    <div class="label"><span></span>Entry</div>
-                    <strong>{{ item.entry }}</strong>
-                  </div>
-                  <div class="agency-level target">
-                    <div class="label"><span></span>Strategy</div>
-                    <strong>{{ item.strategy_name or "Unassigned" }}</strong>
-                  </div>
-                  <div class="agency-level sell">
-                    <div class="label"><span></span>Invalidation</div>
-                    <strong>{{ item.invalidation }}</strong>
-                  </div>
-                  <div class="agency-level">
-                    <div class="label">Catalyst</div>
-                    <strong>{{ item.catalyst }}</strong>
-                  </div>
-                </div>
-                <div class="agency-evidence">
-                  <p><strong>Why this week.</strong> {{ item.why_now }}</p>
-                  <p><strong>Main risk.</strong> {{ item.why_not_stronger }}</p>
-                </div>
-                <div class="agency-rec-foot">
-                  <div>
-                    <div><b>Board</b> {{ bucket.title }}</div>
-                    {% if item.strategy_code %}
-                      <div><b>Strategy</b> <a href="/strategies/{{ item.strategy_code }}">{{ item.strategy_name }}</a></div>
-                    {% endif %}
-                  </div>
-                  <a href="/stocks/{{ item.ticker }}">Stock detail →</a>
-                </div>
-              </div>
-            {% endif %}
-          </article>
+          </details>
         {% endfor %}
       {% endfor %}
     </section>
@@ -162,8 +165,8 @@
     <section class="agency-section-head" id="full-board">
       <span class="section-num">03</span>
       <div>
-        <h2>Full candidate board</h2>
-        <p class="subtle">Everything analyzed this week, grouped by whether it is included, waited, or rejected.</p>
+        <h2>Candidate coverage</h2>
+        <p class="subtle">{{ review.coverage.holdings_note }}</p>
       </div>
     </section>
 
@@ -196,12 +199,6 @@
 
     <section class="agency-record-grid">
       <article class="agency-record-panel">
-        <div class="eyebrow">Earlier weeks</div>
-        <p>Every run is preserved as it was published. Reopen a prior week to see the plan as it stood then.</p>
-        <a href="/archive">Reopen an earlier week in the Archive →</a>
-      </article>
-
-      <article class="agency-record-panel">
         <div class="eyebrow">Report details</div>
         <div class="agency-report-table">
           {% for fact in review.facts %}
@@ -211,6 +208,12 @@
             </div>
           {% endfor %}
         </div>
+      </article>
+
+      <article class="agency-record-panel">
+        <div class="eyebrow">Earlier weeks</div>
+        <p>Every run is preserved as it was published. Reopen a prior week to see the plan as it stood then.</p>
+        <a href="/archive">Open Archive →</a>
       </article>
     </section>
   </div>
