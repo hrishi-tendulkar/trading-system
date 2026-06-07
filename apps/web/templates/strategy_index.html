@@ -1,29 +1,25 @@
 {% extends "_shell.html" %}
 {% block title %}Strategies | Trading System{% endblock %}
 {% block content %}
-  <section class="hero hero-tight">
-    <div class="card panel">
-      <div class="eyebrow">Strategy Library</div>
-      <h1>How the engine makes decisions</h1>
-      <p class="subtle">
-        Each strategy is a different way of finding opportunities. Some are live and trusted,
-        some are narrower and secondary, and some are still research only.
-      </p>
+  <div class="page-kicker">
+    <div class="kicker-left">
+      <span class="page-eyebrow">Strategy Detail</span>
+      <span class="kicker-sep">·</span>
+      <span class="subtle">Strategy map</span>
     </div>
-    <div class="card panel emphasis-panel">
-      <div class="eyebrow">How To Use This Page</div>
-      <h2>Start with the right lens</h2>
-      <div class="list plain-list">
-        <div class="item">Use <strong>Breakout Confirmation</strong> when you want the clearest currently promoted continuation setups.</div>
-        <div class="item">Use <strong>Sector-Confirmed Pullback Continuation</strong> when you want a controlled reset in a strong name rather than a chase.</div>
-        <div class="item">Use the research strategies for context and learning, not for routine fresh-cash decisions.</div>
-      </div>
+  </div>
+
+  <section class="section-head">
+    <span class="section-num">01</span>
+    <div class="section-copy">
+      <h2>How the engine makes decisions</h2>
+      <p class="subtle">Each strategy is a different decision lens. Use this map to move into the live weekly surface for a strategy.</p>
     </div>
   </section>
 
   <section class="grid-2">
     {% for card in cards %}
-      <article class="card panel">
+      <article class="panel strategy-card">
         <div class="item-header">
           <div>
             <div class="eyebrow">Strategy</div>
@@ -34,8 +30,8 @@
             <span class="badge focus">{{ card.promotion_status }}</span>
           </div>
         </div>
-        <p class="subtle">{{ card.status_summary }}</p>
-        <div class="facts compact-facts strategy-stats">
+        <p class="subtle" style="margin-top: 12px;">{{ card.status_summary }}</p>
+        <div class="facts compact-facts strategy-stats" style="margin-top: 16px;">
           <div class="fact">
             <div class="label">Live matches</div>
             <div class="value">{{ card.live_matches }}</div>
@@ -46,7 +42,7 @@
           </div>
         </div>
         <p class="small" style="margin-top: 14px;"><strong>Best use now:</strong> {{ card.best_use_now }}</p>
-        <p class="small"><a href="/strategies/{{ card.basis_code }}">Open strategy deep dive</a></p>
+        <p class="small" style="margin-top: 10px;"><a href="/strategies/{{ card.basis_code }}">Open strategy detail →</a></p>
       </article>
     {% endfor %}
   </section>

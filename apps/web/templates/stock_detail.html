@@ -1,15 +1,72 @@
 {% extends "_shell.html" %}
-{% block title %}{{ stock.ticker }} Deep Dive | Trading System{% endblock %}
+{% block title %}{{ stock.ticker }} Stock Detail | Trading System{% endblock %}
 {% block content %}
-  <section class="hero">
-    <section class="card panel">
-      <div class="eyebrow">Deep Dive</div>
+  <div class="page-kicker">
+    <div class="kicker-left">
+      <span class="page-eyebrow">{{ stock.ticker }}</span>
+      <span class="kicker-sep">·</span>
+      <span class="subtle">{{ stock.company }}</span>
+    </div>
+    <span class="badge {{ stock.badge_class }}">{{ stock.current_call }}</span>
+  </div>
+
+  <section class="decision-card {{ stock.badge_class }}">
+    <div class="decision-main">
       <div class="item-header">
-        <h1>{{ stock.ticker }} · {{ stock.company }}</h1>
+        <div class="stock-identity">
+          <span class="ticker">{{ stock.ticker }}</span>
+          <span class="company">{{ stock.company }}</span>
+        </div>
         <span class="badge {{ stock.badge_class }}">{{ stock.current_call }}</span>
       </div>
-      <p class="subtle">{{ stock.primary_thesis }}</p>
-      <div class="facts compact-facts">
+      <p class="instruction">{{ stock.why_now }}</p>
+    </div>
+    <div class="levels-grid">
+      {% for item in stock.setup_plan %}
+        <div class="level-cell">
+          <div class="level-label">{{ item.label }}</div>
+          <div class="level-value">{{ item.value }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="evidence-grid">
+      <p><strong>Why this week.</strong> {{ stock.why_now }}</p>
+      <p><strong>Why not stronger.</strong> {{ stock.why_not_stronger }}</p>
+    </div>
+    <div class="card-footer">
+      <div class="footer-meta">
+        <div><b>Strategy</b> {{ stock.strategy_name }}</div>
+        <div><b>Basis</b> {{ stock.basis_type }}</div>
+        <div><b>Expected hold</b> {{ stock.horizon }}</div>
+        <div><b>Event risk</b> {{ stock.event_risk }}</div>
+      </div>
+      <span class="rank-pill">As of {{ stock.as_of_date }}</span>
+    </div>
+  </section>
+
+  <section class="section-head">
+    <span class="section-num">01</span>
+    <div class="section-copy">
+      <h2>Trade plan</h2>
+      <p class="subtle">Current levels, timing context, and the setup state behind the call.</p>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <section class="panel">
+      <div class="eyebrow">Current call</div>
+      <h2>{{ stock.current_call }}</h2>
+      <div class="micro-list">
+        <div><span class="label-inline">Holder view</span>{{ stock.holder_call }}</div>
+        <div><span class="label-inline">Confidence</span>{{ stock.confidence }}</div>
+        <div><span class="label-inline">Basis</span>{{ stock.strategy_name }}</div>
+        <div><span class="label-inline">Type</span>{{ stock.basis_type }}</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Market facts</div>
+      <div class="facts">
         {% for fact in stock.facts %}
           <div class="fact">
             <div class="label">{{ fact.label }}</div>
@@ -18,38 +75,19 @@
         {% endfor %}
       </div>
     </section>
-
-    <section class="card panel emphasis-panel">
-      <div class="eyebrow">Current Call</div>
-      <h2>{{ stock.current_call }}</h2>
-      <p class="subtle">Holder view: {{ stock.holder_call }}</p>
-      <div class="micro-list">
-        <div><span class="label-inline">Confidence</span>{{ stock.confidence }}</div>
-        <div><span class="label-inline">Basis</span>{{ stock.strategy_name }}</div>
-        <div><span class="label-inline">Type</span>{{ stock.basis_type }}</div>
-        <div><span class="label-inline">Horizon</span>{{ stock.horizon }}</div>
-        <div><span class="label-inline">Event risk</span>{{ stock.event_risk }}</div>
-        <div><span class="label-inline">As of</span>{{ stock.as_of_date }}</div>
-      </div>
-    </section>
   </section>
 
-  <section class="card panel">
-    <div class="eyebrow">Setup Plan</div>
-    <h2>Act now, wait, or avoid</h2>
-    <div class="grid-3">
-      {% for item in stock.setup_plan %}
-        <div class="item">
-          <div class="label">{{ item.label }}</div>
-          <div class="plan-value">{{ item.value }}</div>
-        </div>
-      {% endfor %}
+  <section class="section-head">
+    <span class="section-num">02</span>
+    <div class="section-copy">
+      <h2>Evidence ledger</h2>
+      <p class="subtle">Observed facts stay visually distinct from derived interpretation.</p>
     </div>
   </section>
 
   <section class="grid-2">
-    <section class="card panel">
-      <div class="eyebrow">Observed Evidence</div>
+    <section class="panel">
+      <div class="eyebrow">Observed evidence</div>
       <div class="list plain-list">
         {% for point in stock.observed %}
           <div class="item">{{ point }}</div>
@@ -57,8 +95,8 @@
       </div>
     </section>
 
-    <section class="card panel">
-      <div class="eyebrow">Derived Interpretation</div>
+    <section class="panel">
+      <div class="eyebrow">Derived interpretation</div>
       <div class="list plain-list">
         {% for point in stock.derived %}
           <div class="item">{{ point }}</div>
@@ -67,25 +105,15 @@
     </section>
   </section>
 
-  <section class="grid-2">
-    <section class="card panel">
-      <div class="eyebrow">Why This Week</div>
-      <div class="item">
-        <div>{{ stock.why_now }}</div>
-      </div>
-    </section>
-
-    <section class="card panel">
-      <div class="eyebrow">Why Not Stronger</div>
-      <div class="item">
-        <div>{{ stock.why_not_stronger }}</div>
-      </div>
-    </section>
+  <section class="section-head">
+    <span class="section-num">03</span>
+    <div class="section-copy">
+      <h2>Signal breakdown</h2>
+      <p class="subtle">Component scores remain visible so the call is inspectable.</p>
+    </div>
   </section>
 
-  <section class="card panel">
-    <div class="eyebrow">Score Breakdown</div>
-    <h2>Current setup components</h2>
+  <section class="panel">
     <div class="facts compact-facts">
       {% for item in stock.score_breakdown %}
         <div class="fact">

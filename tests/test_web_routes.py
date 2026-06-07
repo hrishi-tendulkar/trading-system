@@ -37,12 +37,12 @@ def test_strategy_detail_redirects_to_login_with_next_target() -> None:
 def test_weekly_renders_plan() -> None:
     response = _authenticated_client().get("/weekly")
     assert response.status_code == 200
-    assert "This Week&#39;s Plan" in response.text
+    assert "This week's call" in response.text
     assert "Week of 2026-06-01" in response.text
     assert "2026-05-29" in response.text
     assert "Current-week report missing" not in response.text
-    assert "Top actions this week" in response.text
-    assert "Strategy:" in response.text
+    assert "Final recommendations" in response.text
+    assert "Report details" in response.text
 
 
 def test_strategy_index_renders_strategy_library() -> None:
@@ -63,10 +63,11 @@ def test_daily_renders_verdict() -> None:
 def test_archive_renders_weekly_reports() -> None:
     response = _authenticated_client().get("/archive")
     assert response.status_code == 200
-    assert "Reopen the full weekly picture" in response.text
+    assert "All weekly runs" in response.text
     assert "weekly_2026-06-01_published_" in response.text
     assert "weekly_2026-05-22_published_2026-05-22" in response.text
-    assert "Open archived week" in response.text
+    assert "Open weekly summary" in response.text
+    assert "Reopen this week" in response.text
 
 
 def test_archive_week_renders_reconstructed_plan() -> None:
@@ -75,8 +76,8 @@ def test_archive_week_renders_reconstructed_plan() -> None:
     detail_response = _authenticated_client().get(f"/archive/{week_path}")
     assert detail_response.status_code == 200
     assert "Archived Weekly Report" in detail_response.text
-    assert "Original Weekly Plan" in detail_response.text
-    assert "Daily Addenda" in detail_response.text
+    assert "Original weekly plan" in detail_response.text
+    assert "Addenda and outcomes" in detail_response.text
 
 
 def test_missing_archive_week_returns_404() -> None:
@@ -95,17 +96,17 @@ def test_watchlist_renders_active_universe() -> None:
 def test_stock_detail_renders_deep_dive() -> None:
     response = _authenticated_client().get("/stocks/nvda")
     assert response.status_code == 200
-    assert "Deep Dive" in response.text
-    assert "Observed Evidence" in response.text
+    assert "Stock Detail" in response.text
+    assert "Observed evidence" in response.text
 
 
 def test_strategy_detail_renders_strategy_surface() -> None:
     response = _authenticated_client().get("/strategies/breakout-confirmation")
     assert response.status_code == 200
-    assert "Strategy Deep Dive" in response.text
+    assert "Strategy Detail" in response.text
     assert "Breakout Confirmation" in response.text
-    assert "Backtest Verdict" in response.text
-    assert "What the strategy is finding right now" in response.text
+    assert "Backtest verdict" in response.text
+    assert "Current matches" in response.text
 
 
 def test_login_page_preserves_target_url() -> None:

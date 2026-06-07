@@ -7,7 +7,7 @@
     <p class="subtle">{{ watchlist.summary }}</p>
     <div class="facts compact-facts">
       {% for fact in watchlist.facts %}
-        <div class="fact">
+        <div class="fact{% if fact.value|string|length > 16 %} long-value{% endif %}">
           <div class="label">{{ fact.label }}</div>
           <div class="value">{{ fact.value }}</div>
         </div>
@@ -28,7 +28,7 @@
               </div>
               <div class="small subtle">{{ item.sector }}</div>
               <p>{{ item.note }}</p>
-              <p class="small"><a href="/stocks/{{ item.ticker }}">Open deep dive</a></p>
+              <p class="small"><a href="/stocks/{{ item.ticker }}">Open stock detail</a></p>
             </article>
           {% endfor %}
         </div>

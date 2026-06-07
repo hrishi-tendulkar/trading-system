@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% block body %}
-  <div class="page">
-    <div class="shell">
-      <aside class="card sidebar">
-        <div class="eyebrow">Weekly Decision Cockpit</div>
-        <div class="brand">Trading System</div>
-        <div class="subtle">Weekly remains the decision session, daily stays the exception layer, and deep dive scales through richer evidence without changing the workflow.</div>
-        <nav class="nav">
-          <a href="/weekly" class="{% if active_page == 'weekly' %}active{% endif %}">This Week's Plan</a>
-          <a href="/daily" class="{% if active_page == 'daily' %}active{% endif %}">What Changed</a>
-          <a href="/archive" class="{% if active_page == 'archive' %}active{% endif %}">Archive</a>
+  <div class="stage">
+    <div class="app-frame">
+      <aside class="app-bar">
+        <a class="brand-lockup" href="/weekly">
+          <span class="brand-mark">T</span>
+          <span>
+            <span class="brand-name">Trading System</span>
+            <span class="brand-sub">Weekly decision workspace</span>
+          </span>
+        </a>
+        <nav class="top-nav" aria-label="Primary">
+          <a href="/weekly" class="{% if active_page == 'weekly' %}active{% endif %}">Weekly Summary</a>
+          <a href="/daily" class="{% if active_page == 'daily' %}active{% endif %}">Daily</a>
           <a href="/watchlist" class="{% if active_page == 'watchlist' %}active{% endif %}">Watchlist</a>
-          <a href="/stocks/NVDA" class="{% if active_page == 'stocks' %}active{% endif %}">Deep Dive</a>
-          <a href="/strategies" class="{% if active_page == 'strategies' %}active{% endif %}">Strategies</a>
+          <a href="/stocks/NVDA" class="{% if active_page == 'stocks' %}active{% endif %}">Stock Detail</a>
+          <a href="/strategies" class="{% if active_page == 'strategies' %}active{% endif %}">Strategy Detail</a>
+          <a href="/archive" class="{% if active_page == 'archive' %}active{% endif %}">Archive</a>
           <a href="/admin" class="{% if active_page == 'admin' %}active{% endif %}">Admin</a>
         </nav>
-        <form method="post" action="/logout">
-          <button type="submit">Log out</button>
+        <form class="logout-form" method="post" action="/logout">
+          <button class="logout-button" type="submit">Log out</button>
         </form>
       </aside>
       <main class="content">
