@@ -38,8 +38,8 @@ def test_weekly_renders_plan() -> None:
     response = _authenticated_client().get("/weekly")
     assert response.status_code == 200
     assert "This week's call" in response.text
-    assert "Week of 2026-06-01" in response.text
-    assert "2026-05-29" in response.text
+    assert "Week of 2026-06-08" in response.text
+    assert "2026-06-05" in response.text
     assert "Current-week report missing" not in response.text
     assert "Final recommendations" in response.text
     assert "Report details" in response.text

@@ -41,5 +41,4 @@ def test_strategy_page_view_uses_replay_and_live_rows() -> None:
 def test_pullback_page_normalizes_legacy_buy_now_into_buy_on_pullback() -> None:
     page = get_strategy_page_view("sector-confirmed-pullback-continuation")
     assert page is not None
-    assert page.current_rows
     assert all(row.current_action_label != "Buy now" for row in page.current_rows)

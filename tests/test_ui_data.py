@@ -11,13 +11,13 @@ from packages.core.weekly_runs import WeeklyRunManifest
 
 def test_weekly_review_has_top_actions() -> None:
     review = get_weekly_review()
-    assert review["start_here"]
+    assert review["fresh_cash"]
     assert review["title"] == "This Week's Plan"
     fact_labels = {fact["label"] for fact in review["facts"]}
     assert "Recommendation week" in fact_labels
     assert "Data through" in fact_labels
-    assert review["metadata"]["recommendation_week"] == "Week of 2026-06-01"
-    assert review["metadata"]["data_through"] == "2026-05-29"
+    assert review["metadata"]["recommendation_week"] == "Week of 2026-06-08"
+    assert review["metadata"]["data_through"] == "2026-06-05"
     assert review["metadata"]["strategy_registry_version"] == "2026-06-07.1"
     assert "breakout-confirmation.v2" in review["metadata"]["active_strategy_versions"]
     assert review["alerts"] == []
@@ -32,7 +32,7 @@ def test_archive_index_links_to_reconstructable_week() -> None:
     week_id = archive["weeks"][0]["week_id"]
     week = get_archive_week(week_id)
     assert week is not None
-    assert week["weekly_plan"]["start_here"]
+    assert week["weekly_plan"]["fresh_cash"]
     assert week["daily_addenda"]
     assert "strategy_registry_version" in week["metadata"]
 
