@@ -21,7 +21,7 @@ from packages.core.universes import KNOWN_UNIVERSES  # noqa: E402
 from packages.core.weekly_runs import (  # noqa: E402
     WeeklyRunManifest,
     current_utc_timestamp,
-    current_week_start,
+    default_publish_week_start,
     legacy_recommendations_path,
     load_current_manifest,
     prior_friday_for_week,
@@ -120,7 +120,7 @@ def publish_weekly_run(args: argparse.Namespace) -> WeeklyRunManifest:
     target_week = (
         date.fromisoformat(args.target_week)
         if args.target_week
-        else current_week_start(date.today())
+        else default_publish_week_start(date.today())
     )
     if target_week.weekday() != 0:
         raise RuntimeError(f"Target week must be a Monday, got {target_week.isoformat()}")

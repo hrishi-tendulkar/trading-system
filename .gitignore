@@ -16,3 +16,5 @@ venv/
 .supabase/
 supabase/.temp/
 docs/_backups/
+logs/*
+!logs/.gitkeep

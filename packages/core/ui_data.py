@@ -13,7 +13,7 @@ from packages.core.universes import (
 )
 from packages.core.weekly_runs import (
     current_recommendations_path,
-    current_week_start,
+    default_publish_week_start,
     legacy_recommendations_path,
     list_manifests,
     load_current_manifest,
@@ -528,7 +528,7 @@ def _run_metadata(records: list[RecommendationRecord], run_id: str | None = None
 def _freshness_alerts(metadata: dict[str, str]) -> list[dict[str, str]]:
     alerts: list[dict[str, str]] = []
     try:
-        expected_week = current_week_start(date.today())
+        expected_week = default_publish_week_start(date.today())
         recommendation_week = date.fromisoformat(
             metadata["recommendation_week"].replace("Week of ", "")
         )

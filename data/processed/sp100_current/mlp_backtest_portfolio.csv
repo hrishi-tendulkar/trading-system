@@ -153,3 +153,5 @@ signal_date,holding_end_date,selected_tickers,selected_strategies,portfolio_retu
 2026-04-24,2026-05-01,"INTC,AMD","breakout-confirmation-triggered,breakout-confirmation-triggered",0.12176523392469796,0.009398579642141414,0.11236665428255654
 2026-05-01,2026-05-08,"INTC,AMD","breakout-confirmation-triggered,breakout-confirmation-triggered",0.2582439367475392,0.02354814421455509,0.23469579253298412
 2026-05-08,2026-05-15,"AMD,MU","breakout-confirmation-triggered,breakout-confirmation-triggered",-0.04898032917842926,0.0021013364648858612,-0.05108166564331512
+2026-05-22,2026-06-01,"CSCO,LRCX","breakout-confirmation-triggered,breakout-confirmation-triggered",0.023093220062492925,0.017300524550024843,0.005792695512468082
+2026-05-29,2026-06-05,"GS,MS","breakout-confirmation-triggered,breakout-confirmation-triggered",0.01584360035622767,-0.025023785380349883,0.040867385736577555

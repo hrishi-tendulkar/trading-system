@@ -12,15 +12,15 @@ from packages.core.weekly_runs import WeeklyRunManifest
 def test_weekly_review_has_top_actions() -> None:
     review = get_weekly_review()
     assert review["fresh_cash"]
-    assert review["title"] == "Weekly summary for week of 2026-06-08"
+    assert review["title"] == "Weekly summary for week of 2026-06-15"
     assert review["coverage"]["analyzed_count"] == "108"
     assert "Every analyzed name appears" in review["coverage"]["board_note"]
     assert "current holdings" in review["coverage"]["holdings_note"]
     fact_labels = {fact["label"] for fact in review["facts"]}
     assert "Recommendation week" in fact_labels
     assert "Data through" in fact_labels
-    assert review["metadata"]["recommendation_week"] == "Week of 2026-06-08"
-    assert review["metadata"]["data_through"] == "2026-06-05"
+    assert review["metadata"]["recommendation_week"] == "Week of 2026-06-15"
+    assert review["metadata"]["data_through"] == "2026-06-12"
     assert review["metadata"]["strategy_registry_version"] == "2026-06-07.1"
     assert "breakout-confirmation.v2" in review["metadata"]["active_strategy_versions"]
     assert review["alerts"] == []

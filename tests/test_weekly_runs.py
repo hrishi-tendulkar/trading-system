@@ -9,7 +9,13 @@ from packages.core.strategy_registry import (
     get_active_strategy_versions,
     get_strategy_registry_version,
 )
-from packages.core.weekly_runs import WeeklyRunManifest, write_run_snapshot
+from datetime import date
+
+from packages.core.weekly_runs import (
+    WeeklyRunManifest,
+    default_publish_week_start,
+    write_run_snapshot,
+)
 
 
 def _manifest(
@@ -75,3 +81,13 @@ def test_publish_current_requires_strategy_pinning(
 
     assert not (tmp_path / "weekly_test").exists()
     assert not (tmp_path / "current.json").exists()
+
+
+def test_default_publish_week_start_targets_following_monday_on_sunday() -> None:
+    assert default_publish_week_start(date(2026, 6, 14)) == date(2026, 6, 15)
+
+
+def test_default_publish_week_start_keeps_current_week_on_weekdays_and_saturday() -> None:
+    assert default_publish_week_start(date(2026, 6, 12)) == date(2026, 6, 8)
+    assert default_publish_week_start(date(2026, 6, 13)) == date(2026, 6, 8)
+    assert default_publish_week_start(date(2026, 6, 15)) == date(2026, 6, 15)

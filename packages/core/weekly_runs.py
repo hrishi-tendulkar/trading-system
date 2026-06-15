@@ -254,6 +254,13 @@ def current_week_start(today: date) -> date:
     return today - timedelta(days=today.weekday())
 
 
+def default_publish_week_start(today: date) -> date:
+    week_start = current_week_start(today)
+    if today.weekday() >= 6:
+        return week_start + timedelta(days=7)
+    return week_start
+
+
 def week_end(week_start: date) -> date:
     return week_start + timedelta(days=4)
 
