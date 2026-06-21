@@ -1,30 +1,36 @@
-# 📈 Trading System
+<!-- TAGLINE -->
+A weekly investing app I built for myself to decide which stocks to buy, wait on, or trim.
 
-> A weekly investing workbench I built for my own trading. Every weekend, it gives me a short list of stocks to buy, wait on, hold, or trim — with the reasoning behind each call, and an audit trail.
+<!-- BLURB -->
+Trading System is a private investing app I built for my own weekend review. It scans a watchlist, shows the current weekly plan, and tells me which stocks look ready, which ones need a better entry, and which ones I should leave alone. It also keeps old weekly plans so I can see what I believed at the time instead of rewriting the past. I built it because my investing notes, market data, stock research, and trade rules were scattered across too many places.
 
-**Status:** Personal tool. Single-user by design (just me). Showcased here for the product structure, not as something to distribute.
+<!-- FULL README BELOW -->
+# Trading System
 
-> Screenshots use placeholder tickers and synthetic data. The real version uses my actual portfolio.
+A weekly investing app I built for myself to decide which stocks to buy, wait on, or trim.
 
-![Weekly summary](./screenshots/01_Main_View.png)
+**Status:** Private internal app. In personal use as a weekly review tool; not a commercial product.
 
----
+![Weekly plan](./screenshots/01_Main_View.png)
+
+> Screenshots use placeholder tickers and synthetic portfolio data. The real version uses my actual portfolio.
 
 ## Why I built this
 
-I have a full-time job and limited time on weekends to make investing decisions. Today the work is scattered: market context lives in one place, stock research in another, options data in a third, watchlist notes in a fourth. Switching between them on a Sunday afternoon is slow and inconsistent, and a few weeks later I can't remember why I made a particular call.
+I have limited time during the week to watch markets. Most of my investing decisions happen on the weekend, after the market has closed and I can think clearly.
 
-Most consumer investing tools optimize for one of two things: showing more data (research abundance) or executing trades faster. Neither helps the actual question on a Sunday afternoon, which is: *given everything that happened this week, what should I do this weekend?*
+Before this project, the work was scattered. Prices were in one place. Stock notes were somewhere else. Earnings dates, market context, and old decisions were easy to lose track of. That made the process slower than it needed to be, and it made it hard to learn from past calls.
 
-So I built one place that compresses all of it down to a short, explainable, traceable weekly action list.
+Most investing tools give me more charts, more news, or faster trading. I wanted something quieter: one page that tells me what deserves attention this week, what can wait, and what I should not touch.
 
 ## What it does
 
-- Produces a **weekly action report**: where the market is, what to buy now, what to wait on, what to avoid, what to hold or trim, and any covered-call or cash-secured-put overlays worth considering.
-- Splits the workflow into a funnel: a broad coverage universe → an active watchlist → a weekly focus board → a sparse action board of 3–5 names. The engine can scan widely without me ever seeing a 500-name feed.
-- Publishes each week as an **immutable run** — with a recommendation week, data-through date, run ID, and the strategy version used. So I can always go back and see what was being recommended and why.
-- On every stock, separates **observed facts** (price, earnings result, news) from **derived interpretation** (the model's read on what those facts mean). So I'm always clear on what's a number and what's an opinion.
-- Maintains a registry of **strategies** — each one a different lens (e.g. Breakout Confirmation, Pullback Continuation). Strategies are either *promoted* (feeding the main board) or *research-only*. Weak strategies don't quietly contaminate the main recommendations.
+- Builds a weekly plan from the latest saved run: market posture, top ideas, waitlist names, and names to avoid.
+- Keeps the main action list short, even when the system scans a broader watchlist.
+- Shows why a stock is marked `buy now`, `buy on pullback`, `wait`, `hold`, or `no action`.
+- Opens a stock detail page with price context, earnings timing, entry zone, stop, target, and the reason for the current call.
+- Keeps an archive of old weekly plans so I can go back and see what the system recommended at the time.
+- Shows strategy pages so I can tell which rules are trusted enough for the main board and which ones are still research only.
 
 ![Candidates board](./screenshots/02_Candidates_View.png)
 
@@ -32,42 +38,35 @@ So I built one place that compresses all of it down to a short, explainable, tra
 
 ![Strategy registry](./screenshots/04_Strategy_Detail_View.png)
 
-> The information design principle across every screen: lead with the **call**, then show the **evidence**. The stock detail page enforces an explicit split between *observed facts* and *derived interpretation*, so I always know what's a number and what's an opinion.
+## How I made it
 
-## Decisions I made — and why
+**I made it weekly, not real-time.**  
+The goal is to help me make better weekend decisions. Real-time alerts, broker connections, and automated trades would add cost and distraction before the basic workflow is proven.
 
-**A weekly decision tool — not an intraday trading app.**
-*Why:* My constraint is weekend time. Intraday alerts and automated execution are explicit non-goals. The product wins or loses on whether the weekend workflow gets me to a decision.
+**I kept the action board small.**  
+The app can scan a larger list, but the weekly plan only promotes a handful of names. If everything looks actionable, nothing is.
 
-**A funnel, not a feed.** Broad coverage → watchlist → focus board → 3–5 name action board.
-*Why:* Broad scanning helps me discover candidates, but the weekly screen needs to stay short and trusted. A flat list of 500 names is the same as no list.
+**I made weekly plans explicit saved runs.**  
+An old report should never look current just because it is the newest file the app can find. Each run has a week, publish time, data-through date, and strategy version.
 
-**Weekly recommendations are explicit published runs — not "whatever CSV is newest."**
-*Why:* Once I had a stale May report sitting on top of my dashboard while I was making decisions for June. After that I made every weekly run an explicit, dated, archived publication, with staleness warnings if I'm looking at something old.
+**I separated strategy rules instead of using one big score.**  
+A stock can be high quality and still be a bad entry this week. Separate rules make that easier to see.
 
-**AI summarizes evidence. Deterministic code does the math.**
-*Why:* The model summarizes earnings calls, news, and filings into a useful read. But the actual price-based calculations stay deterministic. I never want to be in a position where I'm trusting a model on a number.
-
-**Separating strategy lenses.** Each strategy has its own decision logic and either feeds the main board or doesn't.
-*Why:* It's the difference between "good stock, wrong entry" and "no edge here." A single blended strength score hides that distinction. Separate strategies make each one inspectable.
+**I used a file-backed bridge before moving everything into the database.**  
+That let me ship the app surface and weekly workflow first, while keeping a path to Supabase-backed history later.
 
 ## How it's built
 
-- **Frontend:** Server-rendered Jinja2 templates with hand-authored CSS
-- **Backend:** Python 3.11 with FastAPI for the app, Typer for jobs
-- **Data:** CSV snapshots and JSON manifests today, with Supabase Postgres as the intended system of record (in progress)
-- **Hosting:** Railway
+- **Frontend:** Server-rendered Jinja templates with custom CSS
+- **Backend:** Python, FastAPI, Typer jobs, Pydantic, pandas
+- **LLM:** OpenAI API is planned for summaries and classification; the current scoring is deterministic
+- **Data:** CSV snapshots and JSON run manifests today; Supabase Postgres is the planned long-term store
+- **Hosting:** Railway is configured for the private app and scheduled jobs
 
-The core architecture is candidate-first: prepare features → evaluate strategies → suppress risky candidates → promote to the action board. Each weekly run is a fixed, immutable snapshot, so historical decisions can always be traced.
-
-## What this is not
-
-This is human-in-the-loop decision support for one person — me. Not autonomous trading. Not investment advice. Not built for distribution.
+The main technical idea is simple: compute stock signals, test them against strategy rules, block risky candidates, then publish a weekly board. Published runs are saved so later changes do not rewrite old recommendations.
 
 ## What I learned
 
-A single "strength score" feels precise, but it hides what actually matters. The product became more useful — and more trustworthy — once I separated *is this a good stock* from *is this a good entry*, and made strategy provenance visible on the surface. One number invites overconfidence; a structured surface invites judgment.
+The most useful change was separating “good stock” from “good entry.” Early versions leaned too much on broad strength. That felt clean, but it hid the reason behind each call. The app got better when I made the rules more specific: a breakout has different evidence than a pullback, and a research-only rule should not quietly become a buy recommendation.
 
----
-
-*Source code is private. Available on request — reach out via LinkedIn.*
+Source code is private. Available on request — reach out via LinkedIn.
