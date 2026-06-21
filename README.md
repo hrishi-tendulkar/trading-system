@@ -1,30 +1,30 @@
 # 📈 Trading System
 
-> A weekly equity-intelligence cockpit for a time-constrained investor. AI as evidence compressor; deterministic math as source of truth.
+> A weekly investing workbench I built for my own trading. Every weekend, it gives me a short list of stocks to buy, wait on, hold, or trim — with the reasoning behind each call, and an audit trail.
 
-**Status:** A personal tool I built for my own weekly investing workflow. Single-user by design. Showcased here for the product structure, not as a distributable product.
+**Status:** Personal tool. Single-user by design (just me). Showcased here for the product structure, not as something to distribute.
 
-> **Note:** Screenshots in this README use **redacted tickers and synthetic portfolio data**.
+> Screenshots use placeholder tickers and synthetic data. The real version uses my actual portfolio.
 
-![Weekly Summary](./screenshots/01_Main_View.png)
+![Weekly summary](./screenshots/01_Main_View.png)
 
 ---
 
-## The problem
+## Why I built this
 
-Market context, stock research, tactical setups, longer-term conviction, event awareness, and options overlays all live in different places. For a time-constrained investor working a full-time job, that fragmentation means missed opportunities, inconsistent weekly decisions, and slow learning from prior calls.
+I have a full-time job and limited time on weekends to make investing decisions. Today the work is scattered: market context lives in one place, stock research in another, options data in a third, watchlist notes in a fourth. Switching between them on a Sunday afternoon is slow and inconsistent, and a few weeks later I can't remember why I made a particular call.
 
-## The wedge
+Most consumer investing tools optimize for one of two things: showing more data (research abundance) or executing trades faster. Neither helps the actual question on a Sunday afternoon, which is: *given everything that happened this week, what should I do this weekend?*
 
-Most retail and prosumer tools optimize for either *research abundance* (more screens, more news, more charts) or *execution speed* (faster fills, intraday alerts). Neither helps a weekend decision. The product compresses many inputs into a small, explainable, historically traceable weekly action list — and treats *weekly decision quality* as the only metric that matters.
+So I built one place that compresses all of it down to a short, explainable, traceable weekly action list.
 
 ## What it does
 
-- Produces a **weekly action report**: market posture, buy-now ideas, pullback candidates, wait/avoid guidance, holder decisions, and options-overlay candidates.
-- Separates **broad coverage**, **active watchlist**, **weekly focus board**, and a sparse **action board** of 3-5 names — so the engine can scan broadly without forcing the user to review hundreds of names.
-- Publishes immutable **weekly run snapshots** with recommendation week, data-through date, run ID, strategy registry version, universe, and source lineage.
-- Splits **observed facts** from **derived reasoning** on every stock detail surface, alongside entry logic, invalidation, targets, and current strategy trust.
-- Maintains a **strategy registry** with promoted vs. research-only decision bases, so weak strategies don't quietly feed the main board.
+- Produces a **weekly action report**: where the market is, what to buy now, what to wait on, what to avoid, what to hold or trim, and any covered-call or cash-secured-put overlays worth considering.
+- Splits the workflow into a funnel: a broad coverage universe → an active watchlist → a weekly focus board → a sparse action board of 3–5 names. The engine can scan widely without me ever seeing a 500-name feed.
+- Publishes each week as an **immutable run** — with a recommendation week, data-through date, run ID, and the strategy version used. So I can always go back and see what was being recommended and why.
+- On every stock, separates **observed facts** (price, earnings result, news) from **derived interpretation** (the model's read on what those facts mean). So I'm always clear on what's a number and what's an opinion.
+- Maintains a registry of **strategies** — each one a different lens (e.g. Breakout Confirmation, Pullback Continuation). Strategies are either *promoted* (feeding the main board) or *research-only*. Weak strategies don't quietly contaminate the main recommendations.
 
 ![Candidates board](./screenshots/02_Candidates_View.png)
 
@@ -32,46 +32,42 @@ Most retail and prosumer tools optimize for either *research abundance* (more sc
 
 ![Strategy registry](./screenshots/04_Strategy_Detail_View.png)
 
-> **Information design principle:** Every screen leads with the **call**, then exposes the **evidence**. The stock detail surface enforces an explicit visual split between *observed facts* and *derived interpretation* — so the user always knows what's a number vs. what's an opinion.
+> The information design principle across every screen: lead with the **call**, then show the **evidence**. The stock detail page enforces an explicit split between *observed facts* and *derived interpretation*, so I always know what's a number and what's an opinion.
 
-## Key product decisions
+## Decisions I made — and why
 
-**Weekly cockpit, not a generic terminal or intraday trader.**
-*Why:* The target user has limited weekday time. Intraday alerts and automated execution are explicit non-goals. The product wins or loses on the weekend workflow.
+**A weekly decision tool — not an intraday trading app.**
+*Why:* My constraint is weekend time. Intraday alerts and automated execution are explicit non-goals. The product wins or loses on whether the weekend workflow gets me to a decision.
 
-**Funnel architecture: coverage → watchlist → focus board → 3-5 name action board.**
-*Why:* Broad scanning improves discovery. But the weekly experience must stay sparse and trusted — not turn into a flat 500-name feed.
+**A funnel, not a feed.** Broad coverage → watchlist → focus board → 3–5 name action board.
+*Why:* Broad scanning helps me discover candidates, but the weekly screen needs to stay short and trusted. A flat list of 500 names is the same as no list.
 
-**Weekly recommendations are explicit published runs — not "whichever CSV is newest."**
-*Why:* A stale May report once looked like the current June plan. The system now preserves run metadata, current pointers, archive snapshots, and staleness warnings. Auditability matters more than convenience.
+**Weekly recommendations are explicit published runs — not "whatever CSV is newest."**
+*Why:* Once I had a stale May report sitting on top of my dashboard while I was making decisions for June. After that I made every weekly run an explicit, dated, archived publication, with staleness warnings if I'm looking at something old.
 
-**AI as evidence compressor, not source of truth.**
-*Why:* Summaries stay anchored to filings, transcripts, news, estimates, or price behavior. Deterministic calculations are kept out of the model layer. The model never makes the numbers.
+**AI summarizes evidence. Deterministic code does the math.**
+*Why:* The model summarizes earnings calls, news, and filings into a useful read. But the actual price-based calculations stay deterministic. I never want to be in a position where I'm trusting a model on a number.
 
-**Strategy registry separates promoted from research-only.**
-*Why:* "Good stock, wrong entry" is real. Mixing exploratory strategies into the main board destroys trust in everything else on it. Explicit promotion gates protect the signal.
+**Separating strategy lenses.** Each strategy has its own decision logic and either feeds the main board or doesn't.
+*Why:* It's the difference between "good stock, wrong entry" and "no edge here." A single blended strength score hides that distinction. Separate strategies make each one inspectable.
 
-## Stack
+## How it's built
 
-- **Frontend:** Server-rendered Jinja2 + hand-authored CSS
-- **Backend:** Python 3.11, FastAPI, Typer jobs, Pydantic, SQLAlchemy, pandas/numpy
-- **AI/LLM:** OpenAI API for summarization/classification (current core scoring is deterministic)
-- **Data:** CSV snapshots + JSON manifests today; Supabase Postgres + Storage is the intended system of record. `yfinance` for bootstrap price data; FMP + SEC EDGAR planned for durable ingestion.
-- **Hosting:** Railway (configured; some persistence still file-backed)
-- **Notable:** Candidate-first strategy engine — feature preparation → strategy evaluation → risk suppression → board promotion. Pinned strategy registry versions. Immutable weekly run snapshots.
+- **Frontend:** Server-rendered Jinja2 templates with hand-authored CSS
+- **Backend:** Python 3.11 with FastAPI for the app, Typer for jobs
+- **Data:** CSV snapshots and JSON manifests today, with Supabase Postgres as the intended system of record (in progress)
+- **Hosting:** Railway
 
-## Status
+The core architecture is candidate-first: prepare features → evaluate strategies → suppress risky candidates → promote to the action board. Each weekly run is a fixed, immutable snapshot, so historical decisions can always be traced.
 
-Personal tool. In single-user weekly use. Current published run: `weekly_2026-06-15` against an S&P 100 universe, data through 2026-06-12. Railway/Supabase configured; several persistence paths are still file-backed and being migrated.
+## What this is not
 
-**What this isn't:** This is human-in-the-loop decision support, not autonomous trading or investment advice. Not built for distribution.
+This is human-in-the-loop decision support for one person — me. Not autonomous trading. Not investment advice. Not built for distribution.
 
----
+## What I learned
 
-### What I learned
-
-A blended "strength score" feels precise but hides what actually matters. The product gets more trustworthy by separating *what's a good stock* from *what's a good entry* — and by making strategy provenance, regime gating, and sparse-board discipline visible on the surface. One number invites overconfidence; a structured surface invites judgment.
+A single "strength score" feels precise, but it hides what actually matters. The product became more useful — and more trustworthy — once I separated *is this a good stock* from *is this a good entry*, and made strategy provenance visible on the surface. One number invites overconfidence; a structured surface invites judgment.
 
 ---
 
-*Source code available on request. Reach out via LinkedIn.*
+*Source code is private. Available on request — reach out via LinkedIn.*
