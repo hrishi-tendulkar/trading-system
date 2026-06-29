@@ -88,10 +88,13 @@ def test_default_publish_week_start_targets_following_monday_on_sunday() -> None
     assert default_publish_week_start(date(2026, 6, 14)) == date(2026, 6, 15)
 
 
-def test_default_publish_week_start_keeps_current_week_on_weekdays_and_saturday() -> None:
+def test_default_publish_week_start_keeps_current_week_on_weekdays() -> None:
     assert default_publish_week_start(date(2026, 6, 12)) == date(2026, 6, 8)
-    assert default_publish_week_start(date(2026, 6, 13)) == date(2026, 6, 8)
     assert default_publish_week_start(date(2026, 6, 15)) == date(2026, 6, 15)
+
+
+def test_default_publish_week_start_targets_following_monday_on_saturday() -> None:
+    assert default_publish_week_start(date(2026, 6, 13)) == date(2026, 6, 15)
 
 
 def test_prior_market_close_for_week_handles_juneteenth_friday() -> None:

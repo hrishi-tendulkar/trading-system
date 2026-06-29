@@ -18,9 +18,10 @@ from packages.core.weekly_runs import (
     legacy_recommendations_path,
     list_manifests,
     load_current_manifest,
+    load_current_recommendation_rows,
     load_manifest,
+    load_recommendation_rows,
     prior_market_close_for_week,
-    run_dir,
 )
 
 
@@ -254,56 +255,67 @@ def _load_watchlist_members() -> dict[str, UniverseMember]:
 
 @lru_cache(maxsize=1)
 def _load_recommendation_records() -> list[RecommendationRecord]:
+    rows = load_current_recommendation_rows()
+    if rows:
+        return _recommendation_records_from_rows(rows)
     return _load_recommendation_records_from_path(str(current_recommendations_path()))
 
 
 @lru_cache(maxsize=16)
 def _load_recommendation_records_from_path(path_value: str) -> list[RecommendationRecord]:
     path = Path(path_value)
+    return _recommendation_records_from_rows(_csv_rows(path))
+
+
+def _csv_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        return [dict(row) for row in csv.DictReader(handle)]
+
+
+def _recommendation_records_from_rows(rows: list[dict[str, str]]) -> list[RecommendationRecord]:
     watchlist = _load_watchlist_members()
     records: list[RecommendationRecord] = []
-    with path.open(newline="", encoding="utf-8") as handle:
-        for row in csv.DictReader(handle):
-            ticker = row["ticker"].upper()
-            member = watchlist.get(ticker)
-            company = member.display_name if member else ticker
-            records.append(
-                RecommendationRecord(
-                    as_of_date=row["date"],
-                    ticker=ticker,
-                    company=company,
-                    sector=row["sector"].strip(),
-                    is_benchmark=_to_bool(row["is_benchmark"]),
-                    close=_to_float(row["close"]),
-                    ret_20d=_to_float(row["ret_20d"]),
-                    rs_20d=_to_float(row["rs_20d"]),
-                    distance_from_52w_high=_to_float(row["distance_from_52w_high"]),
-                    days_to_earnings=_to_optional_float(row["days_to_earnings"]),
-                    next_earnings_date=row["next_earnings_date"].strip() or None,
-                    event_risk=row["event_risk"].strip() or "Unknown",
-                    strategy_id=row["strategy_id"].strip(),
-                    strategy_name=row["strategy_name"].strip(),
-                    basis_type=row["basis_type"].strip(),
-                    action_label=row["action_label"].strip(),
-                    horizon=row["horizon"].strip(),
-                    entry_label=row["entry_label"].strip(),
-                    entry_value=row["entry_value"].strip(),
-                    stop_label=row["stop_label"].strip(),
-                    stop_value=row["stop_value"].strip(),
-                    target_label=row["target_label"].strip(),
-                    target_value=row["target_value"].strip(),
-                    strategy_rationale=row["strategy_rationale"].strip(),
-                    observed_reason=row["observed_reason"].strip(),
-                    action_rank=_to_int(row["action_rank"]),
-                    refined_score=_to_float(row["refined_score"]),
-                    trend_score=_to_int(row["trend_score"]),
-                    momentum_score=_to_int(row["momentum_score"]),
-                    rs_score=_to_int(row["rs_score"]),
-                    proximity_score=_to_int(row["proximity_score"]),
-                    risk_penalty=_to_int(row["risk_penalty"]),
-                    extension_penalty=_to_int(row["extension_penalty"]),
-                )
+    for row in rows:
+        ticker = row["ticker"].upper()
+        member = watchlist.get(ticker)
+        company = member.display_name if member else ticker
+        records.append(
+            RecommendationRecord(
+                as_of_date=row.get("date", row.get("as_of_date", "")),
+                ticker=ticker,
+                company=company,
+                sector=row["sector"].strip(),
+                is_benchmark=_to_bool(row["is_benchmark"]),
+                close=_to_float(row["close"]),
+                ret_20d=_to_float(row["ret_20d"]),
+                rs_20d=_to_float(row["rs_20d"]),
+                distance_from_52w_high=_to_float(row["distance_from_52w_high"]),
+                days_to_earnings=_to_optional_float(row["days_to_earnings"]),
+                next_earnings_date=row["next_earnings_date"].strip() or None,
+                event_risk=row["event_risk"].strip() or "Unknown",
+                strategy_id=row["strategy_id"].strip(),
+                strategy_name=row["strategy_name"].strip(),
+                basis_type=row["basis_type"].strip(),
+                action_label=row["action_label"].strip(),
+                horizon=row["horizon"].strip(),
+                entry_label=row["entry_label"].strip(),
+                entry_value=row["entry_value"].strip(),
+                stop_label=row["stop_label"].strip(),
+                stop_value=row["stop_value"].strip(),
+                target_label=row["target_label"].strip(),
+                target_value=row["target_value"].strip(),
+                strategy_rationale=row["strategy_rationale"].strip(),
+                observed_reason=row["observed_reason"].strip(),
+                action_rank=_to_int(row["action_rank"]),
+                refined_score=_to_float(row["refined_score"]),
+                trend_score=_to_int(row["trend_score"]),
+                momentum_score=_to_int(row["momentum_score"]),
+                rs_score=_to_int(row["rs_score"]),
+                proximity_score=_to_int(row["proximity_score"]),
+                risk_penalty=_to_int(row["risk_penalty"]),
+                extension_penalty=_to_int(row["extension_penalty"]),
             )
+        )
     return sorted(records, key=lambda record: (record.action_rank, record.ticker))
 
 
@@ -686,18 +698,6 @@ def get_archive_index() -> dict[str, object]:
         weeks = []
         current = load_current_manifest()
         for manifest in manifests:
-            path = run_dir(manifest.run_id) / manifest.recommendations_path
-            records = [
-                record
-                for record in _load_recommendation_records_from_path(str(path))
-                if not record.is_benchmark
-            ]
-            buy_now_count = sum(1 for record in records if record.action_label == "Buy now")
-            watch_count = sum(
-                1
-                for record in records
-                if record.action_label in {"Buy on pullback", "Wait for confirmation"}
-            )
             weeks.append(
                 {
                     "week_id": manifest.run_id,
@@ -707,9 +707,9 @@ def get_archive_index() -> dict[str, object]:
                     "status": "Current published plan"
                     if current and current.run_id == manifest.run_id
                     else "Archived immutable plan",
-                    "buy_now_count": str(buy_now_count),
-                    "watch_count": str(watch_count),
-                    "deep_dive_count": str(len(_deep_dive_queue(records))),
+                    "buy_now_count": "View",
+                    "watch_count": "View",
+                    "deep_dive_count": "View",
                 }
             )
     return {
@@ -742,8 +742,7 @@ def get_archive_index() -> dict[str, object]:
 def get_archive_week(week_id: str) -> dict[str, object] | None:
     manifest = load_manifest(week_id)
     if manifest:
-        path = run_dir(manifest.run_id) / manifest.recommendations_path
-        all_records = _load_recommendation_records_from_path(str(path))
+        all_records = _recommendation_records_from_rows(load_recommendation_rows(manifest.run_id))
         records = [record for record in all_records if not record.is_benchmark]
         metadata = _run_metadata(records, manifest.run_id)
     else:

@@ -3,5 +3,5 @@ builder = "RAILPACK"
 
 [deploy]
 startCommand = "python3 -m services.jobs.cli weekly-run"
-cronSchedule = "0 22 * * 0"
+cronSchedule = "0 7 * * 0"
 restartPolicyType = "NEVER"

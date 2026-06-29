@@ -26,6 +26,17 @@ class Settings(BaseSettings):
         default="postgresql+psycopg://postgres:postgres@localhost:5432/postgres",
         alias="SUPABASE_DB_URL",
     )
+    weekly_run_repository: str = Field(default="local", alias="WEEKLY_RUN_REPOSITORY")
+    email_alert_to: str = Field(default="hrishi00@gmail.com", alias="EMAIL_ALERT_TO")
+    email_alert_from: str = Field(
+        default="Trading System <alerts@trading-system.local>",
+        alias="EMAIL_ALERT_FROM",
+    )
+    smtp_host: str = Field(default="", alias="SMTP_HOST")
+    smtp_port: int = Field(default=587, alias="SMTP_PORT")
+    smtp_username: str = Field(default="", alias="SMTP_USERNAME")
+    smtp_password: str = Field(default="", alias="SMTP_PASSWORD")
+    smtp_use_tls: bool = Field(default=True, alias="SMTP_USE_TLS")
     fmp_api_key: str = Field(default="dummy-fmp-api-key", alias="FMP_API_KEY")
     openai_api_key: str = Field(default="dummy-openai-api-key", alias="OPENAI_API_KEY")
     sec_user_agent: str = Field(default="Trading System owner@example.com", alias="SEC_USER_AGENT")

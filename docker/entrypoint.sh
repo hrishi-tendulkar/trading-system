@@ -15,6 +15,10 @@ if [ "$ROLE" = "weekly-job" ]; then
   exec python -m services.jobs.cli weekly-run
 fi
 
+if [ "$ROLE" = "weekly-validation" ]; then
+  exec python -m services.jobs.cli validate-weekly-current
+fi
+
 if [ "$ROLE" = "manual-job" ]; then
   exec python -m services.jobs.cli --help
 fi

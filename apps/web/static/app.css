@@ -44,7 +44,7 @@ html,
 body {
   margin: 0;
   height: 100%;
-  min-width: 1380px;
+  min-width: 0;
   background: var(--desk);
   color: var(--ink);
   font-family: var(--sans);
@@ -128,12 +128,13 @@ button {
   justify-content: center;
   height: 100vh;
   padding: 28px 24px 60px;
+  min-width: 0;
 }
 
 .app-frame {
   display: grid;
   grid-template-columns: 224px minmax(0, 1fr);
-  width: 1320px;
+  width: min(1320px, 100%);
   height: calc(100vh - 88px);
   min-height: 0;
   overflow: hidden;
@@ -1451,4 +1452,163 @@ input {
   margin-top: 16px;
   color: var(--sell-ink);
   font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  html,
+  body {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 1.12;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .stage {
+    min-height: 100vh;
+    height: auto;
+    padding: 0;
+  }
+
+  .app-frame {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .app-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .brand-lockup {
+    align-items: center;
+  }
+
+  .top-nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .top-nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .logout-form {
+    display: none;
+  }
+
+  .content {
+    height: auto;
+    overflow: visible;
+    padding: 20px 14px 36px;
+  }
+
+  .page-kicker,
+  .kicker-left,
+  .agency-summary-row,
+  .agency-rec-foot {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kicker-sep {
+    display: none;
+  }
+
+  .agency-tally,
+  .metric-strip,
+  .grid-2,
+  .bucket-grid,
+  .facts,
+  .agency-board-preview,
+  .agency-record-grid,
+  .agency-evidence {
+    grid-template-columns: 1fr;
+  }
+
+  .agency-levels {
+    grid-template-columns: 1fr;
+  }
+
+  .agency-level {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-level:last-child {
+    border-bottom: 0;
+  }
+
+  .agency-rec-head,
+  .item-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .agency-rec-summary,
+  .agency-rec-detail,
+  .agency-rec-foot,
+  .agency-evidence,
+  .agency-level,
+  .agency-record-panel,
+  .panel,
+  .item,
+  .stock-card,
+  .bucket {
+    min-width: 0;
+  }
+
+  .agency-report-table div {
+    display: grid;
+    gap: 4px;
+  }
+
+  .agency-report-table strong {
+    text-align: left;
+  }
+
+  .archive-run {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px 14px;
+  }
+
+  .archive-id,
+  .archive-meta,
+  .archive-outcome {
+    overflow-wrap: anywhere;
+  }
+
+  .archive-counts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .archive-count {
+    min-width: 0;
+  }
+
+  .archive-action {
+    justify-items: start;
+    text-align: left;
+  }
 }

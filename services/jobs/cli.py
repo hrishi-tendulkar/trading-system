@@ -9,7 +9,14 @@ import typer
 from packages.core.config import get_settings
 from packages.core.strategy_registry import load_strategy_registry
 from packages.core.strategy_views import get_strategy_page_view, list_strategy_pages
+from packages.core.weekly_runs import (
+    LocalWeeklyRunRepository,
+    SupabaseWeeklyRunRepository,
+    load_current_manifest,
+)
 from packages.schemas.jobs import JobResult
+from services.jobs.notifications import send_email
+from services.jobs.weekly_validation import notify_weekly_result, validate_weekly_current
 
 app = typer.Typer(help="Trading System batch jobs and manual operator commands.")
 settings = get_settings()
@@ -63,6 +70,10 @@ def weekly_run(
         "data/processed/sp100_current",
         help="Directory for processed weekly outputs before publishing.",
     ),
+    notify: bool = typer.Option(
+        settings.environment != "development",
+        help="Send success/failure email notification.",
+    ),
 ) -> None:
     if not settings.weekly_run_enabled:
         raise typer.Exit(code=0)
@@ -81,7 +92,103 @@ def weekly_run(
             processed_outdir,
         ]
     )
-    subprocess.run(command, check=True)
+    try:
+        completed = subprocess.run(command, check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as exc:
+        if notify:
+            _send_job_email(
+                subject="[Trading System] Weekly publish failed",
+                body=(
+                    "Weekly publish failed.\n\n"
+                    f"Command: {' '.join(command)}\n"
+                    f"Exit code: {exc.returncode}\n\n"
+                    f"STDOUT:\n{exc.stdout or ''}\n\n"
+                    f"STDERR:\n{exc.stderr or ''}\n"
+                ),
+            )
+        typer.echo(exc.stdout or "", nl=False)
+        typer.echo(exc.stderr or "", err=True, nl=False)
+        raise typer.Exit(code=exc.returncode) from exc
+
+    typer.echo(completed.stdout or "", nl=False)
+    typer.echo(completed.stderr or "", err=True, nl=False)
+    if notify:
+        manifest = load_current_manifest()
+        _send_job_email(
+            subject="[Trading System] Weekly publish succeeded",
+            body=(
+                "Weekly publish succeeded.\n\n"
+                f"Run ID: {manifest.run_id if manifest else 'unknown'}\n"
+                f"Recommendation week: "
+                f"{manifest.recommendation_week_start if manifest else 'unknown'}\n"
+                f"Source data through: {manifest.source_data_through if manifest else 'unknown'}\n"
+            ),
+        )
+
+
+@app.command("backfill-weekly-runs-to-supabase")
+def backfill_weekly_runs_to_supabase(
+    dry_run: bool = typer.Option(False, help="Print planned imports without writing."),
+) -> None:
+    local_repo = LocalWeeklyRunRepository()
+    target_repo = SupabaseWeeklyRunRepository()
+    manifests = list(reversed(local_repo.list_manifests()))
+    current = local_repo.load_current_manifest()
+    for manifest in manifests:
+        recommendations_path = local_repo.run_dir(manifest.run_id) / manifest.recommendations_path
+        if not recommendations_path.exists():
+            typer.echo(f"Skipping {manifest.run_id}: missing {recommendations_path}")
+            continue
+        publish_current = bool(current and current.run_id == manifest.run_id)
+        typer.echo(
+            f"{'Would import' if dry_run else 'Importing'} {manifest.run_id}"
+            f"{' as current' if publish_current else ''}"
+        )
+        if dry_run:
+            continue
+        target_repo.write_run_snapshot(
+            manifest=manifest,
+            recommendations_source=recommendations_path,
+            publish_current=publish_current,
+        )
+    typer.echo("Backfill complete." if not dry_run else "Dry run complete.")
+
+
+@app.command("validate-weekly-current")
+def validate_weekly_current_command(
+    as_of_date: str = typer.Option("", help="Optional YYYY-MM-DD validation date."),
+    base_url: str = typer.Option("", help="Production app base URL to check."),
+    check_web: bool = typer.Option(True, help="Check the deployed /weekly page."),
+    notify: bool = typer.Option(
+        settings.environment != "development",
+        help="Send success/failure email notification.",
+    ),
+) -> None:
+    result = validate_weekly_current(
+        as_of_date=date.fromisoformat(as_of_date) if as_of_date else date.today(),
+        base_url=base_url or settings.app_base_url,
+        check_web=check_web,
+    )
+    typer.echo(
+        {
+            "ok": result.ok,
+            "expected_week": result.expected_week,
+            "expected_source_through": result.expected_source_through,
+            "run_id": result.run_id,
+            "messages": result.messages,
+        }
+    )
+    if notify:
+        try:
+            notify_weekly_result(
+                subject="[Trading System] Weekly validation "
+                + ("succeeded" if result.ok else "failed"),
+                result=result,
+            )
+        except RuntimeError as exc:
+            typer.echo(f"Email notification failed: {exc}", err=True)
+    if not result.ok:
+        raise typer.Exit(code=1)
 
 
 @app.command("backfill-symbol")
@@ -124,6 +231,13 @@ def validate_run_completeness(run_kind: str = typer.Argument(..., help="daily or
         ),
     )
     _print_result(result)
+
+
+def _send_job_email(*, subject: str, body: str) -> None:
+    try:
+        send_email(settings, subject=subject, body=body)
+    except RuntimeError as exc:
+        typer.echo(f"Email notification failed: {exc}", err=True)
 
 
 @app.command("list-decision-bases")

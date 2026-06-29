@@ -1,0 +1,7 @@
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "python3 -m services.jobs.cli validate-weekly-current"
+cronSchedule = "0 8 * * 0"
+restartPolicyType = "NEVER"
