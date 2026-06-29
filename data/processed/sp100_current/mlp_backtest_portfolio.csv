@@ -142,7 +142,7 @@ signal_date,holding_end_date,selected_tickers,selected_strategies,portfolio_retu
 2025-12-12,2025-12-19,"JNJ,UNP","breakout-confirmation-triggered,breakout-confirmation-triggered",-0.024231296077965314,-0.001716121352671407,-0.022515174725293907
 2025-12-19,2025-12-29,"FDX,SCHW","breakout-confirmation-triggered,breakout-confirmation-triggered",0.019714794316301965,0.010667139458407693,0.009047654857894272
 2025-12-26,2026-01-05,"FDX,LRCX","breakout-confirmation-triggered,breakout-confirmation-triggered",0.048770238832320234,-0.0037519764520705934,0.05252221528439083
-2026-01-09,2026-01-16,"HON,LRCX","breakout-confirmation-triggered,breakout-confirmation-triggered",0.03948956965096684,-0.0034723214578579187,0.04296189110882476
+2026-01-09,2026-01-16,"LRCX,BA","breakout-confirmation-triggered,breakout-confirmation-triggered",0.038567858734151805,-0.0034723214578579187,0.042040180192009724
 2026-01-16,2026-01-26,"MU,LMT","breakout-confirmation-triggered,breakout-confirmation-triggered",0.03564495039954124,0.0015470135120789763,0.034097936887462266
 2026-01-23,2026-01-30,"CVS,XOM","breakout-confirmation-triggered,breakout-confirmation-triggered",-0.027318368005534888,0.003975436809222188,-0.031293804814757076
 2026-01-30,2026-02-06,"FDX,CVX","breakout-confirmation-triggered,breakout-confirmation-triggered",0.0840865011685783,-0.0019509164314829297,0.08603741760006123

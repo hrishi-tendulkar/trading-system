@@ -44,7 +44,7 @@ GOOG,2021-04-09,trend-hold,Trend hold / monitor,Hold,7,0.005197138753398223
 GOOGL,2021-04-09,trend-hold,Trend hold / monitor,Hold,7,0.005319982853375649
 GS,2021-04-09,no-action,No actionable setup,No action,4,0.03476315735579627
 HD,2021-04-09,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.027722880936518646
-HON,2021-04-09,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.02260114080230191
+HON,2021-04-09,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.02260113216748172
 IBM,2021-04-09,trend-hold,Trend hold / monitor,Hold,7,-0.01576666650595826
 INTC,2021-04-09,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,-0.05142106689691206
 INTU,2021-04-09,trend-hold,Trend hold / monitor,Hold,5,-0.0042862433613433115
@@ -152,7 +152,7 @@ GOOG,2021-04-16,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2021-04-16,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.007526020656099419
 GS,2021-04-16,no-action,No actionable setup,No action,5,-0.008647107815106803
 HD,2021-04-16,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.012771190244197372
-HON,2021-04-16,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.032786208331950006
+HON,2021-04-16,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.03278618151023427
 IBM,2021-04-16,no-action,No actionable setup,No action,5,0.06617266055885485
 INTC,2021-04-16,no-action,No actionable setup,No action,4,-0.08509649917425799
 INTU,2021-04-16,trend-hold,Trend hold / monitor,Hold,6,-0.0021643833404644264
@@ -260,7 +260,7 @@ GOOG,2021-04-23,trend-hold,Trend hold / monitor,Hold,8,0.04095363313133715
 GOOGL,2021-04-23,trend-hold,Trend hold / monitor,Hold,8,0.023292056609708123
 GS,2021-04-23,no-action,No actionable setup,No action,5,0.026815989214214797
 HD,2021-04-23,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.0006792466910161554
-HON,2021-04-23,trend-hold,Trend hold / monitor,Hold,5,-0.006503305557935213
+HON,2021-04-23,trend-hold,Trend hold / monitor,Hold,5,-0.006503370663105468
 IBM,2021-04-23,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.0038615844957494705
 INTC,2021-04-23,no-action,No actionable setup,No action,1,-0.02886567945171903
 INTU,2021-04-23,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.006651908021558239
@@ -368,7 +368,7 @@ GOOG,2021-04-30,trend-hold,Trend hold / monitor,Hold,8,-0.004742461551980992
 GOOGL,2021-04-30,trend-hold,Trend hold / monitor,Hold,8,-0.0006671465280696509
 GS,2021-04-30,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.06439948817701158
 HD,2021-04-30,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,0.0481354031140242
-HON,2021-04-30,no-action,No actionable setup,No action,4,0.02578006872004135
+HON,2021-04-30,no-action,No actionable setup,No action,4,0.02578012990084444
 IBM,2021-04-30,trend-hold,Trend hold / monitor,Hold,6,0.025232587623510216
 INTC,2021-04-30,no-action,No actionable setup,No action,1,0.002433502392126252
 INTU,2021-04-30,trend-hold,Trend hold / monitor,Hold,6,-0.026979801577990403
@@ -476,7 +476,7 @@ GOOG,2021-05-07,trend-hold,Trend hold / monitor,Hold,6,-0.03440630455809479
 GOOGL,2021-05-07,trend-hold,Trend hold / monitor,Hold,6,-0.031272171966485574
 GS,2021-05-07,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.005716049370526166
 HD,2021-05-07,trend-hold,Trend hold / monitor,Hold,8,-0.046042726948231416
-HON,2021-05-07,trend-hold,Trend hold / monitor,Hold,6,-0.006250241916657795
+HON,2021-05-07,trend-hold,Trend hold / monitor,Hold,6,-0.006250241346844487
 IBM,2021-05-07,trend-hold,Trend hold / monitor,Hold,8,-0.00536229271315225
 INTC,2021-05-07,no-action,No actionable setup,No action,1,-0.04022888448908457
 INTU,2021-05-07,no-action,No actionable setup,No action,3,0.04044484558923078
@@ -584,7 +584,7 @@ GOOG,2021-05-14,no-action,No actionable setup,No action,5,0.012494807033789357
 GOOGL,2021-05-14,no-action,No actionable setup,No action,3,0.006912793151111485
 GS,2021-05-14,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.00680635442911226
 HD,2021-05-14,no-action,No actionable setup,No action,3,-0.024287043075584935
-HON,2021-05-14,trend-hold,Trend hold / monitor,Hold,4,-0.01829694013752181
+HON,2021-05-14,trend-hold,Trend hold / monitor,Hold,4,-0.0182969900199762
 IBM,2021-05-14,trend-hold,Trend hold / monitor,Hold,7,0.00041468238186759265
 INTC,2021-05-14,no-action,No actionable setup,No action,0,0.013188859567447198
 INTU,2021-05-14,trend-hold,Trend hold / monitor,Hold,7,0.03875277412575184
@@ -692,7 +692,7 @@ GOOG,2021-05-28,trend-hold,Trend hold / monitor,Hold,6,0.022611867581179945
 GOOGL,2021-05-28,trend-hold,Trend hold / monitor,Hold,6,0.01928420653001206
 GS,2021-05-28,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.0433848049166099
 HD,2021-05-28,no-action,No actionable setup,No action,4,-0.028064382127422793
-HON,2021-05-28,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.011779456634360419
+HON,2021-05-28,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.01177948628281722
 IBM,2021-05-28,no-action,No actionable setup,No action,5,0.029776010634836814
 INTC,2021-05-28,trend-hold,Trend hold / monitor,Hold,2,-0.0005251887230013352
 INTU,2021-05-28,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.04126715540848647
@@ -800,7 +800,7 @@ GOOG,2021-06-04,trend-hold,Trend hold / monitor,Hold,7,0.025357337700479432
 GOOGL,2021-06-04,trend-hold,Trend hold / monitor,Hold,7,0.0153035412615945
 GS,2021-06-04,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,-0.034231763944806204
 HD,2021-06-04,no-action,No actionable setup,No action,2,-0.000771746067382173
-HON,2021-06-04,trend-hold,Trend hold / monitor,Hold,5,-0.0211692511928947
+HON,2021-06-04,trend-hold,Trend hold / monitor,Hold,5,-0.021169355841655357
 IBM,2021-06-04,trend-hold,Trend hold / monitor,Hold,5,0.02618367832371793
 INTC,2021-06-04,trend-hold,Trend hold / monitor,Hold,2,0.008366734376380691
 INTU,2021-06-04,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.0221462367642975
@@ -908,7 +908,7 @@ GOOG,2021-06-11,trend-hold,Trend hold / monitor,Hold,8,-0.00102632475345521
 GOOGL,2021-06-11,trend-hold,Trend hold / monitor,Hold,8,-0.011513472558636328
 GS,2021-06-11,trend-hold,Trend hold / monitor,Hold,6,-0.07729136930088942
 HD,2021-06-11,no-action,No actionable setup,No action,1,-0.026257373461342826
-HON,2021-06-11,no-action,No actionable setup,No action,3,-0.05631057295406394
+HON,2021-06-11,no-action,No actionable setup,No action,3,-0.05631047645533127
 IBM,2021-06-11,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.053939715887420525
 INTC,2021-06-11,trend-hold,Trend hold / monitor,Hold,5,-0.03768367091921343
 INTU,2021-06-11,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.002626207693912086
@@ -1016,7 +1016,7 @@ GOOG,2021-06-25,trend-hold,Trend hold / monitor,Hold,8,0.013575269552008828
 GOOGL,2021-06-25,trend-hold,Trend hold / monitor,Hold,7,0.02243926395711804
 GS,2021-06-25,no-action,No actionable setup,No action,4,0.014616196569720463
 HD,2021-06-25,no-action,No actionable setup,No action,3,0.028919450253516832
-HON,2021-06-25,no-action,No actionable setup,No action,2,0.011794764684967207
+HON,2021-06-25,no-action,No actionable setup,No action,2,0.011794832980998926
 IBM,2021-06-25,no-action,No actionable setup,No action,6,-0.04644513723869581
 INTC,2021-06-25,no-action,No actionable setup,No action,1,0.015202977578981924
 INTU,2021-06-25,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.023761069755729336
@@ -1124,7 +1124,7 @@ GOOG,2021-07-02,trend-hold,Trend hold / monitor,Hold,7,0.014333558407762848
 GOOGL,2021-07-02,trend-hold,Trend hold / monitor,Hold,7,0.013715764114098139
 GS,2021-07-02,no-action,No actionable setup,No action,5,0.016944612667943115
 HD,2021-07-02,trend-hold,Trend hold / monitor,Hold,6,-0.0029749672647683134
-HON,2021-07-02,no-action,No actionable setup,No action,3,0.01671793877704042
+HON,2021-07-02,no-action,No actionable setup,No action,3,0.016717860228614434
 IBM,2021-07-02,no-action,No actionable setup,No action,2,0.006427592917291447
 INTC,2021-07-02,no-action,No actionable setup,No action,4,-0.0005285197354470972
 INTU,2021-07-02,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.014990738757911792
@@ -1232,7 +1232,7 @@ GOOG,2021-07-09,trend-hold,Trend hold / monitor,Hold,6,0.01752668517394551
 GOOGL,2021-07-09,trend-hold,Trend hold / monitor,Hold,7,0.011564031789280227
 GS,2021-07-09,no-action,No actionable setup,No action,3,-0.018721814584210517
 HD,2021-07-09,trend-hold,Trend hold / monitor,Hold,6,-0.0017075593753982377
-HON,2021-07-09,no-action,No actionable setup,No action,4,0.026700531461749
+HON,2021-07-09,no-action,No actionable setup,No action,4,0.02670056873916571
 IBM,2021-07-09,no-action,No actionable setup,No action,1,-0.018513366121624908
 INTC,2021-07-09,no-action,No actionable setup,No action,0,-0.018217546475908675
 INTU,2021-07-09,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,-0.004802220438014815
@@ -1340,7 +1340,7 @@ GOOG,2021-07-16,trend-hold,Trend hold / monitor,Hold,7,0.0452839822850819
 GOOGL,2021-07-16,trend-hold,Trend hold / monitor,Hold,7,0.047609656697078506
 GS,2021-07-16,no-action,No actionable setup,No action,2,0.025356360497603925
 HD,2021-07-16,trend-hold,Trend hold / monitor,Hold,7,0.035143333621545425
-HON,2021-07-16,trend-hold,Trend hold / monitor,Hold,7,-0.004384954975927391
+HON,2021-07-16,trend-hold,Trend hold / monitor,Hold,7,-0.0043849889237476125
 IBM,2021-07-16,no-action,No actionable setup,No action,1,0.017566645665350045
 INTC,2021-07-16,no-action,No actionable setup,No action,0,-0.035837751081605806
 INTU,2021-07-16,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.05367785764183841
@@ -1448,7 +1448,7 @@ GOOG,2021-07-23,trend-hold,Trend hold / monitor,Hold,7,-0.018829463405798275
 GOOGL,2021-07-23,trend-hold,Trend hold / monitor,Hold,8,0.012866985550867849
 GS,2021-07-23,no-action,No actionable setup,No action,6,0.002219000446280539
 HD,2021-07-23,trend-hold,Trend hold / monitor,Hold,8,-0.013970658417397086
-HON,2021-07-23,trend-hold,Trend hold / monitor,Hold,6,0.019492369430959666
+HON,2021-07-23,trend-hold,Trend hold / monitor,Hold,6,0.019492350510848633
 IBM,2021-07-23,no-action,No actionable setup,No action,2,-0.0026884971551593972
 INTC,2021-07-23,no-action,No actionable setup,No action,0,0.013584928692511822
 INTU,2021-07-23,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.002914251743255214
@@ -1556,7 +1556,7 @@ GOOG,2021-07-30,trend-hold,Trend hold / monitor,Hold,7,0.013422490107306118
 GOOGL,2021-07-30,trend-hold,Trend hold / monitor,Hold,8,0.007511465058470224
 GS,2021-07-30,trend-hold,Trend hold / monitor,Hold,4,0.06137966673580775
 HD,2021-07-30,trend-hold,Trend hold / monitor,Hold,6,0.005027556854901416
-HON,2021-07-30,trend-hold,Trend hold / monitor,Hold,8,-0.017579874873743018
+HON,2021-07-30,trend-hold,Trend hold / monitor,Hold,8,-0.017579882494463184
 IBM,2021-07-30,no-action,No actionable setup,No action,2,0.022204792578368604
 INTC,2021-07-30,no-action,No actionable setup,No action,1,0.0037229512974230605
 INTU,2021-07-30,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.008151419067173427
@@ -1664,7 +1664,7 @@ GOOG,2021-08-06,trend-hold,Trend hold / monitor,Hold,8,0.009997448999759628
 GOOGL,2021-08-06,trend-hold,Trend hold / monitor,Hold,8,0.014653163901266142
 GS,2021-08-06,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.03239584723494149
 HD,2021-08-06,trend-hold,Trend hold / monitor,Hold,7,0.004487057369513048
-HON,2021-08-06,no-action,No actionable setup,No action,5,0.009056096582574336
+HON,2021-08-06,no-action,No actionable setup,No action,5,0.009056086282581921
 IBM,2021-08-06,trend-hold,Trend hold / monitor,Hold,6,-0.006315490047800076
 INTC,2021-08-06,no-action,No actionable setup,No action,1,-0.00797471263131766
 INTU,2021-08-06,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.012072119022043859
@@ -1772,7 +1772,7 @@ GOOG,2021-08-13,trend-hold,Trend hold / monitor,Hold,7,0.0002239108078692098
 GOOGL,2021-08-13,trend-hold,Trend hold / monitor,Hold,8,-0.002163612249752367
 GS,2021-08-13,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.03629681023033493
 HD,2021-08-13,trend-hold,Trend hold / monitor,Hold,6,-0.00627797007081532
-HON,2021-08-13,no-action,No actionable setup,No action,6,-0.01751814568731469
+HON,2021-08-13,no-action,No actionable setup,No action,6,-0.017518112076387538
 IBM,2021-08-13,trend-hold,Trend hold / monitor,Hold,3,-0.028425707975709646
 INTC,2021-08-13,no-action,No actionable setup,No action,0,-0.027668785015749764
 INTU,2021-08-13,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.008432883901590582
@@ -1880,7 +1880,7 @@ GOOG,2021-08-20,trend-hold,Trend hold / monitor,Hold,6,0.04416095616177351
 GOOGL,2021-08-20,trend-hold,Trend hold / monitor,Hold,6,0.04783902435774734
 GS,2021-08-20,trend-hold,Trend hold / monitor,Hold,7,0.060171287589420475
 HD,2021-08-20,trend-hold,Trend hold / monitor,Hold,4,-0.017798522431588526
-HON,2021-08-20,no-action,No actionable setup,No action,3,0.015107639702100384
+HON,2021-08-20,no-action,No actionable setup,No action,3,0.015107608640803738
 IBM,2021-08-20,no-action,No actionable setup,No action,1,0.002156546505783119
 INTC,2021-08-20,no-action,No actionable setup,No action,0,0.036146916531179185
 INTU,2021-08-20,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.03785075208230837
@@ -1988,7 +1988,7 @@ GOOG,2021-08-27,trend-hold,Trend hold / monitor,Hold,8,0.0015530025454801866
 GOOGL,2021-08-27,trend-hold,Trend hold / monitor,Hold,8,-0.0018367257412651439
 GS,2021-08-27,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.019967130105708053
 HD,2021-08-27,no-action,No actionable setup,No action,2,0.021522640082834776
-HON,2021-08-27,no-action,No actionable setup,No action,5,-0.012027381772292567
+HON,2021-08-27,no-action,No actionable setup,No action,5,-0.012027337486535394
 IBM,2021-08-27,no-action,No actionable setup,No action,2,0.0012194056659602381
 INTC,2021-08-27,no-action,No actionable setup,No action,3,-0.00705142090219113
 INTU,2021-08-27,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.004753158337989616
@@ -2096,7 +2096,7 @@ GOOG,2021-09-03,trend-hold,Trend hold / monitor,Hold,8,-0.009048507089079338
 GOOGL,2021-09-03,trend-hold,Trend hold / monitor,Hold,7,-0.009788524807348375
 GS,2021-09-03,trend-hold,Trend hold / monitor,Hold,6,-0.004984045622855815
 HD,2021-09-03,no-action,No actionable setup,No action,6,0.015468959029453444
-HON,2021-09-03,no-action,No actionable setup,No action,3,-0.02084425558969616
+HON,2021-09-03,no-action,No actionable setup,No action,3,-0.020844256849332776
 IBM,2021-09-03,no-action,No actionable setup,No action,2,-0.010245008881409001
 INTC,2021-09-03,no-action,No actionable setup,No action,1,0.02765844521318206
 INTU,2021-09-03,trend-hold,Trend hold / monitor,Hold,7,-0.01035067392781841
@@ -2204,7 +2204,7 @@ GOOG,2021-10-15,trend-hold,Trend hold / monitor,Hold,5,-0.02152816648003575
 GOOGL,2021-10-15,trend-hold,Trend hold / monitor,Hold,5,-0.02689079929577809
 GS,2021-10-15,trend-hold,Trend hold / monitor,Hold,6,0.020316693799581564
 HD,2021-10-15,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.044462162636455416
-HON,2021-10-15,trend-hold,Trend hold / monitor,Hold,5,-0.015041737371973896
+HON,2021-10-15,trend-hold,Trend hold / monitor,Hold,5,-0.015041714868871181
 IBM,2021-10-15,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.11569047357048812
 INTC,2021-10-15,trend-hold,Trend hold / monitor,Hold,4,-0.09181050466498397
 INTU,2021-10-15,no-action,No actionable setup,No action,4,0.0699797459572884
@@ -2312,7 +2312,7 @@ GOOG,2021-10-22,no-action,No actionable setup,No action,1,0.06957974790774357
 GOOGL,2021-10-22,no-action,No actionable setup,No action,1,0.07617775849259689
 GS,2021-10-22,trend-hold,Trend hold / monitor,Hold,7,-0.0023411884619514156
 HD,2021-10-22,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.01571081219002135
-HON,2021-10-22,no-action,No actionable setup,No action,1,0.0056117656363074975
+HON,2021-10-22,no-action,No actionable setup,No action,1,0.005611781301539498
 IBM,2021-10-22,no-action,No actionable setup,No action,1,-0.021739081596114262
 INTC,2021-10-22,no-action,No actionable setup,No action,1,-0.009300426465577272
 INTU,2021-10-22,trend-hold,Trend hold / monitor,Hold,5,0.0595633093576462
@@ -2420,7 +2420,7 @@ GOOG,2021-10-29,trend-hold,Trend hold / monitor,Hold,6,0.006545501697788003
 GOOGL,2021-10-29,trend-hold,Trend hold / monitor,Hold,6,0.005444251970889935
 GS,2021-10-29,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.015168790222975792
 HD,2021-10-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.00898476468938636
-HON,2021-10-29,no-action,No actionable setup,No action,4,0.03403165535264985
+HON,2021-10-29,no-action,No actionable setup,No action,4,0.03403166502413546
 IBM,2021-10-29,no-action,No actionable setup,No action,0,0.03354163249821651
 INTC,2021-10-29,no-action,No actionable setup,No action,0,0.03918363610092479
 INTU,2021-10-29,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.01757216596367861
@@ -2528,7 +2528,7 @@ GOOG,2021-11-05,trend-hold,Trend hold / monitor,Hold,6,0.002710349344594132
 GOOGL,2021-11-05,trend-hold,Trend hold / monitor,Hold,6,-0.0011690217438659056
 GS,2021-11-05,no-action,No actionable setup,No action,4,-0.0053306057328638135
 HD,2021-11-05,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.011482114702522805
-HON,2021-11-05,no-action,No actionable setup,No action,5,-0.016234622373813345
+HON,2021-11-05,no-action,No actionable setup,No action,5,-0.016234620050343374
 IBM,2021-11-05,no-action,No actionable setup,No action,1,-0.037618327828804365
 INTC,2021-11-05,no-action,No actionable setup,No action,1,-0.011979513306941136
 INTU,2021-11-05,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,0.019512512708421026
@@ -2636,7 +2636,7 @@ GOOG,2021-11-12,trend-hold,Trend hold / monitor,Hold,7,0.002051560863601143
 GOOGL,2021-11-12,trend-hold,Trend hold / monitor,Hold,6,0.0016714285171814947
 GS,2021-11-12,no-action,No actionable setup,No action,3,-0.04326884704061795
 HD,2021-11-12,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.09677158866993052
-HON,2021-11-12,no-action,No actionable setup,No action,5,-0.01753670499803539
+HON,2021-11-12,no-action,No actionable setup,No action,5,-0.01753673234942177
 IBM,2021-11-12,no-action,No actionable setup,No action,0,-0.02446197087349078
 INTC,2021-11-12,no-action,No actionable setup,No action,0,-0.015702661378712346
 INTU,2021-11-12,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.10422819764102664
@@ -2744,7 +2744,7 @@ GOOG,2021-11-19,trend-hold,Trend hold / monitor,Hold,8,-0.025598112683592134
 GOOGL,2021-11-19,trend-hold,Trend hold / monitor,Hold,8,-0.022803168878182678
 GS,2021-11-19,no-action,No actionable setup,No action,2,-0.0021941869211239418
 HD,2021-11-19,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.004575583219596058
-HON,2021-11-19,no-action,No actionable setup,No action,3,-0.0495674851630763
+HON,2021-11-19,no-action,No actionable setup,No action,3,-0.049567493060425516
 IBM,2021-11-19,no-action,No actionable setup,No action,0,0.02111156297987793
 INTC,2021-11-19,no-action,No actionable setup,No action,1,0.00969304397817461
 INTU,2021-11-19,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.0033508770243999564
@@ -2852,7 +2852,7 @@ GOOG,2021-12-10,trend-hold,Trend hold / monitor,Hold,6,-0.0394956055612089
 GOOGL,2021-12-10,trend-hold,Trend hold / monitor,Hold,7,-0.042408282716936085
 GS,2021-12-10,no-action,No actionable setup,No action,2,-0.023679255928593435
 HD,2021-12-10,trend-hold,Trend hold / monitor,Hold,8,-0.0660086261748698
-HON,2021-12-10,no-action,No actionable setup,No action,1,-0.022115233108742305
+HON,2021-12-10,no-action,No actionable setup,No action,1,-0.022115244476625162
 IBM,2021-12-10,trend-hold,Trend hold / monitor,Hold,4,0.026674230684762934
 INTC,2021-12-10,trend-hold,Trend hold / monitor,Hold,3,0.0005929784385529935
 INTU,2021-12-10,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.08508000831507767
@@ -2960,7 +2960,7 @@ GOOG,2021-12-31,no-action,No actionable setup,No action,2,-0.05304830897698265
 GOOGL,2021-12-31,no-action,No actionable setup,No action,3,-0.05408973602818323
 GS,2021-12-31,no-action,No actionable setup,No action,1,0.03910605790099386
 HD,2021-12-31,no-action,No actionable setup,No action,6,-0.05156508014384531
-HON,2021-12-31,trend-hold,Trend hold / monitor,Hold,3,0.03472252632834327
+HON,2021-12-31,trend-hold,Trend hold / monitor,Hold,3,0.034722582532736634
 IBM,2021-12-31,trend-hold,Trend hold / monitor,Hold,8,0.008753539854024384
 INTC,2021-12-31,trend-hold,Trend hold / monitor,Hold,6,0.037669876246776424
 INTU,2021-12-31,no-action,No actionable setup,No action,4,-0.11762690306680745
@@ -3068,7 +3068,7 @@ GOOG,2022-03-18,trend-hold,Trend hold / monitor,Hold,6,0.03450255498262611
 GOOGL,2022-03-18,trend-hold,Trend hold / monitor,Hold,6,0.04075283812426722
 GS,2022-03-18,no-action,No actionable setup,No action,2,-0.02284444535552832
 HD,2022-03-18,no-action,No actionable setup,No action,2,-0.08821975236284196
-HON,2022-03-18,trend-hold,Trend hold / monitor,Hold,5,0.015766211628641003
+HON,2022-03-18,trend-hold,Trend hold / monitor,Hold,5,0.015766187583113433
 IBM,2022-03-18,trend-hold,Trend hold / monitor,Hold,4,0.02011503345118726
 INTC,2022-03-18,trend-hold,Trend hold / monitor,Hold,2,0.09230771333382592
 INTU,2022-03-18,no-action,No actionable setup,No action,2,-0.04276155880231847
@@ -3176,7 +3176,7 @@ GOOG,2022-03-25,trend-hold,Trend hold / monitor,Hold,6,-0.005804790704399321
 GOOGL,2022-03-25,trend-hold,Trend hold / monitor,Hold,6,-0.010746625463316839
 GS,2022-03-25,no-action,No actionable setup,No action,1,-0.02154134707409583
 HD,2022-03-25,no-action,No actionable setup,No action,0,-0.028292707076624568
-HON,2022-03-25,trend-hold,Trend hold / monitor,Hold,5,-0.008898332102955986
+HON,2022-03-25,trend-hold,Trend hold / monitor,Hold,5,-0.008898299037251256
 IBM,2022-03-25,trend-hold,Trend hold / monitor,Hold,6,-0.009135988970457531
 INTC,2022-03-25,trend-hold,Trend hold / monitor,Hold,5,-0.07177312539615299
 INTU,2022-03-25,no-action,No actionable setup,No action,0,0.05351036518050356
@@ -3284,7 +3284,7 @@ GOOG,2022-04-01,trend-hold,Trend hold / monitor,Hold,6,-0.047544413976270294
 GOOGL,2022-04-01,trend-hold,Trend hold / monitor,Hold,6,-0.04896872618034176
 GS,2022-04-01,no-action,No actionable setup,No action,1,-0.026739708496227865
 HD,2022-04-01,no-action,No actionable setup,No action,0,0.030540826975884006
-HON,2022-04-01,trend-hold,Trend hold / monitor,Hold,3,-0.0299443964933791
+HON,2022-04-01,trend-hold,Trend hold / monitor,Hold,3,-0.02994437154384899
 IBM,2022-04-01,no-action,No actionable setup,No action,3,-0.018593858263839302
 INTC,2022-04-01,no-action,No actionable setup,No action,1,-0.022656415272490404
 INTU,2022-04-01,trend-hold,Trend hold / monitor,Hold,3,-0.0022523843415114264
@@ -3392,7 +3392,7 @@ GOOG,2022-04-08,no-action,No actionable setup,No action,2,-0.045141982157269056
 GOOGL,2022-04-08,no-action,No actionable setup,No action,2,-0.04209702660406889
 GS,2022-04-08,no-action,No actionable setup,No action,0,0.026416471724120205
 HD,2022-04-08,no-action,No actionable setup,No action,1,-0.03503582144484074
-HON,2022-04-08,no-action,No actionable setup,No action,2,0.010044160353078757
+HON,2022-04-08,no-action,No actionable setup,No action,2,0.010044192392335338
 IBM,2022-04-08,no-action,No actionable setup,No action,1,-0.01221330264612086
 INTC,2022-04-08,no-action,No actionable setup,No action,2,-0.00808169001309511
 INTU,2022-04-08,trend-hold,Trend hold / monitor,Hold,4,-0.028580871298225174
@@ -3500,7 +3500,7 @@ GOOG,2022-07-29,no-action,No actionable setup,No action,5,0.013545969129993951
 GOOGL,2022-07-29,no-action,No actionable setup,No action,5,0.009886533088858673
 GS,2022-07-29,trend-hold,Trend hold / monitor,Hold,6,0.003839343480777746
 HD,2022-07-29,trend-hold,Trend hold / monitor,Hold,5,0.029075562999318016
-HON,2022-07-29,trend-hold,Trend hold / monitor,Hold,4,-0.0009872225508011923
+HON,2022-07-29,trend-hold,Trend hold / monitor,Hold,4,-0.0009872307740729225
 IBM,2022-07-29,no-action,No actionable setup,No action,2,0.012921496507068309
 INTC,2022-07-29,no-action,No actionable setup,No action,0,-0.02533742629707847
 INTU,2022-07-29,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,0.02810350621319735
@@ -3608,7 +3608,7 @@ GOOG,2022-08-05,no-action,No actionable setup,No action,4,0.03747251107623906
 GOOGL,2022-08-05,no-action,No actionable setup,No action,4,0.03583892943495326
 GS,2022-08-05,trend-hold,Trend hold / monitor,Hold,7,0.057220525078860884
 HD,2022-08-05,trend-hold,Trend hold / monitor,Hold,6,0.016791023817486872
-HON,2022-08-05,trend-hold,Trend hold / monitor,Hold,5,0.04472876378149482
+HON,2022-08-05,trend-hold,Trend hold / monitor,Hold,5,0.0447287182276217
 IBM,2022-08-05,no-action,No actionable setup,No action,2,0.011548904201684085
 INTC,2022-08-05,no-action,No actionable setup,No action,0,0.02034476499351756
 INTU,2022-08-05,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,0.037676738940428
@@ -3716,7 +3716,7 @@ GOOG,2022-08-12,no-action,No actionable setup,No action,4,-0.03693435567011416
 GOOGL,2022-08-12,no-action,No actionable setup,No action,4,-0.0367357101371818
 GS,2022-08-12,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,-0.012859697632580547
 HD,2022-08-12,no-action,No actionable setup,No action,5,0.020419804937162223
-HON,2022-08-12,trend-hold,Trend hold / monitor,Hold,6,0.0034350559631226574
+HON,2022-08-12,trend-hold,Trend hold / monitor,Hold,6,0.0034350697375369332
 IBM,2022-08-12,no-action,No actionable setup,No action,3,0.03253489134445986
 INTC,2022-08-12,no-action,No actionable setup,No action,1,-0.02021599362773374
 INTU,2022-08-12,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,-0.04666500489907888
@@ -3824,7 +3824,7 @@ GOOG,2022-08-19,trend-hold,Trend hold / monitor,Hold,5,-0.05773788974130034
 GOOGL,2022-08-19,trend-hold,Trend hold / monitor,Hold,5,-0.058612770243525514
 GS,2022-08-19,trend-hold,Trend hold / monitor,Hold,5,-0.03684827074187502
 HD,2022-08-19,no-action,No actionable setup,No action,5,-0.07226441146340956
-HON,2022-08-19,trend-hold,Trend hold / monitor,Hold,7,-0.04217104805009031
+HON,2022-08-19,trend-hold,Trend hold / monitor,Hold,7,-0.04217106619843569
 IBM,2022-08-19,trend-hold,Trend hold / monitor,Hold,6,-0.057743662038928
 INTC,2022-08-19,no-action,No actionable setup,No action,0,-0.05709441483268107
 INTU,2022-08-19,trend-hold,Trend hold / monitor,Hold,4,-0.03338726230066569
@@ -3932,7 +3932,7 @@ GOOG,2022-10-28,no-action,No actionable setup,No action,1,-0.10229866116688802
 GOOGL,2022-10-28,no-action,No actionable setup,No action,1,-0.10084119838144956
 GS,2022-10-28,trend-hold,Trend hold / monitor,Hold,5,0.04707154640784128
 HD,2022-10-28,trend-hold,Trend hold / monitor,Hold,4,-0.0489536092950833
-HON,2022-10-28,trend-hold,Trend hold / monitor,Hold,5,0.01424876913254125
+HON,2022-10-28,trend-hold,Trend hold / monitor,Hold,5,0.014248833904727976
 IBM,2022-10-28,trend-hold,Trend hold / monitor,Hold,6,-0.011190440072483376
 INTC,2022-10-28,trend-hold,Trend hold / monitor,Hold,5,-0.0299277241492254
 INTU,2022-10-28,trend-hold,Trend hold / monitor,Hold,4,-0.16350541862103007
@@ -4040,7 +4040,7 @@ GOOG,2022-11-11,no-action,No actionable setup,No action,2,0.01106171464582606
 GOOGL,2022-11-11,no-action,No actionable setup,No action,2,0.010579780150628437
 GS,2022-11-11,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.015499652134324693
 HD,2022-11-11,trend-hold,Trend hold / monitor,Hold,5,-0.005588397002544765
-HON,2022-11-11,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.008461456093739494
+HON,2022-11-11,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.00846144449729258
 IBM,2022-11-11,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.031221633567588558
 INTC,2022-11-11,trend-hold,Trend hold / monitor,Hold,5,-0.0184028741480865
 INTU,2022-11-11,no-action,No actionable setup,No action,4,-0.06854720281093196
@@ -4148,7 +4148,7 @@ GOOG,2022-11-18,no-action,No actionable setup,No action,2,-0.01584870146616968
 GOOGL,2022-11-18,no-action,No actionable setup,No action,2,-0.014163986955716745
 GS,2022-11-18,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,0.00833326224368891
 HD,2022-11-18,trend-hold,Trend hold / monitor,Hold,6,0.0183281847058967
-HON,2022-11-18,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.005780039724943897
+HON,2022-11-18,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.005780103016920224
 IBM,2022-11-18,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.009888964507605902
 INTC,2022-11-18,trend-hold,Trend hold / monitor,Hold,6,-0.03816542567684533
 INTU,2022-11-18,no-action,No actionable setup,No action,0,0.014655214083933998
@@ -4256,7 +4256,7 @@ GOOG,2022-11-25,trend-hold,Trend hold / monitor,Hold,3,0.033094297207289625
 GOOGL,2022-11-25,trend-hold,Trend hold / monitor,Hold,3,0.03057668156092097
 GS,2022-11-25,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.021293008000838776
 HD,2022-11-25,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,0.0049328553449239365
-HON,2022-11-25,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.004408081765263305
+HON,2022-11-25,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.0044080945569220376
 IBM,2022-11-25,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.002021992731892075
 INTC,2022-11-25,trend-hold,Trend hold / monitor,Hold,6,0.0023858109904626446
 INTU,2022-11-25,no-action,No actionable setup,No action,2,0.03936609717679551
@@ -4364,7 +4364,7 @@ GOOG,2022-12-02,trend-hold,Trend hold / monitor,Hold,6,-0.07696124164742846
 GOOGL,2022-12-02,trend-hold,Trend hold / monitor,Hold,6,-0.07576663107700554
 GS,2022-12-02,trend-hold,Trend hold / monitor,Hold,5,-0.056334995744073524
 HD,2022-12-02,trend-hold,Trend hold / monitor,Hold,7,-0.022896976955547932
-HON,2022-12-02,no-action,No actionable setup,No action,5,-0.034005866762635506
+HON,2022-12-02,no-action,No actionable setup,No action,5,-0.03400582840047317
 IBM,2022-12-02,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.010896583958698747
 INTC,2022-12-02,no-action,No actionable setup,No action,5,-0.03978238974376935
 INTU,2022-12-02,trend-hold,Trend hold / monitor,Hold,5,-0.019832385245059703
@@ -4472,7 +4472,7 @@ GOOG,2023-01-13,no-action,No actionable setup,No action,2,0.09062495426885175
 GOOGL,2023-01-13,no-action,No actionable setup,No action,2,0.08326094160076303
 GS,2023-01-13,trend-hold,Trend hold / monitor,Hold,6,-0.06647054906834893
 HD,2023-01-13,trend-hold,Trend hold / monitor,Hold,4,-0.047492469655413316
-HON,2023-01-13,trend-hold,Trend hold / monitor,Hold,6,-0.05609159557708687
+HON,2023-01-13,trend-hold,Trend hold / monitor,Hold,6,-0.056091564850416886
 IBM,2023-01-13,no-action,No actionable setup,No action,4,-0.027623543739508816
 INTC,2023-01-13,trend-hold,Trend hold / monitor,Hold,5,0.005313844044131599
 INTU,2023-01-13,no-action,No actionable setup,No action,3,0.042699852266699256
@@ -4580,7 +4580,7 @@ GOOG,2023-01-20,trend-hold,Trend hold / monitor,Hold,5,0.014403709939146303
 GOOGL,2023-01-20,trend-hold,Trend hold / monitor,Hold,5,0.01377276218883794
 GS,2023-01-20,no-action,No actionable setup,No action,0,0.03469464075648321
 HD,2023-01-20,no-action,No actionable setup,No action,2,0.005365087115575484
-HON,2023-01-20,no-action,No actionable setup,No action,1,0.030193561704935368
+HON,2023-01-20,no-action,No actionable setup,No action,1,0.030193566006895045
 IBM,2023-01-20,no-action,No actionable setup,No action,1,-0.04822944550834518
 INTC,2023-01-20,trend-hold,Trend hold / monitor,Hold,5,-0.03627650550484196
 INTU,2023-01-20,trend-hold,Trend hold / monitor,Hold,4,0.061672538350706185
@@ -4688,7 +4688,7 @@ GOOG,2023-01-27,trend-hold,Trend hold / monitor,Hold,5,0.04478206908181592
 GOOGL,2023-01-27,trend-hold,Trend hold / monitor,Hold,5,0.05444294941313066
 GS,2023-01-27,no-action,No actionable setup,No action,4,0.045942887868741344
 HD,2023-01-27,no-action,No actionable setup,No action,2,0.04676496714269929
-HON,2023-01-27,no-action,No actionable setup,No action,2,-0.02613753289953702
+HON,2023-01-27,no-action,No actionable setup,No action,2,-0.026137521326967006
 IBM,2023-01-27,no-action,No actionable setup,No action,0,0.01897464888264766
 INTC,2023-01-27,no-action,No actionable setup,No action,3,0.07670454045157293
 INTU,2023-01-27,trend-hold,Trend hold / monitor,Hold,6,0.0026974934021315455
@@ -4796,7 +4796,7 @@ GOOG,2023-02-03,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2023-02-03,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,-0.09744225237087911
 GS,2023-02-03,trend-hold,Trend hold / monitor,Hold,5,0.003595044001569736
 HD,2023-02-03,no-action,No actionable setup,No action,6,-0.045128179351668574
-HON,2023-02-03,no-action,No actionable setup,No action,1,-0.010952664123225708
+HON,2023-02-03,no-action,No actionable setup,No action,1,-0.010952692258933139
 IBM,2023-02-03,no-action,No actionable setup,No action,2,-0.009785280517020434
 INTC,2023-02-03,trend-hold,Trend hold / monitor,Hold,6,-0.08311347239867717
 INTU,2023-02-03,trend-hold,Trend hold / monitor,Hold,7,-0.024164669897984714
@@ -4904,7 +4904,7 @@ GOOG,2023-02-10,no-action,No actionable setup,No action,3,-0.002846344831579861
 GOOGL,2023-02-10,no-action,No actionable setup,No action,4,-0.002326332044126689
 GS,2023-02-10,no-action,No actionable setup,No action,6,-0.007487607165581278
 HD,2023-02-10,no-action,No actionable setup,No action,1,0.004454424793222556
-HON,2023-02-10,no-action,No actionable setup,No action,1,0.004738804101865002
+HON,2023-02-10,no-action,No actionable setup,No action,1,0.004738848418503805
 IBM,2023-02-10,no-action,No actionable setup,No action,1,-0.004277299446520111
 INTC,2023-02-10,no-action,No actionable setup,No action,1,-0.0068344831627080715
 INTU,2023-02-10,trend-hold,Trend hold / monitor,Hold,5,-0.022102883472840285
@@ -5012,7 +5012,7 @@ GOOG,2023-03-31,trend-hold,Trend hold / monitor,Hold,6,0.0283653552715597
 GOOGL,2023-03-31,trend-hold,Trend hold / monitor,Hold,6,0.026125508500636663
 GS,2023-03-31,no-action,No actionable setup,No action,2,-0.006572694178606842
 HD,2023-03-31,no-action,No actionable setup,No action,2,-0.013384324189503527
-HON,2023-03-31,no-action,No actionable setup,No action,2,0.002930082587838223
+HON,2023-03-31,no-action,No actionable setup,No action,2,0.002930083575244824
 IBM,2023-03-31,trend-hold,Trend hold / monitor,Hold,3,-0.00045768220512498736
 INTC,2023-03-31,trend-hold,Trend hold / monitor,Hold,6,-0.004591298426340984
 INTU,2023-03-31,breakout-confirmation-triggered,Breakout Confirmation,Buy now,6,-0.0024897054594656964
@@ -5120,7 +5120,7 @@ GOOG,2023-04-14,trend-hold,Trend hold / monitor,Hold,7,-0.03243189705879379
 GOOGL,2023-04-14,trend-hold,Trend hold / monitor,Hold,7,-0.03178101402758804
 GS,2023-04-14,trend-hold,Trend hold / monitor,Hold,4,0.014068592085556553
 HD,2023-04-14,no-action,No actionable setup,No action,3,0.026866100954599847
-HON,2023-04-14,trend-hold,Trend hold / monitor,Hold,4,-0.0023912467076186994
+HON,2023-04-14,trend-hold,Trend hold / monitor,Hold,4,-0.0023912552195655135
 IBM,2023-04-14,no-action,No actionable setup,No action,1,-0.018807523366583756
 INTC,2023-04-14,trend-hold,Trend hold / monitor,Hold,5,-0.04985889567323143
 INTU,2023-04-14,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,0.010823782510183788
@@ -5228,7 +5228,7 @@ GOOG,2023-04-21,no-action,No actionable setup,No action,3,0.02181094777376713
 GOOGL,2023-04-21,no-action,No actionable setup,No action,3,0.018309388186417586
 GS,2023-04-21,trend-hold,Trend hold / monitor,Hold,6,0.005209854124620383
 HD,2023-04-21,trend-hold,Trend hold / monitor,Hold,5,0.0016664444266110134
-HON,2023-04-21,trend-hold,Trend hold / monitor,Hold,4,0.019175827796032996
+HON,2023-04-21,trend-hold,Trend hold / monitor,Hold,4,0.019175818399245204
 IBM,2023-04-21,no-action,No actionable setup,No action,1,0.005408417140062793
 INTC,2023-04-21,no-action,No actionable setup,No action,3,0.025082516436246705
 INTU,2023-04-21,trend-hold,Trend hold / monitor,Hold,6,-0.005488310311270284
@@ -5336,7 +5336,7 @@ GOOG,2023-04-28,trend-hold,Trend hold / monitor,Hold,7,-0.01852711938824969
 GOOGL,2023-04-28,trend-hold,Trend hold / monitor,Hold,7,-0.016489628316128435
 GS,2023-04-28,trend-hold,Trend hold / monitor,Hold,6,-0.0478104277632474
 HD,2023-04-28,trend-hold,Trend hold / monitor,Hold,6,-0.03633464136972686
-HON,2023-04-28,trend-hold,Trend hold / monitor,Hold,7,-0.007105703568430544
+HON,2023-04-28,trend-hold,Trend hold / monitor,Hold,7,-0.007105675515247656
 IBM,2023-04-28,no-action,No actionable setup,No action,2,-0.021833731953745383
 INTC,2023-04-28,no-action,No actionable setup,No action,3,-0.0022536927246561422
 INTU,2023-04-28,no-action,No actionable setup,No action,5,-0.04054510531605948
@@ -5444,7 +5444,7 @@ GOOG,2023-05-05,no-action,No actionable setup,No action,2,0.11020102842934532
 GOOGL,2023-05-05,no-action,No actionable setup,No action,2,0.11310033604169512
 GS,2023-05-05,no-action,No actionable setup,No action,3,-0.022995502618518793
 HD,2023-05-05,no-action,No actionable setup,No action,2,0.002934901311532956
-HON,2023-05-05,trend-hold,Trend hold / monitor,Hold,7,-0.02419110258741919
+HON,2023-05-05,trend-hold,Trend hold / monitor,Hold,7,-0.0241911253706939
 IBM,2023-05-05,no-action,No actionable setup,No action,0,-0.006550789955459546
 INTC,2023-05-05,no-action,No actionable setup,No action,3,-0.06582765483205766
 INTU,2023-05-05,no-action,No actionable setup,No action,2,0.0039206077293043595
@@ -5552,7 +5552,7 @@ GOOG,2023-05-12,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2023-05-12,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.04467704794961724
 GS,2023-05-12,no-action,No actionable setup,No action,1,0.020813752414661657
 HD,2023-05-12,no-action,No actionable setup,No action,2,0.0014115180926992377
-HON,2023-05-12,no-action,No actionable setup,No action,2,0.019264524043885345
+HON,2023-05-12,no-action,No actionable setup,No action,2,0.019264596014840984
 IBM,2023-05-12,no-action,No actionable setup,No action,0,0.03598181317249427
 INTC,2023-05-12,no-action,No actionable setup,No action,1,0.03385145134403178
 INTU,2023-05-12,no-action,No actionable setup,No action,2,0.04305225170086868
@@ -5660,7 +5660,7 @@ GOOG,2023-05-19,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2023-05-19,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.015070042700618957
 GS,2023-05-19,no-action,No actionable setup,No action,3,0.017967242001545092
 HD,2023-05-19,no-action,No actionable setup,No action,3,0.00670373231820709
-HON,2023-05-19,trend-hold,Trend hold / monitor,Hold,5,-0.018241676765838988
+HON,2023-05-19,trend-hold,Trend hold / monitor,Hold,5,-0.018241732922102294
 IBM,2023-05-19,trend-hold,Trend hold / monitor,Hold,4,0.012808401902060895
 INTC,2023-05-19,no-action,No actionable setup,No action,2,-0.031072512385339257
 INTU,2023-05-19,trend-hold,Trend hold / monitor,Hold,5,-0.06187925964408625
@@ -5768,7 +5768,7 @@ GOOG,2023-05-26,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2023-05-26,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.0112350655567095
 GS,2023-05-26,no-action,No actionable setup,No action,3,-0.03072200206925002
 HD,2023-05-26,no-action,No actionable setup,No action,3,0.0009221034171080777
-HON,2023-05-26,no-action,No actionable setup,No action,1,0.017703164332833365
+HON,2023-05-26,no-action,No actionable setup,No action,1,0.017703188004032366
 IBM,2023-05-26,trend-hold,Trend hold / monitor,Hold,5,0.02909457690866568
 INTC,2023-05-26,no-action,No actionable setup,No action,0,0.029655193460398577
 INTU,2023-05-26,no-action,No actionable setup,No action,0,0.05833712709266359
@@ -5876,7 +5876,7 @@ GOOG,2023-06-02,trend-hold,Trend hold / monitor,Hold,8,-0.018845328971404895
 GOOGL,2023-06-02,trend-hold,Trend hold / monitor,Hold,8,-0.019571627880391906
 GS,2023-06-02,no-action,No actionable setup,No action,1,0.03822028534053956
 HD,2023-06-02,no-action,No actionable setup,No action,4,0.004764491621535916
-HON,2023-06-02,no-action,No actionable setup,No action,6,-0.0048277257371101
+HON,2023-06-02,no-action,No actionable setup,No action,6,-0.004827793233093569
 IBM,2023-06-02,trend-hold,Trend hold / monitor,Hold,5,0.021749017690954053
 INTC,2023-06-02,no-action,No actionable setup,No action,4,0.0009581822790556416
 INTU,2023-06-02,no-action,No actionable setup,No action,3,0.0024623047751159977
@@ -5984,7 +5984,7 @@ GOOG,2023-06-09,no-action,No actionable setup,No action,5,0.009684990521779957
 GOOGL,2023-06-09,no-action,No actionable setup,No action,5,0.01063564907682335
 GS,2023-06-09,trend-hold,Trend hold / monitor,Hold,5,0.0068150961841400015
 HD,2023-06-09,trend-hold,Trend hold / monitor,Hold,4,0.010190007456203132
-HON,2023-06-09,no-action,No actionable setup,No action,4,0.02567081322896647
+HON,2023-06-09,no-action,No actionable setup,No action,4,0.025670836559315457
 IBM,2023-06-09,trend-hold,Trend hold / monitor,Hold,7,0.016112288445014444
 INTC,2023-06-09,trend-hold,Trend hold / monitor,Hold,6,0.1604977267009211
 INTU,2023-06-09,no-action,No actionable setup,No action,3,0.05440855439808856
@@ -6092,7 +6092,7 @@ GOOG,2023-06-16,no-action,No actionable setup,No action,5,-0.040061271308310276
 GOOGL,2023-06-16,no-action,No actionable setup,No action,5,-0.04201410582605847
 GS,2023-06-16,no-action,No actionable setup,No action,4,-0.07670483401111083
 HD,2023-06-16,no-action,No actionable setup,No action,5,0.025001696662715345
-HON,2023-06-16,no-action,No actionable setup,No action,6,-0.0019215000622154754
+HON,2023-06-16,no-action,No actionable setup,No action,6,-0.0019214632078775606
 IBM,2023-06-16,trend-hold,Trend hold / monitor,Hold,8,-0.044661038554415056
 INTC,2023-06-16,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.08331038955958125
 INTU,2023-06-16,no-action,No actionable setup,No action,6,-0.003801971278749261
@@ -6200,7 +6200,7 @@ GOOG,2023-06-23,no-action,No actionable setup,No action,4,-0.01666392032436148
 GOOGL,2023-06-23,no-action,No actionable setup,No action,4,-0.02157920114985956
 GS,2023-06-23,no-action,No actionable setup,No action,0,0.024880103277437282
 HD,2023-06-23,no-action,No actionable setup,No action,4,0.0326784919704306
-HON,2023-06-23,trend-hold,Trend hold / monitor,Hold,5,0.0370333390834412
+HON,2023-06-23,trend-hold,Trend hold / monitor,Hold,5,0.03703335397935703
 IBM,2023-06-23,no-action,No actionable setup,No action,3,0.03384072572563834
 INTC,2023-06-23,trend-hold,Trend hold / monitor,Hold,6,0.013333291718454099
 INTU,2023-06-23,trend-hold,Trend hold / monitor,Hold,7,0.012149594579818235
@@ -6308,7 +6308,7 @@ GOOG,2023-06-30,no-action,No actionable setup,No action,3,-0.033892687713880876
 GOOGL,2023-06-30,no-action,No actionable setup,No action,3,-0.027151212053959206
 GS,2023-06-30,no-action,No actionable setup,No action,2,-0.018819393450141053
 HD,2023-06-30,trend-hold,Trend hold / monitor,Hold,7,-0.0011589487901231266
-HON,2023-06-30,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.0011565988316979414
+HON,2023-06-30,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.0011566529791040558
 IBM,2023-06-30,no-action,No actionable setup,No action,4,-0.0068007150340981815
 INTC,2023-06-30,trend-hold,Trend hold / monitor,Hold,6,-0.020932923953025817
 INTU,2023-06-30,trend-hold,Trend hold / monitor,Hold,8,0.013400519649366505
@@ -6416,7 +6416,7 @@ GOOG,2023-07-07,no-action,No actionable setup,No action,4,0.04627932068287355
 GOOGL,2023-07-07,no-action,No actionable setup,No action,4,0.04971538872715486
 GS,2023-07-07,no-action,No actionable setup,No action,0,0.034965220497408245
 HD,2023-07-07,no-action,No actionable setup,No action,3,0.045209876000732896
-HON,2023-07-07,trend-hold,Trend hold / monitor,Hold,5,0.014169024228049887
+HON,2023-07-07,trend-hold,Trend hold / monitor,Hold,5,0.014169068978872046
 IBM,2023-07-07,no-action,No actionable setup,No action,2,0.009993882852288971
 INTC,2023-07-07,no-action,No actionable setup,No action,3,0.04081636197296623
 INTU,2023-07-07,no-action,No actionable setup,No action,6,0.0798768102767955
@@ -6524,7 +6524,7 @@ GOOG,2023-07-14,trend-hold,Trend hold / monitor,Hold,6,-0.042879868898229256
 GOOGL,2023-07-14,trend-hold,Trend hold / monitor,Hold,6,-0.043055346872234224
 GS,2023-07-14,no-action,No actionable setup,No action,3,0.07900300076885691
 HD,2023-07-14,trend-hold,Trend hold / monitor,Hold,7,0.012543447774733485
-HON,2023-07-14,trend-hold,Trend hold / monitor,Hold,7,0.011933666250814268
+HON,2023-07-14,trend-hold,Trend hold / monitor,Hold,7,0.011933669938638314
 IBM,2023-07-14,no-action,No actionable setup,No action,3,0.041529301337305924
 INTC,2023-07-14,no-action,No actionable setup,No action,3,0.0262443104627188
 INTU,2023-07-14,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.017624328914666476
@@ -6632,7 +6632,7 @@ GOOG,2023-07-21,no-action,No actionable setup,No action,1,0.10556061180249787
 GOOGL,2023-07-21,no-action,No actionable setup,No action,1,0.10464927128219403
 GS,2023-07-21,trend-hold,Trend hold / monitor,Hold,6,0.0036084201673021177
 HD,2023-07-21,trend-hold,Trend hold / monitor,Hold,7,0.034012524900818075
-HON,2023-07-21,trend-hold,Trend hold / monitor,Hold,7,-0.06428572814475308
+HON,2023-07-21,trend-hold,Trend hold / monitor,Hold,7,-0.0642857299604046
 IBM,2023-07-21,trend-hold,Trend hold / monitor,Hold,7,0.03246001459326231
 INTC,2023-07-21,trend-hold,Trend hold / monitor,Hold,6,0.08259851074310465
 INTU,2023-07-21,trend-hold,Trend hold / monitor,Hold,8,0.03922684917399866
@@ -6740,7 +6740,7 @@ GOOG,2023-07-28,trend-hold,Trend hold / monitor,Hold,6,-0.03360650631763906
 GOOGL,2023-07-28,trend-hold,Trend hold / monitor,Hold,6,-0.03371550127446221
 GS,2023-07-28,trend-hold,Trend hold / monitor,Hold,8,-2.8337811945999825e-05
 HD,2023-07-28,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,-0.01490781457041468
-HON,2023-07-28,no-action,No actionable setup,No action,1,-0.0306368568585772
+HON,2023-07-28,no-action,No actionable setup,No action,1,-0.030636793138696716
 IBM,2023-07-28,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.005507205031220153
 INTC,2023-07-28,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.04588656957332149
 INTU,2023-07-28,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.029032481747973238
@@ -6848,7 +6848,7 @@ GOOG,2023-09-01,trend-hold,Trend hold / monitor,Hold,8,0.006871362722489227
 GOOGL,2023-09-01,trend-hold,Trend hold / monitor,Hold,8,0.009287884953727676
 GS,2023-09-01,no-action,No actionable setup,No action,1,-0.008399511457747533
 HD,2023-09-01,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.014140721883499352
-HON,2023-09-01,trend-hold,Trend hold / monitor,Hold,2,-0.01157177746128324
+HON,2023-09-01,trend-hold,Trend hold / monitor,Hold,2,-0.011571700636148763
 IBM,2023-09-01,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.0029741951746993234
 INTC,2023-09-01,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.054083570314841234
 INTU,2023-09-01,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.0005458293418753035
@@ -6956,7 +6956,7 @@ GOOG,2023-11-03,no-action,No actionable setup,No action,2,0.02830407746881769
 GOOGL,2023-11-03,no-action,No actionable setup,No action,2,0.027033230591613222
 GS,2023-11-03,trend-hold,Trend hold / monitor,Hold,5,-0.006440343639000923
 HD,2023-11-03,trend-hold,Trend hold / monitor,Hold,3,-0.013598962189626307
-HON,2023-11-03,trend-hold,Trend hold / monitor,Hold,5,-0.01206409937807329
+HON,2023-11-03,trend-hold,Trend hold / monitor,Hold,5,-0.01206412356752573
 IBM,2023-11-03,trend-hold,Trend hold / monitor,Hold,6,0.007572754713975671
 INTC,2023-11-03,trend-hold,Trend hold / monitor,Hold,6,0.018877850871139135
 INTU,2023-11-03,no-action,No actionable setup,No action,2,0.060941614586827786
@@ -7064,7 +7064,7 @@ GOOG,2023-11-10,no-action,No actionable setup,No action,3,0.021482954910197805
 GOOGL,2023-11-10,no-action,No actionable setup,No action,3,0.02051437737256978
 GS,2023-11-10,trend-hold,Trend hold / monitor,Hold,5,0.042026334875634674
 HD,2023-11-10,no-action,No actionable setup,No action,1,0.053774110472608605
-HON,2023-11-10,trend-hold,Trend hold / monitor,Hold,3,0.024101578724205153
+HON,2023-11-10,trend-hold,Trend hold / monitor,Hold,3,0.02410154698829947
 IBM,2023-11-10,trend-hold,Trend hold / monitor,Hold,7,0.025969634990157253
 INTC,2023-11-10,trend-hold,Trend hold / monitor,Hold,6,0.1273803573132437
 INTU,2023-11-10,no-action,No actionable setup,No action,4,0.05912374525898256
@@ -7172,7 +7172,7 @@ GOOG,2023-11-17,no-action,No actionable setup,No action,5,0.008105744052593566
 GOOGL,2023-11-17,no-action,No actionable setup,No action,4,0.008129525706622509
 GS,2023-11-17,trend-hold,Trend hold / monitor,Hold,5,-0.00436336854174757
 HD,2023-11-17,trend-hold,Trend hold / monitor,Hold,6,0.01187888353750055
-HON,2023-11-17,trend-hold,Trend hold / monitor,Hold,4,0.009204545002335474
+HON,2023-11-17,trend-hold,Trend hold / monitor,Hold,4,0.009204510459903226
 IBM,2023-11-17,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.01752899434409816
 INTC,2023-11-17,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.00616298674503768
 INTU,2023-11-17,trend-hold,Trend hold / monitor,Hold,6,0.0019101816900841673
@@ -7280,7 +7280,7 @@ GOOG,2023-11-24,trend-hold,Trend hold / monitor,Hold,5,-0.03545068624808001
 GOOGL,2023-11-24,trend-hold,Trend hold / monitor,Hold,5,-0.035335443300801184
 GS,2023-11-24,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.027362520850079397
 HD,2023-11-24,trend-hold,Trend hold / monitor,Hold,6,0.028709309815580397
-HON,2023-11-24,trend-hold,Trend hold / monitor,Hold,5,0.022594421816391375
+HON,2023-11-24,trend-hold,Trend hold / monitor,Hold,5,0.022594462718805275
 IBM,2023-11-24,no-action,No actionable setup,No action,6,0.034605043365327104
 INTC,2023-11-24,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.0050044906867062755
 INTU,2023-11-24,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.018171503300845604
@@ -7388,7 +7388,7 @@ GOOG,2023-12-01,no-action,No actionable setup,No action,3,0.02490242936572784
 GOOGL,2023-12-01,no-action,No actionable setup,No action,3,0.023737334053726578
 GS,2023-12-01,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.006888023267037191
 HD,2023-12-01,trend-hold,Trend hold / monitor,Hold,7,0.0214317195674949
-HON,2023-12-01,trend-hold,Trend hold / monitor,Hold,6,-0.016027909132425355
+HON,2023-12-01,trend-hold,Trend hold / monitor,Hold,6,-0.016027900639653203
 IBM,2023-12-01,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.00878233344944146
 INTC,2023-12-01,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.023776883301752094
 INTU,2023-12-01,trend-hold,Trend hold / monitor,Hold,8,-0.000731269857919381
@@ -7496,7 +7496,7 @@ GOOG,2023-12-08,no-action,No actionable setup,No action,6,-0.020491825704515687
 GOOGL,2023-12-08,no-action,No actionable setup,No action,6,-0.0177050099443804
 GS,2023-12-08,trend-hold,Trend hold / monitor,Hold,8,0.08459944796436525
 HD,2023-12-08,trend-hold,Trend hold / monitor,Hold,8,0.08432627401096426
-HON,2023-12-08,trend-hold,Trend hold / monitor,Hold,4,0.045167260669888076
+HON,2023-12-08,trend-hold,Trend hold / monitor,Hold,4,0.045167222951363994
 IBM,2023-12-08,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.0016670103882427956
 INTC,2023-12-08,trend-hold,Trend hold / monitor,Hold,7,0.08103042207614397
 INTU,2023-12-08,trend-hold,Trend hold / monitor,Hold,7,0.060306645546667204
@@ -7604,7 +7604,7 @@ GOOG,2023-12-15,no-action,No actionable setup,No action,2,0.06634791636122106
 GOOGL,2023-12-15,no-action,No actionable setup,No action,2,0.06704373288420795
 GS,2023-12-15,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.0003678855411599624
 HD,2023-12-15,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.015282496220647923
-HON,2023-12-15,trend-hold,Trend hold / monitor,Hold,7,0.01101281157371603
+HON,2023-12-15,trend-hold,Trend hold / monitor,Hold,7,0.011012810031371112
 IBM,2023-12-15,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.0005547453631310484
 INTC,2023-12-15,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.03986135525715451
 INTU,2023-12-15,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.02557065177052209
@@ -7712,7 +7712,7 @@ GOOG,2023-12-22,trend-hold,Trend hold / monitor,Hold,6,-0.022141281075402475
 GOOGL,2023-12-22,trend-hold,Trend hold / monitor,Hold,6,-0.02346460665293526
 GS,2023-12-22,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.020097186442001425
 HD,2023-12-22,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.010069163781231238
-HON,2023-12-22,trend-hold,Trend hold / monitor,Hold,7,0.016339236628937437
+HON,2023-12-22,trend-hold,Trend hold / monitor,Hold,7,0.016339236628692078
 IBM,2023-12-22,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.00394720236867907
 INTC,2023-12-22,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.004166682561238644
 INTU,2023-12-22,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.032544421812026325
@@ -7820,7 +7820,7 @@ GOOG,2023-12-29,trend-hold,Trend hold / monitor,Hold,6,-0.0028382453506868854
 GOOGL,2023-12-29,trend-hold,Trend hold / monitor,Hold,6,-0.0060849458705690695
 GS,2023-12-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.00800994485286699
 HD,2023-12-29,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.003982123593774034
-HON,2023-12-29,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.03361782241368805
+HON,2023-12-29,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.03361786670188327
 IBM,2023-12-29,trend-hold,Trend hold / monitor,Hold,6,-0.014735576992601418
 INTC,2023-12-29,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.03582088033951336
 INTU,2023-12-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.04263799044030303
@@ -7928,7 +7928,7 @@ GOOG,2024-01-12,trend-hold,Trend hold / monitor,Hold,8,0.02405713455735814
 GOOGL,2024-01-12,trend-hold,Trend hold / monitor,Hold,8,0.02341403252427332
 GS,2024-01-12,no-action,No actionable setup,No action,5,0.02173392840523669
 HD,2024-01-12,trend-hold,Trend hold / monitor,Hold,7,0.0027550842255492647
-HON,2024-01-12,no-action,No actionable setup,No action,3,-0.00029835188358595666
+HON,2024-01-12,no-action,No actionable setup,No action,3,-0.0002984227526671157
 IBM,2024-01-12,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.04240047436610905
 INTC,2024-01-12,no-action,No actionable setup,No action,7,0.02334470105588271
 INTU,2024-01-12,trend-hold,Trend hold / monitor,Hold,6,0.03074533823782777
@@ -8036,7 +8036,7 @@ GOOG,2024-01-19,trend-hold,Trend hold / monitor,Hold,8,0.03933224313993855
 GOOGL,2024-01-19,trend-hold,Trend hold / monitor,Hold,8,0.03969119664427567
 GS,2024-01-19,no-action,No actionable setup,No action,4,-0.01153847075159331
 HD,2024-01-19,trend-hold,Trend hold / monitor,Hold,7,-0.019618707533718083
-HON,2024-01-19,no-action,No actionable setup,No action,3,0.005080146378656947
+HON,2024-01-19,no-action,No actionable setup,No action,3,0.005080208579850476
 IBM,2024-01-19,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.09295546325259418
 INTC,2024-01-19,trend-hold,Trend hold / monitor,Hold,7,-0.09345794096354099
 INTU,2024-01-19,trend-hold,Trend hold / monitor,Hold,6,0.03082708042940241
@@ -8144,7 +8144,7 @@ GOOG,2024-01-26,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2024-01-26,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.06445888298326719
 GS,2024-01-26,no-action,No actionable setup,No action,3,0.026654957989560524
 HD,2024-01-26,trend-hold,Trend hold / monitor,Hold,5,0.005432094735910775
-HON,2024-01-26,no-action,No actionable setup,No action,4,-0.02819617561790544
+HON,2024-01-26,no-action,No actionable setup,No action,4,-0.028196245566690425
 IBM,2024-01-26,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.008697070209888524
 INTC,2024-01-26,no-action,No actionable setup,No action,1,-0.02405505189124202
 INTU,2024-01-26,trend-hold,Trend hold / monitor,Hold,6,-0.0027753029536806695
@@ -8252,7 +8252,7 @@ GOOG,2024-02-02,no-action,No actionable setup,No action,4,0.046537607963059946
 GOOGL,2024-02-02,no-action,No actionable setup,No action,4,0.04649525839415558
 GS,2024-02-02,no-action,No actionable setup,No action,6,-0.009281636987312325
 HD,2024-02-02,trend-hold,Trend hold / monitor,Hold,6,0.0165719080930824
-HON,2024-02-02,no-action,No actionable setup,No action,2,-0.0064759949579600296
+HON,2024-02-02,no-action,No actionable setup,No action,2,-0.006475979136751242
 IBM,2024-02-02,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,0.0029603480899575985
 INTC,2024-02-02,no-action,No actionable setup,No action,1,0.016666735319280424
 INTU,2024-02-02,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.029050244782862666
@@ -8360,7 +8360,7 @@ GOOG,2024-02-09,trend-hold,Trend hold / monitor,Hold,6,-0.05631744538090999
 GOOGL,2024-02-09,trend-hold,Trend hold / monitor,Hold,6,-0.05691272300361783
 GS,2024-02-09,no-action,No actionable setup,No action,5,0.0004684137594517246
 HD,2024-02-09,no-action,No actionable setup,No action,6,-0.0022029128635943085
-HON,2024-02-09,no-action,No actionable setup,No action,1,0.011958548904208222
+HON,2024-02-09,no-action,No actionable setup,No action,1,0.011958539698460946
 IBM,2024-02-09,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.0069765110942714426
 INTC,2024-02-09,no-action,No actionable setup,No action,1,0.004617800551849571
 INTU,2024-02-09,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.00367689165081575
@@ -8468,7 +8468,7 @@ GOOG,2024-02-16,no-action,No actionable setup,No action,2,-0.021233032050454792
 GOOGL,2024-02-16,no-action,No actionable setup,No action,2,-0.020993430533365887
 GS,2024-02-16,no-action,No actionable setup,No action,6,0.015034852623532213
 HD,2024-02-16,no-action,No actionable setup,No action,4,0.025527804178806734
-HON,2024-02-16,no-action,No actionable setup,No action,2,0.010244912789205918
+HON,2024-02-16,no-action,No actionable setup,No action,2,0.01024498803682139
 IBM,2024-02-16,trend-hold,Trend hold / monitor,Hold,8,-0.018706003614651356
 INTC,2024-02-16,no-action,No actionable setup,No action,1,-0.011951198876720248
 INTU,2024-02-16,trend-hold,Trend hold / monitor,Hold,6,0.012352512797333848
@@ -8576,7 +8576,7 @@ GOOG,2024-02-23,no-action,No actionable setup,No action,4,-0.04962483163502407
 GOOGL,2024-02-23,no-action,No actionable setup,No action,4,-0.04737431929809577
 GS,2024-02-23,trend-hold,Trend hold / monitor,Hold,6,-0.007543745765349219
 HD,2024-02-23,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.033578936011620986
-HON,2024-02-23,no-action,No actionable setup,No action,3,-0.00976926204734585
+HON,2024-02-23,no-action,No actionable setup,No action,3,-0.009769260161320403
 IBM,2024-02-23,no-action,No actionable setup,No action,4,0.013353412186293934
 INTC,2024-02-23,no-action,No actionable setup,No action,0,0.01930676864274594
 INTU,2024-02-23,trend-hold,Trend hold / monitor,Hold,5,0.010169627616259946
@@ -8684,7 +8684,7 @@ GOOG,2024-03-01,no-action,No actionable setup,No action,0,-0.012963561132567247
 GOOGL,2024-03-01,no-action,No actionable setup,No action,0,-0.01261481504476103
 GS,2024-03-01,no-action,No actionable setup,No action,5,-0.002860128450615229
 HD,2024-03-01,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.028872430097721447
-HON,2024-03-01,no-action,No actionable setup,No action,3,0.010469644363103159
+HON,2024-03-01,no-action,No actionable setup,No action,3,0.010469632305960319
 IBM,2024-03-01,no-action,No actionable setup,No action,6,0.04117959684203054
 INTC,2024-03-01,no-action,No actionable setup,No action,3,0.004107720365799983
 INTU,2024-03-01,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.022189939730394848
@@ -8792,7 +8792,7 @@ GOOG,2024-03-08,no-action,No actionable setup,No action,0,0.04314333533253456
 GOOGL,2024-03-08,no-action,No actionable setup,No action,0,0.042611246271507586
 GS,2024-03-08,no-action,No actionable setup,No action,4,0.0005684933105631895
 HD,2024-03-08,trend-hold,Trend hold / monitor,Hold,5,-0.00032140113894685296
-HON,2024-03-08,trend-hold,Trend hold / monitor,Hold,6,-0.015242877897540752
+HON,2024-03-08,trend-hold,Trend hold / monitor,Hold,6,-0.01524282719100245
 IBM,2024-03-08,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,-0.024904259760271552
 INTC,2024-03-08,trend-hold,Trend hold / monitor,Hold,4,-0.03090910478071729
 INTU,2024-03-08,no-action,No actionable setup,No action,3,-0.040215981653396904
@@ -8900,7 +8900,7 @@ GOOG,2024-03-15,no-action,No actionable setup,No action,3,0.06752483806117526
 GOOGL,2024-03-15,no-action,No actionable setup,No action,3,0.06792755414503437
 GS,2024-03-15,no-action,No actionable setup,No action,5,0.050644395294266564
 HD,2024-03-15,no-action,No actionable setup,No action,5,0.045682253010445484
-HON,2024-03-15,no-action,No actionable setup,No action,1,0.015377598980062634
+HON,2024-03-15,no-action,No actionable setup,No action,1,0.015377577260305975
 IBM,2024-03-15,trend-hold,Trend hold / monitor,Hold,6,-0.0012038047705613675
 INTC,2024-03-15,no-action,No actionable setup,No action,0,-0.0016416438983629655
 INTU,2024-03-15,no-action,No actionable setup,No action,2,0.029127717953421506
@@ -9008,7 +9008,7 @@ GOOG,2024-03-22,trend-hold,Trend hold / monitor,Hold,5,0.03116555046705849
 GOOGL,2024-03-22,trend-hold,Trend hold / monitor,Hold,5,0.03130596993400281
 GS,2024-03-22,trend-hold,Trend hold / monitor,Hold,7,0.01644462494705845
 HD,2024-03-22,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.05701035172079716
-HON,2024-03-22,no-action,No actionable setup,No action,6,0.006376787795577821
+HON,2024-03-22,no-action,No actionable setup,No action,6,0.006376719008325482
 IBM,2024-03-22,no-action,No actionable setup,No action,5,-0.005292362849597443
 INTC,2024-03-22,no-action,No actionable setup,No action,0,0.04580692452240109
 INTU,2024-03-22,no-action,No actionable setup,No action,4,-0.006058289741307399
@@ -9116,7 +9116,7 @@ GOOG,2024-04-05,trend-hold,Trend hold / monitor,Hold,8,0.03410419589929714
 GOOGL,2024-04-05,trend-hold,Trend hold / monitor,Hold,8,0.03429505395107579
 GS,2024-04-05,trend-hold,Trend hold / monitor,Hold,7,-0.045531444988265335
 HD,2024-04-05,no-action,No actionable setup,No action,2,-0.0419146623205674
-HON,2024-04-05,no-action,No actionable setup,No action,2,-0.005021519448554224
+HON,2024-04-05,no-action,No actionable setup,No action,2,-0.005021507811432402
 IBM,2024-04-05,no-action,No actionable setup,No action,3,-0.03632227524244913
 INTC,2024-04-05,no-action,No actionable setup,No action,0,-0.07801603020380987
 INTU,2024-04-05,no-action,No actionable setup,No action,1,-0.023012560335269994
@@ -9224,7 +9224,7 @@ GOOG,2024-05-10,trend-hold,Trend hold / monitor,Hold,8,0.04110634961525972
 GOOGL,2024-05-10,trend-hold,Trend hold / monitor,Hold,8,0.04393717124388141
 GS,2024-05-10,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.0285663798749487
 HD,2024-05-10,trend-hold,Trend hold / monitor,Hold,3,-0.006408224656173966
-HON,2024-05-10,trend-hold,Trend hold / monitor,Hold,6,0.015030486695699175
+HON,2024-05-10,trend-hold,Trend hold / monitor,Hold,6,0.015030569087717272
 IBM,2024-05-10,no-action,No actionable setup,No action,1,0.011247412213348795
 INTC,2024-05-10,no-action,No actionable setup,No action,0,0.066331642108302
 INTU,2024-05-10,trend-hold,Trend hold / monitor,Hold,4,0.04565797667071081
@@ -9332,7 +9332,7 @@ GOOG,2024-05-17,trend-hold,Trend hold / monitor,Hold,8,-0.0054148090215603295
 GOOGL,2024-05-17,trend-hold,Trend hold / monitor,Hold,8,-0.006077428605402502
 GS,2024-05-17,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.013982742939906423
 HD,2024-05-17,no-action,No actionable setup,No action,2,-0.055518392335965894
-HON,2024-05-17,trend-hold,Trend hold / monitor,Hold,6,-0.03048980442659155
+HON,2024-05-17,trend-hold,Trend hold / monitor,Hold,6,-0.030489871059269813
 IBM,2024-05-17,no-action,No actionable setup,No action,1,0.011003967483784738
 INTC,2024-05-17,no-action,No actionable setup,No action,2,-0.03487278080465428
 INTU,2024-05-17,trend-hold,Trend hold / monitor,Hold,6,-0.08195953150684498
@@ -9440,7 +9440,7 @@ GOOG,2024-05-24,no-action,No actionable setup,No action,5,-0.010831983453044924
 GOOGL,2024-05-24,no-action,No actionable setup,No action,5,-0.010400635848256234
 GS,2024-05-24,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.013443735174808236
 HD,2024-05-24,no-action,No actionable setup,No action,0,0.00895110306821345
-HON,2024-05-24,no-action,No actionable setup,No action,4,0.01387143893610121
+HON,2024-05-24,no-action,No actionable setup,No action,4,0.013871522052155472
 IBM,2024-05-24,trend-hold,Trend hold / monitor,Hold,3,-0.032828138746493485
 INTC,2024-05-24,no-action,No actionable setup,No action,0,-0.013997343992134148
 INTU,2024-05-24,no-action,No actionable setup,No action,2,-0.06552005827294405
@@ -9548,7 +9548,7 @@ GOOG,2024-05-31,no-action,No actionable setup,No action,4,0.011439354780252264
 GOOGL,2024-05-31,no-action,No actionable setup,No action,4,0.011362357761548925
 GS,2024-05-31,no-action,No actionable setup,No action,5,-0.0035266480993327853
 HD,2024-05-31,no-action,No actionable setup,No action,1,-0.02341205976112315
-HON,2024-05-31,trend-hold,Trend hold / monitor,Hold,6,0.032593100065410274
+HON,2024-05-31,trend-hold,Trend hold / monitor,Hold,6,0.03259308698905805
 IBM,2024-05-31,no-action,No actionable setup,No action,1,0.018939096719959414
 INTC,2024-05-31,no-action,No actionable setup,No action,2,-0.0035656599348904416
 INTU,2024-05-31,no-action,No actionable setup,No action,1,-0.0044063181191210665
@@ -9656,7 +9656,7 @@ GOOG,2024-06-07,trend-hold,Trend hold / monitor,Hold,6,0.013753897191923103
 GOOGL,2024-06-07,trend-hold,Trend hold / monitor,Hold,6,0.013355419480678199
 GS,2024-06-07,no-action,No actionable setup,No action,3,-0.01857512945199513
 HD,2024-06-07,no-action,No actionable setup,No action,0,0.060575475132368384
-HON,2024-06-07,trend-hold,Trend hold / monitor,Hold,7,-0.0011974299223950213
+HON,2024-06-07,trend-hold,Trend hold / monitor,Hold,7,-0.0011974327112832528
 IBM,2024-06-07,trend-hold,Trend hold / monitor,Hold,3,-0.004705533902811698
 INTC,2024-06-07,no-action,No actionable setup,No action,1,-0.009433930069549956
 INTU,2024-06-07,no-action,No actionable setup,No action,0,0.037985688910234794
@@ -9764,7 +9764,7 @@ GOOG,2024-06-14,trend-hold,Trend hold / monitor,Hold,6,0.013567294024734444
 GOOGL,2024-06-14,trend-hold,Trend hold / monitor,Hold,6,0.013745166733715397
 GS,2024-06-14,no-action,No actionable setup,No action,3,0.03500874699180101
 HD,2024-06-14,trend-hold,Trend hold / monitor,Hold,4,0.011648046902255516
-HON,2024-06-14,trend-hold,Trend hold / monitor,Hold,5,0.035294640096188656
+HON,2024-06-14,trend-hold,Trend hold / monitor,Hold,5,0.03529468495389576
 IBM,2024-06-14,no-action,No actionable setup,No action,2,0.03427686048601419
 INTC,2024-06-14,no-action,No actionable setup,No action,0,0.0039408515230914265
 INTU,2024-06-14,no-action,No actionable setup,No action,1,0.047305677519421385
@@ -9872,7 +9872,7 @@ GOOG,2024-06-21,trend-hold,Trend hold / monitor,Hold,6,0.017530254956207525
 GOOGL,2024-06-21,trend-hold,Trend hold / monitor,Hold,6,0.014028775511729874
 GS,2024-06-21,no-action,No actionable setup,No action,4,0.004753686710325722
 HD,2024-06-21,trend-hold,Trend hold / monitor,Hold,7,-0.032490157265885666
-HON,2024-06-21,trend-hold,Trend hold / monitor,Hold,8,-0.0072063141525743335
+HON,2024-06-21,trend-hold,Trend hold / monitor,Hold,8,-0.0072063000518299836
 IBM,2024-06-21,no-action,No actionable setup,No action,3,0.0028411818120126497
 INTC,2024-06-21,no-action,No actionable setup,No action,2,-0.0038597889560771925
 INTU,2024-06-21,no-action,No actionable setup,No action,3,0.039642484522280474
@@ -9980,7 +9980,7 @@ GOOG,2024-06-28,trend-hold,Trend hold / monitor,Hold,7,0.03849088228695141
 GOOGL,2024-06-28,trend-hold,Trend hold / monitor,Hold,7,0.03777109587345007
 GS,2024-06-28,no-action,No actionable setup,No action,5,0.027635301993263583
 HD,2024-06-28,trend-hold,Trend hold / monitor,Hold,5,-0.013478922445065877
-HON,2024-06-28,trend-hold,Trend hold / monitor,Hold,6,-0.008944448618491974
+HON,2024-06-28,trend-hold,Trend hold / monitor,Hold,6,-0.008944406028715268
 IBM,2024-06-28,trend-hold,Trend hold / monitor,Hold,5,0.02711767865951331
 INTC,2024-06-28,trend-hold,Trend hold / monitor,Hold,2,0.09751380148755961
 INTU,2024-06-28,trend-hold,Trend hold / monitor,Hold,6,0.0036061457341654
@@ -10088,7 +10088,7 @@ GOOG,2024-07-05,trend-hold,Trend hold / monitor,Hold,8,-0.02698482888829834
 GOOGL,2024-07-05,trend-hold,Trend hold / monitor,Hold,8,-0.029013633799641503
 GS,2024-07-05,no-action,No actionable setup,No action,6,0.03255514767684242
 HD,2024-07-05,no-action,No actionable setup,No action,2,0.07528843162280863
-HON,2024-07-05,no-action,No actionable setup,No action,5,0.013522383589946507
+HON,2024-07-05,no-action,No actionable setup,No action,5,0.013522404084558515
 IBM,2024-07-05,trend-hold,Trend hold / monitor,Hold,6,0.03868877055617248
 INTC,2024-07-05,trend-hold,Trend hold / monitor,Hold,5,0.07713932496538245
 INTU,2024-07-05,trend-hold,Trend hold / monitor,Hold,6,-0.04007474810163547
@@ -10196,7 +10196,7 @@ GOOG,2024-07-12,trend-hold,Trend hold / monitor,Hold,6,-0.03956526093771218
 GOOGL,2024-07-12,trend-hold,Trend hold / monitor,Hold,6,-0.04003892240155371
 GS,2024-07-12,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.010523438654632011
 HD,2024-07-12,trend-hold,Trend hold / monitor,Hold,7,0.009978587562939234
-HON,2024-07-12,trend-hold,Trend hold / monitor,Hold,6,-0.0023243868323379324
+HON,2024-07-12,trend-hold,Trend hold / monitor,Hold,6,-0.0023243921648519184
 IBM,2024-07-12,trend-hold,Trend hold / monitor,Hold,8,0.00229720595492533
 INTC,2024-07-12,trend-hold,Trend hold / monitor,Hold,6,-0.0437808658378005
 INTU,2024-07-12,trend-hold,Trend hold / monitor,Hold,7,-0.008396315205145943
@@ -10304,7 +10304,7 @@ GOOG,2024-08-16,no-action,No actionable setup,No action,0,0.016328682122866756
 GOOGL,2024-08-16,no-action,No actionable setup,No action,0,0.016322952219748332
 GS,2024-08-16,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.010232823468408148
 HD,2024-08-16,trend-hold,Trend hold / monitor,Hold,5,0.03736949364892839
-HON,2024-08-16,no-action,No actionable setup,No action,2,0.020050442966367488
+HON,2024-08-16,no-action,No actionable setup,No action,2,0.02005035631002028
 IBM,2024-08-16,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.011972377638731713
 INTC,2024-08-16,no-action,No actionable setup,No action,0,-0.015812166288258545
 INTU,2024-08-16,trend-hold,Trend hold / monitor,Hold,7,-0.051535587044368
@@ -10412,7 +10412,7 @@ GOOG,2024-08-23,no-action,No actionable setup,No action,2,-0.013856490276041633
 GOOGL,2024-08-23,no-action,No actionable setup,No action,2,-0.01352487803655622
 GS,2024-08-23,trend-hold,Trend hold / monitor,Hold,6,0.0016292775124417957
 HD,2024-08-23,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.018876957339173273
-HON,2024-08-23,no-action,No actionable setup,No action,3,0.026817461265514986
+HON,2024-08-23,no-action,No actionable setup,No action,3,0.026817503205980975
 IBM,2024-08-23,trend-hold,Trend hold / monitor,Hold,6,0.03074961036010282
 INTC,2024-08-23,no-action,No actionable setup,No action,0,0.0730282343301194
 INTU,2024-08-23,no-action,No actionable setup,No action,2,0.016794441541837513
@@ -10520,7 +10520,7 @@ GOOG,2024-08-30,no-action,No actionable setup,No action,1,-0.09430081319521588
 GOOGL,2024-08-30,no-action,No actionable setup,No action,1,-0.08979065816204168
 GS,2024-08-30,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.04248896163798399
 HD,2024-08-30,no-action,No actionable setup,No action,5,-0.008086868348244569
-HON,2024-08-30,no-action,No actionable setup,No action,5,-0.03246597257560324
+HON,2024-08-30,no-action,No actionable setup,No action,5,-0.03246597028091991
 IBM,2024-08-30,trend-hold,Trend hold / monitor,Hold,7,0.006926205227650639
 INTC,2024-08-30,no-action,No actionable setup,No action,2,-0.13475504071375688
 INTU,2024-08-30,no-action,No actionable setup,No action,3,-0.005188365881671597
@@ -10628,7 +10628,7 @@ GOOG,2024-09-13,no-action,No actionable setup,No action,1,0.039590859795262334
 GOOGL,2024-09-13,no-action,No actionable setup,No action,1,0.0389304544814526
 GS,2024-09-13,no-action,No actionable setup,No action,2,0.040585404366997535
 HD,2024-09-13,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.025974355564207796
-HON,2024-09-13,trend-hold,Trend hold / monitor,Hold,5,-0.003918646568912276
+HON,2024-09-13,trend-hold,Trend hold / monitor,Hold,5,-0.003918627562509047
 IBM,2024-09-13,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.01354813423841783
 INTC,2024-09-13,no-action,No actionable setup,No action,1,0.11088506216152072
 INTU,2024-09-13,trend-hold,Trend hold / monitor,Hold,5,-0.01574828304568332
@@ -10736,7 +10736,7 @@ GOOG,2024-09-20,no-action,No actionable setup,No action,2,0.003947970717286253
 GOOGL,2024-09-20,no-action,No actionable setup,No action,2,0.002200627290240842
 GS,2024-09-20,no-action,No actionable setup,No action,6,0.00016053827221385042
 HD,2024-09-20,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.02480381108877916
-HON,2024-09-20,no-action,No actionable setup,No action,2,0.021047482626559644
+HON,2024-09-20,no-action,No actionable setup,No action,2,0.021047448491927634
 IBM,2024-09-20,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.014423516002138426
 INTC,2024-09-20,trend-hold,Trend hold / monitor,Hold,4,0.09478020514477592
 INTU,2024-09-20,no-action,No actionable setup,No action,3,-0.040248626072579397
@@ -10844,7 +10844,7 @@ GOOG,2024-09-27,trend-hold,Trend hold / monitor,Hold,4,0.0197834376265007
 GOOGL,2024-09-27,trend-hold,Trend hold / monitor,Hold,4,0.018969202002079744
 GS,2024-09-27,no-action,No actionable setup,No action,4,-0.006720037788389921
 HD,2024-09-27,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.022100935096849517
-HON,2024-09-27,no-action,No actionable setup,No action,6,-0.018542649778712117
+HON,2024-09-27,no-action,No actionable setup,No action,6,-0.018542628777033388
 IBM,2024-09-27,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.02336534933741996
 INTC,2024-09-27,trend-hold,Trend hold / monitor,Hold,5,-0.05520701393760519
 INTU,2024-09-27,no-action,No actionable setup,No action,2,-0.013505074053054456
@@ -10952,7 +10952,7 @@ GOOG,2024-10-04,trend-hold,Trend hold / monitor,Hold,6,-0.02396768714195341
 GOOGL,2024-10-04,trend-hold,Trend hold / monitor,Hold,6,-0.02286598899350445
 GS,2024-10-04,no-action,No actionable setup,No action,4,0.042693238497681696
 HD,2024-10-04,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.008668842863911452
-HON,2024-10-04,no-action,No actionable setup,No action,4,0.059917556942370886
+HON,2024-10-04,no-action,No actionable setup,No action,4,0.059917591456515984
 IBM,2024-10-04,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.03212386949927404
 INTC,2024-10-04,trend-hold,Trend hold / monitor,Hold,5,0.0429393230102908
 INTU,2024-10-04,no-action,No actionable setup,No action,1,0.009841665603054883
@@ -11060,7 +11060,7 @@ GOOG,2024-10-11,trend-hold,Trend hold / monitor,Hold,5,0.0032214853241745445
 GOOGL,2024-10-11,trend-hold,Trend hold / monitor,Hold,5,0.001102626009092944
 GS,2024-10-11,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.02362969687290284
 HD,2024-10-11,trend-hold,Trend hold / monitor,Hold,8,0.007526113497090092
-HON,2024-10-11,trend-hold,Trend hold / monitor,Hold,7,0.027917966920917303
+HON,2024-10-11,trend-hold,Trend hold / monitor,Hold,7,0.027917952803087953
 IBM,2024-10-11,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.004544274987379637
 INTC,2024-10-11,trend-hold,Trend hold / monitor,Hold,7,-0.03353136783049204
 INTU,2024-10-11,no-action,No actionable setup,No action,2,-0.005497202258383904
@@ -11168,7 +11168,7 @@ GOOG,2024-10-18,no-action,No actionable setup,No action,4,0.011754028509759484
 GOOGL,2024-10-18,no-action,No actionable setup,No action,3,0.011320561279183572
 GS,2024-10-18,trend-hold,Trend hold / monitor,Hold,8,-0.030085192836447505
 HD,2024-10-18,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,-0.03877107551298942
-HON,2024-10-18,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,-0.06314743808829126
+HON,2024-10-18,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,-0.06314748222081712
 IBM,2024-10-18,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.07549525843966465
 INTC,2024-10-18,no-action,No actionable setup,No action,4,-0.003952575791767443
 INTU,2024-10-18,no-action,No actionable setup,No action,1,-0.006554743498375815
@@ -11276,7 +11276,7 @@ GOOG,2024-10-25,trend-hold,Trend hold / monitor,Hold,5,0.0338941746040724
 GOOGL,2024-10-25,trend-hold,Trend hold / monitor,Hold,5,0.03642517612420115
 GS,2024-10-25,trend-hold,Trend hold / monitor,Hold,6,0.0131681629369651
 HD,2024-10-25,no-action,No actionable setup,No action,3,-0.01584319086059327
-HON,2024-10-25,no-action,No actionable setup,No action,4,0.005721146713819847
+HON,2024-10-25,no-action,No actionable setup,No action,4,0.0057211655836839626
 IBM,2024-10-25,no-action,No actionable setup,No action,2,-0.02990635963900634
 INTC,2024-10-25,no-action,No actionable setup,No action,2,0.02292770946943068
 INTU,2024-10-25,no-action,No actionable setup,No action,1,0.020467067643864967
@@ -11384,7 +11384,7 @@ GOOG,2024-11-08,trend-hold,Trend hold / monitor,Hold,8,-0.033192489716690976
 GOOGL,2024-11-08,trend-hold,Trend hold / monitor,Hold,8,-0.03285674465831179
 GS,2024-11-08,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.007263293267467885
 HD,2024-11-08,no-action,No actionable setup,No action,5,0.00561714415762804
-HON,2024-11-08,trend-hold,Trend hold / monitor,Hold,6,0.04328212670634479
+HON,2024-11-08,trend-hold,Trend hold / monitor,Hold,6,0.0432821530012486
 IBM,2024-11-08,no-action,No actionable setup,No action,3,-0.04084781806885629
 INTC,2024-11-08,trend-hold,Trend hold / monitor,Hold,6,-0.07061069952664267
 INTU,2024-11-08,trend-hold,Trend hold / monitor,Hold,6,0.00533457743174548
@@ -11492,7 +11492,7 @@ GOOG,2024-11-15,trend-hold,Trend hold / monitor,Hold,7,-0.04209553218197004
 GOOGL,2024-11-15,trend-hold,Trend hold / monitor,Hold,7,-0.04481425439246378
 GS,2024-11-15,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.015567698237010097
 HD,2024-11-15,trend-hold,Trend hold / monitor,Hold,5,0.028957831192885974
-HON,2024-11-15,trend-hold,Trend hold / monitor,Hold,7,0.0005240278283378252
+HON,2024-11-15,trend-hold,Trend hold / monitor,Hold,7,0.0005240190152799862
 IBM,2024-11-15,no-action,No actionable setup,No action,0,0.0877115724948776
 INTC,2024-11-15,trend-hold,Trend hold / monitor,Hold,6,0.006160148508433716
 INTU,2024-11-15,trend-hold,Trend hold / monitor,Hold,7,-0.06941718687971721
@@ -11600,7 +11600,7 @@ GOOG,2024-11-22,no-action,No actionable setup,No action,1,0.0384822484328986
 GOOGL,2024-11-22,no-action,No actionable setup,No action,1,0.04084736107495379
 GS,2024-11-22,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.0017751207276506253
 HD,2024-11-22,trend-hold,Trend hold / monitor,Hold,6,0.016571408226376594
-HON,2024-11-22,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.003666414894776704
+HON,2024-11-22,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.0036663451427387805
 IBM,2024-11-22,trend-hold,Trend hold / monitor,Hold,6,0.019823286292985465
 INTC,2024-11-22,trend-hold,Trend hold / monitor,Hold,7,-0.023265293666294595
 INTU,2024-11-22,no-action,No actionable setup,No action,5,-0.009451333873520373
@@ -11708,7 +11708,7 @@ GOOG,2024-11-29,no-action,No actionable setup,No action,3,0.03519267878867294
 GOOGL,2024-11-29,no-action,No actionable setup,No action,3,0.03409298531913896
 GS,2024-11-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.014608039406222795
 HD,2024-11-29,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.005219840628451822
-HON,2024-11-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.028120081286358567
+HON,2024-11-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.028119984540100784
 IBM,2024-11-29,trend-hold,Trend hold / monitor,Hold,7,0.04674372038539576
 INTC,2024-11-29,no-action,No actionable setup,No action,5,-0.13014549937878328
 INTU,2024-11-29,no-action,No actionable setup,No action,4,0.007386268958343933
@@ -11816,7 +11816,7 @@ GOOG,2024-12-06,no-action,No actionable setup,No action,5,0.08436738017000733
 GOOGL,2024-12-06,no-action,No actionable setup,No action,5,0.08648617726343577
 GS,2024-12-06,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.023679316269449968
 HD,2024-12-06,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,-0.03335879707384404
-HON,2024-12-06,no-action,No actionable setup,No action,5,0.005477551713958251
+HON,2024-12-06,no-action,No actionable setup,No action,5,0.005477472425256424
 IBM,2024-12-06,trend-hold,Trend hold / monitor,Hold,6,-0.030330978682373666
 INTC,2024-12-06,no-action,No actionable setup,No action,1,-0.027724661643921178
 INTU,2024-12-06,no-action,No actionable setup,No action,4,0.015437749557108749
@@ -11924,7 +11924,7 @@ GOOG,2024-12-13,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2024-12-13,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.008376336932570227
 GS,2024-12-13,no-action,No actionable setup,No action,3,-0.03310105474024305
 HD,2024-12-13,no-action,No actionable setup,No action,5,-0.05846804220937074
-HON,2024-12-13,no-action,No actionable setup,No action,4,0.0030752510817289025
+HON,2024-12-13,no-action,No actionable setup,No action,4,0.003075354635127203
 IBM,2024-12-13,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.03231958442574945
 INTC,2024-12-13,no-action,No actionable setup,No action,0,-0.04031463562795934
 INTU,2024-12-13,no-action,No actionable setup,No action,5,-0.019894885087571423
@@ -12032,7 +12032,7 @@ GOOG,2025-01-17,trend-hold,Trend hold / monitor,Hold,7,-0.019134389880553382
 GOOGL,2025-01-17,trend-hold,Trend hold / monitor,Hold,7,-0.0213775634765625
 GS,2025-01-17,trend-hold,Trend hold / monitor,Hold,6,0.011726406407706502
 HD,2025-01-17,trend-hold,Trend hold / monitor,Hold,6,0.0378376814930399
-HON,2025-01-17,no-action,No actionable setup,No action,2,0.014062411693968047
+HON,2025-01-17,no-action,No actionable setup,No action,2,0.014062381422695225
 IBM,2025-01-17,trend-hold,Trend hold / monitor,Hold,4,-0.0029360221675002185
 INTC,2025-01-17,trend-hold,Trend hold / monitor,Hold,4,-0.05583987288839243
 INTU,2025-01-17,no-action,No actionable setup,No action,0,0.0041216132525283555
@@ -12140,7 +12140,7 @@ GOOG,2025-01-24,trend-hold,Trend hold / monitor,Hold,7,0.01832596492760774
 GOOGL,2025-01-24,trend-hold,Trend hold / monitor,Hold,7,0.019030005648213555
 GS,2025-01-24,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.005495367979016619
 HD,2025-01-24,trend-hold,Trend hold / monitor,Hold,7,-0.006079587487748839
-HON,2025-01-24,no-action,No actionable setup,No action,1,0.009977005993380805
+HON,2025-01-24,no-action,No actionable setup,No action,1,0.009977006765710561
 IBM,2025-01-24,trend-hold,Trend hold / monitor,Hold,5,0.13745548699734655
 INTC,2025-01-24,trend-hold,Trend hold / monitor,Hold,4,-0.06721073565329072
 INTU,2025-01-24,no-action,No actionable setup,No action,0,0.005953670851939208
@@ -12248,7 +12248,7 @@ GOOG,2025-01-31,trend-hold,Trend hold / monitor,Hold,8,-0.08978602220747456
 GOOGL,2025-01-31,trend-hold,Trend hold / monitor,Hold,8,-0.09155968798835956
 GS,2025-01-31,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.024203621813071896
 HD,2025-01-31,trend-hold,Trend hold / monitor,Hold,6,-0.011189901806409774
-HON,2025-01-31,no-action,No actionable setup,No action,3,-0.08135167466798254
+HON,2025-01-31,no-action,No actionable setup,No action,3,-0.0813516755271586
 IBM,2025-01-31,trend-hold,Trend hold / monitor,Hold,7,-0.01314040144877926
 INTC,2025-01-31,no-action,No actionable setup,No action,0,-0.016984041097423352
 INTU,2025-01-31,no-action,No actionable setup,No action,1,-0.03767191536599179
@@ -12356,7 +12356,7 @@ GOOG,2025-02-07,no-action,No actionable setup,No action,2,-0.0014427929536259265
 GOOGL,2025-02-07,no-action,No actionable setup,No action,1,-0.0005935071356701904
 GS,2025-02-07,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.007089439252667029
 HD,2025-02-07,no-action,No actionable setup,No action,5,0.005228673953268759
-HON,2025-02-07,no-action,No actionable setup,No action,0,-0.013478025952632255
+HON,2025-02-07,no-action,No actionable setup,No action,0,-0.013478027514969959
 IBM,2025-02-07,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,6,0.03542840045632434
 INTC,2025-02-07,no-action,No actionable setup,No action,0,0.235602089535337
 INTU,2025-02-07,no-action,No actionable setup,No action,0,0.014736165943931345
@@ -12464,7 +12464,7 @@ GOOG,2025-02-14,no-action,No actionable setup,No action,1,-0.030395423685965706
 GOOGL,2025-02-14,no-action,No actionable setup,No action,1,-0.0322841649056409
 GS,2025-02-14,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.052092913148786724
 HD,2025-02-14,no-action,No actionable setup,No action,5,-0.06612939333886603
-HON,2025-02-14,no-action,No actionable setup,No action,0,0.03531443428992764
+HON,2025-02-14,no-action,No actionable setup,No action,0,0.035314444695977
 IBM,2025-02-14,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.0022580998953118936
 INTC,2025-02-14,trend-hold,Trend hold / monitor,Hold,6,0.02838983328237643
 INTU,2025-02-14,no-action,No actionable setup,No action,1,-0.03428787919407572
@@ -12572,7 +12572,7 @@ GOOG,2025-05-02,trend-hold,Trend hold / monitor,Hold,6,-0.06893427925986273
 GOOGL,2025-05-02,trend-hold,Trend hold / monitor,Hold,6,-0.06876790137927247
 GS,2025-05-02,trend-hold,Trend hold / monitor,Hold,5,0.0017664724308898982
 HD,2025-05-02,no-action,No actionable setup,No action,4,-0.004965427447452986
-HON,2025-05-02,trend-hold,Trend hold / monitor,Hold,4,-0.005137069287039497
+HON,2025-05-02,trend-hold,Trend hold / monitor,Hold,4,-0.005137094654799168
 IBM,2025-05-02,no-action,No actionable setup,No action,5,0.014864564655350465
 INTC,2025-05-02,no-action,No actionable setup,No action,2,0.03879724561108655
 INTU,2025-05-02,trend-hold,Trend hold / monitor,Hold,3,0.035144396631896724
@@ -12680,7 +12680,7 @@ GOOG,2025-05-09,no-action,No actionable setup,No action,0,0.08453159334251081
 GOOGL,2025-05-09,no-action,No actionable setup,No action,0,0.08798692269333053
 GS,2025-05-09,trend-hold,Trend hold / monitor,Hold,6,0.0915712501261925
 HD,2025-05-09,no-action,No actionable setup,No action,3,0.04981943632632668
-HON,2025-05-09,trend-hold,Trend hold / monitor,Hold,5,0.04623760152017686
+HON,2025-05-09,trend-hold,Trend hold / monitor,Hold,5,0.046237648030597045
 IBM,2025-05-09,trend-hold,Trend hold / monitor,Hold,6,0.07046554186367016
 INTC,2025-05-09,trend-hold,Trend hold / monitor,Hold,3,0.011204471067382427
 INTU,2025-05-09,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.025081091777690467
@@ -12788,7 +12788,7 @@ GOOG,2025-05-16,no-action,No actionable setup,No action,4,0.012900936251559747
 GOOGL,2025-05-16,no-action,No actionable setup,No action,4,0.013719229471103267
 GS,2025-05-16,trend-hold,Trend hold / monitor,Hold,7,-0.03310025410690476
 HD,2025-05-16,no-action,No actionable setup,No action,5,-0.04745524287553837
-HON,2025-05-16,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.0038137170328449432
+HON,2025-05-16,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.003813738715424675
 IBM,2025-05-16,trend-hold,Trend hold / monitor,Hold,5,-0.030476850296847435
 INTC,2025-05-16,trend-hold,Trend hold / monitor,Hold,5,-0.07433059195260894
 INTU,2025-05-16,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,0.07437186460445533
@@ -12896,7 +12896,7 @@ GOOG,2025-05-23,trend-hold,Trend hold / monitor,Hold,5,0.004599320691904607
 GOOGL,2025-05-23,trend-hold,Trend hold / monitor,Hold,5,0.003324019436909298
 GS,2025-05-23,trend-hold,Trend hold / monitor,Hold,6,0.0003007195548982988
 HD,2025-05-23,no-action,No actionable setup,No action,3,0.014474373807400909
-HON,2025-05-23,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.015718609538410755
+HON,2025-05-23,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.01571862141310576
 IBM,2025-05-23,trend-hold,Trend hold / monitor,Hold,7,0.02037655691210216
 INTC,2025-05-23,no-action,No actionable setup,No action,0,-0.015461320585458016
 INTU,2025-05-23,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.06229428720840846
@@ -13004,7 +13004,7 @@ GOOG,2025-05-30,trend-hold,Trend hold / monitor,Hold,6,0.011975655148024789
 GOOGL,2025-05-30,trend-hold,Trend hold / monitor,Hold,6,0.011296070342180053
 GS,2025-05-30,trend-hold,Trend hold / monitor,Hold,6,0.02256638773836306
 HD,2025-05-30,no-action,No actionable setup,No action,4,-0.0026067011061451373
-HON,2025-05-30,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.00930870220916602
+HON,2025-05-30,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.009308689404845305
 IBM,2025-05-30,trend-hold,Trend hold / monitor,Hold,7,0.03786766637475525
 INTC,2025-05-30,no-action,No actionable setup,No action,0,0.026086969247294922
 INTU,2025-05-30,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.024035525091754772
@@ -13112,7 +13112,7 @@ GOOG,2025-06-06,trend-hold,Trend hold / monitor,Hold,7,0.0054882616276954455
 GOOGL,2025-06-06,trend-hold,Trend hold / monitor,Hold,7,0.0057001700536236655
 GS,2025-06-06,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.0007492214538374897
 HD,2025-06-06,no-action,No actionable setup,No action,3,-0.03449210076309317
-HON,2025-06-06,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.01962584376430332
+HON,2025-06-06,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.01962586553510537
 IBM,2025-06-06,trend-hold,Trend hold / monitor,Hold,6,0.031055923885728642
 INTC,2025-06-06,no-action,No actionable setup,No action,2,0.003988032195209268
 INTU,2025-06-06,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.02281038418734005
@@ -13220,7 +13220,7 @@ GOOG,2025-06-13,trend-hold,Trend hold / monitor,Hold,7,-0.05611786503276983
 GOOGL,2025-06-13,trend-hold,Trend hold / monitor,Hold,7,-0.05427374951003183
 GS,2025-06-13,trend-hold,Trend hold / monitor,Hold,4,0.054340431022382285
 HD,2025-06-13,no-action,No actionable setup,No action,1,0.0064850498201651785
-HON,2025-06-13,no-action,No actionable setup,No action,4,0.0020063552870053236
+HON,2025-06-13,no-action,No actionable setup,No action,4,0.0020063855744878456
 IBM,2025-06-13,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.04314259938826148
 INTC,2025-06-13,no-action,No actionable setup,No action,2,0.052135113020353785
 INTU,2025-06-13,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,0.0113663592485449
@@ -13328,7 +13328,7 @@ GOOG,2025-06-27,trend-hold,Trend hold / monitor,Hold,5,-0.003982760401924024
 GOOGL,2025-06-27,trend-hold,Trend hold / monitor,Hold,5,-0.009746291968080412
 GS,2025-06-27,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.029125222837385056
 HD,2025-06-27,no-action,No actionable setup,No action,4,-0.0029830656155258595
-HON,2025-06-27,no-action,No actionable setup,No action,6,0.045881544804480034
+HON,2025-06-27,no-action,No actionable setup,No action,6,0.045881580598475136
 IBM,2025-06-27,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.009561577138258226
 INTC,2025-06-27,trend-hold,Trend hold / monitor,Hold,6,-0.030409895011766497
 INTU,2025-06-27,trend-hold,Trend hold / monitor,Hold,6,0.009065477627189011
@@ -13436,7 +13436,7 @@ GOOG,2025-07-11,no-action,No actionable setup,No action,5,0.02553640144039071
 GOOGL,2025-07-11,no-action,No actionable setup,No action,5,0.027026999562703935
 GS,2025-07-11,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,0.00469536492130973
 HD,2025-07-11,trend-hold,Trend hold / monitor,Hold,3,-0.02883241877633791
-HON,2025-07-11,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,0.0025855423449376858
+HON,2025-07-11,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,0.002585515319325493
 IBM,2025-07-11,no-action,No actionable setup,No action,4,0.008039771531927808
 INTC,2025-07-11,trend-hold,Trend hold / monitor,Hold,6,-0.014084503602552534
 INTU,2025-07-11,no-action,No actionable setup,No action,3,0.006324348595195817
@@ -13544,7 +13544,7 @@ GOOG,2025-07-18,trend-hold,Trend hold / monitor,Hold,6,0.043777558797298166
 GOOGL,2025-07-18,trend-hold,Trend hold / monitor,Hold,6,0.04387763549287049
 GS,2025-07-18,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,0.02925475166949143
 HD,2025-07-18,no-action,No actionable setup,No action,1,0.044351704819442395
-HON,2025-07-18,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.05199971773989043
+HON,2025-07-18,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.05199961166013023
 IBM,2025-07-18,no-action,No actionable setup,No action,5,-0.0914751262571808
 INTC,2025-07-18,trend-hold,Trend hold / monitor,Hold,5,-0.10389608566653952
 INTU,2025-07-18,no-action,No actionable setup,No action,4,0.04427143099271835
@@ -13652,7 +13652,7 @@ GOOG,2025-07-25,trend-hold,Trend hold / monitor,Hold,8,-0.02127990954167258
 GOOGL,2025-07-25,trend-hold,Trend hold / monitor,Hold,8,-0.02096484080401606
 GS,2025-07-25,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.026626208763716908
 HD,2025-07-25,trend-hold,Trend hold / monitor,Hold,5,-0.00447592234286931
-HON,2025-07-25,no-action,No actionable setup,No action,2,-0.029120587791916397
+HON,2025-07-25,no-action,No actionable setup,No action,2,-0.02912057893031028
 IBM,2025-07-25,no-action,No actionable setup,No action,1,-0.03723239690241653
 INTC,2025-07-25,no-action,No actionable setup,No action,1,-0.0671498186360302
 INTU,2025-07-25,no-action,No actionable setup,No action,6,-0.012468970851529537
@@ -13760,7 +13760,7 @@ GOOG,2025-08-08,trend-hold,Trend hold / monitor,Hold,8,0.013954215326441366
 GOOGL,2025-08-08,trend-hold,Trend hold / monitor,Hold,8,0.012312559577420723
 GS,2025-08-08,trend-hold,Trend hold / monitor,Hold,7,0.013101821670082003
 HD,2025-08-08,trend-hold,Trend hold / monitor,Hold,6,0.029727984008899533
-HON,2025-08-08,no-action,No actionable setup,No action,0,0.002126551719260128
+HON,2025-08-08,no-action,No actionable setup,No action,0,0.0021266086591424926
 IBM,2025-08-08,no-action,No actionable setup,No action,0,-0.01052545922643422
 INTC,2025-08-08,no-action,No actionable setup,No action,1,0.2310776203862004
 INTU,2025-08-08,no-action,No actionable setup,No action,3,-0.043070774052903826
@@ -13868,7 +13868,7 @@ GOOG,2025-08-15,trend-hold,Trend hold / monitor,Hold,8,0.008833134186940095
 GOOGL,2025-08-15,trend-hold,Trend hold / monitor,Hold,8,0.010740571392650722
 GS,2025-08-15,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.015286353723936497
 HD,2025-08-15,trend-hold,Trend hold / monitor,Hold,8,0.033577053177823
-HON,2025-08-15,no-action,No actionable setup,No action,2,0.027955902693756585
+HON,2025-08-15,no-action,No actionable setup,No action,2,0.027955886142700948
 IBM,2025-08-15,no-action,No actionable setup,No action,0,0.00988651387084527
 INTC,2025-08-15,trend-hold,Trend hold / monitor,Hold,5,0.009771977863882952
 INTU,2025-08-15,no-action,No actionable setup,No action,0,-0.07545276924224575
@@ -13976,7 +13976,7 @@ GOOG,2025-08-22,trend-hold,Trend hold / monitor,Hold,8,0.03294309945036766
 GOOGL,2025-08-22,trend-hold,Trend hold / monitor,Hold,8,0.03309237442576829
 GS,2025-08-22,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.004528953463748486
 HD,2025-08-22,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.014583733633646956
-HON,2025-08-22,trend-hold,Trend hold / monitor,Hold,3,-0.01494413423042118
+HON,2025-08-22,trend-hold,Trend hold / monitor,Hold,3,-0.014944135904910283
 IBM,2025-08-22,no-action,No actionable setup,No action,1,0.005783011179526065
 INTC,2025-08-22,trend-hold,Trend hold / monitor,Hold,6,-0.018145115703001813
 INTU,2025-08-22,no-action,No actionable setup,No action,0,0.006549402455793274
@@ -14084,7 +14084,7 @@ GOOG,2025-08-29,trend-hold,Trend hold / monitor,Hold,8,0.09661408233386215
 GOOGL,2025-08-29,trend-hold,Trend hold / monitor,Hold,8,0.09924376149820091
 GS,2025-08-29,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.004562260200016821
 HD,2025-08-29,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,0.03237705283929326
-HON,2025-08-29,no-action,No actionable setup,No action,3,-0.021640041637080998
+HON,2025-08-29,no-action,No actionable setup,No action,3,-0.021640091116173155
 IBM,2025-08-29,no-action,No actionable setup,No action,2,0.05174746626337523
 INTC,2025-08-29,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,5,0.00533877448583242
 INTU,2025-08-29,no-action,No actionable setup,No action,1,0.007016480773285316
@@ -14192,7 +14192,7 @@ GOOG,2025-09-05,trend-hold,Trend hold / monitor,Hold,7,0.02640645814610232
 GOOGL,2025-09-05,trend-hold,Trend hold / monitor,Hold,7,0.024680864050033335
 GS,2025-09-05,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,0.05669115067566466
 HD,2025-09-05,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.008927056033899206
-HON,2025-09-05,no-action,No actionable setup,No action,0,-0.01302216101542808
+HON,2025-09-05,no-action,No actionable setup,No action,0,-0.013022139025123947
 IBM,2025-09-05,no-action,No actionable setup,No action,2,0.019756181089710667
 INTC,2025-09-05,trend-hold,Trend hold / monitor,Hold,6,-0.016741521079785215
 INTU,2025-09-05,no-action,No actionable setup,No action,1,-0.03981745152598326
@@ -14300,7 +14300,7 @@ GOOG,2025-09-12,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2025-09-12,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,0.05780730063343609
 GS,2025-09-12,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,0.03197190282729867
 HD,2025-09-12,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,8,-0.016560599871226822
-HON,2025-09-12,no-action,No actionable setup,No action,0,-0.00988371006926314
+HON,2025-09-12,no-action,No actionable setup,No action,0,-0.00988372046874919
 IBM,2025-09-12,trend-hold,Trend hold / monitor,Hold,5,0.051136329428004945
 INTC,2025-09-12,no-action,No actionable setup,No action,3,0.22840531633828665
 INTU,2025-09-12,no-action,No actionable setup,No action,0,0.06484211524791395
@@ -14408,7 +14408,7 @@ GOOG,2025-09-19,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2025-09-19,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.032113724463603166
 GS,2025-09-19,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.0030931555706521507
 HD,2025-09-19,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,6,-0.013471591981106146
-HON,2025-09-19,no-action,No actionable setup,No action,0,-0.00563592392314638
+HON,2025-09-19,no-action,No actionable setup,No action,0,-0.0056359206347632584
 IBM,2025-09-19,trend-hold,Trend hold / monitor,Hold,6,0.06722974501669365
 INTC,2025-09-19,trend-hold,Trend hold / monitor,Hold,7,0.20013522959983265
 INTU,2025-09-19,no-action,No actionable setup,No action,2,0.015030856948982096
@@ -14516,7 +14516,7 @@ GOOG,2025-09-26,trend-hold,Trend hold / monitor,Hold,7,-0.0029532961775614597
 GOOGL,2025-09-26,trend-hold,Trend hold / monitor,Hold,7,-0.004826751095251769
 GS,2025-09-26,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.015613548920759834
 HD,2025-09-26,no-action,No actionable setup,No action,4,-0.036650488706174156
-HON,2025-09-26,no-action,No actionable setup,No action,0,0.004130795030292678
+HON,2025-09-26,no-action,No actionable setup,No action,0,0.004130844902572095
 IBM,2025-09-26,trend-hold,Trend hold / monitor,Hold,7,0.014280178655191378
 INTC,2025-09-26,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,0.03746484031139974
 INTU,2025-09-26,trend-hold,Trend hold / monitor,Hold,4,-0.026236655497954064
@@ -14624,7 +14624,7 @@ GOOG,2025-10-03,no-action,No actionable setup,No action,5,-0.03635622465420363
 GOOGL,2025-10-03,no-action,No actionable setup,No action,5,-0.035785606524878055
 GS,2025-10-03,trend-hold,Trend hold / monitor,Hold,7,-0.032431195410781655
 HD,2025-10-03,no-action,No actionable setup,No action,2,-0.04887864546632503
-HON,2025-10-03,no-action,No actionable setup,No action,1,-0.03893800101141276
+HON,2025-10-03,no-action,No actionable setup,No action,1,-0.03893804960927516
 IBM,2025-10-03,trend-hold,Trend hold / monitor,Hold,7,-0.03658490124356195
 INTC,2025-10-03,wait-for-confirmation,Breakout Confirmation,Wait for confirmation,7,-0.01248989617975127
 INTU,2025-10-03,no-action,No actionable setup,No action,2,-0.05610792757755134
@@ -14732,7 +14732,7 @@ GOOG,2025-10-24,trend-hold,Trend hold / monitor,Hold,8,0.08180107005395243
 GOOGL,2025-10-24,trend-hold,Trend hold / monitor,Hold,8,0.08183282515713475
 GS,2025-10-24,no-action,No actionable setup,No action,5,0.007003610501834068
 HD,2025-10-24,no-action,No actionable setup,No action,0,-0.018335565512010876
-HON,2025-10-24,trend-hold,Trend hold / monitor,Hold,5,-0.011700103201617185
+HON,2025-10-24,no-action,No actionable setup,No action,1,-0.011341535311235273
 IBM,2025-10-24,breakout-confirmation-triggered,Breakout Confirmation,Buy now,7,-0.00016258308189032178
 INTC,2025-10-24,trend-hold,Trend hold / monitor,Hold,8,0.04467092355537772
 INTU,2025-10-24,no-action,No actionable setup,No action,3,-0.022749620769661805
@@ -14840,7 +14840,7 @@ GOOG,2025-10-31,extended-strength-wait,"Extended strength, wait for pullback",Wa
 GOOGL,2025-10-31,extended-strength-wait,"Extended strength, wait for pullback",Wait for pullback,7,-0.00839295795956474
 GS,2025-10-31,trend-hold,Trend hold / monitor,Hold,5,-0.0038384639401817244
 HD,2025-10-31,no-action,No actionable setup,No action,0,-0.022339922200635853
-HON,2025-10-31,trend-hold,Trend hold / monitor,Hold,4,-0.03606017205984102
+HON,2025-10-31,no-action,No actionable setup,No action,0,-0.03606017205984102
 IBM,2025-10-31,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,7,-0.0033505701409412003
 INTC,2025-10-31,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,-0.04651164121738727
 INTU,2025-10-31,no-action,No actionable setup,No action,1,-0.028012901728687867
@@ -15488,7 +15488,7 @@ GOOG,2026-01-09,trend-hold,Trend hold / monitor,Hold,7,0.0036458091877247245
 GOOGL,2026-01-09,trend-hold,Trend hold / monitor,Hold,7,0.004352170447408543
 GS,2026-01-09,strong-stock-constructive-pullback,Constructive pullback continuation,Buy on pullback,8,0.02451598544173228
 HD,2026-01-09,trend-hold,Trend hold / monitor,Hold,5,0.014760833234768622
-HON,2026-01-09,breakout-confirmation-triggered,Breakout Confirmation,Buy now,8,0.05791298208148188
+HON,2026-01-09,trend-hold,Trend hold / monitor,Hold,7,0.05791298208148188
 IBM,2026-01-09,no-action,No actionable setup,No action,4,0.004766327661603453
 INTC,2026-01-09,trend-hold,Trend hold / monitor,Hold,6,0.030954991680107513
 INTU,2026-01-09,no-action,No actionable setup,No action,2,-0.15707225622499132

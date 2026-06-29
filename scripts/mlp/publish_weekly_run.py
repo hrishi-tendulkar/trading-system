@@ -24,7 +24,7 @@ from packages.core.weekly_runs import (  # noqa: E402
     default_publish_week_start,
     legacy_recommendations_path,
     load_current_manifest,
-    prior_friday_for_week,
+    prior_market_close_for_week,
     repo_root,
     run_id_for_week,
     update_manifest_status,
@@ -126,7 +126,7 @@ def publish_weekly_run(args: argparse.Namespace) -> WeeklyRunManifest:
         raise RuntimeError(f"Target week must be a Monday, got {target_week.isoformat()}")
 
     universe = universe_slug_for_watchlist(args.watchlist)
-    source_through = prior_friday_for_week(target_week)
+    source_through = prior_market_close_for_week(target_week)
     fetch_end = source_through + timedelta(days=1)
     raw_prices = repo_root() / args.raw_outdir / "mlp_prices.csv"
     existing_start = args.start or (

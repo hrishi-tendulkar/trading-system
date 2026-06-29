@@ -13,12 +13,13 @@ from packages.core.universes import (
 )
 from packages.core.weekly_runs import (
     current_recommendations_path,
+    current_week_start,
     default_publish_week_start,
     legacy_recommendations_path,
     list_manifests,
     load_current_manifest,
     load_manifest,
-    prior_friday_for_week,
+    prior_market_close_for_week,
     run_dir,
 )
 
@@ -525,14 +526,17 @@ def _run_metadata(records: list[RecommendationRecord], run_id: str | None = None
     }
 
 
-def _freshness_alerts(metadata: dict[str, str]) -> list[dict[str, str]]:
+def _freshness_alerts(metadata: dict[str, str], today: date | None = None) -> list[dict[str, str]]:
     alerts: list[dict[str, str]] = []
+    effective_today = today or date.today()
     try:
-        expected_week = default_publish_week_start(date.today())
+        active_week = current_week_start(effective_today)
+        next_publish_week = default_publish_week_start(effective_today)
+        expected_week = min(active_week, next_publish_week)
         recommendation_week = date.fromisoformat(
             metadata["recommendation_week"].replace("Week of ", "")
         )
-        expected_source_through = prior_friday_for_week(expected_week)
+        expected_source_through = prior_market_close_for_week(recommendation_week)
         source_through = date.fromisoformat(metadata["data_through"])
     except ValueError:
         return [

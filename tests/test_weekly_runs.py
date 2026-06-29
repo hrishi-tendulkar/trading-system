@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -9,11 +10,11 @@ from packages.core.strategy_registry import (
     get_active_strategy_versions,
     get_strategy_registry_version,
 )
-from datetime import date
-
 from packages.core.weekly_runs import (
     WeeklyRunManifest,
     default_publish_week_start,
+    is_market_session,
+    prior_market_close_for_week,
     write_run_snapshot,
 )
 
@@ -91,3 +92,8 @@ def test_default_publish_week_start_keeps_current_week_on_weekdays_and_saturday(
     assert default_publish_week_start(date(2026, 6, 12)) == date(2026, 6, 8)
     assert default_publish_week_start(date(2026, 6, 13)) == date(2026, 6, 8)
     assert default_publish_week_start(date(2026, 6, 15)) == date(2026, 6, 15)
+
+
+def test_prior_market_close_for_week_handles_juneteenth_friday() -> None:
+    assert not is_market_session(date(2026, 6, 19))
+    assert prior_market_close_for_week(date(2026, 6, 22)) == date(2026, 6, 18)

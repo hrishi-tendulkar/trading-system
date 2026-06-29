@@ -37,9 +37,9 @@ def test_strategy_detail_redirects_to_login_with_next_target() -> None:
 def test_weekly_renders_plan() -> None:
     response = _authenticated_client().get("/weekly")
     assert response.status_code == 200
-    assert "Weekly summary for week of 2026-06-15" in response.text
-    assert "Week of 2026-06-15" in response.text
-    assert "2026-06-12" in response.text
+    assert "Weekly summary for week of 2026-06-29" in response.text
+    assert "Week of 2026-06-29" in response.text
+    assert "2026-06-26" in response.text
     assert "Current-week report missing" not in response.text
     assert "Full candidate board" in response.text
     assert "Every analyzed name appears" in response.text

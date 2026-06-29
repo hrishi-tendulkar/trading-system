@@ -1,4 +1,7 @@
+from datetime import date
+
 from packages.core.ui_data import (
+    _freshness_alerts,
     get_archive_index,
     get_archive_week,
     get_daily_digest,
@@ -12,18 +15,47 @@ from packages.core.weekly_runs import WeeklyRunManifest
 def test_weekly_review_has_top_actions() -> None:
     review = get_weekly_review()
     assert review["fresh_cash"]
-    assert review["title"] == "Weekly summary for week of 2026-06-15"
+    assert review["title"] == "Weekly summary for week of 2026-06-29"
     assert review["coverage"]["analyzed_count"] == "108"
     assert "Every analyzed name appears" in review["coverage"]["board_note"]
     assert "current holdings" in review["coverage"]["holdings_note"]
     fact_labels = {fact["label"] for fact in review["facts"]}
     assert "Recommendation week" in fact_labels
     assert "Data through" in fact_labels
-    assert review["metadata"]["recommendation_week"] == "Week of 2026-06-15"
-    assert review["metadata"]["data_through"] == "2026-06-12"
+    assert review["metadata"]["recommendation_week"] == "Week of 2026-06-29"
+    assert review["metadata"]["data_through"] == "2026-06-26"
     assert review["metadata"]["strategy_registry_version"] == "2026-06-07.1"
     assert "breakout-confirmation.v2" in review["metadata"]["active_strategy_versions"]
     assert review["alerts"] == []
+
+
+def test_freshness_alerts_do_not_flag_next_week_before_monday() -> None:
+    metadata = {
+        "recommendation_week": "Week of 2026-06-15",
+        "data_through": "2026-06-12",
+    }
+
+    assert _freshness_alerts(metadata, today=date(2026, 6, 21)) == []
+
+
+def test_freshness_alerts_flag_stale_report_once_new_week_starts() -> None:
+    metadata = {
+        "recommendation_week": "Week of 2026-06-15",
+        "data_through": "2026-06-12",
+    }
+
+    alerts = _freshness_alerts(metadata, today=date(2026, 6, 22))
+
+    assert [alert["title"] for alert in alerts] == ["Current-week report missing"]
+
+
+def test_freshness_alerts_accept_holiday_shortened_source_week() -> None:
+    metadata = {
+        "recommendation_week": "Week of 2026-06-22",
+        "data_through": "2026-06-18",
+    }
+
+    assert _freshness_alerts(metadata, today=date(2026, 6, 22)) == []
 
 
 def test_archive_index_links_to_reconstructable_week() -> None:
